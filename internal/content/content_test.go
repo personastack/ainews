@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 7 {
-		t.Fatalf("Posts() returned %d posts, want 7", len(got))
+	if len(got) != 9 {
+		t.Fatalf("Posts() returned %d posts, want 9", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	sciencePost, ok := FindBySlug("the-lab-without-scientists-when-ai-became-its-own-researcher")
+	if !ok {
+		t.Fatal("FindBySlug() did not find autonomous science post")
+	}
+	if sciencePost.Title != "The Lab Without Scientists: When AI Became Its Own Researcher" {
+		t.Fatalf("FindBySlug() returned %q for autonomous science post", sciencePost.Title)
+	}
+
+	hardwarePost, ok := FindBySlug("the-chip-that-stays-home-inside-chinas-race-to-build-robotics-ai-hardware")
+	if !ok {
+		t.Fatal("FindBySlug() did not find China hardware post")
+	}
+	if hardwarePost.Title != "The Chip That Stays Home: Inside China's Race to Build Robotics AI Hardware" {
+		t.Fatalf("FindBySlug() returned %q for China hardware post", hardwarePost.Title)
+	}
+
 	platformPost, ok := FindBySlug("apples-multi-ai-gambit-what-ios-27-reveals-about-the-platform-wars")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Apple multi-AI post")

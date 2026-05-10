@@ -19,6 +19,127 @@ type Post struct {
 
 var posts = []Post{
 	{
+		Title:     "The Lab Without Scientists: When AI Became Its Own Researcher",
+		Slug:      "the-lab-without-scientists-when-ai-became-its-own-researcher",
+		Date:      "May 10, 2026",
+		Tag:       "Science",
+		Summary:   "Autonomous AI research systems are beginning to generate hypotheses, run experiments, and iterate on results across cancer detection and drug discovery, shifting scientific bottlenecks from labor to verification.",
+		SourceDoc: "https://docs.google.com/document/d/1OgmpIhsmO_fMg5BPmQoRxtmdR4QM4fF2BmvZnQsqf2M/edit",
+		Sections: []Section{
+			{
+				Paragraphs: []string{
+					"There is a particular kind of quiet that settles over a modern AI research lab at 2 a.m. The lights are low. The humans have gone home. But the experiments keep running.",
+					"Not because a grad student forgot to turn off a centrifuge, but because increasingly, the research itself is being designed, executed, and interpreted by systems that do not sleep, do not lose focus, and do not need tenure to publish.",
+					"Welcome to the era of the autonomous scientific researcher. It is here faster than almost anyone predicted.",
+				},
+			},
+			{
+				Heading: "The Recursive Loop",
+				Paragraphs: []string{
+					"The most ambitious development in AI-assisted science is not a single breakthrough. It is a structural shift in how breakthroughs happen. Until recently, AI in science meant tools: better image recognition for pathology slides, faster protein folding simulations, and smarter drug candidate screening. The scientist was still the scientist. AI was an unusually powerful microscope.",
+					"That is changing. A new generation of systems, sometimes called AI scientists, can now close the loop entirely. They formulate hypotheses, design experiments to test them, analyze the results, update their models, and start again. The cycle that used to take months of human effort can now iterate in hours.",
+					"More striking still, some of these systems are being deployed to improve themselves. In a handful of research environments, AI models are now running experiments specifically aimed at improving the efficiency and accuracy of AI models, a recursive self-improvement loop that carries both extraordinary promise and legitimate scientific risk. The boundary between tool and researcher is dissolving, and the scientific community is only beginning to reckon with what that means.",
+				},
+			},
+			{
+				Heading: "The Cancer That Wasn't Missed",
+				Paragraphs: []string{
+					"For readers who want a concrete case study in what AI-augmented science can deliver, look no further than early cancer detection.",
+					"Over the past 18 months, multiple independent research groups have published results showing AI systems achieving detection rates for certain cancers, particularly pancreatic, ovarian, and early-stage lung, that surpass expert radiologists under controlled conditions. These are not marginal improvements. We are talking about systems catching stage-one tumors in CT scans that trained radiologists marked as clear, with false positive rates low enough to be clinically viable.",
+					"The mechanism is not magic. It is pattern recognition at a scale and consistency that human cognition simply cannot sustain across thousands of scans per day. A radiologist brings expertise, intuition, and decades of training to each image. They also bring fatigue, a full appointment schedule, and the cognitive limits of a human nervous system. AI brings none of the first, but none of the second either.",
+					"The results have a particular weight for pancreatic cancer, which kills roughly 90 percent of patients within five years largely because it is almost always caught late. If AI-assisted screening can systematically push detection to stage one, the survival math changes completely. That is not a benchmark. That is a life.",
+					"The question researchers are now grappling with is not whether AI can match human diagnosticians. It is how quickly we can build the clinical infrastructure to act on what AI finds.",
+				},
+			},
+			{
+				Heading: "Compressing the Drug Discovery Pipeline",
+				Paragraphs: []string{
+					"The case that gets the most investor attention, and for good reason, is pharmaceutical R&D. Drug discovery is brutally expensive and slow. The average time from target identification to approved drug has historically been over a decade, at costs exceeding $2 billion per molecule. Most candidates fail in late-stage trials, after the majority of investment has already been committed.",
+					"AI is attacking this problem from multiple angles simultaneously. Generative models propose novel molecular structures optimized for both efficacy and synthesizability. Predictive models flag safety signals that would historically only emerge in Phase II or Phase III trials. And agentic research systems autonomously screen millions of compound variations against target proteins in silico, cutting early-stage experimental timelines from years to weeks.",
+					"The results are not hypothetical. Several AI-designed drug candidates are now in Phase II clinical trials. AstraZeneca, Amgen, and a cohort of AI-native biotech companies have restructured their early-stage R&D pipelines around these tools. The economics are forcing the issue: a competitor willing to use AI in drug discovery can explore 100x more candidates in the same timeframe. You either adapt or you fall behind.",
+				},
+			},
+			{
+				Heading: "The Uncomfortable Questions",
+				Paragraphs: []string{
+					"None of this is without tension.",
+					"The recursive self-improvement loop raises issues that the scientific community is only beginning to grapple with. When an AI system modifies its own research methodology, who verifies that the modification was valid? When the system that designed the experiment also interprets the results, how do we guard against self-reinforcing errors? The traditional safeguards of science, peer review, replication, and independent verification, were designed for a world where humans did the work. Applying them to AI-generated science requires new frameworks that do not yet fully exist.",
+					"The cancer detection story has its own complications. Studies show AI performs well under controlled conditions. Real-world clinical deployment involves messy images, inconsistent protocols, rare edge cases, and patients who fall outside the training distribution. The gap between benchmark performance and reliable clinical utility is real, and it matters enormously when the stakes are diagnostic accuracy.",
+					"And drug discovery, for all its AI-accelerated promise, still faces the fundamental reality that biological systems are enormously complex. Faster candidate screening does not solve for the late-stage trial failures that have historically sunk the most promising molecules. It may simply produce a larger number of false positives arriving at Phase III faster, and at higher total cost.",
+				},
+			},
+			{
+				Heading: "What's Actually New",
+				Paragraphs: []string{
+					"What separates this moment from every previous wave of AI in science is autonomy and iteration speed. Earlier tools enhanced individual steps in scientific workflows. Current systems are beginning to close the entire loop, designing, executing, analyzing, and iterating without requiring a human scientist at each stage.",
+					"That shift in architecture changes the economics of scientific research fundamentally. The bottleneck is no longer primarily human cognitive labor. It shifts to data quality, experimental infrastructure, and the interpretive frameworks we use to validate AI-generated findings.",
+					"The scientists who will define the next decade are not the ones who resist these tools. They are the ones building the interpretive infrastructure around them. Knowing how to ask the right question of an autonomous AI researcher, and knowing how to verify what it tells you, is becoming as important as running the experiment itself.",
+					"The lab without scientists is already running experiments. The question is who is responsible for understanding what they find, and whether we are building those accountability structures as fast as we are building the systems that need them.",
+				},
+			},
+		},
+	},
+	{
+		Title:     "The Chip That Stays Home: Inside China's Race to Build Robotics AI Hardware",
+		Slug:      "the-chip-that-stays-home-inside-chinas-race-to-build-robotics-ai-hardware",
+		Date:      "May 10, 2026",
+		Tag:       "Hardware",
+		Summary:   "China's domestic AI chip makers are focusing on low-power robotics and edge inference hardware, turning export controls into an accelerant for localized industrial AI supply chains.",
+		SourceDoc: "https://docs.google.com/document/d/1j2iO0C-6cEyGoKeQs-s8K0xoojeD3C1-tPc6ZEp4DVM/edit",
+		Sections: []Section{
+			{
+				Paragraphs: []string{
+					"When tightened export restrictions on advanced AI chips took hold in early 2026, something interesting happened in China's AI hardware ecosystem. Instead of scrambling for workarounds or lobbying for relief, a significant segment of the Chinese AI and robotics industry quietly doubled down on what they had been building for years: domestic alternatives, optimized specifically for robotics applications.",
+					"The result is an emerging landscape of Chinese AI hardware that does not look like an NVIDIA competitor. It looks like something designed from the ground up for a different problem.",
+				},
+			},
+			{
+				Heading: "The Problem with Universal Chips",
+				Paragraphs: []string{
+					"NVIDIA's dominance in AI compute is built on a particular philosophy: maximize flexibility. The H100, H200, and Blackwell architectures are designed to handle the widest possible range of workloads, from large language model training and inference to scientific simulation and image generation. That flexibility is enormously valuable for hyperscale cloud providers and frontier model labs who need to switch between workload types on short notice.",
+					"Robotics AI has different requirements. A robot's embedded computer is not training a 70-billion-parameter model. It is running inference on sensor fusion data in real time, coordinating actuators with millisecond latency, and making spatial decisions within strict power budgets. The power draw and thermal profile of a data center GPU is simply incompatible with most robotic form factors, and even if it were not, the unit economics do not work.",
+					"China's hardware builders understand this. And they are building for the specific, constrained requirements of the application rather than the general, scalable requirements of the data center.",
+				},
+			},
+			{
+				Heading: "The Domestic Alternatives",
+				Paragraphs: []string{
+					"The most prominent players in China's robotics AI chip space include Cambricon, Horizon Robotics, and a cluster of less visible startups carrying significant state backing. These are not companies trying to clone the H100. They are designing chips where TOPS-per-watt ratios and latency profiles are optimized for real-time control loops rather than transformer layers.",
+					"Horizon Robotics, now public after a landmark Hong Kong IPO in late 2024, has established itself as the leading embedded AI compute provider for Chinese automotive and robotics manufacturers. Their Journey chip series is deployed in millions of vehicles and is being extended for broader industrial robotics applications. This is not a company competing with NVIDIA on benchmarks. It is a company that has quietly cornered the edge inference market that NVIDIA does not prioritize, and doing so with chips that consume a fraction of the power.",
+					"Cambricon has taken a different path, pursuing both cloud and edge markets with more NVIDIA-like ambition, though still at a fraction of the scale. Their MLU-series accelerators are increasingly used in domestic cloud deployments as Chinese hyperscalers seek to reduce NVIDIA dependence for reasons that are as much risk management as performance optimization.",
+					"Below these names is an entire ecosystem of funded startups, many of them spun out of Tsinghua, Peking University, and CASIA, working on application-specific chips for humanoid robots, autonomous forklifts, and surgical systems. The state has been clear about where it wants this ecosystem to go, and the funding flows accordingly.",
+				},
+			},
+			{
+				Heading: "Geopolitics as an Accelerant",
+				Paragraphs: []string{
+					"Export controls were supposed to slow China's AI hardware development. In the training compute domain, where raw H100-equivalent performance matters most, that effect has been real. China's leading LLM labs have faced genuine constraints in scaling training runs, and the gap between Chinese and American frontier models has arguably widened as a result.",
+					"But in the robotics and edge inference domain, export controls have functioned more as a forcing function for localization than as a meaningful constraint. The chips China needs for robotics do not require cutting-edge fabrication nodes. They require good system design, tight software integration, and production volume to drive costs down. All of these are things Chinese manufacturers can do at home.",
+					"There is a strategic dimension worth taking seriously. China's government has designated robotics as a national priority industry, with explicit targets for domestic humanoid robot production by 2030 and beyond. Domestic AI hardware built specifically to power that industry creates a supply chain immune to geopolitical disruption, a guarantee that the United States currently cannot offer its own robotics manufacturers, who remain heavily dependent on NVIDIA silicon.",
+					"The export control strategy may have achieved its goal of constraining China's ability to train frontier models. It may have simultaneously accelerated China's ability to deploy AI at the edge, which is where the economic value in physical automation actually lives.",
+				},
+			},
+			{
+				Heading: "The Power Constraint Everyone Is Dealing With",
+				Paragraphs: []string{
+					"The geopolitical story gets most of the headlines, but power constraints may ultimately be the more durable shaper of AI chip design globally, for Chinese and Western designers alike.",
+					"Data centers running AI inference at scale are increasingly constrained not by compute availability but by power availability. The next generation of NVIDIA architecture, Vera Rubin, is a response in part to this reality, targeting dramatically better inference efficiency per watt. Chinese data center operators face the same constraints, and their domestic chip designers are responding similarly.",
+					"For robotics specifically, power budgets are existential. A humanoid robot running a large vision-language model for spatial reasoning might have a 200-watt compute budget for its entire onboard system. Getting useful AI inference performance within that envelope is an engineering problem that requires chips designed specifically for the purpose, and the companies solving it most aggressively right now are largely operating outside the Western AI hardware ecosystem.",
+					"This is not a temporary competitive gap. It is a divergence in design priorities that may compound over time. The chips optimized for robotics edge inference that Chinese companies ship into their domestic market at scale in 2026 will be the foundation for the next generation of designs in 2028 and 2030. Scale and iteration are their own form of competitive moat.",
+				},
+			},
+			{
+				Heading: "The Long View",
+				Paragraphs: []string{
+					"It is easy to frame the China AI hardware story as a geopolitical contest, US chips versus Chinese chips, export controls versus localization strategies. That framing is not wrong, but it misses something important.",
+					"The deeper story is about what happens when a large, sophisticated industrial economy decides it needs AI hardware independence and has both the engineering talent and state capacity to pursue it. China is not building AI chips to compete with NVIDIA in the data center. It is building them to ensure that its robotics, automotive, and industrial AI sectors do not have a foreign chokepoint.",
+					"Whether those chips ever become export-competitive is almost beside the point. What matters for the Chinese strategy is that the robots keep running regardless of what Washington decides next.",
+					"That is a goal considerably more achievable than building AGI. And it may reshape the global AI hardware landscape more consequentially than the benchmark wars that dominate the AI news cycle, because the machines doing physical work in the world will increasingly be running on chips made in Shenzhen, not Santa Clara.",
+				},
+			},
+		},
+	},
+	{
 		Title:     "Apple's Multi-AI Gambit: What iOS 27 Reveals About the Platform Wars",
 		Slug:      "apples-multi-ai-gambit-what-ios-27-reveals-about-the-platform-wars",
 		Date:      "May 10, 2026",

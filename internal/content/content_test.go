@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 12 {
-		t.Fatalf("Posts() returned %d posts, want 12", len(got))
+	if len(got) != 13 {
+		t.Fatalf("Posts() returned %d posts, want 13", len(got))
 	}
 
 	for _, post := range got {
@@ -104,6 +104,14 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if governancePost.Title != "A Broken Promise Worth $134 Billion: The OpenAI Trial Putting AI Governance Under Oath" {
 		t.Fatalf("FindBySlug() returned %q for governance post", governancePost.Title)
+	}
+
+	openSourcePost, ok := FindBySlug("the-new-open-source-king-how-qwen-quietly-dethroned-llama")
+	if !ok {
+		t.Fatal("FindBySlug() did not find open source post")
+	}
+	if openSourcePost.Title != "The New Open-Source King: How Qwen Quietly Dethroned Llama" {
+		t.Fatalf("FindBySlug() returned %q for open source post", openSourcePost.Title)
 	}
 
 	if _, ok := FindBySlug("missing-post"); ok {

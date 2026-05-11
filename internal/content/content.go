@@ -8,21 +8,21 @@ type Section struct {
 
 // Post represents a published AINews article.
 type Post struct {
-	Title     string
-	Slug      string
-	Date      string
-	Tag       string
-	Summary   string
-	Sections  []Section
+	Title    string
+	Slug     string
+	Date     string
+	Tag      string
+	Summary  string
+	Sections []Section
 }
 
 var posts = []Post{
 	{
-		Title:     "The Lab Without Scientists: When AI Became Its Own Researcher",
-		Slug:      "the-lab-without-scientists-when-ai-became-its-own-researcher",
-		Date:      "May 10, 2026",
-		Tag:       "Science",
-		Summary:   "Autonomous AI research systems are beginning to generate hypotheses, run experiments, and iterate on results across cancer detection and drug discovery, shifting scientific bottlenecks from labor to verification.",
+		Title:   "The Lab Without Scientists: When AI Became Its Own Researcher",
+		Slug:    "the-lab-without-scientists-when-ai-became-its-own-researcher",
+		Date:    "May 10, 2026",
+		Tag:     "Science",
+		Summary: "Autonomous AI research systems are beginning to generate hypotheses, run experiments, and iterate on results across cancer detection and drug discovery, shifting scientific bottlenecks from labor to verification.",
 		Sections: []Section{
 			{
 				Paragraphs: []string{
@@ -78,11 +78,11 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "The Chip That Stays Home: Inside China's Race to Build Robotics AI Hardware",
-		Slug:      "the-chip-that-stays-home-inside-chinas-race-to-build-robotics-ai-hardware",
-		Date:      "May 10, 2026",
-		Tag:       "Hardware",
-		Summary:   "China's domestic AI chip makers are focusing on low-power robotics and edge inference hardware, turning export controls into an accelerant for localized industrial AI supply chains.",
+		Title:   "The Chip That Stays Home: Inside China's Race to Build Robotics AI Hardware",
+		Slug:    "the-chip-that-stays-home-inside-chinas-race-to-build-robotics-ai-hardware",
+		Date:    "May 10, 2026",
+		Tag:     "Hardware",
+		Summary: "China's domestic AI chip makers are focusing on low-power robotics and edge inference hardware, turning export controls into an accelerant for localized industrial AI supply chains.",
 		Sections: []Section{
 			{
 				Paragraphs: []string{
@@ -137,11 +137,11 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "Apple's Multi-AI Gambit: What iOS 27 Reveals About the Platform Wars",
-		Slug:      "apples-multi-ai-gambit-what-ios-27-reveals-about-the-platform-wars",
-		Date:      "May 10, 2026",
-		Tag:       "Platforms",
-		Summary:   "Apple's new Intelligent Services Layer turns Siri into a routing system across Apple, OpenAI, and Anthropic models, setting up a direct architectural contrast with Google's Gemini-first Android strategy.",
+		Title:   "Apple's Multi-AI Gambit: What iOS 27 Reveals About the Platform Wars",
+		Slug:    "apples-multi-ai-gambit-what-ios-27-reveals-about-the-platform-wars",
+		Date:    "May 10, 2026",
+		Tag:     "Platforms",
+		Summary: "Apple's new Intelligent Services Layer turns Siri into a routing system across Apple, OpenAI, and Anthropic models, setting up a direct architectural contrast with Google's Gemini-first Android strategy.",
 		Sections: []Section{
 			{
 				Paragraphs: []string{
@@ -187,11 +187,11 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "The Sprint Is Real: Inside xAI's Grok 4 Race to the Top",
-		Slug:      "sprint-is-real-inside-xai-grok-4-race-to-the-top",
-		Date:      "May 10, 2026",
-		Tag:       "Models",
-		Summary:   "xAI's Colossus cluster, X data advantage, and sub-version release tempo are turning Grok 4 into a case study in how the frontier model race has compressed into continuous iteration.",
+		Title:   "The Sprint Is Real: Inside xAI's Grok 4 Race to the Top",
+		Slug:    "sprint-is-real-inside-xai-grok-4-race-to-the-top",
+		Date:    "May 10, 2026",
+		Tag:     "Models",
+		Summary: "xAI's Colossus cluster, X data advantage, and sub-version release tempo are turning Grok 4 into a case study in how the frontier model race has compressed into continuous iteration.",
 		Sections: []Section{
 			{
 				Paragraphs: []string{
@@ -230,11 +230,11 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "The CAISI Reversal: What Washington's Sudden Policy Pivot Means for AI Development",
-		Slug:      "caisi-reversal-what-washingtons-sudden-policy-pivot-means-for-ai-development",
-		Date:      "May 10, 2026",
-		Tag:       "Policy",
-		Summary:   "The White House's withdrawal of the CAISI framework removes the closest thing the US had to a moderate federal AI safety regime and leaves developers facing a widening gap between domestic permissiveness and European enforcement.",
+		Title:   "The CAISI Reversal: What Washington's Sudden Policy Pivot Means for AI Development",
+		Slug:    "caisi-reversal-what-washingtons-sudden-policy-pivot-means-for-ai-development",
+		Date:    "May 10, 2026",
+		Tag:     "Policy",
+		Summary: "The White House's withdrawal of the CAISI framework removes the closest thing the US had to a moderate federal AI safety regime and leaves developers facing a widening gap between domestic permissiveness and European enforcement.",
 		Sections: []Section{
 			{
 				Paragraphs: []string{
@@ -280,11 +280,11 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "Three AIs, Three Laws: Why the US, EU, and China Can't Agree on What to Do About AI",
-		Slug:      "three-ais-three-laws-us-eu-china-ai-governance",
-		Date:      "May 8, 2026",
-		Tag:       "Policy",
-		Summary:   "The EU is enforcing compliance-first rules, the US is pushing federal preemption in the name of innovation, and China is binding AI policy directly to state control, leaving global builders with three incompatible operating environments.",
+		Title:   "Three AIs, Three Laws: Why the US, EU, and China Can't Agree on What to Do About AI",
+		Slug:    "three-ais-three-laws-us-eu-china-ai-governance",
+		Date:    "May 8, 2026",
+		Tag:     "Policy",
+		Summary: "The EU is enforcing compliance-first rules, the US is pushing federal preemption in the name of innovation, and China is binding AI policy directly to state control, leaving global builders with three incompatible operating environments.",
 		Sections: []Section{
 			{
 				Heading: "The Compliance Framework in Europe",
@@ -317,11 +317,11 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "From Text-to-Video to Intent-to-Video: The Quiet Revolution in AI Filmmaking",
-		Slug:      "from-text-to-video-to-intent-to-video-ai-filmmaking",
-		Date:      "May 8, 2026",
-		Tag:       "Media",
-		Summary:   "The newest video models are moving beyond clip generation toward systems that understand pacing, continuity, sound, and narrative purpose, turning prompt boxes into early-stage directing tools.",
+		Title:   "From Text-to-Video to Intent-to-Video: The Quiet Revolution in AI Filmmaking",
+		Slug:    "from-text-to-video-to-intent-to-video-ai-filmmaking",
+		Date:    "May 8, 2026",
+		Tag:     "Media",
+		Summary: "The newest video models are moving beyond clip generation toward systems that understand pacing, continuity, sound, and narrative purpose, turning prompt boxes into early-stage directing tools.",
 		Sections: []Section{
 			{
 				Heading: "Seedance 2.0 and the Multimodal Turn",
@@ -354,11 +354,11 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "Google's 75% Stat is the Wake-Up Call Software Engineers Needed",
-		Slug:      "googles-75-percent-stat-wake-up-call-software-engineers-needed",
-		Date:      "May 8, 2026",
-		Tag:       "Engineering",
-		Summary:   "Google's claim that AI is generating more than 75% of some new code paths is less a flex than a signal that engineering value is shifting toward design, review, testing, and operational judgment.",
+		Title:   "Google's 75% Stat is the Wake-Up Call Software Engineers Needed",
+		Slug:    "googles-75-percent-stat-wake-up-call-software-engineers-needed",
+		Date:    "May 8, 2026",
+		Tag:     "Engineering",
+		Summary: "Google's claim that AI is generating more than 75% of some new code paths is less a flex than a signal that engineering value is shifting toward design, review, testing, and operational judgment.",
 		Sections: []Section{
 			{
 				Heading: "The Number Matters Because of Who Said It",
@@ -391,11 +391,67 @@ var posts = []Post{
 		},
 	},
 	{
-		Title:     "A Broken Promise Worth $134 Billion: The OpenAI Trial Putting AI Governance Under Oath",
-		Slug:      "broken-promise-worth-134-billion-openai-trial-ai-governance-under-oath",
-		Date:      "May 6, 2026",
-		Tag:       "Governance",
-		Summary:   "The Musk v. Altman case is exposing the most detailed public record yet of how OpenAI's nonprofit mission, commercial structure, and power politics collided under oath.",
+		Title:   "The New Open-Source King: How Qwen Quietly Dethroned Llama",
+		Slug:    "the-new-open-source-king-how-qwen-quietly-dethroned-llama",
+		Date:    "May 6, 2026",
+		Tag:     "Open Source",
+		Summary: "Qwen now leads global open-source model downloads on HuggingFace, but Llama still dominates enterprise deployment, showing how developer enthusiasm and production trust can diverge.",
+		Sections: []Section{
+			{
+				Paragraphs: []string{
+					"For two years, Meta's Llama was the default answer when someone asked which open-source AI model developers were using. It had the downloads, the community ecosystem, the enterprise pilots, and the narrative momentum.",
+					"As of early 2026, that answer has changed. Alibaba's Qwen model family now holds over 50 percent of global open-source model downloads on HuggingFace. It has accumulated nearly one billion cumulative downloads and generated more than 113,000 derivative models.",
+					"In February 2026 alone, Qwen was downloaded 153.6 million times, more than double the combined total of the next eight major models. The shift happened faster than most Western AI observers expected, and it matters for more than bragging rights.",
+				},
+			},
+			{
+				Heading: "How The Numbers Look",
+				Paragraphs: []string{
+					"Qwen's footprint is not marginal. The 113,000-plus derivative models built on Qwen weights compare to roughly 27,000 for Llama derivatives and around 6,000 for DeepSeek. Qwen-related repositories now number over 200,000.",
+					"That is the compounding effect of open-source dominance. When developers build on your weights, they expand your ecosystem by creating medical, legal, financial, multilingual, and code-specialized variants. A model that runs 40 percent of all new derivative work is, in practical terms, the foundation of a large slice of the global open-source AI economy.",
+					"The timeline of the shift is just as telling. Chinese models began surpassing US models on HuggingFace download metrics in summer 2025. Qwen 2.5 accelerated adoption in September 2024, DeepSeek R1 widened attention in January 2025, and Qwen 3.5 pushed market share above 50 percent in early 2026.",
+				},
+			},
+			{
+				Heading: "Why Qwen Won The Downloads",
+				Paragraphs: []string{
+					"Licensing is the first answer. Qwen uses Apache 2.0, which is fully permissive and allows commercial use without scale-based restrictions. Earlier Llama releases required separate Meta agreements for deployments above 100 million users.",
+					"Update velocity is another. Alibaba has been releasing Qwen variants faster than Meta has been iterating on Llama, and the family is broad enough to cover base, vision, audio, math, and code use cases. Every new release generates another wave of fine-tuning and community attention.",
+					"Multilingual performance also matters. Qwen was built multilingual from the start and often outperforms Llama on real-world workloads outside English-first markets. Add benchmark competitiveness and hardware-friendly model sizes, and the adoption picture starts to make sense.",
+				},
+			},
+			{
+				Heading: "Where Llama Still Leads",
+				Paragraphs: []string{
+					"The download story and the enterprise deployment story are different stories, and it matters to keep them separate. Research from Access Partnership puts enterprise AI at roughly 88 percent closed models versus 11 percent open-weight. Of that open-weight slice, Llama holds around 70 percent share.",
+					"Meta has invested in enterprise support, documentation, and compliance tooling, and Llama is deeply embedded in managed services from AWS, Azure, and Google Cloud. US enterprises also face compliance concerns around Chinese-origin software that slow adoption in banking, healthcare, and defense.",
+					"The gap is real, but it is not permanent. European companies face less restrictive pressure and will likely adopt faster, while the broader market gradually decides whether developer preference can translate into production trust.",
+				},
+			},
+			{
+				Heading: "The Geopolitical Layer",
+				Paragraphs: []string{
+					"US export controls on NVIDIA chips were meant to slow Chinese AI development by restricting access to advanced compute. The Qwen milestone suggests those controls have not prevented Chinese labs from reaching near-frontier open-source quality.",
+					"What is harder to contest is the outcome: developers in Jakarta, Lagos, and Buenos Aires now have access to frontier-quality open-weight models from Chinese labs at zero licensing cost. The question of who controls the AI stack has a new answer. It is globally distributed, and Chinese labs now hold the open-source high ground.",
+					"That is a meaningful strategic reversal. Meta's original open-source play was designed to blunt OpenAI's ecosystem advantage. It did not anticipate Chinese labs playing the same game with faster release cycles and multilingual advantages.",
+				},
+			},
+			{
+				Heading: "The Derivative Economy Is The Story",
+				Paragraphs: []string{
+					"Perhaps the most consequential part of Qwen's ascent is not the download count. It is the 113,000 derivative models being built on Qwen weights by developers worldwide.",
+					"Domain-specific systems for medicine, law, engineering, education, and finance are being fine-tuned globally on a Chinese foundation. The center of gravity in the open-source developer ecosystem has moved, and that shift will shape the next wave of open-weight AI products.",
+					"Qwen 4.0 is anticipated for the second half of 2026. If it closes the remaining gap against GPT-5.5 and Claude Opus 4.7 on the major benchmarks, the divide between download share and enterprise deployment will narrow in earnest. The open-source AI race has a new leader, and it arrived faster than most expected.",
+				},
+			},
+		},
+	},
+	{
+		Title:   "A Broken Promise Worth $134 Billion: The OpenAI Trial Putting AI Governance Under Oath",
+		Slug:    "broken-promise-worth-134-billion-openai-trial-ai-governance-under-oath",
+		Date:    "May 6, 2026",
+		Tag:     "Governance",
+		Summary: "The Musk v. Altman case is exposing the most detailed public record yet of how OpenAI's nonprofit mission, commercial structure, and power politics collided under oath.",
 		Sections: []Section{
 			{
 				Paragraphs: []string{

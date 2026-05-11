@@ -81,8 +81,8 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 12 {
-		t.Fatalf("len(posts) = %d, want 12", len(posts))
+	if len(posts) != 13 {
+		t.Fatalf("len(posts) = %d, want 13", len(posts))
 	}
 
 	if got := posts[0]["slug"]; got != "the-frontier-firm-is-here-microsoft-says-ai-has-moved-from-tool-to-operating-model" {

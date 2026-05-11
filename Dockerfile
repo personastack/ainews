@@ -1,5 +1,6 @@
 FROM golang:1.24.3 AS build
 WORKDIR /src
+ENV CGO_ENABLED=0
 
 COPY go.mod ./
 RUN go mod download

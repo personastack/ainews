@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 13 {
-		t.Fatalf("Posts() returned %d posts, want 13", len(got))
+	if len(got) != 14 {
+		t.Fatalf("Posts() returned %d posts, want 14", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,14 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	latestPost, ok := FindBySlug("us-governments-ai-policy-u-turn-caisi-framework-and-mythos-catalyst")
+	if !ok {
+		t.Fatal("FindBySlug() did not find CAISI policy u-turn post")
+	}
+	if latestPost.Title != "US Government's AI Policy U-Turn: The CAISI Framework and the 'Mythos' Catalyst" {
+		t.Fatalf("FindBySlug() returned %q for CAISI policy u-turn post", latestPost.Title)
+	}
+
 	frontierPost, ok := FindBySlug("the-frontier-firm-is-here-microsoft-says-ai-has-moved-from-tool-to-operating-model")
 	if !ok {
 		t.Fatal("FindBySlug() did not find frontier firm post")

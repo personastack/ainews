@@ -24,6 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"Google I/O 2026 Preview",
 		"Google&#39;s Android Show 2026",
 		"The Frontier Firm Is Here",
 		"The Government That Fears Its Own Weapon",
@@ -82,12 +83,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 15 {
-		t.Fatalf("len(posts) = %d, want 15", len(posts))
+	if len(posts) != 16 {
+		t.Fatalf("len(posts) = %d, want 16", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "googles-android-show-2026-android-17-gemini-4-and-the-next-wave-of-mobile-ai" {
-		t.Fatalf("first post slug = %q, want newest Android Show 2026 post", got)
+	if got := posts[0]["slug"]; got != "google-io-2026-preview-agentic-ai-gemma-4-and-the-cosmo-ghost-layer" {
+		t.Fatalf("first post slug = %q, want newest Google I/O preview post", got)
 	}
 }
 

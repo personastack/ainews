@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 15 {
-		t.Fatalf("Posts() returned %d posts, want 15", len(got))
+	if len(got) != 16 {
+		t.Fatalf("Posts() returned %d posts, want 16", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,14 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	ioPost, ok := FindBySlug("google-io-2026-preview-agentic-ai-gemma-4-and-the-cosmo-ghost-layer")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Google I/O preview post")
+	}
+	if ioPost.Title != "Google I/O 2026 Preview: Agentic AI, Gemma 4, and COSMO's Ghost Layer" {
+		t.Fatalf("FindBySlug() returned %q for Google I/O preview post", ioPost.Title)
+	}
+
 	androidPost, ok := FindBySlug("googles-android-show-2026-android-17-gemini-4-and-the-next-wave-of-mobile-ai")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Android Show 2026 post")

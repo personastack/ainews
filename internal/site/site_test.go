@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"From $30 to $0.40 Per Million Tokens",
+		"Qwen Surpasses Llama",
 		"Mythos National Security Standoff",
 		"CAISI Framework",
 		"The May 2026 Model Rush",
@@ -89,12 +91,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 22 {
-		t.Fatalf("len(posts) = %d, want 22", len(posts))
+	if len(posts) != 24 {
+		t.Fatalf("len(posts) = %d, want 24", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "mythos-national-security-standoff-2026-05-14" {
-		t.Fatalf("first post slug = %q, want newest Mythos national security post", got)
+	if got := posts[0]["slug"]; got != "ai-inference-cost-collapse-2026" {
+		t.Fatalf("first post slug = %q, want newest AI inference cost collapse post", got)
 	}
 }
 

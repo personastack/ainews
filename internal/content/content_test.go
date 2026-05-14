@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 22 {
-		t.Fatalf("Posts() returned %d posts, want 22", len(got))
+	if len(got) != 24 {
+		t.Fatalf("Posts() returned %d posts, want 24", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	costCollapsePost, ok := FindBySlug("ai-inference-cost-collapse-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI inference cost collapse post")
+	}
+	if costCollapsePost.Title != "From $30 to $0.40 Per Million Tokens: The AI Inference Cost Collapse That Redefines Enterprise AI" {
+		t.Fatalf("FindBySlug() returned %q for AI inference cost collapse post", costCollapsePost.Title)
+	}
+
+	qwenPost, ok := FindBySlug("qwen-overtakes-llama-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Qwen overtakes Llama post")
+	}
+	if qwenPost.Title != "Qwen Surpasses Llama: China's Open-Source AI Dominance and What It Means for Global Developers" {
+		t.Fatalf("FindBySlug() returned %q for Qwen overtakes Llama post", qwenPost.Title)
+	}
+
 	mythosStandoffPost, ok := FindBySlug("mythos-national-security-standoff-2026-05-14")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Mythos national security standoff post")

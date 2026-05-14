@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 18 {
-		t.Fatalf("Posts() returned %d posts, want 18", len(got))
+	if len(got) != 20 {
+		t.Fatalf("Posts() returned %d posts, want 20", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	modelRushLatest, ok := FindBySlug("the-may-2026-model-rush-gpt-5-5-instant-subqs-long-context-and-grok-4-3")
+	if !ok {
+		t.Fatal("FindBySlug() did not find latest May model rush post")
+	}
+	if modelRushLatest.Title != "The May 2026 Model Rush: GPT-5.5 Instant, SubQ's Long Context, and Grok 4.3" {
+		t.Fatalf("FindBySlug() returned %q for latest May model rush post", modelRushLatest.Title)
+	}
+
+	agenticPost, ok := FindBySlug("agentic-ai-trends-marketing-scale-enterprise-adoption-and-the-cost-paradox")
+	if !ok {
+		t.Fatal("FindBySlug() did not find agentic AI trends post")
+	}
+	if agenticPost.Title != "Agentic AI Trends: Marketing Scale, Enterprise Adoption, and the Cost Paradox" {
+		t.Fatalf("FindBySlug() returned %q for agentic AI trends post", agenticPost.Title)
+	}
+
 	cyberPost, ok := FindBySlug("frontier-ai-as-cyber-weapons-gpt-5-5-tops-aisi-benchmarks-raising-urgent-safety-alarms")
 	if !ok {
 		t.Fatal("FindBySlug() did not find frontier cyber weapons post")

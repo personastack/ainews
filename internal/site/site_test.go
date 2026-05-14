@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The May 2026 Model Rush",
+		"Agentic AI Trends",
 		"Frontier AI as Cyber Weapons",
 		"May 2026 AI Model Rush",
 		"Google I/O 2026 Preview",
@@ -85,12 +87,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 18 {
-		t.Fatalf("len(posts) = %d, want 18", len(posts))
+	if len(posts) != 20 {
+		t.Fatalf("len(posts) = %d, want 20", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "frontier-ai-as-cyber-weapons-gpt-5-5-tops-aisi-benchmarks-raising-urgent-safety-alarms" {
-		t.Fatalf("first post slug = %q, want newest frontier cyber weapons post", got)
+	if got := posts[0]["slug"]; got != "the-may-2026-model-rush-gpt-5-5-instant-subqs-long-context-and-grok-4-3" {
+		t.Fatalf("first post slug = %q, want newest May 14 model rush post", got)
 	}
 }
 

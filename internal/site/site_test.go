@@ -24,6 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"Gemini 3.1 Ultra: Why Google&#39;s Native Multimodal Architecture Is The Real Story",
 		"From $30 to $0.40 Per Million Tokens",
 		"Qwen Surpasses Llama",
 		"Mythos National Security Standoff",
@@ -91,12 +92,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 24 {
-		t.Fatalf("len(posts) = %d, want 24", len(posts))
+	if len(posts) != 25 {
+		t.Fatalf("len(posts) = %d, want 25", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "ai-inference-cost-collapse-2026" {
-		t.Fatalf("first post slug = %q, want newest AI inference cost collapse post", got)
+	if got := posts[0]["slug"]; got != "gemini-3-1-ultra-native-multimodal-may-2026" {
+		t.Fatalf("first post slug = %q, want newest Gemini 3.1 Ultra post", got)
 	}
 }
 

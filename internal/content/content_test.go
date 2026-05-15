@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 24 {
-		t.Fatalf("Posts() returned %d posts, want 24", len(got))
+	if len(got) != 25 {
+		t.Fatalf("Posts() returned %d posts, want 25", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,14 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	geminiPost, ok := FindBySlug("gemini-3-1-ultra-native-multimodal-may-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Gemini 3.1 Ultra post")
+	}
+	if geminiPost.Title != "Gemini 3.1 Ultra: Why Google's Native Multimodal Architecture Is The Real Story" {
+		t.Fatalf("FindBySlug() returned %q for Gemini 3.1 Ultra post", geminiPost.Title)
+	}
+
 	costCollapsePost, ok := FindBySlug("ai-inference-cost-collapse-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI inference cost collapse post")

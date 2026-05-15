@@ -3,6 +3,54 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Cloudflare's Global LLM Inference Infrastructure: Agents Week 2026 Deep Dive",
+			Slug:    "cloudflares-global-llm-inference-infrastructure-agents-week-2026-deep-dive",
+			Date:    "May 15, 2026",
+			Tag:     "Agents",
+			Summary: "Cloudflare used Agents Week 2026 to show how Workers AI, AI Gateway, Infire, Unweight, and disaggregated prefill combine into a globally distributed inference stack built for low-latency agent workflows.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`Most AI infrastructure still assumes a familiar geometry: put the expensive GPUs in a few giant regions, send traffic there as efficiently as possible, and accept the latency tradeoff as the price of using frontier models.`,
+						`Cloudflare is making a more radical claim. During Agents Week 2026, the company laid out an inference architecture designed to push large-model serving outward across its global network, with the goal of making agentic workloads feel local rather than remote.`,
+						`That matters because the next generation of AI products is not just about one prompt and one answer. It is about chains of model calls, tool invocations, policy checks, and retrieval steps that break down quickly when every hop has to cross half the internet.`,
+					},
+				},
+				{
+					Heading: "A Full Stack Built For Distributed Inference",
+					Paragraphs: []string{
+						`At the application edge, Workers AI is the developer-facing surface: serverless inference running on GPU-equipped nodes distributed across more than 185 cities. Cloudflare positions it not only as a place to call models, but as a way to keep multimodal workloads geographically close to users and data sources.`,
+						`In front of those calls sits AI Gateway, which adds request logging, rate limiting, caching, and failover while keeping overhead low enough to stay relevant in latency-sensitive flows. For agent systems that may fan out across multiple tools and providers, that observability layer is as important as the model endpoint itself.`,
+						`Underneath both products is the more distinctive engineering story. Cloudflare described Infire as its proprietary GPU inference engine, combining pipeline parallelism for throughput and tensor parallelism for latency so that very large models can be served across tightly coordinated accelerators instead of treated like region-bound monoliths.`,
+					},
+				},
+				{
+					Heading: "Why The Decode Bottleneck Matters",
+					Paragraphs: []string{
+						`One of the sharper details in the stack is Unweight, Cloudflare's lossless weight-compression system for inference. The company says it can reduce model weight size by roughly 15 to 22 percent without changing outputs, which matters because decode performance is often constrained more by memory bandwidth than by raw arithmetic.`,
+						`That is an important distinction. Inference conversations are often dominated by model size or GPU count, but the practical bottleneck in real deployments is frequently the speed at which weights can be moved and reused during generation. Shrinking that movement without accuracy loss is a direct systems win.`,
+						`Cloudflare pairs that with disaggregated prefill, splitting the compute-heavy prompt-ingestion phase from the memory-heavy token-generation phase. Instead of forcing one class of GPU to do both jobs equally well, the architecture lets the network route each phase toward hardware tuned for the specific constraint it faces.`,
+					},
+				},
+				{
+					Heading: "Agents Change The Latency Equation",
+					Paragraphs: []string{
+						`This architecture becomes more interesting in agent settings than in ordinary chatbot demos. A single agent workflow may involve dozens of tool calls, retrieval passes, verification checks, and follow-up generations, which means hundreds of milliseconds of avoidable delay can accumulate into several visible seconds.`,
+						`Cloudflare's argument is that edge inference changes that math. If request routing, safety screening, and at least part of the generation path can happen closer to the user, then time-to-first-token and overall workflow completion start to look less like cloud round-trips and more like local software response times.`,
+						`The safety layer reinforces that point. Cloudflare says it can run prompt-injection, toxicity, and PII checks in under five milliseconds before traffic reaches the large model. For agentic systems, that kind of near-inline policy enforcement is strategically valuable because it reduces the temptation to treat safety as a slow downstream add-on.`,
+					},
+				},
+				{
+					Heading: "What Cloudflare Is Really Trying To Become",
+					Paragraphs: []string{
+						`The broader ambition is clear: Cloudflare wants to be more than a CDN that happens to expose AI APIs. It is trying to become the real-time inference layer for the agentic web, using its network footprint to compete on latency, compliance locality, and orchestration rather than on foundation-model ownership.`,
+						`That is a credible opening because the company already sits on a meaningful share of global internet traffic and already operates the edge network where many of these requests naturally land first. If the hardest part of serving agents becomes moving decisions closer to users while preserving control, Cloudflare's starting position is unusually strong.`,
+						`The strategic question now is whether frontier model providers decide that global distribution is too important to ignore. If they do, the winners in AI infrastructure may not be only the companies training the largest systems. They may also be the ones that make those systems feel instantaneous everywhere.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "xAI's Grok 4 Sprint: Three Releases in Six Weeks Chasing GPT-5.5",
 			Slug:    "xai-grok-4-sprint-may-2026",
 			Date:    "May 15, 2026",

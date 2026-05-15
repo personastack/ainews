@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 28 {
-		t.Fatalf("Posts() returned %d posts, want 28", len(got))
+	if len(got) != 29 {
+		t.Fatalf("Posts() returned %d posts, want 29", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,14 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	cloudflarePost, ok := FindBySlug("cloudflares-global-llm-inference-infrastructure-agents-week-2026-deep-dive")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Cloudflare inference infrastructure post")
+	}
+	if cloudflarePost.Title != "Cloudflare's Global LLM Inference Infrastructure: Agents Week 2026 Deep Dive" {
+		t.Fatalf("FindBySlug() returned %q for Cloudflare inference infrastructure post", cloudflarePost.Title)
+	}
+
 	grokSprintPost, ok := FindBySlug("xai-grok-4-sprint-may-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find xAI Grok 4 sprint post")

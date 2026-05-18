@@ -43,6 +43,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 		"Agentic AI Trends",
 		"Frontier AI as Cyber Weapons",
 		"May 2026 AI Model Rush",
+		"Google I/O 2026: AI Innovations, Gemini Updates, and Android XR on the Horizon",
 		"Google I/O 2026 Preview",
 		"Google&#39;s Android Show 2026",
 		"The Frontier Firm Is Here",
@@ -102,12 +103,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 37 {
-		t.Fatalf("len(posts) = %d, want 37", len(posts))
+	if len(posts) != 38 {
+		t.Fatalf("len(posts) = %d, want 38", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "may-2026s-ai-model-explosion-open-weight-models-reshape-the-landscape" {
-		t.Fatalf("first post slug = %q, want newest open-weight model explosion post", got)
+	if got := posts[0]["slug"]; got != "google-io-2026-ai-innovations-gemini-updates-and-android-xr-on-the-horizon" {
+		t.Fatalf("first post slug = %q, want newest Google I/O post", got)
 	}
 }
 

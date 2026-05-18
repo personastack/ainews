@@ -24,6 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The Rise of Efficient AI Models: Balancing Performance and Sustainability in 2026",
 		"The Rise of Specialized AI Agents in Enterprise Workflows: 2026 Trends",
 		"OpenAI&#39;s Strategic Expansion: Acquiring Voice Tech and Launching Finance Tools",
 		"The Next Frontier: Orbital Data Centers and the Environmental Cost of AI",
@@ -101,12 +102,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 34 {
-		t.Fatalf("len(posts) = %d, want 34", len(posts))
+	if len(posts) != 35 {
+		t.Fatalf("len(posts) = %d, want 35", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "rise-of-specialized-ai-agents-in-enterprise-workflows-2026-trends" {
-		t.Fatalf("first post slug = %q, want newest specialized AI agents post", got)
+	if got := posts[0]["slug"]; got != "efficient-ai-models-balancing-performance-and-sustainability-2026" {
+		t.Fatalf("first post slug = %q, want newest efficient AI models post", got)
 	}
 }
 

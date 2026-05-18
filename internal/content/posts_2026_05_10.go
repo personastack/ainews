@@ -3,11 +3,11 @@ package content
 func init() {
 	posts = append([]Post{
 		{
-			Title:     "The Government That Fears Its Own Weapon: How Mythos Became America's Most Dangerous AI Secret",
-			Slug:      "the-government-that-fears-its-own-weapon-how-mythos-became-americas-most-dangerous-ai-secret",
-			Date:      "May 10, 2026",
-			Tag:       "Security",
-			Summary:   "Washington has restricted Anthropic's Claude Mythos on national security grounds even as parts of the US government use it, exposing a short-lived and deeply incoherent approach to frontier cyber capability control.",
+			Title:   "The Government That Fears Its Own Weapon: How Mythos Became America's Most Dangerous AI Secret",
+			Slug:    "the-government-that-fears-its-own-weapon-how-mythos-became-americas-most-dangerous-ai-secret",
+			Date:    "May 10, 2026",
+			Tag:     "Security",
+			Summary: "Washington has restricted Anthropic's Claude Mythos on national security grounds even as parts of the US government use it, exposing a short-lived and deeply incoherent approach to frontier cyber capability control.",
 			Sections: []Section{
 				{
 					Paragraphs: []string{
@@ -63,11 +63,11 @@ func init() {
 			},
 		},
 		{
-			Title:     "Samsung's Trillion-Dollar Moment and the Memory Bottleneck That Will Define AI's Next Year",
-			Slug:      "samsungs-trillion-dollar-moment-and-the-memory-bottleneck-that-will-define-ais-next-year",
-			Date:      "May 10, 2026",
-			Tag:       "Hardware",
-			Summary:   "Samsung's jump into the trillion-dollar club is part celebration and part warning: the HBM supply chain is becoming the limiting factor for AI deployment, with a projected memory price spike threatening H2 2026 capacity plans.",
+			Title:   "Samsung's Trillion-Dollar Moment and the Memory Bottleneck That Will Define AI's Next Year",
+			Slug:    "samsungs-trillion-dollar-moment-and-the-memory-bottleneck-that-will-define-ais-next-year",
+			Date:    "May 10, 2026",
+			Tag:     "Hardware",
+			Summary: "Samsung's jump into the trillion-dollar club is part celebration and part warning: the HBM supply chain is becoming the limiting factor for AI deployment, with a projected memory price spike threatening H2 2026 capacity plans.",
 			Sections: []Section{
 				{
 					Paragraphs: []string{

@@ -24,6 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The Rise of Agentic AI: Autonomous Agents Reshaping Industries in 2026",
 		"Google I/O 2026: AI Innovations Take Center Stage with Gemini and Android XR Teasers",
 		"The Rise of Efficient AI Models: Balancing Performance and Sustainability in 2026",
 		"The Rise of Specialized AI Agents in Enterprise Workflows: 2026 Trends",
@@ -104,12 +105,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 39 {
-		t.Fatalf("len(posts) = %d, want 39", len(posts))
+	if len(posts) != 40 {
+		t.Fatalf("len(posts) = %d, want 40", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "google-io-2026-ai-takes-center-stage-gemini-agentic-tools-android-xr-teasers" {
-		t.Fatalf("first post slug = %q, want newest Google I/O post", got)
+	if got := posts[0]["slug"]; got != "rise-of-agentic-ai-autonomous-agents-reshaping-industries-2026" {
+		t.Fatalf("first post slug = %q, want newest agentic AI post", got)
 	}
 }
 

@@ -3,11 +3,11 @@ package content
 func init() {
 	posts = append([]Post{
 		{
-			Title:   "Google I/O 2026: AI Takes Center Stage with Gemini, Agentic Tools, and Android XR Teasers",
+			Title:   "Google I/O 2026: AI Innovations Take Center Stage with Gemini and Android XR Teasers",
 			Slug:    "google-io-2026-ai-takes-center-stage-gemini-agentic-tools-android-xr-teasers",
 			Date:    "May 19, 2026",
 			Tag:     "Platforms",
-			Summary: "Google I/O 2026 makes Gemini the connective layer across coding, mobile, and XR, while agentic developer tools and Android XR teasers point to a broader platform reset.",
+			Summary: "Google I/O 2026 puts AI innovations at the center of Google's platform story, with Gemini and Android XR teasers pointing to a broader reset across mobile and developer tooling.",
 			Sections: []Section{
 				{
 					Paragraphs: []string{

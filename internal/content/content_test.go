@@ -173,7 +173,7 @@ func TestFindBySlug(t *testing.T) {
 	if !ok {
 		t.Fatal("FindBySlug() did not find Google I/O 2026 teaser post")
 	}
-	if ioTeaserPost.Title != "Google I/O 2026: AI Takes Center Stage with Gemini, Agentic Tools, and Android XR Teasers" {
+	if ioTeaserPost.Title != "Google I/O 2026: AI Innovations Take Center Stage with Gemini and Android XR Teasers" {
 		t.Fatalf("FindBySlug() returned %q for Google I/O 2026 teaser post", ioTeaserPost.Title)
 	}
 

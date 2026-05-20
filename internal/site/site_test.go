@@ -24,7 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
-		"Google I/O 2026: AI Takes Center Stage with Gemini, Agentic Tools, and Android XR Teasers",
+		"Google I/O 2026: AI Innovations Take Center Stage with Gemini and Android XR Teasers",
 		"The Rise of Efficient AI Models: Balancing Performance and Sustainability in 2026",
 		"The Rise of Specialized AI Agents in Enterprise Workflows: 2026 Trends",
 		"OpenAI&#39;s Strategic Expansion: Acquiring Voice Tech and Launching Finance Tools",

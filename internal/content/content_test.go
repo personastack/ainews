@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 41 {
-		t.Fatalf("Posts() returned %d posts, want 41", len(got))
+	if len(got) != 42 {
+		t.Fatalf("Posts() returned %d posts, want 42", len(got))
 	}
 
 	for _, post := range got {
@@ -31,6 +31,14 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if googleIOMay21Post.Title != "Post-Google I/O 2026: Gemini's New Agentic Capabilities Signal a Shift in Enterprise AI" {
 		t.Fatalf("FindBySlug() returned %q for Google I/O May 21 post", googleIOMay21Post.Title)
+	}
+
+	enterpriseAgentsProductionPost, ok := FindBySlug("beyond-the-pilot-graveyard-what-actually-works-for-enterprise-ai-agents-in-production")
+	if !ok {
+		t.Fatal("FindBySlug() did not find enterprise agents production post")
+	}
+	if enterpriseAgentsProductionPost.Title != "Beyond the Pilot Graveyard: What Actually Works for Enterprise AI Agents in Production" {
+		t.Fatalf("FindBySlug() returned %q for enterprise agents production post", enterpriseAgentsProductionPost.Title)
 	}
 
 	efficientPost, ok := FindBySlug("efficient-ai-models-balancing-performance-and-sustainability-2026")

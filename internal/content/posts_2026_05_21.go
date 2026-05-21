@@ -3,6 +3,62 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Beyond the Pilot Graveyard: What Actually Works for Enterprise AI Agents in Production",
+			Slug:    "beyond-the-pilot-graveyard-what-actually-works-for-enterprise-ai-agents-in-production",
+			Date:    "May 21, 2026",
+			Tag:     "Agents",
+			Summary: "Enterprise AI agent programs keep dying in pilot purgatory, but the survivors share the same pattern: narrow scope, real workflow ownership, measurable ROI, and explicit human fallback paths.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`The pilot graveyard is not a metaphor anymore. It is the place most enterprise AI agent projects end up when the demo works, the budget gets approved, and the workflow still does not change.`,
+						`Depending on which survey you trust, the failure rate sits in the high 80s or worse. The exact percentage matters less than the pattern: most teams are still building clever assistants when the business needs dependable systems that finish work, hand off cleanly, and leave an audit trail behind them.`,
+						`That is why the best production stories look less like generic copilots and more like narrow, operational systems with a clear owner and a clear return on investment.`,
+					},
+				},
+				{
+					Heading: "ROI Comes First",
+					Paragraphs: []string{
+						`One of the clearest signals comes from atmira's SIREC platform for debt collection. The company says the system delivers a 54% reduction in operating cost by combining AI-driven decisioning, omnichannel engagement, and process automation around a concrete business function.`,
+						`That is the key point. The value did not come from asking a model to be generally intelligent. It came from embedding AI into a process that already had metrics, handoffs, and a painful economic baseline.`,
+						`Production AI is much easier to defend when it is tied to a measurable outcome like recovery rate, call deflection, cycle time, or cost per case. If a team cannot name the metric, it usually does not yet have a production use case.`,
+					},
+				},
+				{
+					Heading: "The CBA Lesson Is About Handoffs",
+					Paragraphs: []string{
+						`Commonwealth Bank's chatbot rollback is useful precisely because it was not a model benchmark problem. It was an operating problem. The bank moved too far toward automation in customer service, then had to reverse course when the rollout did not produce the expected outcome.`,
+						`The lesson is not that chatbots cannot work. The lesson is that customer-facing systems need explicit escalation paths, realistic containment targets, and a design that assumes the bot will fail in front of real users.`,
+						`If the production plan depends on the agent never getting confused, the plan is already broken. The system has to be built around recovery, not perfection.`,
+					},
+				},
+				{
+					Heading: "Toyota Shows What Scale Looks Like",
+					Paragraphs: []string{
+						`Toyota's internal AI work points in a different direction. The company has described AI tools that let plant teams build and use models directly in operations, and third-party coverage of the program says it has saved more than 10,000 man-hours per year.`,
+						`That matters because the win is not just technical throughput. It is distribution. Toyota did not park AI in a central lab and wait for magic. It put the tools in the hands of the people closest to the process, where the friction was visible and the payoff was immediate.`,
+						`This is what most enterprise AI programs miss. If the people doing the work cannot shape the workflow, the agent becomes theater. If they can, it becomes leverage.`,
+					},
+				},
+				{
+					Heading: "What Actually Works In Production",
+					Paragraphs: []string{
+						`The surviving playbook is boring in the best possible way. Pick one workflow. Put one business owner on it. Connect the agent to the systems of record it actually needs. Give it logging, evaluation, rollback, and a human escalation path. Then prove that it saves money or time before you try to make it autonomous.`,
+						`That sequence sounds conservative because it is. It also scales better than the alternative. Teams that start with a bounded lane learn where the failure points are, what kind of supervision the workflow needs, and which tasks are safe to hand over next.`,
+						`The companies that win with enterprise agents will not be the ones with the most impressive demos. They will be the ones that make automation boring, measurable, and hard to break.`,
+					},
+				},
+				{
+					Heading: "The Real Constraint",
+					Paragraphs: []string{
+						`The real bottleneck is not model quality. It is integration quality. An agent that cannot reach the right data, cannot be audited, or cannot be stopped at the right moment is not ready for production no matter how fluent it sounds.`,
+						`The pilot graveyard is full of systems that were launched as conversation layers and expected to become operational systems later. That order is backwards. Production agents have to be designed as workflow infrastructure from the start.`,
+						`Sources: atmira's SIREC platform and customer story pages, Toyota USA Newsroom's generative AI article, and reporting on Commonwealth Bank's chatbot rollback and enterprise AI failure rates.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "Post-Google I/O 2026: Gemini's New Agentic Capabilities Signal a Shift in Enterprise AI",
 			Slug:    "post-google-io-2026-geminis-new-agentic-capabilities-signal-a-shift-in-enterprise-ai",
 			Date:    "May 21, 2026",

@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 45 {
-		t.Fatalf("Posts() returned %d posts, want 45", len(got))
+	if len(got) != 46 {
+		t.Fatalf("Posts() returned %d posts, want 46", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,14 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	orbitalDataCentersPost, ok := FindBySlug("orbital-ai-data-centers-spacexs-2t-vision-for-the-future-of-compute")
+	if !ok {
+		t.Fatal("FindBySlug() did not find orbital AI data centers post")
+	}
+	if orbitalDataCentersPost.Title != "Orbital AI Data Centers: SpaceX's $2T Vision for the Future of Compute" {
+		t.Fatalf("FindBySlug() returned %q for orbital AI data centers post", orbitalDataCentersPost.Title)
+	}
+
 	multimodalBenchmarkPost, ok := FindBySlug("the-multimodal-benchmark-race-is-moving-beyond-recognition")
 	if !ok {
 		t.Fatal("FindBySlug() did not find multimodal benchmark post")

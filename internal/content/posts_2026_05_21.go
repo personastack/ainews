@@ -3,6 +3,62 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Orbital AI Data Centers: SpaceX's $2T Vision for the Future of Compute",
+			Slug:    "orbital-ai-data-centers-spacexs-2t-vision-for-the-future-of-compute",
+			Date:    "May 21, 2026",
+			Tag:     "Infrastructure",
+			Summary: "SpaceX's S-1 points to orbital AI data centers, a $2 trillion vision that ties launch infrastructure, chip manufacturing, and cloud compute into one vertically integrated stack.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`In a filing that has sent shockwaves through both the space and tech industries, SpaceX's S-1 IPO document reveals the company is no longer just about rockets. It is betting big on AI infrastructure, with plans for orbital data centers as early as 2028.`,
+						`Valued at a staggering $2 trillion, the move positions SpaceX as a vertically integrated AI powerhouse, using its space assets in ways few imagined. The core idea is simple and radical at the same time: if compute is the new strategic asset, then owning launch, orbit, and network connectivity changes the economics completely.`,
+						`That is what makes this filing so disruptive. It does not read like a side project. It reads like a platform strategy.`,
+					},
+				},
+				{
+					Heading: "The Money And The Compute",
+					Paragraphs: []string{
+						`The numbers in the filing are eye-opening. SpaceX is pointing to $12.73 billion in AI capital expenditures for 2025 alone, with xAI emerging as a key segment. In the first quarter of 2026, xAI capex hit $7.723 billion.`,
+						`Even more striking, Anthropic has reportedly committed to paying $1.25 billion per month through May 2029 for cloud compute tied to these next-generation data centers. That kind of contracted demand is the kind of thing that turns a moonshot into an infrastructure plan.`,
+						`If those figures hold, the message is not that AI is expensive. It is that frontier AI is becoming so capital intensive that the companies controlling the hardest physical constraints may become the most important companies in the stack.`,
+					},
+				},
+				{
+					Heading: "Why Orbit Changes The Equation",
+					Paragraphs: []string{
+						`Orbital data centers are compelling because they attack two of the hardest problems in terrestrial AI infrastructure: power and cooling. In space, facilities can rely on near-constant solar energy and avoid the same grid bottlenecks that are slowing data center buildouts on Earth.`,
+						`They also sidestep some of the heat-management constraints that make large-scale compute expensive to operate on the ground. That does not make orbital compute easy, but it does change the engineering tradeoffs in a way that matters for long-duration training runs and large-scale inference.`,
+						`The bigger point is strategic. If compute can be placed where energy is abundant and networking can be bundled with launch and satellite infrastructure, then the economics of AI infrastructure stop looking like a normal data center business.`,
+					},
+				},
+				{
+					Heading: "The Terafab Angle",
+					Paragraphs: []string{
+						`The filing also highlights collaborations involving Tesla and Intel for massive chip manufacturing under the "Terafab" initiative. That makes the story more than an orbit story. It becomes a full-stack industrial strategy.`,
+						`SpaceX would be tying together launch vehicles, orbital compute, chip manufacturing, and AI model infrastructure in one vertically integrated system. Very few companies can even attempt that, and fewer still can finance it at this scale.`,
+						`The practical effect is that SpaceX would not just be transporting payloads into orbit. It would be helping define the supply chain that makes the payloads useful once they arrive.`,
+					},
+				},
+				{
+					Heading: "What This Means For The AI Market",
+					Paragraphs: []string{
+						`For readers following AI trends, the filing raises a deeper question: could space-based compute become the backbone of future AI training and inference? If the answer is even partly yes, then the race is no longer just about model quality.`,
+						`It becomes a race over power, launch capacity, satellite networking, and industrial manufacturing. That favors companies that can own the physical bottlenecks instead of renting them.`,
+						`This is why the SpaceX filing matters beyond the spectacle. It suggests the next phase of AI competition may be decided by who can assemble the most extreme infrastructure stack, not just who ships the smartest model.`,
+					},
+				},
+				{
+					Heading: "The Real Frontier",
+					Paragraphs: []string{
+						`Earth-bound data centers are already straining against energy demand, land use, and cooling complexity. SpaceX is betting those constraints will eventually make orbital compute feel less speculative and more inevitable.`,
+						`If that happens, the final frontier may not just be a destination for satellites and rockets. It may become a place where the AI industry builds the next generation of compute.`,
+						`Sources: SpaceX's S-1 filing, third-party reporting on the orbital data center plans, and coverage of the related xAI, Anthropic, Tesla, and Intel references in the filing.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "The Multimodal Benchmark Race Is Moving Beyond Recognition",
 			Slug:    "the-multimodal-benchmark-race-is-moving-beyond-recognition",
 			Date:    "May 21, 2026",

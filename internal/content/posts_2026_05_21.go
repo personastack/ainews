@@ -3,6 +3,62 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "SpaceX's Orbital AI Data Centers: Unlimited Solar Power Meets Global AI Inference",
+			Slug:    "spacexs-orbital-ai-data-centers-unlimited-solar-power-meets-global-ai-inference",
+			Date:    "May 21, 2026",
+			Tag:     "Infrastructure",
+			Summary: "SpaceX's orbital AI data center concept points to a new infrastructure layer where solar power, launch cadence, and globally distributed inference can be planned as one system.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`The most interesting thing about orbital AI data centers is not the spectacle. It is the systems problem they are trying to solve.`,
+						`Modern AI infrastructure is increasingly constrained by power, cooling, land, and grid interconnects. SpaceX's orbital thesis flips that equation by putting compute where solar energy is abundant and terrestrial bottlenecks largely disappear.`,
+						`If the idea works, AI infrastructure stops being a local real-estate problem and starts looking like a global logistics problem.`,
+					},
+				},
+				{
+					Heading: "Solar Power Changes The Economics",
+					Paragraphs: []string{
+						`On Earth, data center operators spend as much time negotiating with utilities as they do with chip suppliers. Power availability, substation capacity, and cooling design often determine where a cluster can be built and how fast it can grow.`,
+						`Orbit changes the calculus. Space-based systems can draw on near-continuous solar exposure, which means the fundamental energy supply for AI infrastructure is no longer tied to a regional grid that may already be saturated.`,
+						`That does not remove the engineering burden. It changes which burden matters most. The conversation moves from "how do we get enough power?" to "how do we make the hardware and networking survive long enough to use it efficiently?"`,
+					},
+				},
+				{
+					Heading: "Global Inference Wants Global Placement",
+					Paragraphs: []string{
+						`Inference at scale is getting more distributed, more latency-sensitive, and more tied to where users actually are. That makes orbital infrastructure interesting in a way that simple compute counting misses.`,
+						`For some workloads, especially high-throughput batch inference, worldwide routing, and satellites that already serve as part of the communication backbone, a distributed orbital layer could reduce dependence on a few overloaded terrestrial regions.`,
+						`The strategic appeal is clear: if the workload can be routed to where the energy is and then streamed back through a global network, the AI stack becomes more resilient to regional power shortages, permitting delays, and congestion at the edge of major cloud markets.`,
+					},
+				},
+				{
+					Heading: "Launch Cadence Becomes Infrastructure Cadence",
+					Paragraphs: []string{
+						`SpaceX's real advantage is not just that it can imagine the orbit layer. It is that it already owns the launch cadence needed to make the concept feel operational instead of purely speculative.`,
+						`Traditional data center expansion depends on construction timelines, permitting, and utility hookups. Orbital compute would depend on launch throughput, satellite servicing, replacement cycles, and the ability to keep upgrading hardware without collapsing the economics.`,
+						`That means the relevant unit is no longer the warehouse-sized facility. It is the deployment cadence of a vertically integrated transport and compute stack.`,
+					},
+				},
+				{
+					Heading: "The Hard Parts Still Matter",
+					Paragraphs: []string{
+						`The case for orbital AI infrastructure is compelling, but it is not free of hard constraints. Thermal management, radiation tolerance, networking reliability, and component servicing all become first-order issues once the hardware leaves the ground.`,
+						`There is also a market question. If orbital inference is only economical for a narrow class of workloads, then it becomes a specialized layer in the stack rather than a wholesale replacement for terrestrial cloud. That still could be enough to matter enormously.`,
+						`The takeaway is not that Earth-bound data centers disappear. It is that the companies controlling launch, orbit, and compute packaging may own a new tier of infrastructure before the rest of the market even agrees on the category name.`,
+					},
+				},
+				{
+					Heading: "Why It Matters For AI",
+					Paragraphs: []string{
+						`AI is colliding with physical limits at the same time that the industry is trying to scale models, inference, and agentic workloads faster than ever. Orbital infrastructure is one answer to that collision.`,
+						`It is an extreme answer, but it is also a coherent one. If the future of AI depends on abundant energy, global reach, and vertically integrated logistics, then space stops being a side story and starts being part of the compute roadmap.`,
+						`Sources: SpaceX's S-1 filing, third-party reporting on the orbital data center plans, and coverage of the related xAI, Anthropic, Tesla, and Intel references in the filing.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "Orbital AI Data Centers: SpaceX's $2T Vision for the Future of Compute",
 			Slug:    "orbital-ai-data-centers-spacexs-2t-vision-for-the-future-of-compute",
 			Date:    "May 21, 2026",

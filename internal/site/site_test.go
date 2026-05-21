@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The Multimodal Benchmark Race Is Moving Beyond Recognition",
+		"The New AI Rulebook: Europe Tightens, Washington Picks A National Standard",
 		"NVIDIA Blackwell Ultra Ramps Up: Powering the Next Wave of AI Factories",
 		"Beyond the Pilot Graveyard: What Actually Works for Enterprise AI Agents in Production",
 		"Post-Google I/O 2026: Gemini&#39;s New Agentic Capabilities Signal a Shift in Enterprise AI",
@@ -108,12 +110,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 43 {
-		t.Fatalf("len(posts) = %d, want 43", len(posts))
+	if len(posts) != 45 {
+		t.Fatalf("len(posts) = %d, want 45", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "nvidia-blackwell-ultra-ramps-up-powering-the-next-wave-of-ai-factories" {
-		t.Fatalf("first post slug = %q, want newest NVIDIA hardware post", got)
+	if got := posts[0]["slug"]; got != "the-multimodal-benchmark-race-is-moving-beyond-recognition" {
+		t.Fatalf("first post slug = %q, want newest multimodal benchmark post", got)
 	}
 }
 

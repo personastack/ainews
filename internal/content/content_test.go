@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 43 {
-		t.Fatalf("Posts() returned %d posts, want 43", len(got))
+	if len(got) != 45 {
+		t.Fatalf("Posts() returned %d posts, want 45", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	multimodalBenchmarkPost, ok := FindBySlug("the-multimodal-benchmark-race-is-moving-beyond-recognition")
+	if !ok {
+		t.Fatal("FindBySlug() did not find multimodal benchmark post")
+	}
+	if multimodalBenchmarkPost.Title != "The Multimodal Benchmark Race Is Moving Beyond Recognition" {
+		t.Fatalf("FindBySlug() returned %q for multimodal benchmark post", multimodalBenchmarkPost.Title)
+	}
+
+	aiRulebookPost, ok := FindBySlug("the-new-ai-rulebook-europe-tightens-washington-picks-a-national-standard")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI rulebook post")
+	}
+	if aiRulebookPost.Title != "The New AI Rulebook: Europe Tightens, Washington Picks A National Standard" {
+		t.Fatalf("FindBySlug() returned %q for AI rulebook post", aiRulebookPost.Title)
+	}
+
 	blackwellUltraPost, ok := FindBySlug("nvidia-blackwell-ultra-ramps-up-powering-the-next-wave-of-ai-factories")
 	if !ok {
 		t.Fatal("FindBySlug() did not find NVIDIA Blackwell Ultra post")

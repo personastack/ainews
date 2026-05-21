@@ -3,6 +3,110 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Multimodal Benchmark Race Is Moving Beyond Recognition",
+			Slug:    "the-multimodal-benchmark-race-is-moving-beyond-recognition",
+			Date:    "May 21, 2026",
+			Tag:     "Models",
+			Summary: "OpenAI and Google are pushing multimodal models toward reliable document, screen, and video understanding, and the benchmark gains matter most where AI has to operate on messy real-world inputs.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`The newest multimodal race is not really about pretty demos anymore. It is about whether a model can read a document, understand a screen, follow a tool path, and keep working when the input is ugly.`,
+						`OpenAI's GPT-5.5 and Google's Gemini 3 Pro are both pushing in that direction. GPT-5.5 reports 78.7% on OSWorld-Verified, 81.2% on MMMU Pro without tools, and 83.2% with tools. Gemini 3 Pro is being described by Google as its most capable multimodal model yet, with state-of-the-art performance across document, spatial, screen, and video understanding.`,
+						`That is the important shift. The benchmark race is moving away from "can it recognize the thing?" toward "can it reliably do the work?"`,
+					},
+				},
+				{
+					Heading: "Documents Are The First Real Test",
+					Paragraphs: []string{
+						`Google's Gemini 3 Pro page makes the case plainly: real documents are messy, full of interleaved images, tables, formulas, charts, and broken layouts. The model is built to handle that pipeline from OCR through deeper visual reasoning, which is why it matters for finance, legal work, research, and compliance.`,
+						`OpenAI is aiming at the same class of workflow from a different angle. GPT-5.5 is not just a coding model; OpenAI says it is improving on work that blends code, documents, and computer use, with stronger performance on real-world task completion than the previous generation.`,
+						`The overlap is the signal. Multimodal systems are no longer just about classification or captioning. They are becoming document operators.`,
+					},
+				},
+				{
+					Heading: "Screen Understanding Is The Real Commercial Breakthrough",
+					Paragraphs: []string{
+						`Gemini 3 Pro's screen understanding is aimed squarely at desktop and mobile UI reasoning, which makes it relevant to QA, onboarding, UX analytics, and any workflow that depends on navigating a product instead of just describing it.`,
+						`OpenAI's GPT-5.5 shows the same direction in its computer-use and vision results. Better tool use, fewer retries, and higher-quality outputs are not cosmetic improvements. They are what turn a model from a text engine into something that can actually sit inside a workflow.`,
+						`That matters because enterprise adoption usually fails when a model is good at talking but unreliable at doing. The companies winning this round are trying to close that gap.`,
+					},
+				},
+				{
+					Heading: "The Benchmark Story Is Really A Reliability Story",
+					Paragraphs: []string{
+						`The headline scores matter, but the deeper story is that both companies are converging on the same product shape: models that can reason over multiple input types and survive real operating conditions.`,
+						`A model that can see a screen, parse a document, and make correct decisions across a tool chain is far more useful than one that just produces fluent summaries. That is why these evaluations are increasingly tied to computer use, long video, and document reasoning instead of only static image recognition.`,
+						`In practice, the next competitive advantage will not come from a single benchmark win. It will come from whether the model can remain dependable when the work spans spreadsheets, PDFs, browsers, and production systems.`,
+					},
+				},
+				{
+					Heading: "Why It Matters Now",
+					Paragraphs: []string{
+						`The market is starting to price in a different definition of multimodal intelligence. Not "can it understand an image?" but "can it operate in the places people actually work?"`,
+						`That is why the latest numbers from OpenAI and Google matter. They suggest the ceiling is rising on document understanding, screen reasoning, and tool-using agents at the same time, which is exactly where the next wave of enterprise products will be built.`,
+						`Sources: OpenAI's "Introducing GPT-5.5" page, especially the computer use, vision, and evaluation sections; and Google's "Gemini 3 Pro: the frontier of vision AI" post, including the document, screen, and video understanding sections.`,
+					},
+				},
+			},
+		},
+		{
+			Title:   "The New AI Rulebook: Europe Tightens, Washington Picks A National Standard",
+			Slug:    "the-new-ai-rulebook-europe-tightens-washington-picks-a-national-standard",
+			Date:    "May 21, 2026",
+			Tag:     "Policy",
+			Summary: "The EU's AI Act and the White House's 2026 legislative framework both push AI toward clearer governance, but they do it with different instincts: Europe favors risk-based obligations and disclosure, while Washington wants one federal standard and fewer state-level surprises.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`AI policy is hardening into two distinct philosophies. Europe is building a risk-based rulebook around the AI Act, while Washington is trying to define a national framework that keeps innovation moving without a patchwork of state laws.`,
+						`The result is not just more regulation. It is a clearer expectation that AI systems will be treated as governed infrastructure, not as neutral software that can be shipped first and debated later.`,
+						`For builders, that means governance is now part of the product surface.`,
+					},
+				},
+				{
+					Heading: "Europe Is Turning Transparency Into A Requirement",
+					Paragraphs: []string{
+						`The European Commission describes the AI Act as the first comprehensive legal framework on AI worldwide. It uses a risk-based approach, and its transparency rules are scheduled to come into effect in August 2026.`,
+						`That matters because the Act does more than police the extreme cases. It also requires people to be informed when they are interacting with a machine, and it says generative AI providers must make AI-generated content identifiable, with certain deepfakes and public-interest text clearly labeled.`,
+						`The Commission is also publishing support material, including guidelines on prohibited AI practices, guidance for general-purpose AI providers, and transparency-related documents to help companies comply before enforcement tightens further.`,
+					},
+				},
+				{
+					Heading: "Europe Is Also Reworking Implementation",
+					Paragraphs: []string{
+						`The recent EU activity is not only about the core act itself. Brussels has also been moving through draft guidance, consultation, and simplification work to make the rules easier to apply in practice.`,
+						`That includes draft transparency guidance, draft high-risk classification guidance, and the AI Pact, which is meant to get providers and deployers aligned with key obligations ahead of time.`,
+						`The practical message is simple: the EU wants companies to design for disclosure, traceability, and human oversight from the start, not after a public backlash forces the issue.`,
+					},
+				},
+				{
+					Heading: "Washington Wants One Federal Lane",
+					Paragraphs: []string{
+						`The White House's March 2026 legislative framework takes a different approach. It calls for protecting children, supporting parents, defending creators, preventing scams, and building a federal AI policy framework that avoids a fragmented patchwork of state rules.`,
+						`It also pushes age assurance, parental controls, stronger protections against AI-enabled impersonation and fraud, and a federal framework for AI-generated digital replicas of voice or likeness. At the same time, it argues that Congress should not create a new federal AI rulemaking body and should instead lean on existing agencies and industry-led standards.`,
+						`That is a very different governing instinct from the EU's. The American approach is trying to preserve room for innovation while setting national lines around child safety, intellectual property, and free expression.`,
+					},
+				},
+				{
+					Heading: "What Builders Need To Internalize",
+					Paragraphs: []string{
+						`The two systems are different, but the design implications are converging. If your product touches users, data, children, or public-facing outputs, you need logging, documentation, human oversight, labeling, and a defensible position on training data and provenance.`,
+						`If your system can act autonomously, you need a way to explain what it touched, when it acted, and how a human can stop it. If your system generates media or text, you need to know when disclosure or labeling is required.`,
+						`The companies that treat policy as a later-stage legal cleanup will keep paying for it in product delays. The ones that build around governance now will move faster when the rules get real.`,
+					},
+				},
+				{
+					Heading: "The Real Shift",
+					Paragraphs: []string{
+						`The big change is not that governments suddenly care about AI. It is that both sides are turning AI governance into a systems problem with concrete operational requirements.`,
+						`That makes the next phase of AI development less about whether a model can do impressive things and more about whether the surrounding product can prove safety, accountability, and control.`,
+						`Sources: the European Commission's AI Act policy page, including the transparency and implementation sections; and the White House's March 2026 National Policy Framework for Artificial Intelligence legislative recommendations.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "NVIDIA Blackwell Ultra Ramps Up: Powering the Next Wave of AI Factories",
 			Slug:    "nvidia-blackwell-ultra-ramps-up-powering-the-next-wave-of-ai-factories",
 			Date:    "May 21, 2026",

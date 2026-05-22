@@ -24,6 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"SpaceX Eyes the Stars for AI: Could Orbital Data Centers Power the Next AI Boom?",
 		"SpaceX&#39;s Orbital AI Data Centers: Unlimited Solar Power Meets Global AI Inference",
 		"Orbital AI Data Centers: SpaceX&#39;s $2T Vision for the Future of Compute",
 		"The Multimodal Benchmark Race Is Moving Beyond Recognition",
@@ -112,11 +113,11 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 47 {
-		t.Fatalf("len(posts) = %d, want 47", len(posts))
+	if len(posts) != 48 {
+		t.Fatalf("len(posts) = %d, want 48", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "spacexs-orbital-ai-data-centers-unlimited-solar-power-meets-global-ai-inference" {
+	if got := posts[0]["slug"]; got != "spacex-eyes-the-stars-for-ai-could-orbital-data-centers-power-the-next-ai-boom" {
 		t.Fatalf("first post slug = %q, want newest SpaceX orbital AI data centers post", got)
 	}
 }

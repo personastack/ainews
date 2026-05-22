@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 47 {
-		t.Fatalf("Posts() returned %d posts, want 47", len(got))
+	if len(got) != 48 {
+		t.Fatalf("Posts() returned %d posts, want 48", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,14 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	spacexEyesTheStarsPost, ok := FindBySlug("spacex-eyes-the-stars-for-ai-could-orbital-data-centers-power-the-next-ai-boom")
+	if !ok {
+		t.Fatal("FindBySlug() did not find SpaceX Eyes the Stars post")
+	}
+	if spacexEyesTheStarsPost.Title != "SpaceX Eyes the Stars for AI: Could Orbital Data Centers Power the Next AI Boom?" {
+		t.Fatalf("FindBySlug() returned %q for SpaceX Eyes the Stars post", spacexEyesTheStarsPost.Title)
+	}
+
 	orbitalInferencePost, ok := FindBySlug("spacexs-orbital-ai-data-centers-unlimited-solar-power-meets-global-ai-inference")
 	if !ok {
 		t.Fatal("FindBySlug() did not find SpaceX orbital AI data centers post")

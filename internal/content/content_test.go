@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 50 {
-		t.Fatalf("Posts() returned %d posts, want 50", len(got))
+	if len(got) != 52 {
+		t.Fatalf("Posts() returned %d posts, want 52", len(got))
 	}
 
 	for _, post := range got {
@@ -39,6 +39,22 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if edgeAIPost.Title != "From Pilots to Production: The Maturing Edge AI Revolution in 2026" {
 		t.Fatalf("FindBySlug() returned %q for edge AI production post", edgeAIPost.Title)
+	}
+
+	orbitalVisionPost, ok := FindBySlug("the-final-frontier-for-ai-spacexs-orbital-data-center-vision")
+	if !ok {
+		t.Fatal("FindBySlug() did not find SpaceX orbital data center vision post")
+	}
+	if orbitalVisionPost.Title != "The Final Frontier for AI: SpaceX's Orbital Data Center Vision" {
+		t.Fatalf("FindBySlug() returned %q for SpaceX orbital data center vision post", orbitalVisionPost.Title)
+	}
+
+	edgeMainstreamPost, ok := FindBySlug("from-prototype-to-production-how-edge-ai-went-mainstream-in-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find edge AI mainstream post")
+	}
+	if edgeMainstreamPost.Title != "From Prototype to Production: How Edge AI Went Mainstream in 2026" {
+		t.Fatalf("FindBySlug() returned %q for edge AI mainstream post", edgeMainstreamPost.Title)
 	}
 
 	spacexEyesTheStarsPost, ok := FindBySlug("spacex-eyes-the-stars-for-ai-could-orbital-data-centers-power-the-next-ai-boom")

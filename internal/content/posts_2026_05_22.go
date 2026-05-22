@@ -3,6 +3,92 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Final Frontier for AI: SpaceX's Orbital Data Center Vision",
+			Slug:    "the-final-frontier-for-ai-spacexs-orbital-data-center-vision",
+			Date:    "May 22, 2026",
+			Tag:     "Infrastructure",
+			Summary: "SpaceX's orbital data center filing turns space into a serious compute infrastructure question, with solar power, optical links, and launch cadence now part of the AI roadmap.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`SpaceX's orbital data center vision is compelling for one reason: it turns a familiar AI problem into a very different infrastructure problem. Instead of asking how to squeeze more GPUs into a rack, it asks whether compute can be moved into orbit and still behave like a dependable service.`,
+						`That makes the story less like science fiction and more like systems engineering. The question is no longer whether the idea sounds futuristic. It is whether the power, connectivity, launch cadence, and operations model can survive contact with the requirements of real workloads.`,
+					},
+				},
+				{
+					Heading: "The FCC Filing Makes The Idea Concrete",
+					Paragraphs: []string{
+						`The catalyst here is SpaceX's filing with the FCC for what it calls an orbital data center system. That filing does not mean the company has already built a fleet of space-based AI servers, but it does move the concept from a whiteboard sketch into a regulatory and engineering discussion.`,
+						`In practice, the filing suggests a constellation-style approach rather than a single giant station in orbit. That matters because distributed compute in space would have to be launched, powered, connected, monitored, and replaced in a way that looks much closer to a network than a single spacecraft.`,
+					},
+				},
+				{
+					Heading: "Why Space Suddenly Looks Interesting",
+					Paragraphs: []string{
+						`The appeal is easy to understand. Orbit offers abundant solar energy, access above the atmosphere, and the possibility of building compute where the constraints of land, water, and local grid capacity are less binding than they are on Earth.`,
+						`If the architecture can support optical links and reliable downlink capacity, a space-based system could become part of the answer to the AI power bottleneck. That is an inference from the filing and SpaceX's launch-and-network vertical integration, not a claim that the problem is already solved.`,
+					},
+				},
+				{
+					Heading: "The Engineering Tax Is Still Massive",
+					Paragraphs: []string{
+						`The hard part is everything the headline leaves out. Radiation hardening, thermal management in vacuum, autonomy, servicing, debris risk, and regulatory oversight all become first-order concerns the moment the idea stops being hypothetical.`,
+						`Latency also matters. Even if the compute is powerful, the system still has to get data in and answers back out through the layers of ground infrastructure that connect orbit to the rest of the internet. That means orbital AI is not a simple replacement for terrestrial data centers; it is a specialized network architecture with a very high technical bar.`,
+					},
+				},
+				{
+					Heading: "What This Means For AI Infrastructure",
+					Paragraphs: []string{
+						`The broader signal is that AI infrastructure thinking is escaping the datacenter perimeter. When power, cooling, and real estate become the limiting factors, the industry starts to ask questions that used to sound extravagant but now look like engineering tradeoffs.`,
+						`SpaceX may or may not ultimately build an economically viable orbital compute platform, but the filing alone is enough to force a new conversation about where the next generation of AI capacity can live. Sources for this article include SpaceX's FCC orbital data center filing, FCC document DA 26-113, and public reporting on SpaceX's launch and satellite network capabilities.`,
+					},
+				},
+			},
+		},
+		{
+			Title:   "From Prototype to Production: How Edge AI Went Mainstream in 2026",
+			Slug:    "from-prototype-to-production-how-edge-ai-went-mainstream-in-2026",
+			Date:    "May 22, 2026",
+			Tag:     "Infrastructure",
+			Summary: "Manufacturing, rugged devices, and hybrid AI platforms show edge AI is now being bought as production infrastructure rather than a lab experiment.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`Edge AI has crossed an important line in 2026. It is no longer being sold as a clever demo that proves a model can run away from the cloud. It is being purchased as operational infrastructure for work that cannot wait for a round trip to a distant server.`,
+						`That shift matters because it changes the buying criteria. The question is no longer simply whether the model is accurate. It is whether the full system can survive noise, heat, patch cycles, intermittent connectivity, and the messy reality of production environments.`,
+					},
+				},
+				{
+					Heading: "Manufacturing Budgets Are Following The ROI",
+					Paragraphs: []string{
+						`Lenovo's April 2026 Hannover Messe materials captured the mood clearly: the company said 94 percent of manufacturers planned to increase AI investment in 2026 and framed the current cycle as execution, not experimentation.`,
+						`Lenovo also cited its own manufacturing deployments, including reported gains of 85 percent shorter lead time, 42 percent lower logistics costs, and 58 percent higher productivity at a North American site. Those numbers should be read as vendor-reported results, but they still explain why the budget conversation has become much more serious.`,
+					},
+				},
+				{
+					Heading: "Rugged Devices Are Turning Edge Into Infrastructure",
+					Paragraphs: []string{
+						`Red Hat's collaboration with Panasonic Connect shows the same shift from a different angle. The companies said Panasonic TOUGHBOOK devices would ship with Red Hat Device Edge, aiming to deliver real-time processing for industrial automation, smart manufacturing, and defense use cases.`,
+						`That is not a novelty story. It is a systems story. The value proposition is that software, security, and update management can be prepackaged into a device that works where the job happens, rather than being bolted on after the fact.`,
+					},
+				},
+				{
+					Heading: "Adaptive Edge AI Is Becoming The Rule, Not The Exception",
+					Paragraphs: []string{
+						`The research side points in the same direction. A March 2026 arXiv position paper argues that edge deployments need to be adaptive because fixed configurations eventually run into changing latency, energy, thermal, connectivity, and privacy constraints.`,
+						`That is the key insight. A system that cannot reconfigure its computation, and sometimes its model state, may work for a pilot but will struggle to remain useful once the environment starts to move. In production, the edge is defined by adaptation as much as by locality.`,
+					},
+				},
+				{
+					Heading: "The Market Is Buying A Continuum",
+					Paragraphs: []string{
+						`The practical result is a new buying pattern. Companies are treating edge, cloud, and on-prem as one operational continuum, with local inferencing where it matters and centralized governance where it helps.`,
+						`That is why edge AI looks mainstream now. It is being priced, deployed, and maintained like infrastructure. Sources for this article include Red Hat's May 11, 2026 Panasonic collaboration announcement, Lenovo's April 21, 2026 Hannover Messe release and March 16, 2026 enterprise AI release, and the arXiv paper "Position Paper: From Edge AI to Adaptive Edge AI" (submitted March 31, 2026).`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "From Pilots to Production: The Maturing Edge AI Revolution in 2026",
 			Slug:    "from-pilots-to-production-the-maturing-edge-ai-revolution-in-2026",
 			Date:    "May 22, 2026",

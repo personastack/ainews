@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"EU AI Act vs America&#39;s Regulatory Patchwork: Divergence That Could Split Global AI (May 2026)",
+		"Data Centers Hit the Power Wall: Why Energy, Not Chips, Is Now AI&#39;s Biggest Constraint (May 2026)",
 		"NVIDIA Blackwell Ultra: Powering the Next Wave of AI Reasoning in 2026",
 		"SpaceX Eyes the Stars for AI: Could Orbital Data Centers Power the Next AI Boom?",
 		"SpaceX&#39;s Orbital AI Data Centers: Unlimited Solar Power Meets Global AI Inference",
@@ -114,12 +116,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 52 {
-		t.Fatalf("len(posts) = %d, want 52", len(posts))
+	if len(posts) != 54 {
+		t.Fatalf("len(posts) = %d, want 54", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "the-final-frontier-for-ai-spacexs-orbital-data-center-vision" {
-		t.Fatalf("first post slug = %q, want newest SpaceX orbital data center post", got)
+	if got := posts[0]["slug"]; got != "eu-us-ai-regulation-divergence-may-2026" {
+		t.Fatalf("first post slug = %q, want newest regulatory divergence post", got)
 	}
 }
 

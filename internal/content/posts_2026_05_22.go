@@ -3,6 +3,92 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "EU AI Act vs America's Regulatory Patchwork: Divergence That Could Split Global AI (May 2026)",
+			Slug:    "eu-us-ai-regulation-divergence-may-2026",
+			Date:    "May 22, 2026",
+			Tag:     "Policy",
+			Summary: "Europe is moving toward a formal AI enforcement regime while the US remains a patchwork of agencies, states, and sector rules, forcing global AI builders to plan for two compliance worlds at once.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`AI governance is starting to behave like infrastructure policy, not just legal language. The practical question for builders is no longer whether regulation exists, but which rules apply in which market, on which date, and with which enforcement model.`,
+						`That is why the EU and the US are diverging in a way that could matter as much as model quality or compute access. The more predictable the legal stack becomes in Europe and the more fragmented it remains in America, the more product teams will have to design for two compliance worlds instead of one.`,
+					},
+				},
+				{
+					Heading: "Europe Is Turning The AI Act Into An Operating Regime",
+					Paragraphs: []string{
+						`The EU AI Act entered into force on 1 August 2024 and has been rolling out in phases ever since. Prohibited practices and AI literacy obligations started applying in February 2025, governance rules for general-purpose AI became applicable in August 2025, and the majority of the remaining rules are set to become enforceable on 2 August 2026, with some high-risk product obligations pushed further out.`,
+						`The more recent signal is not a retreat from regulation but an attempt to simplify and streamline how it works. On 7 May 2026, EU institutions reached a provisional agreement to reduce some compliance friction while keeping the AI Act's risk-based structure intact. That is a policy adjustment, not a reset.`,
+					},
+				},
+				{
+					Heading: "America Still Looks Like A Patchwork",
+					Paragraphs: []string{
+						`The United States is approaching the same problem through overlapping layers rather than a single federal AI statute. Sector regulators, state lawmakers, procurement rules, and agency guidance all shape the market at once, which gives companies room to move but also makes the compliance picture much less uniform.`,
+						`That fragmentation is an inference from the current US policy landscape rather than a claim that nothing is happening. The point is narrower: if you are shipping an AI product nationally, the regulatory burden often depends on where the system is used and which industry it touches, not just on the model itself.`,
+					},
+				},
+				{
+					Heading: "Why The Divergence Matters For Builders",
+					Paragraphs: []string{
+						`For product teams, this is becoming an architecture problem. Logging, audit trails, model documentation, human review processes, and content provenance features may need to be toggled by jurisdiction rather than treated as a universal default.`,
+						`That means compliance work is moving closer to engineering work. The companies most likely to ship smoothly across both regions will be the ones that can separate policy logic from product logic without letting either one become an afterthought.`,
+					},
+				},
+				{
+					Heading: "The Strategic Takeaway",
+					Paragraphs: []string{
+						`Europe is trading some speed for a clearer rulebook. America is preserving flexibility at the cost of a single coherent framework. Neither path is free, but they point in different directions for the next wave of AI products.`,
+						`The likely outcome is not a clean winner. It is a growing operational split in how global AI gets built, reviewed, and deployed. Sources for this article include the European Commission's AI Act overview, the European Parliament's March 2026 enforcement briefing, the 7 May 2026 EU Council and Parliament simplification agreement, and the current AI Act implementation timeline on the EU AI Act service desk.`,
+					},
+				},
+			},
+		},
+		{
+			Title:   "Data Centers Hit the Power Wall: Why Energy, Not Chips, Is Now AI's Biggest Constraint (May 2026)",
+			Slug:    "data-center-power-constraints-ai-may-2026",
+			Date:    "May 22, 2026",
+			Tag:     "Infrastructure",
+			Summary: "The bottleneck in AI infrastructure is shifting from GPU availability to megawatts, transmission, and cooling, making power procurement a first-class product decision.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`The AI infrastructure story has changed again. For the last few years the industry talked about chip scarcity, GPU allocation, and accelerator lead times. In 2026 the sharper constraint is increasingly electricity, not silicon.`,
+						`That sounds like a supply-chain footnote, but it is actually a strategic change. Once power becomes the gating factor, where you build, how you cool, and how you schedule workloads matter just as much as how many accelerators you can buy.`,
+					},
+				},
+				{
+					Heading: "The Power Bottleneck Is Real",
+					Paragraphs: []string{
+						`The International Energy Agency's 2026 electricity analysis says data center electricity demand surged 17 percent in 2025, with AI-focused data centers growing even faster. The same reporting says five large technology companies spent more than $400 billion in capital expenditure in 2025 and are set to increase that by another 75 percent in 2026.`,
+						`That is the clearest sign yet that AI growth is colliding with physical infrastructure. GPUs can be ordered. Power substations, transmission upgrades, and utility interconnects arrive on a completely different timeline.`,
+					},
+				},
+				{
+					Heading: "The Stack Is Being Rewritten Around Megawatts",
+					Paragraphs: []string{
+						`As power becomes scarce, operators are optimizing for watts per token, inference per megawatt, and cooling density instead of treating those as back-office details. Liquid cooling, workload shifting, and location strategy are now central to the economics of model deployment.`,
+						`That is an inference from current deployment patterns, not a claim that every provider has solved the problem. The broader trend is obvious, though: AI infrastructure is becoming a power engineering business with a software layer on top.`,
+					},
+				},
+				{
+					Heading: "Efficiency Is Becoming A Product Feature",
+					Paragraphs: []string{
+						`This also changes how buyers evaluate model platforms. A system that is slightly faster but materially more power efficient can become more valuable than a raw benchmark winner if it lets operators fit more traffic into an already constrained power envelope.`,
+						`The companies that win in this environment will be the ones that can pair compute procurement with energy procurement: long-term power contracts, grid relationships, storage, and thermal design all turn into product advantages.`,
+					},
+				},
+				{
+					Heading: "What Comes Next",
+					Paragraphs: []string{
+						`The likely next phase of the AI buildout is less about buying more chips and more about securing enough reliable electricity to keep those chips busy. That favors operators who can plan like utilities and execute like software companies.`,
+						`Sources for this article include the IEA's 2026 Electricity report and data-centre electricity-use news release, plus Uptime Institute's 2026 field reporting on giant data center power plans. The common message across those sources is simple: the era of cheap, abundant power assumptions is over.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "The Final Frontier for AI: SpaceX's Orbital Data Center Vision",
 			Slug:    "the-final-frontier-for-ai-spacexs-orbital-data-center-vision",
 			Date:    "May 22, 2026",

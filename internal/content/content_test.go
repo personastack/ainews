@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 52 {
-		t.Fatalf("Posts() returned %d posts, want 52", len(got))
+	if len(got) != 54 {
+		t.Fatalf("Posts() returned %d posts, want 54", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	regulationDivergencePost, ok := FindBySlug("eu-us-ai-regulation-divergence-may-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find EU/US regulatory divergence post")
+	}
+	if regulationDivergencePost.Title != "EU AI Act vs America's Regulatory Patchwork: Divergence That Could Split Global AI (May 2026)" {
+		t.Fatalf("FindBySlug() returned %q for EU/US regulatory divergence post", regulationDivergencePost.Title)
+	}
+
+	powerWallPost, ok := FindBySlug("data-center-power-constraints-ai-may-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find data center power constraints post")
+	}
+	if powerWallPost.Title != "Data Centers Hit the Power Wall: Why Energy, Not Chips, Is Now AI's Biggest Constraint (May 2026)" {
+		t.Fatalf("FindBySlug() returned %q for data center power constraints post", powerWallPost.Title)
+	}
+
 	blackwellReasoningPost, ok := FindBySlug("nvidia-blackwell-ultra-powering-the-next-wave-of-ai-reasoning-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find NVIDIA Blackwell Ultra reasoning post")

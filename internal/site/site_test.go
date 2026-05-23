@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"AI Solves 80-Year-Old Math Problem: OpenAI&#39;s Autonomous Discovery Milestone",
+		"Google I/O 2026: Gemini Becomes the Heart of Search and Personal AI",
 		"The AI Hacker: How Claude Mythos Is Changing Cybersecurity Forever",
 		"EU AI Act vs America&#39;s Regulatory Patchwork: Divergence That Could Split Global AI (May 2026)",
 		"Data Centers Hit the Power Wall: Why Energy, Not Chips, Is Now AI&#39;s Biggest Constraint (May 2026)",
@@ -117,12 +119,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 56 {
-		t.Fatalf("len(posts) = %d, want 56", len(posts))
+	if len(posts) != 58 {
+		t.Fatalf("len(posts) = %d, want 58", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "the-ai-hacker-how-claude-mythos-is-changing-cybersecurity-forever" {
-		t.Fatalf("first post slug = %q, want newest AI hacker post", got)
+	if got := posts[0]["slug"]; got != "openai-mathematical-breakthrough" {
+		t.Fatalf("first post slug = %q, want newest OpenAI breakthrough post", got)
 	}
 }
 

@@ -3,6 +3,80 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "AI Solves 80-Year-Old Math Problem: OpenAI's Autonomous Discovery Milestone",
+			Slug:    "openai-mathematical-breakthrough",
+			Date:    "May 23, 2026",
+			Tag:     "Science",
+			Summary: "OpenAI says one of its internal reasoning models independently disproved the Erdős Unit Distance Conjecture with a 125-page proof, marking a new milestone for autonomous mathematical discovery.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`OpenAI has announced that one of its internal reasoning models independently disproved the Erdős Unit Distance Conjecture, an 80-year-old geometry problem first posed by Paul Erdős in 1946.`,
+						`The model did not merely assist a human proof or verify an existing derivation. It generated a complete 125-page mathematical proof on its own, making this a rare case of AI moving from computation support into autonomous discovery in pure mathematics.`,
+					},
+				},
+				{
+					Heading: "Why This Matters",
+					Paragraphs: []string{
+						`The Erdős Unit Distance Conjecture asks a deceptively simple question about the minimum number of unit distances among n points in the plane. For decades, it resisted solution despite sustained effort from human mathematicians.`,
+						`That is what makes this result important. The breakthrough is not about outperforming a benchmark in a constrained setting. It is about an AI system doing the kind of open-ended reasoning that has historically been associated with human mathematical creativity.`,
+					},
+				},
+				{
+					Heading: "Autonomous Discovery Changes The Frame",
+					Paragraphs: []string{
+						`Previous AI wins in mathematics were usually framed as assistance: better search, better verification, better pattern matching. This result changes the framing because the model appears to have contributed the core reasoning needed to settle the problem itself.`,
+						`If that holds up under expert review, it suggests AI systems may soon become active participants in proof discovery rather than just tools that speed up established workflows. That matters not only for mathematics, but for any field where discovery depends on navigating huge conceptual search spaces.`,
+					},
+				},
+				{
+					Heading: "What Comes Next",
+					Paragraphs: []string{
+						`The obvious question is how broadly this capability generalizes. A single headline result does not mean AI will solve every hard theorem, but it does suggest the ceiling is rising quickly.`,
+						`The more interesting long-term implication is that scientific work may shift from a human-only process to a human-plus-model process where the model can generate candidate ideas, search deeply, and surface proofs or counterexamples that would have been impractical to find manually.`,
+						`That does not replace mathematicians. It changes the bottleneck from raw reasoning labor to verification, interpretation, and deciding which problems are now worth asking first.`,
+					},
+				},
+			},
+		},
+		{
+			Title:   "Google I/O 2026: Gemini Becomes the Heart of Search and Personal AI",
+			Slug:    "google-io-2026-gemini-search",
+			Date:    "May 23, 2026",
+			Tag:     "Platforms",
+			Summary: "Google I/O 2026 put Gemini 3.5 Flash at the center of Search, introduced Gemini Spark as a personal AI agent, and expanded Google’s platform bet across productivity and development tools.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`Google's annual I/O conference delivered a clear strategic message: Gemini is no longer just an AI product line. It is becoming the default intelligence layer across Search, personal assistance, and developer tooling.`,
+						`The announcements point to a broader shift in Google's product architecture, where synthesis, task execution, and multimodal reasoning are moving from side features to the core of the experience.`,
+					},
+				},
+				{
+					Heading: "Gemini Becomes The Search Layer",
+					Paragraphs: []string{
+						`Gemini 3.5 Flash is now the default model powering Google Search, which is a major change for a product that has defined web discovery for two decades.`,
+						`That move signals a future where more searches are answered with synthesized results instead of traditional link-first pages. For users, it may feel faster and more conversational. For publishers and SEO-driven sites, it means the traffic model around search could keep shifting in ways that are hard to reverse.`,
+					},
+				},
+				{
+					Heading: "Personal AI Gets More Operational",
+					Paragraphs: []string{
+						`Google also introduced Gemini Spark, a personal AI agent designed to handle multi-step tasks on behalf of users. That puts Google directly into competition with Apple, Microsoft, and other companies trying to turn assistants into actual operators rather than simple chat interfaces.`,
+						`The broader product set reinforces that direction. Gemini Omni expands multimodal capability, Anti-Gravity IDE brings AI assistance deeper into software development, and previews of real-time reasoning systems show Google trying to turn model quality into an ecosystem advantage.`,
+					},
+				},
+				{
+					Heading: "What This Signals",
+					Paragraphs: []string{
+						`Google is betting that AI should not sit beside its products. It should sit inside them, continuously shaping how people search, write, build, and complete tasks.`,
+						`That is a high-stakes bet because it ties Google's future to trust, accuracy, and privacy at enormous scale. If Gemini improves the utility of Search without making results feel unreliable, Google strengthens its core business. If it gets that balance wrong, the company risks disrupting the product that made it dominant in the first place.`,
+						`For the industry, the bigger lesson is simpler: AI is becoming infrastructure, not decoration. I/O 2026 showed Google treating Gemini as the operating layer for consumer and developer experiences, and that is likely where the rest of the market is headed too.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "The AI Hacker: How Claude Mythos Is Changing Cybersecurity Forever",
 			Slug:    "the-ai-hacker-how-claude-mythos-is-changing-cybersecurity-forever",
 			Date:    "May 23, 2026",

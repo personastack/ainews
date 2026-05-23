@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"AI Breakthrough: MangroveGS Predicts Cancer Metastasis with 80% Accuracy",
+		"Cloud AI War Escalates: OpenAI Ends Microsoft Exclusivity for AWS",
 		"AI Solves 80-Year-Old Math Problem: OpenAI&#39;s Autonomous Discovery Milestone",
 		"Google I/O 2026: Gemini Becomes the Heart of Search and Personal AI",
 		"The AI Hacker: How Claude Mythos Is Changing Cybersecurity Forever",
@@ -119,12 +121,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 59 {
-		t.Fatalf("len(posts) = %d, want 59", len(posts))
+	if len(posts) != 61 {
+		t.Fatalf("len(posts) = %d, want 61", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "openai-ai-solves-80-year-math-problem" {
-		t.Fatalf("first post slug = %q, want newest OpenAI geometry post", got)
+	if got := posts[0]["slug"]; got != "ai-cancer-metastasis-prediction-mangrovegs-2026" {
+		t.Fatalf("first post slug = %q, want newest MangroveGS post", got)
 	}
 }
 

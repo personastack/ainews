@@ -3,6 +3,104 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "AI Breakthrough: MangroveGS Predicts Cancer Metastasis with 80% Accuracy",
+			Slug:    "ai-cancer-metastasis-prediction-mangrovegs-2026",
+			Date:    "May 23, 2026",
+			Tag:     "Science",
+			Summary: "MangroveGS from the University of Geneva uses tumor gene-expression data to predict metastatic risk with nearly 80% accuracy, pointing toward more personalized oncology decisions.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`A groundbreaking AI system from the University of Geneva is changing how doctors assess cancer risk. MangroveGS uses gene expression data to predict whether cancer will spread, reaching nearly 80% accuracy across multiple cancer types.`,
+						`That matters because metastasis risk is one of the hardest questions in oncology. The better clinicians can estimate it early, the more precisely they can match treatment intensity to the patient in front of them.`,
+					},
+				},
+				{
+					Heading: "The Breakthrough Technology",
+					Paragraphs: []string{
+						`Mangrove Gene Signatures, or MangroveGS, analyzes RNA sequencing from tumor samples to identify gene patterns linked to metastatic potential.`,
+						`The machine learning model turns those complex molecular patterns into simple clinical risk scores that can guide treatment decisions.`,
+						`According to the research summary, the system reached 80% accuracy in predicting metastasis and recurrence for colon cancer, with strong results extending to stomach, lung, and breast cancers. The validation was published in Cell Reports.`,
+					},
+				},
+				{
+					Heading: "Clinical Impact",
+					Paragraphs: []string{
+						`This kind of tool strengthens personalized medicine. High-risk patients can receive more aggressive treatment earlier, while low-risk patients can avoid unnecessary side effects.`,
+						`Hospitals also benefit from better resource allocation and lower waste, while patients get clearer data for conversations with their doctors and a better understanding of their own risk profile.`,
+					},
+				},
+				{
+					Heading: "Broader Implications",
+					Paragraphs: []string{
+						`The deeper significance is that the research bridges molecular biology and AI in a way that reveals shared pathways across different cancers.`,
+						`It also raises the bar for how clinical AI tools should be validated. If systems like MangroveGS can be generalized responsibly, similar predictive models could eventually support diagnosis and planning in other diseases as well.`,
+					},
+				},
+				{
+					Heading: "Looking Ahead",
+					Paragraphs: []string{
+						`With regulatory pathways opening in 2027 and broader adoption expected by 2028 to 2030, MangroveGS represents a meaningful step toward AI-driven precision oncology.`,
+						`This is not just better prediction. It is a change in how cancer is assessed at the molecular level, with AI moving from a supporting tool to a practical part of clinical decision-making.`,
+						`Research based on University of Geneva findings and Cell Reports publication. Article drafted May 23, 2026.`,
+					},
+				},
+			},
+		},
+		{
+			Title:   "Cloud AI War Escalates: OpenAI Ends Microsoft Exclusivity for AWS",
+			Slug:    "openai-aws-partnership-shift-cloud-ai-war-2026",
+			Date:    "May 23, 2026",
+			Tag:     "Infrastructure",
+			Summary: "OpenAI's reported move beyond Microsoft exclusivity to AWS signals a more competitive enterprise AI cloud market and gives buyers more leverage across providers.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`In a major strategic shift, OpenAI has ended its exclusive cloud partnership with Microsoft, opening its models to Amazon Web Services. The move intensifies competition in the enterprise AI cloud market and gives companies more choices than ever.`,
+						`For the industry, this is less about one contract and more about the shape of the next phase of AI infrastructure. The cloud layer is becoming a battleground for model access, enterprise trust, and pricing power.`,
+					},
+				},
+				{
+					Heading: "The Partnership Evolution",
+					Paragraphs: []string{
+						`Microsoft Azure remains OpenAI's primary partner with first-launch privileges, but exclusivity is over.`,
+						`A new multi-year AWS deal worth around $38 billion is now active, and the revenue-sharing terms have reportedly been simplified with payment caps through 2030.`,
+						`That combination preserves Microsoft's role while making room for a genuinely multi-cloud commercial model.`,
+					},
+				},
+				{
+					Heading: "Why This Matters For Enterprises",
+					Paragraphs: []string{
+						`The biggest shift is optionality. Businesses can deploy AI across multiple clouds without the same level of lock-in, which improves negotiating power and reduces concentration risk.`,
+						`Diversifying infrastructure also gives enterprises a better way to manage resilience, compliance, and purchasing leverage as AI workloads become more critical to daily operations.`,
+					},
+				},
+				{
+					Heading: "Competitive Landscape Shift",
+					Paragraphs: []string{
+						`AWS gains access to premium models previously unavailable to its enormous enterprise base, while Microsoft now has to compete on service quality rather than exclusivity alone.`,
+						`Google Cloud remains outside the arrangement for now, but the new multi-cloud reality increases pressure on every major provider to improve their AI stack and make a stronger case for inclusion later.`,
+					},
+				},
+				{
+					Heading: "Technical And Operational Considerations",
+					Paragraphs: []string{
+						`Enterprises still need to plan carefully for model portability, consistent security controls across environments, and unified management tooling.`,
+						`The cloud providers are racing to differentiate with specialized AI features, stronger performance guarantees, and operational tooling that makes it easier to move from pilot deployments to production systems.`,
+					},
+				},
+				{
+					Heading: "The Road Ahead",
+					Paragraphs: []string{
+						`Full AWS integration is expected to roll out through 2026, with broader enterprise pilots following.`,
+						`By 2028, the market should settle into clearer specialization among AI cloud providers, marking the maturation of enterprise AI from single-vendor experiments to a more competitive infrastructure market.`,
+						`The cloud AI war has officially begun, and the immediate winners are customers who can finally shop across more than one serious platform.`,
+						`Based on partnership announcements and industry analysis. Article drafted May 23, 2026.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "Mathematical Milestone: OpenAI's AI Autonomously Cracks 80-Year Geometry Problem",
 			Slug:    "openai-ai-solves-80-year-math-problem",
 			Date:    "May 23, 2026",

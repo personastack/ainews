@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 59 {
-		t.Fatalf("Posts() returned %d posts, want 59", len(got))
+	if len(got) != 61 {
+		t.Fatalf("Posts() returned %d posts, want 61", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	mangroveGSPost, ok := FindBySlug("ai-cancer-metastasis-prediction-mangrovegs-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find MangroveGS cancer metastasis post")
+	}
+	if mangroveGSPost.Title != "AI Breakthrough: MangroveGS Predicts Cancer Metastasis with 80% Accuracy" {
+		t.Fatalf("FindBySlug() returned %q for MangroveGS cancer metastasis post", mangroveGSPost.Title)
+	}
+
+	openAIAWSPost, ok := FindBySlug("openai-aws-partnership-shift-cloud-ai-war-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI AWS partnership shift post")
+	}
+	if openAIAWSPost.Title != "Cloud AI War Escalates: OpenAI Ends Microsoft Exclusivity for AWS" {
+		t.Fatalf("FindBySlug() returned %q for OpenAI AWS partnership shift post", openAIAWSPost.Title)
+	}
+
 	openAIMathGeometryPost, ok := FindBySlug("openai-ai-solves-80-year-math-problem")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI math geometry post")

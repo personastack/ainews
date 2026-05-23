@@ -3,6 +3,43 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Mathematical Milestone: OpenAI's AI Autonomously Cracks 80-Year Geometry Problem",
+			Slug:    "openai-ai-solves-80-year-math-problem",
+			Date:    "May 23, 2026",
+			Tag:     "Science",
+			Summary: "OpenAI says one of its internal reasoning models independently disproved the Erdős Unit Distance Conjecture with a 125-page proof, marking a new milestone for autonomous mathematical discovery.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`OpenAI says one of its internal reasoning models independently disproved the Erdős Unit Distance Conjecture, an 80-year-old geometry problem first posed by Paul Erdős in 1946.`,
+						`The result matters because the model did not just assist with a proof or validate an existing argument. It produced a complete 125-page proof on its own, pushing AI from computation support toward genuine mathematical discovery.`,
+					},
+				},
+				{
+					Heading: "Why This Matters",
+					Paragraphs: []string{
+						`The Erdős Unit Distance Conjecture asks a deceptively simple question about the minimum number of unit distances among n points in the plane. For decades, it resisted solution despite sustained effort from human mathematicians.`,
+						`That is what makes the announcement important. This is not a benchmark win in a narrow setting. It is an AI system doing the kind of open-ended reasoning that has historically been associated with human mathematical creativity.`,
+					},
+				},
+				{
+					Heading: "Discovery Changes The Frame",
+					Paragraphs: []string{
+						`Earlier AI advances in mathematics were usually framed as assistance: better search, better verification, better pattern matching. This result changes the framing because the model appears to have contributed the core reasoning needed to settle the problem itself.`,
+						`If expert review confirms the proof, the implication is bigger than one theorem. It suggests AI systems may soon become active participants in proof discovery rather than just tools that speed up established workflows.`,
+					},
+				},
+				{
+					Heading: "What Comes Next",
+					Paragraphs: []string{
+						`The obvious question is how broadly this capability generalizes. A single headline result does not mean AI will solve every hard theorem, but it does suggest the ceiling is rising quickly.`,
+						`The deeper long-term shift is a human-plus-model research loop in which the model can generate candidate ideas, search deeply, and surface proofs or counterexamples that would have been impractical to find manually.`,
+						`That does not replace mathematicians. It changes the bottleneck from raw reasoning labor to verification, interpretation, and deciding which questions are now worth asking first.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "AI Solves 80-Year-Old Math Problem: OpenAI's Autonomous Discovery Milestone",
 			Slug:    "openai-mathematical-breakthrough",
 			Date:    "May 23, 2026",

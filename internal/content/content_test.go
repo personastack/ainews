@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 55 {
-		t.Fatalf("Posts() returned %d posts, want 55", len(got))
+	if len(got) != 56 {
+		t.Fatalf("Posts() returned %d posts, want 56", len(got))
 	}
 
 	for _, post := range got {
@@ -327,6 +327,14 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if securityPost.Title != "The Government That Fears Its Own Weapon: How Mythos Became America's Most Dangerous AI Secret" {
 		t.Fatalf("FindBySlug() returned %q for Mythos security post", securityPost.Title)
+	}
+
+	aiHackerPost, ok := FindBySlug("the-ai-hacker-how-claude-mythos-is-changing-cybersecurity-forever")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI hacker post")
+	}
+	if aiHackerPost.Title != "The AI Hacker: How Claude Mythos Is Changing Cybersecurity Forever" {
+		t.Fatalf("FindBySlug() returned %q for AI hacker post", aiHackerPost.Title)
 	}
 
 	memoryPost, ok := FindBySlug("samsungs-trillion-dollar-moment-and-the-memory-bottleneck-that-will-define-ais-next-year")

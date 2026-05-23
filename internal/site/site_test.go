@@ -24,6 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The AI Hacker: How Claude Mythos Is Changing Cybersecurity Forever",
 		"EU AI Act vs America&#39;s Regulatory Patchwork: Divergence That Could Split Global AI (May 2026)",
 		"Data Centers Hit the Power Wall: Why Energy, Not Chips, Is Now AI&#39;s Biggest Constraint (May 2026)",
 		"NVIDIA Blackwell Ultra: Powering the Next Wave of AI Reasoning in 2026",
@@ -116,12 +117,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 55 {
-		t.Fatalf("len(posts) = %d, want 55", len(posts))
+	if len(posts) != 56 {
+		t.Fatalf("len(posts) = %d, want 56", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "ai-research-frontiers-may-2026" {
-		t.Fatalf("first post slug = %q, want newest AI research frontiers post", got)
+	if got := posts[0]["slug"]; got != "the-ai-hacker-how-claude-mythos-is-changing-cybersecurity-forever" {
+		t.Fatalf("first post slug = %q, want newest AI hacker post", got)
 	}
 }
 

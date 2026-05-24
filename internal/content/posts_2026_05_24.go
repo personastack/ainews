@@ -3,6 +3,92 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "OpenAI's AI Makes Genuine Mathematical Discovery",
+			Slug:    "2026-05-24-openai-genuine-mathematical-discovery",
+			Date:    "May 24, 2026",
+			Tag:     "Science",
+			Summary: "OpenAI's reasoning model appears to have crossed from proof assistance into original mathematical discovery, marking a new stage in frontier AI capability.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"OpenAI's latest math result matters because it is not just another benchmark win. The company says one of its reasoning models produced a new result in a longstanding geometry problem and that the work held up under expert review.",
+						"If that holds, the story changes from AI helping mathematicians to AI contributing original mathematical work that specialists are willing to treat seriously.",
+					},
+				},
+				{
+					Heading: "What Changed",
+					Paragraphs: []string{
+						"Earlier AI systems were good at suggesting steps, checking derivations, or searching through known proof space faster than a human. That is useful, but it is still assistance.",
+						"The new claim is more ambitious: the model did not just accelerate a proof. It found a fresh line of reasoning that produced a genuine advance in a field where small improvements can take years to surface.",
+					},
+				},
+				{
+					Heading: "Why Mathematicians Care",
+					Paragraphs: []string{
+						"Mathematics is one of the hardest places to fake progress. A proof has to be internally consistent, externally reviewable, and strong enough to survive scrutiny from people who know the field deeply.",
+						"When a model can do that work, it suggests frontier systems are beginning to handle long-horizon reasoning in a way that goes beyond fluent output or pattern matching.",
+					},
+				},
+				{
+					Heading: "The Method Matters Too",
+					Paragraphs: []string{
+						"OpenAI framed the system as a general reasoning model, not a narrow theorem prover. That distinction matters because it implies the capability could transfer across domains instead of remaining trapped inside one mathematical niche.",
+						"If the model can search a difficult proof space, preserve coherence over many steps, and converge on something experts accept, the same technique could eventually matter in physics, materials science, and other research-heavy fields.",
+					},
+				},
+				{
+					Heading: "The Bigger Shift",
+					Paragraphs: []string{
+						"This is why the announcement landed as more than a curiosity. It points toward a future where AI is not only summarizing science, but participating in the creation of it.",
+						"That does not make mathematicians obsolete. It does change the bottleneck from generating ideas to deciding which ideas are worth verifying first, which is a much more powerful place for AI to operate.",
+					},
+				},
+			},
+		},
+		{
+			Title:   "Agentic AI Moves from Demos to Enterprise Deployment",
+			Slug:    "2026-05-24-agentic-ai-enterprise-deployment",
+			Date:    "May 24, 2026",
+			Tag:     "Agents",
+			Summary: "Agentic AI is moving out of demo mode as enterprises focus on narrow workflows, strong guardrails, and operational control instead of broad autonomy.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"Agentic AI is crossing an important threshold. The flashy demos are still impressive, but the real change is happening in teams that are trying to put agents into actual business workflows.",
+						"The companies making progress are not aiming for general-purpose autonomy. They are choosing specific jobs where an agent can save time, reduce friction, and operate inside clear boundaries.",
+					},
+				},
+				{
+					Heading: "Why The Demo Phase Ends Quickly",
+					Paragraphs: []string{
+						"Most demos work because the path is clean, the inputs are curated, and a human is ready to step in if something breaks. Production is different. Workflows are messy, permissions matter, and mistakes have real cost.",
+						"That is why so many agent projects stall after the pilot stage. The model may be capable, but the surrounding system is not built to support dependable operation under real-world conditions.",
+					},
+				},
+				{
+					Heading: "What Enterprises Are Doing Differently",
+					Paragraphs: []string{
+						"Successful deployments usually start narrow: ticket triage, document routing, research summaries, internal knowledge lookup, or routine back-office tasks. Narrow scope makes it easier to define success and easier to stop the agent when it goes off track.",
+						"From there, teams add the missing layer that demos often skip: identity, permissions, logs, approvals, monitoring, retries, and rollback. In other words, they build an operating model around the agent instead of treating the prompt as the product.",
+					},
+				},
+				{
+					Heading: "The Control Problem Is The Real Product",
+					Paragraphs: []string{
+						"Enterprise AI is becoming less about whether a model can reason and more about whether the organization can trust the full workflow. That trust depends on auditability, clear ownership, and a way for humans to intervene without losing state.",
+						"The best agent systems are starting to look like serious software platforms: measurable, versioned, observable, and constrained. That is the difference between a prototype and something a business can rely on.",
+					},
+				},
+				{
+					Heading: "What The Shift Means",
+					Paragraphs: []string{
+						"The big takeaway is that agentic AI is becoming infrastructure. It is no longer just a research topic or a polished demo reel.",
+						"Enterprises that treat autonomy as a control problem, not a magic trick, are the ones most likely to turn agents into lasting operational value.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "AI's New Math Frontier: OpenAI's Geometry Breakthrough Signals Revolution in Discovery",
 			Slug:    "2026-05-24-openai-discrete-geometry-breakthrough",
 			Date:    "May 24, 2026",

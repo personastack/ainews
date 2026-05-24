@@ -127,16 +127,16 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 69 {
-		t.Fatalf("len(posts) = %d, want 69", len(posts))
+	if len(posts) != 71 {
+		t.Fatalf("len(posts) = %d, want 71", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "2026-05-24-openai-discrete-geometry-breakthrough" {
-		t.Fatalf("first post slug = %q, want newest OpenAI geometry breakthrough post", got)
+	if got := posts[0]["slug"]; got != "2026-05-24-openai-genuine-mathematical-discovery" {
+		t.Fatalf("first post slug = %q, want newest OpenAI genuine mathematical discovery post", got)
 	}
 
-	if got := posts[1]["slug"]; got != "2026-05-24-ai-compute-arms-race" {
-		t.Fatalf("second post slug = %q, want AI compute arms race post", got)
+	if got := posts[1]["slug"]; got != "2026-05-24-agentic-ai-enterprise-deployment" {
+		t.Fatalf("second post slug = %q, want agentic AI enterprise deployment post", got)
 	}
 }
 

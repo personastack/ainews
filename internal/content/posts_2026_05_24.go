@@ -3,6 +3,50 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "From Prototypes to Production: AI Agents That Actually Work",
+			Slug:    "from-prototypes-to-production-ai-agents-that-actually-work",
+			Date:    "May 24, 2026",
+			Tag:     "Agents",
+			Summary: "The most durable AI agent systems narrow the job, add observability, and treat autonomy as a control problem.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`The phrase "production-ready AI agent" is starting to mean something concrete. It no longer just signals a flashy demo wrapped in a product name. It now points to systems that can finish a narrow job repeatedly, under policy, with enough observability that teams can trust the outcome.`,
+						`That is the real transition underway in 2026. The winning agent systems are not trying to do everything. They are doing fewer things, but they are doing them well enough that a business can put real work behind them.`,
+					},
+				},
+				{
+					Heading: "The Narrow Job Wins",
+					Paragraphs: []string{
+						`Most agent failures still come from scope creep. A model that can reason broadly is not automatically a model that can manage a workflow, recover from a bad tool call, or keep state across a long task without drifting.`,
+						`The systems that are working in production usually start with a single, measurable workflow: triaging support tickets, drafting internal replies, routing documents, updating records, or summarizing a queue of inputs. Narrow scope gives the team a clear definition of success and a clear place to stop when the agent is out of bounds.`,
+					},
+				},
+				{
+					Heading: "The Control Plane Matters More Than The Prompt",
+					Paragraphs: []string{
+						`What separates a prototype from a deployable system is the control plane around the model. That includes permissions, audit logs, approval gates, retries, versioning, sandboxed tools, and a visible way to hand work back to a human.`,
+						`The prompt still matters, but it is no longer the main product. The real product is the orchestration layer that keeps the agent inside a well-defined envelope while letting it move fast enough to be useful.`,
+					},
+				},
+				{
+					Heading: "Where Agents Are Already Paying Off",
+					Paragraphs: []string{
+						`The first durable wins are appearing in places where the workflow is repetitive and the output can be checked. Customer operations, internal knowledge work, sales follow-up, document preparation, and software delivery are obvious early targets because the cost of mistakes is lower and the savings are easy to measure.`,
+						`That pattern explains why agent adoption is accelerating without every company becoming an AI lab. The useful systems are not universal assistants. They are focused workers with a narrow job, a bounded toolkit, and a clear owner.`,
+					},
+				},
+				{
+					Heading: "What Actually Makes It Work",
+					Paragraphs: []string{
+						`The maturity signal is not whether an agent can answer a hard question once. It is whether the system can keep working when the inputs are messy, the tools fail, the state changes, or a human has to step in and recover the task.`,
+						`That is why production AI is converging on the same principles as good software engineering: explicit interfaces, observability, rollback, evaluation, and policy. Once those pieces are in place, the model becomes one component in a larger system rather than the entire product.`,
+						`The prototype phase ends when the team stops asking "Can the model do it?" and starts asking "Can the workflow survive it?" That is the question production AI has to answer.`,
+					},
+				},
+			},
+		},
+		{
 			Title:   "Google's Gemini 3.5 Flash: The Speed Demon Powering Tomorrow's AI Agents",
 			Slug:    "gemini-3-5-flash-agentic-speed",
 			Date:    "May 24, 2026",

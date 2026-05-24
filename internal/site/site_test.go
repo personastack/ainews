@@ -24,6 +24,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"Google&#39;s Gemini 3.5 Flash: The Speed Demon Powering Tomorrow&#39;s AI Agents",
 		"From Prototypes to Production: The Maturing World of AI Agents in 2026",
 		"The End of To-Do Lists: Gemini&#39;s Proactive AI",
 		"AI Breakthrough: MangroveGS Predicts Cancer Metastasis with 80% Accuracy",
@@ -123,12 +124,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 63 {
-		t.Fatalf("len(posts) = %d, want 63", len(posts))
+	if len(posts) != 64 {
+		t.Fatalf("len(posts) = %d, want 64", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "from-prototypes-to-production-the-maturing-world-of-ai-agents-in-2026" {
-		t.Fatalf("first post slug = %q, want newest prototypes to production post", got)
+	if got := posts[0]["slug"]; got != "gemini-3-5-flash-agentic-speed" {
+		t.Fatalf("first post slug = %q, want newest Gemini 3.5 Flash post", got)
 	}
 }
 

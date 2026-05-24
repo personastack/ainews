@@ -3,6 +3,94 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "AI's New Math Frontier: OpenAI's Geometry Breakthrough Signals Revolution in Discovery",
+			Slug:    "2026-05-24-openai-discrete-geometry-breakthrough",
+			Date:    "May 24, 2026",
+			Tag:     "Science",
+			Summary: "OpenAI's autonomous geometry result suggests frontier models can contribute original mathematical discoveries, not just faster drafts, code, or search.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"OpenAI's announcement on May 20 landed as more than another benchmark headline. An internal reasoning model had produced a proof that overturned a central conjecture in discrete geometry, a problem tied to Paul Erdos's 1946 unit distance question.",
+						"The important part is not only that the model found a result worth publishing. It is that the result survived external expert review, which moves the story from clever generation toward actual mathematical discovery.",
+					},
+				},
+				{
+					Heading: "The Problem It Cracked",
+					Paragraphs: []string{
+						"The unit distance problem asks a deceptively simple question: if you place n points in the plane, how many pairs can sit exactly one unit apart? For decades, the square-grid construction was widely treated as the best-known way to push the count upward.",
+						"OpenAI says its model found an infinite family of examples that beat that long-held assumption with a polynomial improvement. That is a narrow result in one subfield, but it is the kind of narrow result that often changes the shape of a discipline.",
+					},
+				},
+				{
+					Heading: "Why The Method Matters",
+					Paragraphs: []string{
+						"The breakthrough was not framed as a math-specialist system tuned for one theorem. OpenAI described it as a general-purpose reasoning model that could search proof strategies, connect distant ideas, and stay coherent through a long argument.",
+						"That distinction matters because it suggests the next leap in AI research may come from models that can move across domains, not just from models that memorize more facts inside one domain.",
+					},
+				},
+				{
+					Heading: "What The Experts Saw",
+					Paragraphs: []string{
+						"OpenAI said external mathematicians checked the proof, and the company published a companion paper to explain the method and context. That kind of verification is what gives the announcement its weight. A machine can generate many plausible arguments. Much fewer survive serious mathematical scrutiny.",
+						"Mathematicians quoted by OpenAI called the result a milestone because it hints at a new role for AI: not merely assisting with derivations, but surfacing ideas that human specialists may not have considered.",
+					},
+				},
+				{
+					Heading: "The Bigger Shift",
+					Paragraphs: []string{
+						"The broader implication is straightforward. If a model can hold a proof together, connect algebraic number theory to discrete geometry, and produce work that experts will actually validate, then AI stops being just an automation layer.",
+						"It becomes a discovery layer. That does not mean every hard problem is about to be solved by a model. It does mean the frontier is moving from answer generation toward genuine research participation, which is a much larger change in how science gets done.",
+						"The question now is not whether AI can help with mathematics. It is how many other fields are about to discover that the same reasoning machinery can make new contributions there too.",
+					},
+				},
+			},
+		},
+		{
+			Title:   "The $500 Billion AI Compute Arms Race: Power, Politics, and Planet at Stake",
+			Slug:    "2026-05-24-ai-compute-arms-race",
+			Date:    "May 24, 2026",
+			Tag:     "Infrastructure",
+			Summary: "AI spending is now measured in hundreds of billions, and the real bottleneck is shifting from model quality to power, permits, and public tolerance.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The AI race is no longer a contest over model names alone. It is becoming a contest over capital, land, transformers, grid access, and the political right to keep building.",
+						"OpenAI's own spending trajectory makes the point plainly. Reuters reported that the company expects to spend about $50 billion on compute in 2026, while the broader hyperscaler spend pile has pushed well past $700 billion for the year.",
+					},
+				},
+				{
+					Heading: "Compute Is The New Industrial Policy",
+					Paragraphs: []string{
+						"The old narrative treated compute like a line item. In 2026 it looks more like a strategic asset class. Stargate alone was framed as a $500 billion infrastructure push, and the surrounding deals show that every major AI company is now negotiating for the same scarce inputs at once.",
+						"That changes the market structure. Winning is not just about having the best model. It is about locking up enough compute to keep training, serving, and iterating faster than everyone else.",
+					},
+				},
+				{
+					Heading: "Power, Permits, And Pushback",
+					Paragraphs: []string{
+						"The physical bottleneck is becoming impossible to ignore. Data centers need power, cooling, water, interconnects, and local approval, and many of those pieces are running into state-level scrutiny and utility bottlenecks at the same time.",
+						"Reuters and grid operators have repeatedly pointed to the same problem: demand from data centers is growing faster than new supply can come online. That is why every new campus increasingly looks like a political event, not just a construction project.",
+					},
+				},
+				{
+					Heading: "Why The Planet Is Part Of The Story",
+					Paragraphs: []string{
+						"The environmental question is not abstract. More GPUs mean more electricity, more cooling, more water use, and more pressure on already strained infrastructure. Even when the power is available, the emissions profile depends on how fast clean generation can scale alongside demand.",
+						"That is why the compute race is now being argued in public, not just in boardrooms. Communities want to know who pays for the substations, who absorbs the higher bills, and what happens when a cluster of AI campuses competes with homes and industry for the same grid.",
+					},
+				},
+				{
+					Heading: "The Race Behind The Race",
+					Paragraphs: []string{
+						"The deeper dynamic is that compute spending is now a proxy for confidence. Companies are betting that if they buy enough capacity today, they can translate it into model quality, product adoption, and eventually revenue later.",
+						"The risk is that the sector is also building a massive fixed-cost base before the economics are fully proven. If the demand curve stays strong, the winners will be the firms that secured power early. If it softens, the industry may be left with stranded infrastructure and a lot of expensive concrete.",
+						"Either way, the age of software being cheaper than atoms is over. In AI, atoms are back on the balance sheet.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The AI Power Crunch: When Electricity Becomes the New Bottleneck",
 			Slug:    "2026-05-24-ai-power-crunch",
 			Date:    "May 24, 2026",

@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"From Prototypes to Production: The Maturing World of AI Agents in 2026",
+		"The End of To-Do Lists: Gemini&#39;s Proactive AI",
 		"AI Breakthrough: MangroveGS Predicts Cancer Metastasis with 80% Accuracy",
 		"Cloud AI War Escalates: OpenAI Ends Microsoft Exclusivity for AWS",
 		"AI Solves 80-Year-Old Math Problem: OpenAI&#39;s Autonomous Discovery Milestone",
@@ -121,12 +123,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 61 {
-		t.Fatalf("len(posts) = %d, want 61", len(posts))
+	if len(posts) != 63 {
+		t.Fatalf("len(posts) = %d, want 63", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "ai-cancer-metastasis-prediction-mangrovegs-2026" {
-		t.Fatalf("first post slug = %q, want newest MangroveGS post", got)
+	if got := posts[0]["slug"]; got != "from-prototypes-to-production-the-maturing-world-of-ai-agents-in-2026" {
+		t.Fatalf("first post slug = %q, want newest prototypes to production post", got)
 	}
 }
 

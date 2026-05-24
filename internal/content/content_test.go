@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 61 {
-		t.Fatalf("Posts() returned %d posts, want 61", len(got))
+	if len(got) != 63 {
+		t.Fatalf("Posts() returned %d posts, want 63", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	prototypeToProductionPost, ok := FindBySlug("from-prototypes-to-production-the-maturing-world-of-ai-agents-in-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find prototypes to production post")
+	}
+	if prototypeToProductionPost.Title != "From Prototypes to Production: The Maturing World of AI Agents in 2026" {
+		t.Fatalf("FindBySlug() returned %q for prototypes to production post", prototypeToProductionPost.Title)
+	}
+
+	geminiSparkProactivePost, ok := FindBySlug("the-end-of-to-do-lists-geminis-proactive-ai")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Gemini Spark proactive AI post")
+	}
+	if geminiSparkProactivePost.Title != "The End of To-Do Lists: Gemini's Proactive AI" {
+		t.Fatalf("FindBySlug() returned %q for Gemini Spark proactive AI post", geminiSparkProactivePost.Title)
+	}
+
 	mangroveGSPost, ok := FindBySlug("ai-cancer-metastasis-prediction-mangrovegs-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find MangroveGS cancer metastasis post")

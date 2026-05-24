@@ -3,6 +3,81 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The AI Power Crunch: When Electricity Becomes the New Bottleneck",
+			Slug:    "2026-05-24-ai-power-crunch",
+			Date:    "May 24, 2026",
+			Tag:     "Infrastructure",
+			Summary: "Electricity, not chips, is becoming the limiting factor for AI data centers as grids, cooling, and nuclear buildouts struggle to keep pace.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"In 2026, the conversation around AI progress has shifted dramatically. It's no longer just about who has the most powerful chips or the cleverest algorithms. It's about who can secure enough electricity to run them.",
+						"Data centers that once consumed tens of megawatts are now scaling to hundreds per cluster. Global electricity demand from data centers is projected to more than double by 2030, driven almost entirely by AI workloads. The problem isn't just generation capacity; it's the grid itself. Interconnection queues stretch 7-13 years in many regions, and even when power exists, the physical infrastructure, transformers, substations, and transmission lines, can't be built fast enough.",
+					},
+				},
+				{
+					Heading: "Cooling the Heat",
+					Paragraphs: []string{
+						"AI chips run hot. Traditional air cooling can't handle the densities required. Innovations like direct-to-chip liquid cooling, immersion systems, and AI-driven thermal management are helping, but they only enable higher power consumption. They don't solve the underlying grid constraints.",
+					},
+				},
+				{
+					Heading: "Nuclear's AI Renaissance",
+					Paragraphs: []string{
+						"This crisis is breathing new life into nuclear power discussions. Small modular reactors, or SMRs, offer 24/7 carbon-free power perfectly matched to AI's round-the-clock needs. Yet licensing delays, financing risks, and supply chain issues mean commercial deployment remains years away for most markets.",
+					},
+				},
+				{
+					Heading: "What It Means for the Industry",
+					Paragraphs: []string{
+						"Companies like Microsoft, Google, and Amazon are already exploring behind-the-meter power generation. Data center locations are shifting toward regions with abundant power. The winners in the next phase of AI won't just be those with the best models. They'll be those who solved the power problem first.",
+						"The physical world is reasserting itself in the digital age. AI's future may depend less on silicon and more on electrons.",
+						"What do you think: will nuclear or something more radical like orbital computing ultimately win out?",
+					},
+				},
+			},
+		},
+		{
+			Title:   "Why 89% of Enterprise AI Agent Pilots Are Failing",
+			Slug:    "2026-05-24-agent-failure-rates",
+			Date:    "May 24, 2026",
+			Tag:     "Agents",
+			Summary: "Most enterprise AI agent pilots fail before production because governance, data readiness, and operating-model gaps matter more than model quality.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The numbers are stark: 86-89% of enterprise AI agent pilots never make it to production. It's not because the models can't perform the demos. It's because the organizations can't safely, consistently, and governably run them at scale.",
+					},
+				},
+				{
+					Heading: "The Real Bottleneck",
+					Paragraphs: []string{
+						"Technical accuracy is rarely the issue. The failures stem from governance gaps, data fragmentation, workflow integration problems, and missing accountability structures. Agents are being treated like experiments rather than privileged operational actors with real access and decision-making power.",
+					},
+				},
+				{
+					Heading: "Governance and Security First",
+					Paragraphs: []string{
+						"Successful deployments require agent identity management, action approval workflows, clear containment boundaries, and complete audit trails. Without these, even impressive prototypes become liabilities in production.",
+					},
+				},
+				{
+					Heading: "Data Readiness Is King",
+					Paragraphs: []string{
+						"Fragmented data systems, inconsistent permissions, and poor metadata mean agents can't reliably access the context they need. Clean, governed data isn't a nice-to-have. It's the foundation.",
+					},
+				},
+				{
+					Heading: "The Path Forward",
+					Paragraphs: []string{
+						"Organizations beating the odds are redesigning processes around human-agent collaboration, establishing cross-functional governance councils, and building continuous monitoring with rollback capabilities.",
+						"The lesson is clear: agentic AI success isn't a model problem. It's an enterprise operating model problem.",
+						"Have you seen agent pilots succeed or fail in your organization? What made the difference?",
+					},
+				},
+			},
+		},
+		{
 			Title:   "From Prototypes to Production: AI Agents That Actually Work",
 			Slug:    "from-prototypes-to-production-ai-agents-that-actually-work",
 			Date:    "May 24, 2026",

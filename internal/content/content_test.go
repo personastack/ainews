@@ -4,8 +4,8 @@ import "testing"
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 65 {
-		t.Fatalf("Posts() returned %d posts, want 65", len(got))
+	if len(got) != 67 {
+		t.Fatalf("Posts() returned %d posts, want 67", len(got))
 	}
 
 	for _, post := range got {
@@ -25,6 +25,22 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	powerCrunchPost, ok := FindBySlug("2026-05-24-ai-power-crunch")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI power crunch post")
+	}
+	if powerCrunchPost.Title != "The AI Power Crunch: When Electricity Becomes the New Bottleneck" {
+		t.Fatalf("FindBySlug() returned %q for AI power crunch post", powerCrunchPost.Title)
+	}
+
+	agentFailurePost, ok := FindBySlug("2026-05-24-agent-failure-rates")
+	if !ok {
+		t.Fatal("FindBySlug() did not find enterprise AI agent failure post")
+	}
+	if agentFailurePost.Title != "Why 89% of Enterprise AI Agent Pilots Are Failing" {
+		t.Fatalf("FindBySlug() returned %q for enterprise AI agent failure post", agentFailurePost.Title)
+	}
+
 	aiAgentsProductionPost, ok := FindBySlug("from-prototypes-to-production-ai-agents-that-actually-work")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI agents production post")

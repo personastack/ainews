@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The AI Power Crunch: When Electricity Becomes the New Bottleneck",
+		"Why 89% of Enterprise AI Agent Pilots Are Failing",
 		"From Prototypes to Production: AI Agents That Actually Work",
 		"Google&#39;s Gemini 3.5 Flash: The Speed Demon Powering Tomorrow&#39;s AI Agents",
 		"From Prototypes to Production: The Maturing World of AI Agents in 2026",
@@ -125,12 +127,12 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 65 {
-		t.Fatalf("len(posts) = %d, want 65", len(posts))
+	if len(posts) != 67 {
+		t.Fatalf("len(posts) = %d, want 67", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "from-prototypes-to-production-ai-agents-that-actually-work" {
-		t.Fatalf("first post slug = %q, want newest AI agents production post", got)
+	if got := posts[0]["slug"]; got != "2026-05-24-ai-power-crunch" {
+		t.Fatalf("first post slug = %q, want newest AI power crunch post", got)
 	}
 }
 

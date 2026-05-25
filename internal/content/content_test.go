@@ -5,6 +5,16 @@ import (
 	"time"
 )
 
+func containsSlug(posts []Post, slug string) bool {
+	for _, post := range posts {
+		if post.Slug == slug {
+			return true
+		}
+	}
+
+	return false
+}
+
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
 	if len(got) != 74 {
@@ -39,6 +49,24 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 		if postDate.After(now) {
 			t.Fatalf("post %q is dated %s, which is after current UTC time %s", post.Slug, post.Date, now.Format(time.RFC3339))
 		}
+	}
+}
+
+func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	beforePublication := time.Date(2026, time.May, 25, 12, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(beforePublication), "ai-early-disease-detection-breakthroughs") {
+		t.Fatal("publishedPosts() included early disease detection post before publication date")
+	}
+	if containsSlug(publishedPosts(beforePublication), "the-agentic-ai-revolution-governance-gap") {
+		t.Fatal("publishedPosts() included governance gap post before publication date")
+	}
+
+	onPublication := time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublication), "ai-early-disease-detection-breakthroughs") {
+		t.Fatal("publishedPosts() did not include early disease detection post on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublication), "the-agentic-ai-revolution-governance-gap") {
+		t.Fatal("publishedPosts() did not include governance gap post on publication date")
 	}
 }
 
@@ -618,6 +646,13 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if scienceDiscoveryPost.Title != "AI Accelerates Scientific Discovery: Breakthroughs in Medicine and Research May 2026" {
 		t.Fatalf("FindBySlug() returned %q for scientific discovery post", scienceDiscoveryPost.Title)
+	}
+
+	if _, ok := FindBySlug("ai-early-disease-detection-breakthroughs"); ok {
+		t.Fatal("FindBySlug() returned unpublished early disease detection post before publication date")
+	}
+	if _, ok := FindBySlug("the-agentic-ai-revolution-governance-gap"); ok {
+		t.Fatal("FindBySlug() returned unpublished governance gap post before publication date")
 	}
 
 	if _, ok := FindBySlug("missing-post"); ok {

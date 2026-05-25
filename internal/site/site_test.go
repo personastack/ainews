@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"AI&#39;s Growing Physical Footprint: Data Centers, Energy, and Community Consent in 2026",
+		"AI Governance at a Crossroads: California&#39;s Workforce Order, Brussels, and the Fight Against Digital Authoritarianism",
 		"The Agent Revolution: From Chatbots to Autonomous Co-workers (May 2026)",
 		"The Great AI Regulatory Divide: EU vs US vs China (May 2026)",
 		"The AI Power Crunch: When Electricity Becomes the New Bottleneck",
@@ -129,20 +131,20 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 73 {
-		t.Fatalf("len(posts) = %d, want 73", len(posts))
+	if len(posts) != 75 {
+		t.Fatalf("len(posts) = %d, want 75", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "ai-agents-production-revolution-may-2026" {
-		t.Fatalf("first post slug = %q, want newest agent revolution post", got)
+	if got := posts[0]["slug"]; got != "2026-05-26-ai-physical-footprint-data-centers-energy-community-consent" {
+		t.Fatalf("first post slug = %q, want newest AI physical footprint post", got)
 	}
 
-	if got := posts[1]["slug"]; got != "ai-regulatory-divide-2026" {
-		t.Fatalf("second post slug = %q, want regulatory divide post", got)
+	if got := posts[1]["slug"]; got != "2026-05-26-ai-governance-crossroads-california-workforce-order-brussels" {
+		t.Fatalf("second post slug = %q, want newest AI governance crossroads post", got)
 	}
 
-	if got := posts[2]["slug"]; got != "2026-05-24-openai-genuine-mathematical-discovery" {
-		t.Fatalf("third post slug = %q, want newest May 24 OpenAI genuine mathematical discovery post", got)
+	if got := posts[2]["slug"]; got != "ai-agents-production-revolution-may-2026" {
+		t.Fatalf("third post slug = %q, want May 25 agent revolution post", got)
 	}
 }
 

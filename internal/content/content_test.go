@@ -1,11 +1,14 @@
 package content
 
-import "testing"
+import (
+	"testing"
+	"time"
+)
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 75 {
-		t.Fatalf("Posts() returned %d posts, want 75", len(got))
+	if len(got) != 73 {
+		t.Fatalf("Posts() returned %d posts, want 73", len(got))
 	}
 
 	for _, post := range got {
@@ -20,6 +23,21 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 		}
 		if len(post.Sections) == 0 {
 			t.Fatalf("post %q has no sections", post.Slug)
+		}
+	}
+}
+
+func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
+	now := time.Now().UTC()
+
+	for _, post := range Posts() {
+		postDate, err := time.Parse("January 2, 2006", post.Date)
+		if err != nil {
+			t.Fatalf("parse date for post %q: %v", post.Slug, err)
+		}
+
+		if postDate.After(now) {
+			t.Fatalf("post %q is dated %s, which is after current UTC time %s", post.Slug, post.Date, now.Format(time.RFC3339))
 		}
 	}
 }
@@ -39,22 +57,6 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if regulatoryDividePost.Title != "The Great AI Regulatory Divide: EU vs US vs China (May 2026)" {
 		t.Fatalf("FindBySlug() returned %q for regulatory divide post", regulatoryDividePost.Title)
-	}
-
-	physicalFootprintPost, ok := FindBySlug("2026-05-26-ai-physical-footprint-data-centers-energy-community-consent")
-	if !ok {
-		t.Fatal("FindBySlug() did not find AI physical footprint post")
-	}
-	if physicalFootprintPost.Title != "AI's Growing Physical Footprint: Data Centers, Energy, and Community Consent in 2026" {
-		t.Fatalf("FindBySlug() returned %q for AI physical footprint post", physicalFootprintPost.Title)
-	}
-
-	governanceCrossroadsPost, ok := FindBySlug("2026-05-26-ai-governance-crossroads-california-workforce-order-brussels")
-	if !ok {
-		t.Fatal("FindBySlug() did not find AI governance crossroads post")
-	}
-	if governanceCrossroadsPost.Title != "AI Governance at a Crossroads: California's Workforce Order, Brussels, and the Fight Against Digital Authoritarianism" {
-		t.Fatalf("FindBySlug() returned %q for AI governance crossroads post", governanceCrossroadsPost.Title)
 	}
 
 	openAIGenuineDiscoveryPost, ok := FindBySlug("2026-05-24-openai-genuine-mathematical-discovery")

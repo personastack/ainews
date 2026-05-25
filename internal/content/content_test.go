@@ -7,8 +7,8 @@ import (
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 73 {
-		t.Fatalf("Posts() returned %d posts, want 73", len(got))
+	if len(got) != 74 {
+		t.Fatalf("Posts() returned %d posts, want 74", len(got))
 	}
 
 	for _, post := range got {
@@ -43,6 +43,14 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	productivityParadoxPost, ok := FindBySlug("ai-productivity-paradox-enterprise-governance")
+	if !ok {
+		t.Fatal("FindBySlug() did not find productivity paradox post")
+	}
+	if productivityParadoxPost.Title != "The AI Productivity Paradox: Governance Gaps in Enterprise Adoption" {
+		t.Fatalf("FindBySlug() returned %q for productivity paradox post", productivityParadoxPost.Title)
+	}
+
 	agentRevolutionPost, ok := FindBySlug("ai-agents-production-revolution-may-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find agent revolution post")

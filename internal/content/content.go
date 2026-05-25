@@ -1,5 +1,7 @@
 package content
 
+import "time"
+
 // Section groups related paragraphs under an optional heading.
 type Section struct {
 	Heading    string
@@ -491,18 +493,42 @@ var posts = []Post{
 
 // Posts returns all published posts in publication order.
 func Posts() []Post {
-	return clonePosts(posts)
+	return clonePosts(publishedPosts(time.Now().UTC()))
 }
 
 // FindBySlug returns a published post when the slug matches exactly.
 func FindBySlug(slug string) (Post, bool) {
+	now := time.Now().UTC()
 	for _, post := range posts {
+		if !isPublished(post, now) {
+			continue
+		}
 		if post.Slug == slug {
 			return clonePost(post), true
 		}
 	}
 
 	return Post{}, false
+}
+
+func publishedPosts(now time.Time) []Post {
+	filtered := make([]Post, 0, len(posts))
+	for _, post := range posts {
+		if isPublished(post, now) {
+			filtered = append(filtered, post)
+		}
+	}
+
+	return filtered
+}
+
+func isPublished(post Post, now time.Time) bool {
+	postDate, err := time.Parse("January 2, 2006", post.Date)
+	if err != nil {
+		return true
+	}
+
+	return !postDate.After(now)
 }
 
 func clonePosts(src []Post) []Post {

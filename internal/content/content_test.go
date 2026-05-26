@@ -95,6 +95,14 @@ func TestFindBySlug(t *testing.T) {
 		t.Fatalf("FindBySlug() returned %q for Gemini search revolution post", geminiSearchPost.Title)
 	}
 
+	scientificRevolutionPost, ok := FindBySlug("ai-scientific-revolution-materials-climate")
+	if !ok {
+		t.Fatal("FindBySlug() did not find scientific revolution post")
+	}
+	if scientificRevolutionPost.Title != "AI Ignites a Scientific Revolution: From Materials to Climate Solutions" {
+		t.Fatalf("FindBySlug() returned %q for scientific revolution post", scientificRevolutionPost.Title)
+	}
+
 	postBlackwellHardwarePost, ok := FindBySlug("post-blackwell-ai-hardware-competition-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find post-Blackwell hardware competition post")

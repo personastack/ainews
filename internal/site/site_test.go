@@ -25,6 +25,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	body := rec.Body.String()
 	for _, want := range []string{
 		"AI Safety Breakthroughs Signal a New Era of Responsible AI Development",
+		"AI Ignites a Scientific Revolution: From Materials to Climate Solutions",
 		"Edge AI Revolution: Intelligence Moves to the Device",
 		"The Agent Revolution: From Chatbots to Autonomous Co-workers (May 2026)",
 		"The Great AI Regulatory Divide: EU vs US vs China (May 2026)",

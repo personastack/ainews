@@ -17,8 +17,8 @@ func containsSlug(posts []Post, slug string) bool {
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 74 {
-		t.Fatalf("Posts() returned %d posts, want 74", len(got))
+	if len(got) != 78 {
+		t.Fatalf("Posts() returned %d posts, want 78", len(got))
 	}
 
 	for _, post := range got {
@@ -71,6 +71,22 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	geminiSearchPost, ok := FindBySlug("google-gemini-3-5-flash-search-revolution-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Gemini search revolution post")
+	}
+	if geminiSearchPost.Title != "Google's Gemini 3.5 Flash Search Revolution: Conversational AI Takes Over" {
+		t.Fatalf("FindBySlug() returned %q for Gemini search revolution post", geminiSearchPost.Title)
+	}
+
+	postBlackwellHardwarePost, ok := FindBySlug("post-blackwell-ai-hardware-competition-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find post-Blackwell hardware competition post")
+	}
+	if postBlackwellHardwarePost.Title != "Post-Blackwell AI Hardware Competition: Quantum, Photonic and Neuromorphic Bets Accelerate" {
+		t.Fatalf("FindBySlug() returned %q for post-Blackwell hardware competition post", postBlackwellHardwarePost.Title)
+	}
+
 	productivityParadoxPost, ok := FindBySlug("ai-productivity-paradox-enterprise-governance")
 	if !ok {
 		t.Fatal("FindBySlug() did not find productivity paradox post")

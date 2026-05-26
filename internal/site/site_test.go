@@ -129,24 +129,24 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 74 {
-		t.Fatalf("len(posts) = %d, want 74", len(posts))
+	if len(posts) != 78 {
+		t.Fatalf("len(posts) = %d, want 78", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "ai-productivity-paradox-enterprise-governance" {
-		t.Fatalf("first post slug = %q, want May 25 productivity paradox post", got)
+	if got := posts[0]["slug"]; got != "google-gemini-3-5-flash-search-revolution-2026" {
+		t.Fatalf("first post slug = %q, want Gemini search revolution post", got)
 	}
 
-	if got := posts[1]["slug"]; got != "ai-agents-production-revolution-may-2026" {
-		t.Fatalf("second post slug = %q, want May 25 agent revolution post", got)
+	if got := posts[1]["slug"]; got != "post-blackwell-ai-hardware-competition-2026" {
+		t.Fatalf("second post slug = %q, want post-Blackwell hardware competition post", got)
 	}
 
-	if got := posts[2]["slug"]; got != "ai-regulatory-divide-2026" {
-		t.Fatalf("third post slug = %q, want May 25 regulatory divide post", got)
+	if got := posts[2]["slug"]; got != "ai-scientific-revolution-materials-climate" {
+		t.Fatalf("third post slug = %q, want May 26 scientific revolution post", got)
 	}
 
-	if got := posts[3]["slug"]; got != "2026-05-24-openai-genuine-mathematical-discovery" {
-		t.Fatalf("fourth post slug = %q, want May 24 OpenAI discovery post", got)
+	if got := posts[3]["slug"]; got != "edge-ai-revolution-on-device-intelligence" {
+		t.Fatalf("fourth post slug = %q, want May 26 edge AI revolution post", got)
 	}
 }
 

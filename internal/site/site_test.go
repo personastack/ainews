@@ -24,6 +24,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"AI Safety Breakthroughs Signal a New Era of Responsible AI Development",
+		"Edge AI Revolution: Intelligence Moves to the Device",
 		"The Agent Revolution: From Chatbots to Autonomous Co-workers (May 2026)",
 		"The Great AI Regulatory Divide: EU vs US vs China (May 2026)",
 		"The AI Power Crunch: When Electricity Becomes the New Bottleneck",
@@ -129,24 +131,24 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 78 {
-		t.Fatalf("len(posts) = %d, want 78", len(posts))
+	if len(posts) != 80 {
+		t.Fatalf("len(posts) = %d, want 80", len(posts))
 	}
 
-	if got := posts[0]["slug"]; got != "google-gemini-3-5-flash-search-revolution-2026" {
-		t.Fatalf("first post slug = %q, want Gemini search revolution post", got)
+	if got := posts[0]["slug"]; got != "ai-safety-breakthroughs-responsible-development-2026" {
+		t.Fatalf("first post slug = %q, want May 26 safety breakthroughs post", got)
 	}
 
-	if got := posts[1]["slug"]; got != "post-blackwell-ai-hardware-competition-2026" {
-		t.Fatalf("second post slug = %q, want post-Blackwell hardware competition post", got)
+	if got := posts[1]["slug"]; got != "edge-ai-intelligence-moves-to-device-2026" {
+		t.Fatalf("second post slug = %q, want May 26 edge device intelligence post", got)
 	}
 
-	if got := posts[2]["slug"]; got != "ai-scientific-revolution-materials-climate" {
-		t.Fatalf("third post slug = %q, want May 26 scientific revolution post", got)
+	if got := posts[2]["slug"]; got != "google-gemini-3-5-flash-search-revolution-2026" {
+		t.Fatalf("third post slug = %q, want Gemini search revolution post", got)
 	}
 
-	if got := posts[3]["slug"]; got != "edge-ai-revolution-on-device-intelligence" {
-		t.Fatalf("fourth post slug = %q, want May 26 edge AI revolution post", got)
+	if got := posts[3]["slug"]; got != "post-blackwell-ai-hardware-competition-2026" {
+		t.Fatalf("fourth post slug = %q, want post-Blackwell hardware competition post", got)
 	}
 }
 

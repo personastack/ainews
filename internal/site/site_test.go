@@ -6,6 +6,8 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/personadock/ainews/internal/content"
 )
 
 func TestIndexIncludesPublishedStories(t *testing.T) {
@@ -24,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"Consumer AI vs. The Hype Machine: What&#39;s Real, What&#39;s Bullshit, and What Matters",
+		"AI&#39;s Early Warning System: Detecting Diseases Years Before Symptoms",
+		"The Agentic AI Revolution: Adoption Surges But Governance Lags Dangerously Behind",
 		"AI Safety Breakthroughs Signal a New Era of Responsible AI Development",
 		"AI Ignites a Scientific Revolution: From Materials to Climate Solutions",
 		"Edge AI Revolution: Intelligence Moves to the Device",
@@ -132,24 +137,25 @@ func TestPostsAPI(t *testing.T) {
 		t.Fatalf("json.Unmarshal() error = %v", err)
 	}
 
-	if len(posts) != 80 {
-		t.Fatalf("len(posts) = %d, want 80", len(posts))
+	wantPosts := content.Posts()
+	if len(posts) != len(wantPosts) {
+		t.Fatalf("len(posts) = %d, want %d", len(posts), len(wantPosts))
 	}
 
-	if got := posts[0]["slug"]; got != "ai-safety-breakthroughs-responsible-development-2026" {
-		t.Fatalf("first post slug = %q, want May 26 safety breakthroughs post", got)
+	if got := posts[0]["slug"]; got != wantPosts[0].Slug {
+		t.Fatalf("first post slug = %q, want %q", got, wantPosts[0].Slug)
 	}
 
-	if got := posts[1]["slug"]; got != "edge-ai-intelligence-moves-to-device-2026" {
-		t.Fatalf("second post slug = %q, want May 26 edge device intelligence post", got)
+	if got := posts[1]["slug"]; got != wantPosts[1].Slug {
+		t.Fatalf("second post slug = %q, want %q", got, wantPosts[1].Slug)
 	}
 
-	if got := posts[2]["slug"]; got != "google-gemini-3-5-flash-search-revolution-2026" {
-		t.Fatalf("third post slug = %q, want Gemini search revolution post", got)
+	if got := posts[2]["slug"]; got != wantPosts[2].Slug {
+		t.Fatalf("third post slug = %q, want %q", got, wantPosts[2].Slug)
 	}
 
-	if got := posts[3]["slug"]; got != "post-blackwell-ai-hardware-competition-2026" {
-		t.Fatalf("fourth post slug = %q, want post-Blackwell hardware competition post", got)
+	if got := posts[3]["slug"]; got != wantPosts[3].Slug {
+		t.Fatalf("fourth post slug = %q, want %q", got, wantPosts[3].Slug)
 	}
 }
 

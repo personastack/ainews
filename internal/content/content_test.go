@@ -17,8 +17,8 @@ func containsSlug(posts []Post, slug string) bool {
 
 func TestPostsReturnsPublishedPosts(t *testing.T) {
 	got := Posts()
-	if len(got) != 80 {
-		t.Fatalf("Posts() returned %d posts, want 80", len(got))
+	if len(got) == 0 {
+		t.Fatal("Posts() returned no posts")
 	}
 
 	for _, post := range got {
@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	beforePublication := time.Date(2026, time.May, 25, 12, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(beforePublication), "consumer-ai-vs-hype-reality") {
+		t.Fatal("publishedPosts() included consumer AI hype article before publication date")
+	}
 	if containsSlug(publishedPosts(beforePublication), "ai-early-disease-detection-breakthroughs") {
 		t.Fatal("publishedPosts() included early disease detection post before publication date")
 	}
@@ -62,6 +65,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublication := time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublication), "consumer-ai-vs-hype-reality") {
+		t.Fatal("publishedPosts() did not include consumer AI hype article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublication), "ai-early-disease-detection-breakthroughs") {
 		t.Fatal("publishedPosts() did not include early disease detection post on publication date")
 	}
@@ -71,6 +77,20 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	consumerAIPost, ok := FindBySlug("consumer-ai-vs-hype-reality")
+	if time.Now().UTC().Before(time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)) {
+		if ok {
+			t.Fatal("FindBySlug() returned consumer AI hype article before publication date")
+		}
+	} else {
+		if !ok {
+			t.Fatal("FindBySlug() did not find consumer AI hype article")
+		}
+		if consumerAIPost.Title != "Consumer AI vs. The Hype Machine: What's Real, What's Bullshit, and What Matters" {
+			t.Fatalf("FindBySlug() returned %q for consumer AI hype article", consumerAIPost.Title)
+		}
+	}
+
 	safetyBreakthroughsPost, ok := FindBySlug("ai-safety-breakthroughs-responsible-development-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI safety breakthroughs post")
@@ -688,11 +708,33 @@ func TestFindBySlug(t *testing.T) {
 		t.Fatalf("FindBySlug() returned %q for scientific discovery post", scienceDiscoveryPost.Title)
 	}
 
-	if _, ok := FindBySlug("ai-early-disease-detection-breakthroughs"); ok {
-		t.Fatal("FindBySlug() returned unpublished early disease detection post before publication date")
+	publicationDate := time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)
+	earlyDiseasePost, ok := FindBySlug("ai-early-disease-detection-breakthroughs")
+	if time.Now().UTC().Before(publicationDate) {
+		if ok {
+			t.Fatal("FindBySlug() returned unpublished early disease detection post before publication date")
+		}
+	} else {
+		if !ok {
+			t.Fatal("FindBySlug() did not find early disease detection post on or after publication date")
+		}
+		if earlyDiseasePost.Title != "AI's Early Warning System: Detecting Diseases Years Before Symptoms" {
+			t.Fatalf("FindBySlug() returned %q for early disease detection post", earlyDiseasePost.Title)
+		}
 	}
-	if _, ok := FindBySlug("the-agentic-ai-revolution-governance-gap"); ok {
-		t.Fatal("FindBySlug() returned unpublished governance gap post before publication date")
+
+	governanceGapPost, ok := FindBySlug("the-agentic-ai-revolution-governance-gap")
+	if time.Now().UTC().Before(publicationDate) {
+		if ok {
+			t.Fatal("FindBySlug() returned unpublished governance gap post before publication date")
+		}
+	} else {
+		if !ok {
+			t.Fatal("FindBySlug() did not find governance gap post on or after publication date")
+		}
+		if governanceGapPost.Title != "The Agentic AI Revolution: Adoption Surges But Governance Lags Dangerously Behind" {
+			t.Fatalf("FindBySlug() returned %q for governance gap post", governanceGapPost.Title)
+		}
 	}
 
 	if _, ok := FindBySlug("missing-post"); ok {

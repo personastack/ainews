@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	beforePublication := time.Date(2026, time.May, 25, 12, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(beforePublication), "alibaba-cloud-agentic-ai-offensive-qwen3-7-max") {
+		t.Fatal("publishedPosts() included Alibaba Cloud offensive article before publication date")
+	}
 	if containsSlug(publishedPosts(beforePublication), "consumer-ai-vs-hype-reality") {
 		t.Fatal("publishedPosts() included consumer AI hype article before publication date")
 	}
@@ -65,6 +68,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublication := time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublication), "alibaba-cloud-agentic-ai-offensive-qwen3-7-max") {
+		t.Fatal("publishedPosts() did not include Alibaba Cloud offensive article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublication), "consumer-ai-vs-hype-reality") {
 		t.Fatal("publishedPosts() did not include consumer AI hype article on publication date")
 	}
@@ -77,6 +83,20 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	alibabaPost, ok := FindBySlug("alibaba-cloud-agentic-ai-offensive-qwen3-7-max")
+	if time.Now().UTC().Before(time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)) {
+		if ok {
+			t.Fatal("FindBySlug() returned Alibaba Cloud offensive article before publication date")
+		}
+	} else {
+		if !ok {
+			t.Fatal("FindBySlug() did not find Alibaba Cloud offensive article")
+		}
+		if alibabaPost.Title != "Alibaba's AI Offensive: How Qwen3.7-Max and a New Skills Portal Challenge Western Cloud Giants" {
+			t.Fatalf("FindBySlug() returned %q for Alibaba Cloud offensive article", alibabaPost.Title)
+		}
+	}
+
 	consumerAIPost, ok := FindBySlug("consumer-ai-vs-hype-reality")
 	if time.Now().UTC().Before(time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)) {
 		if ok {

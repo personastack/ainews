@@ -246,5 +246,84 @@ func init() {
 				},
 			},
 		},
+		{
+			Title:   "Mistral AI Unveils Vibe and Forge: A Two-Pronged Assault on the AI Agent Market",
+			Slug:    "mistral-ai-vibe-forge-unified-agent-enterprise-platform-2026",
+			Date:    "May 29, 2026",
+			Tag:     "Agents",
+			Summary: "Mistral launched Vibe for long-horizon autonomous workflows and Forge for enterprise model customization, alongside open-weights TTS model Voxtral.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"Mistral AI announced two major products in one release cycle: Vibe, a long-horizon agent platform, and Forge, an enterprise model builder for training and deployment workflows. The company also introduced Voxtral, an open-weights text-to-speech model.",
+						"Together, the releases position Mistral as more than a model vendor. The company is signaling a push to own higher-value layers of the AI stack where enterprises execute workflows and build production systems.",
+					},
+				},
+				{
+					Heading: "Vibe Targets Persistent Agent Execution",
+					Paragraphs: []string{
+						"Vibe is framed as an execution layer rather than a chat product, with support for multi-step tasks across business software including spreadsheets, databases, CRM tools, messaging platforms, and internal systems.",
+						"Mistral emphasized persistence as a differentiator: agents can continue and resume long-running tasks over hours or days, addressing a common gap between agent demos and stable production automation.",
+					},
+				},
+				{
+					Heading: "Forge Expands the Enterprise Infrastructure Play",
+					Paragraphs: []string{
+						"Forge gives organizations a path to train, fine-tune, and deploy custom models on Mistral infrastructure without requiring deeply specialized ML teams for every stage.",
+						"The timing aligns with large 2026 enterprise AI budgets and growing demand for alternatives to hyperscaler lock-in, where pricing, control, and interoperability are becoming primary buying criteria.",
+					},
+				},
+				{
+					Heading: "Voxtral Reinforces the Open-Weights Strategy",
+					Paragraphs: []string{
+						"Alongside Vibe and Forge, Mistral released Voxtral as an open-weights TTS model positioned as competitive with proprietary systems. This extends a strategy that has helped the company build developer mindshare.",
+						"By pairing open model distribution with enterprise platforms, Mistral is attempting to convert grassroots adoption into durable commercial adoption across the full lifecycle of AI deployment.",
+					},
+				},
+				{
+					Heading: "Why This Launch Matters",
+					Paragraphs: []string{
+						"The combined launch is a direct attempt to compete in both the agent-runtime layer and the model-infrastructure layer at the same time. Success depends on execution quality in crowded markets where reliability and integration depth matter as much as model quality.",
+						"If Vibe and Forge deliver production-grade outcomes, Mistral could strengthen its role as a credible non-US counterweight in enterprise AI while preserving the openness narrative that differentiates its brand.",
+					},
+				},
+			},
+		},
+		{
+			Title:   "AI2 Unveils MolmoAct 2: A Leap Forward in Real-World Robotics and AI Action",
+			Slug:    "molmoact-2-ai2-robotics-action-reasoning-breakthrough-2026",
+			Date:    "May 29, 2026",
+			Tag:     "Robotics",
+			Summary: "AI2 released MolmoAct 2 and an open bimanual-manipulation dataset, advancing action reasoning for robots and giving researchers shared training infrastructure.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"AI2 introduced MolmoAct 2, an upgraded action-reasoning model for robotics focused on improving how AI systems convert high-level goals into coordinated physical behavior.",
+						"The release also included a large open dataset of bimanual manipulation demonstrations, expanding shared resources for researchers building real-world robotic agents.",
+					},
+				},
+				{
+					Heading: "Improved Action Planning in Physical Environments",
+					Paragraphs: []string{
+						"MolmoAct 2 combines visual understanding and action planning to better handle multi-step manipulation tasks in dynamic, real environments. This addresses a persistent bottleneck in robotics AI where language-level intent and motor-level execution diverge.",
+						"AI2 reported stronger benchmark performance on bimanual coordination tasks, a category that typically exposes weakness in timing, precision, and simultaneous control across multiple arms.",
+					},
+				},
+				{
+					Heading: "Open Demonstration Data as Shared Infrastructure",
+					Paragraphs: []string{
+						"The accompanying open dataset includes extensive demonstrations of robots performing diverse physical tasks, giving developers and labs a reusable corpus for training and evaluation.",
+						"As robotics moves toward more general-purpose systems, open benchmarks and demonstration sets are increasingly important for comparable progress measurement across the field.",
+					},
+				},
+				{
+					Heading: "Why the Release Is Strategically Important",
+					Paragraphs: []string{
+						"MolmoAct 2 signals continued progress in one of AI's hardest domains: reliable interaction with the physical world under real constraints. It also reinforces AI2's open approach in a competitive environment where many leading datasets remain closed.",
+						"For robotics-focused teams and investors, this is not just a model update. It is a meaningful expansion of the ecosystem tooling required to accelerate practical robotic AI development.",
+					},
+				},
+			},
+		},
 	}, posts...)
 }

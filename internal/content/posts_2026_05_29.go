@@ -290,37 +290,58 @@ func init() {
 			},
 		},
 		{
-			Title:   "The Sovereign AI Play: How France Is Building Paris as Europe's AI Hub With a EUR10 Billion Supercomputer",
-			Slug:    "france-paris-europe-ai-hub-10-billion-supercomputer",
+			Title:   "How Paris Became Europe's AI Superpower: The EUR10 Billion Supercomputer Initiative",
+			Slug:    "france-paris-europe-ai-hub-19-billion-supercomputer",
 			Date:    "May 29, 2026",
 			Tag:     "Infrastructure",
-			Summary: "France is positioning Paris as a sovereign AI hub around large-scale compute investment, including a reported EUR10 billion supercomputer initiative aimed at strategic autonomy.",
+			Summary: "Europe's EUR10 billion AI infrastructure push is centering on Paris, where new supercomputing capacity is being positioned as a sovereignty and competitiveness reset.",
 			Sections: []Section{
 				{
 					Paragraphs: []string{
-						"France is increasingly framing AI infrastructure as a sovereignty priority, with Paris at the center of a broader push to build durable domestic compute capacity for research, industry, and public-sector workloads.",
-						"A reported EUR10 billion supercomputer effort reflects that strategic posture: scale first, so local organizations can train and deploy advanced models without depending entirely on external hyperscale supply.",
+						"The European Union's long-running effort to narrow the AI infrastructure gap with the US and China took a major step forward in 2026, with Paris positioned at the center of a EUR10 billion transformation.",
+						"For years, Europe's fragmented compute strategy left researchers and companies dependent on foreign cloud and hardware ecosystems. That balance is now shifting toward a continent-scale buildout.",
 					},
 				},
 				{
-					Heading: "Why Paris Is a Natural Focal Point",
+					Heading: "The Big Picture",
 					Paragraphs: []string{
-						"Paris combines dense research ecosystems, policy institutions, and enterprise concentration, making it one of Europe's strongest locations for scaling applied AI into production environments.",
-						"The hub strategy relies on this proximity effect: place compute, talent, and deployment buyers in one geography to accelerate iteration and attract follow-on investment.",
+						"The European AI Infrastructure Initiative, coordinated through EuroHPC Joint Undertaking, has committed more than EUR10 billion toward a network of AI-focused supercomputers.",
+						"The flagship effort is designed as a connected continental backbone for model training and scientific workloads, rather than isolated national projects.",
 					},
 				},
 				{
-					Heading: "Sovereign Compute Changes Competitive Dynamics",
+					Heading: "Why EUR10 Billion Matters",
 					Paragraphs: []string{
-						"Large domestic compute programs can improve model-development speed, reduce latency and data-governance friction for regulated sectors, and provide stronger negotiating leverage in cross-border technology dependencies.",
-						"They also create pressure on neighboring markets to raise infrastructure ambition, especially where AI competitiveness is linked to industrial policy and national security planning.",
+						"At first glance, EUR10 billion across 27 countries may seem modest compared to large US and Chinese programs. But for Europe, it represents the first truly coordinated attempt to build sovereign AI compute at scale.",
+						"The Paris IDRIS buildout and partner sites are expected to provide exascale-class capability with AI-optimized architecture, including high-bandwidth interconnects and accelerator-centric system design.",
 					},
 				},
 				{
-					Heading: "Execution Risk Still Matters",
+					Heading: "How Paris Became the Anchor",
 					Paragraphs: []string{
-						"Supercomputer-scale programs face long lead times in power delivery, procurement, and operations. Talent depth, software tooling, and sustained utilization are as important as headline capital commitments.",
-						"For Paris to become a durable European AI anchor, infrastructure build-out must be matched by deployment outcomes across startups, enterprises, and public institutions.",
+						"France's national AI strategy, first launched in 2018 and expanded in 2024, supported talent pipelines and specialized research programs that strengthened Paris as a natural hub.",
+						"IDRIS is slated as a flagship installation, while partnerships spanning CEA and major hardware vendors have focused on ensuring the stack supports both foundational research and production model development.",
+					},
+				},
+				{
+					Heading: "What This Means for Europe",
+					Paragraphs: []string{
+						"European universities and startups are expected to gain significantly better access to advanced compute, reducing dependence on US platforms for high-end training runs.",
+						"The same infrastructure can also support climate science, drug discovery, and materials research, reinforcing the argument that AI compute is now strategic public infrastructure.",
+					},
+				},
+				{
+					Heading: "Competitive Context",
+					Paragraphs: []string{
+						"The US and China are still spending at larger absolute levels, so Europe's program is best read as high-impact catch-up rather than outright parity.",
+						"The key variable now is execution quality: whether Europe can convert hardware deployment into sustained model performance, commercial output, and long-term talent retention.",
+					},
+				},
+				{
+					Heading: "What to Watch Next",
+					Paragraphs: []string{
+						"Four indicators will shape the next phase: first supercomputer go-live milestones, Mistral AI's growth trajectory, how regulation interacts with infrastructure access, and whether Europe can retain top AI builders.",
+						"If those pieces align, Paris has a credible path to becoming a durable global AI hub alongside the established US and Chinese centers.",
 					},
 				},
 			},

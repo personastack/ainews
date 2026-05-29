@@ -3,6 +3,78 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Federal AI Spending Surges: $91.8B Pipeline Transforms U.S. Government Operations in 2026",
+			Slug:    "federal-ai-spending-boom-2026-government-transformation",
+			Date:    "May 29, 2026",
+			Tag:     "Policy",
+			Summary: "Federal AI obligations reached $7.2B in early 2026 with a reported $91.8B pipeline, signaling a major acceleration in defense, health, and scientific AI programs.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"US federal AI spending has shifted from pilot programs to scaled procurement. Reported obligations in the first half of 2026 reached $7.2 billion across dozens of agencies, with a much larger potential pipeline now announced.",
+						"That level of commitment indicates AI is being treated as core public-sector infrastructure for defense operations, healthcare delivery, and science programs rather than a discretionary innovation budget.",
+					},
+				},
+				{
+					Heading: "Defense Accounts for the Largest Share",
+					Paragraphs: []string{
+						"The Department of Defense reportedly leads obligations with spending focused on command-and-control modernization, autonomous systems, cyber defense, logistics optimization, and simulation programs.",
+						"This concentration reflects a broader strategic view that software-defined operations and AI-assisted decision cycles are becoming foundational to military readiness and deterrence.",
+					},
+				},
+				{
+					Heading: "Health and Science Programs Are Expanding Quickly",
+					Paragraphs: []string{
+						"Health and scientific agencies are also scaling investments, including clinical AI systems, drug discovery acceleration, climate observation workflows, and computational materials programs.",
+						"In practice, this means more federal demand for specialized AI vendors, data infrastructure, model governance controls, and long-term operations support.",
+					},
+				},
+				{
+					Heading: "Procurement Scale Is Reshaping the AI Market",
+					Paragraphs: []string{
+						"As federal programs grow, contract structure and compliance requirements are increasingly determining which companies can participate at scale. Integrators, cloud providers, and domain-specific model vendors are all competing for position.",
+						"The policy implication is clear: government is no longer just regulating AI markets. It is actively steering market structure through procurement volume, standards, and mission priorities.",
+					},
+				},
+			},
+		},
+		{
+			Title:   "SpaceX's $2 Trillion Orbital AI Bet: Can Space Solve Earth's AI Power Crisis?",
+			Slug:    "spacex-2-trillion-orbital-ai-infrastructure-ipo-2026",
+			Date:    "May 29, 2026",
+			Tag:     "Infrastructure",
+			Summary: "A proposed orbital AI infrastructure strategy ties SpaceX launch and satellite networks to data-center energy constraints, pitching space-based compute as an answer to terrestrial power bottlenecks.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"SpaceX is being positioned around an orbital AI-infrastructure thesis: pair launch capability and global communications with space-based compute to bypass terrestrial power and cooling constraints.",
+						"The claim arrives as AI data-center growth is increasingly limited by grid interconnection timelines, regional transmission capacity, and local permitting bottlenecks.",
+					},
+				},
+				{
+					Heading: "Why the Idea Is Attracting Attention",
+					Paragraphs: []string{
+						"The core argument is that orbital systems can access persistent solar generation and vacuum-based thermal conditions while avoiding land and water constraints faced by many ground facilities.",
+						"If launch costs continue to decline, proponents argue that certain high-value workloads could justify hybrid architectures where orbit complements terrestrial clusters rather than replacing them.",
+					},
+				},
+				{
+					Heading: "Economics and Engineering Remain Unsettled",
+					Paragraphs: []string{
+						"Even optimistic scenarios require very large up-front capital, specialized hardware lifecycles, and sustained reliability under radiation and maintenance constraints that differ sharply from Earth-based deployments.",
+						"Breakeven timelines, replacement cadence, and standards for secure high-throughput connectivity are still open questions that will determine whether orbital compute is niche or durable.",
+					},
+				},
+				{
+					Heading: "What This Signals for the AI Industry",
+					Paragraphs: []string{
+						"Regardless of valuation debates, the orbital push reflects a broader truth: AI infrastructure competition now depends as much on energy and physical systems as on model quality.",
+						"In 2026, the strategic race is expanding from chips and models to grid access, deployment geography, and alternative compute architectures that can scale faster than traditional data-center supply chains.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The AI Power Crunch: Why Transformers Are the Real Bottleneck to AI Growth in 2026",
 			Slug:    "the-ai-power-crunch-transformers-and-the-new-bottleneck",
 			Date:    "May 29, 2026",

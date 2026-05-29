@@ -247,80 +247,80 @@ func init() {
 			},
 		},
 		{
-			Title:   "Mistral AI Unveils Vibe and Forge: A Two-Pronged Assault on the AI Agent Market",
-			Slug:    "mistral-ai-vibe-forge-unified-agent-enterprise-platform-2026",
+			Title:   "India's 12-Hour Clock: CERT-In's New AI Patch Mandate and What It Means for Global Security",
+			Slug:    "indias-12-hour-clock-cert-in-ai-patch-mandate",
 			Date:    "May 29, 2026",
-			Tag:     "Agents",
-			Summary: "Mistral launched Vibe for long-horizon autonomous workflows and Forge for enterprise model customization, alongside open-weights TTS model Voxtral.",
+			Tag:     "Policy",
+			Summary: "India's CERT-In now recommends patching known exploited vulnerabilities on internet-facing and crown-jewel systems within 12 hours, tightening global pressure for AI-speed cyber response.",
 			Sections: []Section{
 				{
 					Paragraphs: []string{
-						"Mistral AI announced two major products in one release cycle: Vibe, a long-horizon agent platform, and Forge, an enterprise model builder for training and deployment workflows. The company also introduced Voxtral, an open-weights text-to-speech model.",
-						"Together, the releases position Mistral as more than a model vendor. The company is signaling a push to own higher-value layers of the AI stack where enterprises execute workflows and build production systems.",
+						"On May 27, India's Computer Emergency Response Team (CERT-In) issued guidance that reshapes enterprise patching expectations: where operationally feasible, known exploited vulnerabilities on internet-facing and crown-jewel systems should be patched within 12 hours.",
+						"The recommendation is risk-based rather than universal across all vulnerability classes, but it materially compresses response timelines for the systems most likely to be targeted in active campaigns.",
 					},
 				},
 				{
-					Heading: "Vibe Targets Persistent Agent Execution",
+					Heading: "Built on India's Existing 6-Hour Reporting Regime",
 					Paragraphs: []string{
-						"Vibe is framed as an execution layer rather than a chat product, with support for multi-step tasks across business software including spreadsheets, databases, CRM tools, messaging platforms, and internal systems.",
-						"Mistral emphasized persistence as a differentiator: agents can continue and resume long-running tasks over hours or days, addressing a common gap between agent demos and stable production automation.",
+						"Since 2022, CERT-In incident reporting requirements have pushed organizations to report cyber incidents within 6 hours of discovery. The 2026 patch guidance adds a second compressed clock for remediation when exploitation is already in the wild.",
+						"Together, these timelines reduce the gap between detection, escalation, and technical response, making delayed patch windows harder to justify for exposed high-value assets.",
 					},
 				},
 				{
-					Heading: "Forge Expands the Enterprise Infrastructure Play",
+					Heading: "AI Compresses the Defender's Window",
 					Paragraphs: []string{
-						"Forge gives organizations a path to train, fine-tune, and deploy custom models on Mistral infrastructure without requiring deeply specialized ML teams for every stage.",
-						"The timing aligns with large 2026 enterprise AI budgets and growing demand for alternatives to hyperscaler lock-in, where pricing, control, and interoperability are becoming primary buying criteria.",
+						"In 2026, AI-assisted reconnaissance and exploit development can reduce attacker timelines from days to hours, raising the cost of traditional multi-day patch cadences.",
+						"CERT-In's emphasis on known exploited vulnerabilities aligns with this shift: once exploitation is active, defenders may only have a narrow, automation-dependent window to prevent compromise at scale.",
 					},
 				},
 				{
-					Heading: "Voxtral Reinforces the Open-Weights Strategy",
+					Heading: "Global Supply Chains Feel the Spillover",
 					Paragraphs: []string{
-						"Alongside Vibe and Forge, Mistral released Voxtral as an open-weights TTS model positioned as competitive with proprietary systems. This extends a strategy that has helped the company build developer mindshare.",
-						"By pairing open model distribution with enterprise platforms, Mistral is attempting to convert grassroots adoption into durable commercial adoption across the full lifecycle of AI deployment.",
+						"Multinational organizations operating in India or relying on India-based services now need to account for tighter patch-response expectations in vendor governance, contractual security terms, and incident playbooks.",
+						"As jurisdictions set different response clocks, global security teams are forced to operate across competing timelines, increasing pressure for standardized automation and higher baseline readiness.",
 					},
 				},
 				{
-					Heading: "Why This Launch Matters",
+					Heading: "A Signal for AI-Era Cyber Policy",
 					Paragraphs: []string{
-						"The combined launch is a direct attempt to compete in both the agent-runtime layer and the model-infrastructure layer at the same time. Success depends on execution quality in crowded markets where reliability and integration depth matter as much as model quality.",
-						"If Vibe and Forge deliver production-grade outcomes, Mistral could strengthen its role as a credible non-US counterweight in enterprise AI while preserving the openness narrative that differentiates its brand.",
+						"India's 12-hour recommendation highlights a broader policy transition: cyber defenses are being redesigned for threat environments that move at AI speed rather than human administrative speed.",
+						"For security leaders, the strategic requirement is clear: build patching, mitigation, and monitoring systems that can execute continuously, not just during scheduled maintenance cycles.",
 					},
 				},
 			},
 		},
 		{
-			Title:   "AI2 Unveils MolmoAct 2: A Leap Forward in Real-World Robotics and AI Action",
-			Slug:    "molmoact-2-ai2-robotics-action-reasoning-breakthrough-2026",
+			Title:   "The Sovereign AI Play: How France Is Building Paris as Europe's AI Hub With a EUR10 Billion Supercomputer",
+			Slug:    "france-paris-europe-ai-hub-10-billion-supercomputer",
 			Date:    "May 29, 2026",
-			Tag:     "Robotics",
-			Summary: "AI2 released MolmoAct 2 and an open bimanual-manipulation dataset, advancing action reasoning for robots and giving researchers shared training infrastructure.",
+			Tag:     "Infrastructure",
+			Summary: "France is positioning Paris as a sovereign AI hub around large-scale compute investment, including a reported EUR10 billion supercomputer initiative aimed at strategic autonomy.",
 			Sections: []Section{
 				{
 					Paragraphs: []string{
-						"AI2 introduced MolmoAct 2, an upgraded action-reasoning model for robotics focused on improving how AI systems convert high-level goals into coordinated physical behavior.",
-						"The release also included a large open dataset of bimanual manipulation demonstrations, expanding shared resources for researchers building real-world robotic agents.",
+						"France is increasingly framing AI infrastructure as a sovereignty priority, with Paris at the center of a broader push to build durable domestic compute capacity for research, industry, and public-sector workloads.",
+						"A reported EUR10 billion supercomputer effort reflects that strategic posture: scale first, so local organizations can train and deploy advanced models without depending entirely on external hyperscale supply.",
 					},
 				},
 				{
-					Heading: "Improved Action Planning in Physical Environments",
+					Heading: "Why Paris Is a Natural Focal Point",
 					Paragraphs: []string{
-						"MolmoAct 2 combines visual understanding and action planning to better handle multi-step manipulation tasks in dynamic, real environments. This addresses a persistent bottleneck in robotics AI where language-level intent and motor-level execution diverge.",
-						"AI2 reported stronger benchmark performance on bimanual coordination tasks, a category that typically exposes weakness in timing, precision, and simultaneous control across multiple arms.",
+						"Paris combines dense research ecosystems, policy institutions, and enterprise concentration, making it one of Europe's strongest locations for scaling applied AI into production environments.",
+						"The hub strategy relies on this proximity effect: place compute, talent, and deployment buyers in one geography to accelerate iteration and attract follow-on investment.",
 					},
 				},
 				{
-					Heading: "Open Demonstration Data as Shared Infrastructure",
+					Heading: "Sovereign Compute Changes Competitive Dynamics",
 					Paragraphs: []string{
-						"The accompanying open dataset includes extensive demonstrations of robots performing diverse physical tasks, giving developers and labs a reusable corpus for training and evaluation.",
-						"As robotics moves toward more general-purpose systems, open benchmarks and demonstration sets are increasingly important for comparable progress measurement across the field.",
+						"Large domestic compute programs can improve model-development speed, reduce latency and data-governance friction for regulated sectors, and provide stronger negotiating leverage in cross-border technology dependencies.",
+						"They also create pressure on neighboring markets to raise infrastructure ambition, especially where AI competitiveness is linked to industrial policy and national security planning.",
 					},
 				},
 				{
-					Heading: "Why the Release Is Strategically Important",
+					Heading: "Execution Risk Still Matters",
 					Paragraphs: []string{
-						"MolmoAct 2 signals continued progress in one of AI's hardest domains: reliable interaction with the physical world under real constraints. It also reinforces AI2's open approach in a competitive environment where many leading datasets remain closed.",
-						"For robotics-focused teams and investors, this is not just a model update. It is a meaningful expansion of the ecosystem tooling required to accelerate practical robotic AI development.",
+						"Supercomputer-scale programs face long lead times in power delivery, procurement, and operations. Talent depth, software tooling, and sustained utilization are as important as headline capital commitments.",
+						"For Paris to become a durable European AI anchor, infrastructure build-out must be matched by deployment outcomes across startups, enterprises, and public institutions.",
 					},
 				},
 			},

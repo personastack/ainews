@@ -3,6 +3,49 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "MolmoAct 2: AI2's Breakthrough in Physical AI and Robot Task Performance",
+			Slug:    "molmoact-2-ai2-robotics-action-reasoning-breakthrough-2026",
+			Date:    "May 29, 2026",
+			Tag:     "Robotics",
+			Summary: "AI2's MolmoAct 2 and its open bimanual manipulation dataset push physical AI forward by pairing action-reasoning architecture with shared training data for robot tasks.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"AI2 has released MolmoAct 2, an upgraded action-reasoning model focused on real-world robot tasks, alongside a large open bimanual manipulation dataset.",
+						"The release targets a core gap in AI progress: strong digital reasoning does not automatically translate into reliable physical interaction in messy environments.",
+					},
+				},
+				{
+					Heading: "Built for the Action-Reasoning Loop",
+					Paragraphs: []string{
+						"MolmoAct 2 is designed specifically for robotics control cycles: perceive, decide, act, and update in real time. That specialization differs from general-purpose text-first systems retrofitted for physical control.",
+						"The model architecture emphasizes fast translation of visual state into motor decisions, which is central to manipulation tasks where timing and sequencing determine success or failure.",
+					},
+				},
+				{
+					Heading: "Why the Open Dataset Matters",
+					Paragraphs: []string{
+						"AI2 also shipped a large-scale open bimanual manipulation dataset, lowering access barriers for teams that cannot collect expensive robotics data at industrial scale.",
+						"Open data has repeatedly accelerated AI fields, and this release aims to create the same compounding effect for physical AI development and benchmarking.",
+					},
+				},
+				{
+					Heading: "From Lab Demos to Physical Reliability",
+					Paragraphs: []string{
+						"Physical AI has harder constraints than text generation: gravity, friction, object fragility, and real-world uncertainty all punish brittle policies quickly.",
+						"For industries such as manufacturing, logistics, agriculture, and home care, robust robot manipulation is directly tied to labor capacity and throughput, not just software novelty.",
+					},
+				},
+				{
+					Heading: "What the Industry Should Watch Next",
+					Paragraphs: []string{
+						"The decisive test is generalization beyond curated environments. Robotics history includes many systems that benchmark well in controlled settings but fail under distribution shift.",
+						"If MolmoAct 2 plus open community iteration improves out-of-lab reliability, this release could mark an inflection point for practical, deployable physical AI.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Federal AI Spending Surges: $91.8B Pipeline Transforms U.S. Government Operations in 2026",
 			Slug:    "federal-ai-spending-boom-2026-government-transformation",
 			Date:    "May 29, 2026",

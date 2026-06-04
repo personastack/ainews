@@ -111,6 +111,14 @@ func TestFindBySlug(t *testing.T) {
 		}
 	}
 
+	rtxSparkPost, ok := FindBySlug("nvidia-rtx-spark-local-ai-supercomputer-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find NVIDIA RTX Spark article")
+	}
+	if rtxSparkPost.Title != "The Supercomputer Moves In: NVIDIA's RTX Spark and the Quiet Return of Local AI" {
+		t.Fatalf("FindBySlug() returned %q for NVIDIA RTX Spark article", rtxSparkPost.Title)
+	}
+
 	safetyBreakthroughsPost, ok := FindBySlug("ai-safety-breakthroughs-responsible-development-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI safety breakthroughs post")

@@ -111,6 +111,14 @@ func TestFindBySlug(t *testing.T) {
 		}
 	}
 
+	federalPolicyPost, ok := FindBySlug("federal-ai-executive-order-coordination-over-control-june-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find federal AI order post")
+	}
+	if federalPolicyPost.Title != "Washington Picks a Lane: Inside the Federal AI Order That Bets on Coordination Over Control" {
+		t.Fatalf("FindBySlug() returned %q for federal AI order post", federalPolicyPost.Title)
+	}
+
 	rtxSparkPost, ok := FindBySlug("nvidia-rtx-spark-local-ai-supercomputer-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find NVIDIA RTX Spark article")

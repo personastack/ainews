@@ -479,6 +479,14 @@ func TestFindBySlug(t *testing.T) {
 		t.Fatalf("FindBySlug() returned %q for Gemini 3.1 Ultra post", geminiPost.Title)
 	}
 
+	multiTokenPredictionPost, ok := FindBySlug("google-multi-token-prediction-drafters-3x-inference-revolution")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Google multi-token prediction post")
+	}
+	if multiTokenPredictionPost.Title != "Google's Multi-Token Prediction Drafters: The 3x Inference Revolution That Changes Everything" {
+		t.Fatalf("FindBySlug() returned %q for Google multi-token prediction post", multiTokenPredictionPost.Title)
+	}
+
 	costCollapsePost, ok := FindBySlug("ai-inference-cost-collapse-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI inference cost collapse post")

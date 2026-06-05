@@ -54,6 +54,12 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune5 := time.Date(2026, time.June, 5, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune5), "federal-ai-oversight-frontier-labs-2026") {
+		t.Fatal("publishedPosts() did not include federal AI oversight article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJune5), "copilot-300k-seats-india-it-2026") {
+		t.Fatal("publishedPosts() did not include Copilot 300K seats article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune5), "ai-power-grid-578-billion-gap-2026") {
 		t.Fatal("publishedPosts() did not include AI power grid article on publication date")
 	}
@@ -91,6 +97,22 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	federalOversightPost, ok := FindBySlug("federal-ai-oversight-frontier-labs-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find federal AI oversight post")
+	}
+	if federalOversightPost.Title != "The Labs Want a Federal Referee — Inside the Week AI's Frontier Asked Washington to Step In" {
+		t.Fatalf("FindBySlug() returned %q for federal AI oversight post", federalOversightPost.Title)
+	}
+
+	copilotSeatsPost, ok := FindBySlug("copilot-300k-seats-india-it-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Copilot 300K seats post")
+	}
+	if copilotSeatsPost.Title != "300,000 Seats in Six Months — How India's IT Giants Dragged Copilot Out of Pilot Purgatory" {
+		t.Fatalf("FindBySlug() returned %q for Copilot 300K seats post", copilotSeatsPost.Title)
+	}
+
 	powerGridPost, ok := FindBySlug("ai-power-grid-578-billion-gap-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI power grid post")

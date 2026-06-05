@@ -3,6 +3,63 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "95% Say It Worked, 17% Say It Wowed: Enterprise AI's ROI Reckoning Arrives",
+			Slug:    "enterprise-ai-roi-gap-95-17-2026",
+			Date:    "June 5, 2026",
+			Tag:     "Enterprise",
+			Summary: "FTI Consulting's private-equity survey says most AI projects are meeting the business case, but few are dramatically outperforming it, even as capital and agent forecasts keep climbing.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"There is a number circulating in enterprise boardrooms this spring that, at first glance, looks like a triumph. According to FTI Consulting's latest survey of private-equity funds, 95% report that their AI initiatives met or exceeded the original business case. In a technology cycle defined by hype, skepticism, and a steady drumbeat of \"is this real?\", a 95% success rate sounds like the argument is settled.",
+						"Then you read the next line. Only 17% of those same funds say AI results SIGNIFICANTLY exceeded expectations. Which means the overwhelming majority of \"successes\" were the quiet kind: a process got a little faster, a report got written in half the time, a team shipped a feature a week early. Real wins, all of them. But not the kind of wins that justify the trillion-dollar story the market has been telling itself.",
+						"That gap - between \"it worked\" and \"it wowed\" - is the most important tension in enterprise AI right now. And it is about to define the second half of 2026.",
+					},
+				},
+				{
+					Heading: "The Money Hasn't Blinked",
+					Paragraphs: []string{
+						"First, let's be clear about what is NOT slowing down: the capital. Early June saw AlphaSense, the verticalized market-intelligence platform, close a $350 million round. Defense-tech company Mach Industries pulled in $300 million. Beneath those headline raises, a steady layer of AI-native startups kept filling out the application stack - Terra AI took $20 million for energy and sustainability work, Arpio raised $15 million, Plot $10 million. The checks are still being written, and they are still large.",
+						"The forecasts are even more aggressive. IDC projects AI investment will grow 31.9% annually through 2029, reaching $1.3 trillion. Gartner expects 40% of enterprise applications to embed task-specific AI agents by the end of 2026 - up from less than 5% in 2025. Sit with that second number for a moment. A jump from 5% to 40% in a single year would be one of the steepest adoption curves in the history of enterprise software, steeper than cloud, steeper than mobile. If it holds.",
+						"So we have a curious split-screen. On one side: capital and ambition pointing straight up. On the other: realized impact that, by the industry's own accounting, is mostly incremental. The money is betting on transformation. The results, so far, are describing optimization.",
+					},
+				},
+				{
+					Heading: "Why the Gap Exists - and Why It's Not (Yet) a Crisis",
+					Paragraphs: []string{
+						"It would be easy to read the 17% figure as a verdict of failure. It isn't, and the distinction matters. Incremental gains compound. A workflow that is 20% faster across ten thousand employees is a genuine structural advantage, even if no single person experiences it as magic. The history of general-purpose technologies - electricity, the PC, the internet - is a history of unglamorous productivity accruing quietly for years before the transformative use cases arrived.",
+						"What the FTI numbers actually capture is the difference between deploying AI and re-architecting around it. Most enterprises in 2026 have done the former: bolted a model onto an existing process and harvested the easy efficiency. Far fewer have done the latter: rebuilt the process itself to assume an autonomous agent is doing the work. The first move gets you to 95% \"met expectations.\" Only the second move gets you to \"significantly exceeded\" - and it is harder, riskier, and slower, because it requires changing how people work, not just what tools they use.",
+						"The agent-embedding wave Gartner is forecasting is precisely the bet that the second move is coming. The open question is whether 40% of applications will truly hand meaningful decisions to agents by December, or whether \"embedded agent\" will quietly come to mean \"a chatbot in the corner of the screen.\" The label will be everywhere. The substance is what we should watch.",
+					},
+				},
+				{
+					Heading: "Follow the Application Layer",
+					Paragraphs: []string{
+						"If there is a single piece of advice worth extracting from this moment, IDC offers it bluntly: watch the application layer. The firm has been warning that \"circular financing\" - vendors investing in customers who then spend that money buying the vendor's product - has muddied the headline AI numbers. When Company A funds Company B, and Company B's spending shows up as Company A's revenue, the topline grows without a single new dollar of genuine external demand entering the system.",
+						"This is not an accusation that the AI economy is hollow. It is a caution that some of the most-cited growth figures are measuring money moving in a circle rather than value flowing outward. The cleaner signal - the one that is much harder to manufacture - is real customers, in real businesses, getting real work done and renewing because of it. That is the application layer. If adoption there is genuine and sticky, the trillion-dollar forecasts have a foundation. If it is thin beneath the funding announcements, H2 2026 will expose it.",
+					},
+				},
+				{
+					Heading: "The Reckoning Ahead",
+					Paragraphs: []string{
+						"For three years, the enterprise AI question was simple: are we investing? The answer, by mid-2026, is an overwhelming and almost unanimous yes. But that question has quietly been replaced by a harder one: is it actually paying off? And the honest answer - 95% a little, 17% a lot - is the sound of a hype cycle maturing into an accountability cycle.",
+						"That maturation is healthy. The companies that thrive in the next phase will not be the ones with the biggest AI budgets or the most agents technically \"embedded.\" They will be the ones willing to do the unglamorous, structural work of redesigning how they operate - the work that moves a result from the 95% column into the 17%.",
+						"The capital has placed its bet on transformation. In the back half of this year, the enterprises writing the checks will start asking, pointedly, to see it.",
+						"The gap between worked and wowed is not a sign the story was fake. It is a map of the distance still left to travel.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"FTI Consulting: AI performance tier in private equity",
+						"IDC: AI investment forecast and circular financing analysis",
+						"Gartner: enterprise agent embedding forecast, via Apptad mid-2026 enterprise AI outlook",
+						"FundUp: recently funded startups, June 2026",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The Labs Want a Federal Referee — Inside the Week AI's Frontier Asked Washington to Step In",
 			Slug:    "federal-ai-oversight-frontier-labs-2026",
 			Date:    "June 5, 2026",

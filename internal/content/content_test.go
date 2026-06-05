@@ -57,6 +57,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if !containsSlug(publishedPosts(onPublicationJune5), "federal-ai-oversight-frontier-labs-2026") {
 		t.Fatal("publishedPosts() did not include federal AI oversight article on publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationJune5), "enterprise-ai-roi-gap-95-17-2026") {
+		t.Fatal("publishedPosts() did not include enterprise AI ROI article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune5), "copilot-300k-seats-india-it-2026") {
 		t.Fatal("publishedPosts() did not include Copilot 300K seats article on publication date")
 	}
@@ -103,6 +106,14 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if federalOversightPost.Title != "The Labs Want a Federal Referee — Inside the Week AI's Frontier Asked Washington to Step In" {
 		t.Fatalf("FindBySlug() returned %q for federal AI oversight post", federalOversightPost.Title)
+	}
+
+	enterpriseROIPost, ok := FindBySlug("enterprise-ai-roi-gap-95-17-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find enterprise AI ROI post")
+	}
+	if enterpriseROIPost.Title != "95% Say It Worked, 17% Say It Wowed: Enterprise AI's ROI Reckoning Arrives" {
+		t.Fatalf("FindBySlug() returned %q for enterprise AI ROI post", enterpriseROIPost.Title)
 	}
 
 	copilotSeatsPost, ok := FindBySlug("copilot-300k-seats-india-it-2026")

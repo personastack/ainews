@@ -26,6 +26,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"95% Say It Worked, 17% Say It Wowed: Enterprise AI&#39;s ROI Reckoning Arrives",
 		"Consumer AI vs. The Hype Machine: What&#39;s Real, What&#39;s Bullshit, and What Matters",
 		"The Supercomputer Moves In: NVIDIA&#39;s RTX Spark and the Quiet Return of Local AI",
 		"AI&#39;s Early Warning System: Detecting Diseases Years Before Symptoms",

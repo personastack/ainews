@@ -53,6 +53,14 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune5 := time.Date(2026, time.June, 5, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune5), "ai-power-grid-578-billion-gap-2026") {
+		t.Fatal("publishedPosts() did not include AI power grid article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJune5), "agentic-coding-orchestration-battleground-2026") {
+		t.Fatal("publishedPosts() did not include agentic coding orchestration article on publication date")
+	}
+
 	beforePublication := time.Date(2026, time.May, 25, 12, 0, 0, 0, time.UTC)
 	if containsSlug(publishedPosts(beforePublication), "alibaba-cloud-agentic-ai-offensive-qwen3-7-max") {
 		t.Fatal("publishedPosts() included Alibaba Cloud offensive article before publication date")
@@ -83,6 +91,22 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	powerGridPost, ok := FindBySlug("ai-power-grid-578-billion-gap-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI power grid post")
+	}
+	if powerGridPost.Title != "The $578 Billion Gap: AI's Real Bottleneck Isn't Chips, It's the Power Grid" {
+		t.Fatalf("FindBySlug() returned %q for AI power grid post", powerGridPost.Title)
+	}
+
+	agenticCodingPost, ok := FindBySlug("agentic-coding-orchestration-battleground-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find agentic coding orchestration post")
+	}
+	if agenticCodingPost.Title != "The Models Tied, So the Fight Moved: How Orchestration Became the Real Agentic-Coding Battleground in 2026" {
+		t.Fatalf("FindBySlug() returned %q for agentic coding orchestration post", agenticCodingPost.Title)
+	}
+
 	alibabaPost, ok := FindBySlug("alibaba-cloud-agentic-ai-offensive-qwen3-7-max")
 	if time.Now().UTC().Before(time.Date(2026, time.May, 27, 0, 0, 0, 0, time.UTC)) {
 		if ok {

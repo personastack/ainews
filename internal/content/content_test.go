@@ -53,6 +53,11 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune6 := time.Date(2026, time.June, 6, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune6), "intel-crescent-island-agentic-inference-2026") {
+		t.Fatal("publishedPosts() did not include Intel Crescent Island article on publication date")
+	}
+
 	onPublicationJune5 := time.Date(2026, time.June, 5, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune5), "federal-ai-oversight-frontier-labs-2026") {
 		t.Fatal("publishedPosts() did not include federal AI oversight article on publication date")
@@ -100,6 +105,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	intelCrescentIslandPost, ok := FindBySlug("intel-crescent-island-agentic-inference-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Intel Crescent Island post")
+	}
+	if intelCrescentIslandPost.Title != "Intel Skips the Training War: Why Crescent Island's 480GB Bet Is All About Agentic AI" {
+		t.Fatalf("FindBySlug() returned %q for Intel Crescent Island post", intelCrescentIslandPost.Title)
+	}
+
 	federalOversightPost, ok := FindBySlug("federal-ai-oversight-frontier-labs-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find federal AI oversight post")

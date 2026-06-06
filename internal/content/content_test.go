@@ -105,6 +105,22 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	chainOfCommandPost, ok := FindBySlug("frontier-ai-chain-of-command-nspm-11-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find frontier AI chain of command post")
+	}
+	if chainOfCommandPost.Title != "Frontier AI Enters the Chain of Command" {
+		t.Fatalf("FindBySlug() returned %q for frontier AI chain of command post", chainOfCommandPost.Title)
+	}
+
+	memoryPlatformPost, ok := FindBySlug("chatgpt-memory-ai-platform-layer-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find ChatGPT memory platform post")
+	}
+	if memoryPlatformPost.Title != "ChatGPT Memory Becomes the Next AI Platform Layer" {
+		t.Fatalf("FindBySlug() returned %q for ChatGPT memory platform post", memoryPlatformPost.Title)
+	}
+
 	intelCrescentIslandPost, ok := FindBySlug("intel-crescent-island-agentic-inference-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Intel Crescent Island post")

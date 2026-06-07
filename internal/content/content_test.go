@@ -53,6 +53,11 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune7 := time.Date(2026, time.June, 7, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune7), "ibm-google-cloud-gemini-enterprise-ai-modernization-2026") {
+		t.Fatal("publishedPosts() did not include IBM and Google Cloud enterprise AI article on publication date")
+	}
+
 	onPublicationJune6 := time.Date(2026, time.June, 6, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune6), "intel-crescent-island-agentic-inference-2026") {
 		t.Fatal("publishedPosts() did not include Intel Crescent Island article on publication date")
@@ -105,6 +110,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	ibmGoogleCloudPost, ok := FindBySlug("ibm-google-cloud-gemini-enterprise-ai-modernization-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find IBM and Google Cloud enterprise AI post")
+	}
+	if ibmGoogleCloudPost.Title != "The AI Pilot Is Over: IBM and Google Cloud Turn Gemini Into a Modernization Program" {
+		t.Fatalf("FindBySlug() returned %q for IBM and Google Cloud enterprise AI post", ibmGoogleCloudPost.Title)
+	}
+
 	chainOfCommandPost, ok := FindBySlug("frontier-ai-chain-of-command-nspm-11-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find frontier AI chain of command post")

@@ -3,6 +3,125 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Agent at the Counter: Why AI's Next Job Is Customer Support, Commerce, and Coordination",
+			Slug:    "ai-agents-commerce-customer-support-partners-2026",
+			Date:    "June 7, 2026",
+			Tag:     "Enterprise",
+			Summary: "AI agents are moving from conversational helpers to customer-facing operators that can coordinate support, commerce, and back-office workflows across enterprise systems.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The old customer-service chatbot had a narrow job: greet the customer, search a knowledge base, and hand off anything complicated to a human. The new AI agent is being designed for something more consequential. It is supposed to recognize intent, check account context, coordinate with other software, take action, and stay inside the rules while doing it.",
+						"That is why the latest enterprise AI announcements are less about conversational polish and more about plumbing. Google is pushing Agent2Agent, or A2A, as a protocol for agents to communicate across systems. Salesforce and Google Cloud are expanding integrations that let agents operate across Slack, Google Workspace, Agentforce, and Gemini Enterprise. Workday is putting governance around the same shift with Agent Passport, while NiCE keeps turning customer experience into an agentic automation problem.",
+					},
+				},
+				{
+					Heading: "From Chatbots To Counterparties",
+					Paragraphs: []string{
+						"The important thing is not that an AI agent can answer a question about a return policy. The important thing is that the agent may be able to see the order, verify the customer, start the return, trigger a replacement, update the CRM record, and summarize the exchange for a human service team.",
+						"In commerce, that turns the agent from a widget into a counterparty. In customer support, it turns the agent from a script reader into an operational teammate.",
+					},
+				},
+				{
+					Heading: "Why Support Becomes The Testbed",
+					Paragraphs: []string{
+						"This is the clearest reason companies keep returning to customer support as the testbed for agentic AI. Support is messy, repetitive, measurable, and deeply connected to revenue.",
+						"A failed interaction is obvious. A successful one can reduce cost, preserve a customer relationship, and generate data about what the product or buying experience is failing to explain.",
+					},
+				},
+				{
+					Heading: "Commerce Becomes Machine-Mediated",
+					Paragraphs: []string{
+						"Agentic commerce changes the customer relationship too. Once an assistant can compare products, negotiate preferences, initiate a cart, and coordinate payment, retailers no longer only design for human browsing. They also design for machine-mediated buying.",
+						"A customer may not visit a product page at all. Their agent may ask another agent whether an item is in stock, whether shipping will arrive by Friday, whether a coupon applies, and whether the merchant's return policy satisfies a personal preference profile.",
+					},
+				},
+				{
+					Heading: "Governance Becomes The Product",
+					Paragraphs: []string{
+						"That makes interoperability a business issue, not only a developer issue. Google's A2A announcement frames the problem plainly: agents need a way to coordinate across enterprise systems instead of remaining trapped inside single-vendor silos.",
+						"The useful middle ground requires identity, permissions, audit trails, tool boundaries, escalation rules, and human override. A customer-facing agent that cannot act is just a chatbot with better manners. A customer-facing agent that can act without limits is a risk.",
+					},
+				},
+				{
+					Heading: "What Workers Actually Change",
+					Paragraphs: []string{
+						"For workers, this creates a more complicated picture than the usual automation story. The first visible impact may be less about replacing entire jobs and more about changing the shape of participation.",
+						"A support representative might move from answering every routine ticket to supervising exceptions, coaching agent behavior, handling emotionally sensitive cases, and tuning playbooks. A commerce manager might spend less time configuring static journeys and more time deciding what agents are allowed to do for which customer segments.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Google Cloud blog: Agent2Agent protocol upgrade, July 31, 2025: https://cloud.google.com/blog/products/ai-machine-learning/agent2agent-protocol-is-getting-an-upgrade",
+						"Salesforce press release: Salesforce and Google Cloud launch new integrations, April 22, 2026: https://www.salesforce.com/news/press-releases/2026/04/22/salesforce-google-cloud-launch-new-integrations-deep-context/",
+						"NiCE press release: Agentic AI innovation for customer experience, March 10, 2026: https://www.nice.com/press-releases/nice-launches-agentic-ai-innovation-that-turns-enterprise-interaction-data-into-ready-to-deploy-ai-agents",
+						"Workday press release: Agent Passport, June 2, 2026: https://investor.workday.com/news-and-events/press-releases/news-details/2026/Workday-Launches-Agent-Passport-to-Test-Verify-and-Continuously-Monitor-Every-AI-Agent-in-the-Enterprise/default.aspx",
+					},
+				},
+			},
+		},
+		{
+			Title:   "The New AI Security Problem Is an Employee With Tools",
+			Slug:    "ai-agent-security-risks-tool-permissions-2026",
+			Date:    "June 7, 2026",
+			Tag:     "Policy",
+			Summary: "Agentic AI shifts security risk from model speech to delegated action, forcing companies to govern tools, permissions, and runtime behavior as tightly as they govern human employees.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For years, the default question in AI security was whether a model would say something dangerous. That question still matters. But it is no longer enough.",
+						"The new question is whether an AI system can do something dangerous. That is the difference agentic AI introduces. A chatbot can hallucinate a bad instruction. An agent can follow one.",
+					},
+				},
+				{
+					Heading: "From Speech Risk To Action Risk",
+					Paragraphs: []string{
+						"A chatbot can leak a secret in a conversation. An agent may have access to the system where the secret lives. A chatbot can be tricked by a prompt injection. An agent can be tricked by a prompt injection and then use a connector, a browser, an API key, or a workflow permission to take action.",
+						"This is why security teams are starting to treat agents less like software features and more like digital employees with badges, tools, and audit requirements.",
+					},
+				},
+				{
+					Heading: "The Visibility Problem",
+					Paragraphs: []string{
+						"The hardest part is visibility. Traditional identity and access management assumes the actor is a person, service account, or application with reasonably stable behavior. An agent may be all three at once: a model, an application, a delegated identity, a memory store, a retrieval system, and a set of tools.",
+						"If it sends a message, queries a database, opens a ticket, or initiates a refund, investigators need to know not just which account acted, but why the agent chose that action and what data shaped the decision.",
+					},
+				},
+				{
+					Heading: "Why Least Privilege Gets Harder",
+					Paragraphs: []string{
+						"The obvious defense is least privilege. Agents should only access what they need, only for the task at hand, and only under policies that can be reviewed.",
+						"But least privilege becomes harder when the product promise is flexibility. The more useful an agent is, the more systems it wants to touch. The more systems it touches, the larger the blast radius if it is compromised, misled, or poorly scoped.",
+					},
+				},
+				{
+					Heading: "The Attacker Side",
+					Paragraphs: []string{
+						"Security researchers are also warning about tool and supply-chain risk. Agent ecosystems increasingly depend on plugins, skills, connectors, and protocols. A poisoned tool description, compromised package, or malicious third-party connector can become an instruction channel.",
+						"Google Threat Intelligence has described adversaries moving toward more agentic workflows for vulnerability exploitation and initial access. Anthropic has reported disrupting AI-enabled cyber operations that used model capabilities to assist parts of intrusion workflows.",
+					},
+				},
+				{
+					Heading: "Controls That Need To Become Normal",
+					Paragraphs: []string{
+						"Companies need live inventories of agents and the tools they can use. They need runtime authorization, not just one-time approval. They need logs that preserve prompts, tool calls, retrieved context, outputs, and human approvals where appropriate.",
+						"They need sandboxing for high-risk actions. They need evaluation suites that test agents against prompt injection, data exfiltration, goal hijacking, and unsafe autonomy before production. And they need incident-response playbooks that assume an agent might have touched multiple systems before anyone noticed.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Cloud Security Alliance: Enterprise AI Security Starts with AI Agents: https://cloudsecurityalliance.org/artifacts/enterprise-ai-security-starts-with-ai-agents",
+						"Workday press release: Agent Passport, June 2, 2026: https://investor.workday.com/news-and-events/press-releases/news-details/2026/Workday-Launches-Agent-Passport-to-Test-Verify-and-Continuously-Monitor-Every-AI-Agent-in-the-Enterprise/default.aspx",
+						"Google Cloud Threat Intelligence: AI vulnerability exploitation and initial access: https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+						"Anthropic: Disrupting the first reported AI-orchestrated cyber espionage campaign: https://www.anthropic.com/news/disrupting-AI-espionage",
+						"UC Berkeley CLTC: Agentic AI Risk-Management Standards Profile: https://cltc.berkeley.edu/publication/agentic-ai-risk-profile/",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The AI Pilot Is Over: IBM and Google Cloud Turn Gemini Into a Modernization Program",
 			Slug:    "ibm-google-cloud-gemini-enterprise-ai-modernization-2026",
 			Date:    "June 7, 2026",

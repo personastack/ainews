@@ -3,6 +3,83 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Memory Layer Arrives: Microsoft's Build 2026 Shows What Enterprise Agents Need Next",
+			Slug:    "microsoft-build-2026-agent-memory-layer",
+			Date:    "June 8, 2026",
+			Tag:     "Enterprise",
+			Summary: "Microsoft Build 2026 frames enterprise AI around a shared intelligence layer, grounded retrieval, agent memory, and security controls that make agents usable inside real business systems.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"Microsoft Build 2026 did not read like a simple product launch. It read like an admission that enterprise AI has moved past the novelty phase and into infrastructure design.",
+						"The company is now presenting a stack built around Microsoft IQ, Work IQ, Foundry IQ, and Web IQ, with Microsoft Foundry, Azure AI Search, Foundry Agent Service, memory tooling, and security controls all lining up behind the same thesis: agents are only useful when they can remember, retrieve, act, and stay governed inside the systems businesses already run.",
+					},
+				},
+				{
+					Heading: "The Intelligence Layer Is The Point",
+					Paragraphs: []string{
+						"The most important change is not a single model or feature. It is the way Microsoft is packaging context. Microsoft IQ now appears as the umbrella, with Work IQ for workplace signals, Foundry IQ for organizational knowledge, Fabric IQ for business data, and Web IQ for fresh web-grounded intelligence.",
+						"That matters because enterprise agents fail less often on raw model quality than on missing context. A model can only be as helpful as the data it can ground itself in, the permissions it understands, and the tools it can safely call. Microsoft is trying to make that layer a product instead of a custom integration project.",
+					},
+				},
+				{
+					Heading: "Work IQ Turns Memory Into A Business Primitive",
+					Paragraphs: []string{
+						"Work IQ is where Microsoft makes the enterprise memory story concrete. The June 2 Work IQ API announcement describes a system that continuously builds semantic understanding from email, calendar, meetings, chats, files, people, and line-of-business systems, then exposes that understanding through APIs designed for agents.",
+						"In practice, that means memory is no longer just a chat history feature. It becomes a managed layer for work context, operational state, and organizational patterns. For enterprises, that is the difference between a demo assistant and a system that can actually know how work gets done.",
+					},
+				},
+				{
+					Heading: "Foundry IQ Makes Retrieval Agentic",
+					Paragraphs: []string{
+						"Foundry IQ pushes the same idea into enterprise knowledge retrieval. Microsoft describes it as a knowledge layer that uses agentic retrieval to plan queries, choose sources, search, respond, and iterate, while enforcing user permissions and returning grounded answers.",
+						"The architecture is important because it changes retrieval from a passive search step into an active orchestration step. Instead of asking a system to hand back documents, the agent can ask for context, refine the search, and keep narrowing toward the answer it needs without leaving the controlled enterprise boundary.",
+					},
+				},
+				{
+					Heading: "Azure AI Search Is Becoming The Plumbing",
+					Paragraphs: []string{
+						"Microsoft is also making Azure AI Search the practical backbone behind that knowledge layer. The product pages now position Azure AI Search and Foundry IQ together, with agentic retrieval, reusable knowledge bases, and support for sources like Work IQ, Fabric IQ, SharePoint, OneLake, blob storage, the web, and MCP servers.",
+						"The strategic read is straightforward: if agents need durable memory and enterprise knowledge, the search layer stops being an optional add-on and becomes core infrastructure. That is exactly how relational databases and identity systems became mandatory in earlier software eras.",
+					},
+				},
+				{
+					Heading: "Foundry Agent Service Is The Runtime",
+					Paragraphs: []string{
+						"The other half of the stack is runtime. Microsoft Foundry is positioning Foundry Agent Service as the place where developers build, run, and govern agents that use this shared context.",
+						"That makes the platform feel less like a chat wrapper and more like an operating environment. Developers can use the frameworks they already prefer, connect to memory and retrieval layers, and rely on a service boundary for control, scale, and monitoring instead of stitching all of that together themselves.",
+					},
+				},
+				{
+					Heading: "Security Is Now A First-Class Design Constraint",
+					Paragraphs: []string{
+						"Microsoft Build 2026 also made clear that enterprise AI will not be judged only on capability. It will be judged on whether it can survive adversarial conditions, policy checks, and production failure modes.",
+						"The security announcements point to a new trust stack: ASSERT for policy-driven safety evaluation, the Agent Control Specification for control placement in the agent loop, Microsoft Security's multi-model agentic scanning harness, tracing and evaluations across frameworks, and governance controls that span code, agents, and models. That is the right answer to the current market problem, because the market no longer needs more autonomous behavior without guardrails. It needs evidence that autonomy can be constrained, inspected, and tested before it touches business data.",
+					},
+				},
+				{
+					Heading: "What This Actually Means For Enterprises",
+					Paragraphs: []string{
+						"The practical implication is that enterprise agents are being redesigned as stateful systems, not transient prompts. They need memory for continuity, retrieval for relevance, permissions for safety, shared state for multi-step work, and observability for trust.",
+						"That is a bigger shift than a model benchmark. It is the emergence of a real agent platform stack. If Microsoft executes, the winning enterprise pattern will not be the smartest standalone model. It will be the system that can remember the right things, retrieve the right context, act inside the right boundaries, and explain what happened afterward.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Microsoft Build 2026 overview and keynote hub: https://news.microsoft.com/build-2026/",
+						"Microsoft official blog: Microsoft Build 2026: Be yourself at work: https://blogs.microsoft.com/blog/2026/06/02/microsoft-build-2026-be-yourself-at-work/",
+						"Microsoft 365 Blog: Announcing the new Work IQ APIs: https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/02/announcing-the-new-work-iq-apis/",
+						"Microsoft IQ overview: https://www.microsoft.com/en-us/ai/microsoft-iq",
+						"Microsoft Azure Foundry IQ product page: https://azure.microsoft.com/en-us/products/ai-foundry/iq",
+						"Azure AI Search product page: https://azure.microsoft.com/en-us/products/ai-services/ai-search",
+						"Microsoft Foundry Blog: Build and run agents at scale with Microsoft Foundry at Build 2026: https://devblogs.microsoft.com/foundry/agent-service-build2026/",
+						"Microsoft Security Blog: Microsoft Build 2026: Securing code, agents, and models across the development lifecycle: https://www.microsoft.com/en-us/security/blog/2026/06/02/microsoft-build-2026-securing-code-agents-and-models-across-the-development-lifecycle/",
+					},
+				},
+			},
+		},
+		{
 			Title:   "When Search Becomes a Workplace: Google's Agentic Gemini Strategy Comes Into Focus",
 			Slug:    "google-search-agent-workbench-gemini-2026",
 			Date:    "June 8, 2026",

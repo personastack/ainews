@@ -59,6 +59,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune8 := time.Date(2026, time.June, 8, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune8), "microsoft-build-2026-agent-memory-layer") {
+		t.Fatal("publishedPosts() did not include Microsoft Build 2026 memory layer article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune8), "google-search-agent-workbench-gemini-2026") {
 		t.Fatal("publishedPosts() did not include Google Search agent workbench article on publication date")
 	}
@@ -229,6 +232,14 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if googleSearchAgentPost.Title != "When Search Becomes a Workplace: Google's Agentic Gemini Strategy Comes Into Focus" {
 		t.Fatalf("FindBySlug() returned %q for Google Search agent workbench post", googleSearchAgentPost.Title)
+	}
+
+	microsoftBuildMemoryPost, ok := FindBySlug("microsoft-build-2026-agent-memory-layer")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Microsoft Build 2026 memory layer post")
+	}
+	if microsoftBuildMemoryPost.Title != "The Memory Layer Arrives: Microsoft's Build 2026 Shows What Enterprise Agents Need Next" {
+		t.Fatalf("FindBySlug() returned %q for Microsoft Build 2026 memory layer post", microsoftBuildMemoryPost.Title)
 	}
 
 	rtxSparkPost, ok := FindBySlug("nvidia-rtx-spark-local-ai-supercomputer-2026")

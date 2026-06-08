@@ -58,6 +58,11 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 		t.Fatal("publishedPosts() did not include IBM and Google Cloud enterprise AI article on publication date")
 	}
 
+	onPublicationJune8 := time.Date(2026, time.June, 8, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune8), "google-search-agent-workbench-gemini-2026") {
+		t.Fatal("publishedPosts() did not include Google Search agent workbench article on publication date")
+	}
+
 	onPublicationJune6 := time.Date(2026, time.June, 6, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune6), "intel-crescent-island-agentic-inference-2026") {
 		t.Fatal("publishedPosts() did not include Intel Crescent Island article on publication date")
@@ -216,6 +221,14 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if federalPolicyPost.Title != "Washington Picks a Lane: Inside the Federal AI Order That Bets on Coordination Over Control" {
 		t.Fatalf("FindBySlug() returned %q for federal AI order post", federalPolicyPost.Title)
+	}
+
+	googleSearchAgentPost, ok := FindBySlug("google-search-agent-workbench-gemini-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Google Search agent workbench post")
+	}
+	if googleSearchAgentPost.Title != "When Search Becomes a Workplace: Google's Agentic Gemini Strategy Comes Into Focus" {
+		t.Fatalf("FindBySlug() returned %q for Google Search agent workbench post", googleSearchAgentPost.Title)
 	}
 
 	rtxSparkPost, ok := FindBySlug("nvidia-rtx-spark-local-ai-supercomputer-2026")

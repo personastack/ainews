@@ -26,6 +26,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The AI Rulebook Is Moving From Principles to Plumbing",
 		"95% Say It Worked, 17% Say It Wowed: Enterprise AI&#39;s ROI Reckoning Arrives",
 		"Consumer AI vs. The Hype Machine: What&#39;s Real, What&#39;s Bullshit, and What Matters",
 		"The Supercomputer Moves In: NVIDIA&#39;s RTX Spark and the Quiet Return of Local AI",
@@ -158,6 +159,10 @@ func TestPostsAPI(t *testing.T) {
 
 	if got := posts[3]["slug"]; got != wantPosts[3].Slug {
 		t.Fatalf("fourth post slug = %q, want %q", got, wantPosts[3].Slug)
+	}
+
+	if got := posts[4]["slug"]; got != wantPosts[4].Slug {
+		t.Fatalf("fifth post slug = %q, want %q", got, wantPosts[4].Slug)
 	}
 }
 

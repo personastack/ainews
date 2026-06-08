@@ -3,6 +3,73 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The AI Rulebook Is Moving From Principles to Plumbing",
+			Slug:    "ai-policy-rulebook-principles-to-plumbing-2026",
+			Date:    "June 8, 2026",
+			Tag:     "Policy",
+			Summary: "AI regulation is shifting from broad principles to implementation machinery, with Europe and the US both building concrete rules around security, procurement, benchmarking, and operational governance.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For most of the generative AI boom, policy debates have been framed around big nouns: safety, innovation, sovereignty, transparency, national security. In June 2026, the more important story is that governments are starting to translate those nouns into operational machinery.",
+						"That shift is less dramatic than a model launch, but it may matter more to companies building with AI. The new policy work is increasingly about deadlines, procurement, security testing, watermarking, vulnerability discovery, infrastructure, cloud capacity, and who inside government gets to define the next set of implementation rules.",
+					},
+				},
+				{
+					Heading: "Europe's Compliance Era Becomes An Implementation Era",
+					Paragraphs: []string{
+						"The European Commission's AI Office has become one of the most important bodies to watch because the AI Act cannot operate on statutory text alone. It needs guidance, codes of practice, templates, enforcement expectations, and a practical understanding of how general-purpose AI systems and high-risk AI systems will be evaluated.",
+						"Passing a law is only the beginning. The hard work starts when a company asks whether a customer-service agent, a recruiting tool, a medical assistant, a coding assistant, or a synthetic-media workflow falls into a particular category and what evidence it needs to keep.",
+						"Recent legal analyses of EU negotiations point to an effort to adjust parts of the AI Act timeline and implementation burden, especially around high-risk systems and transparency obligations. Those details still need careful treatment because not every proposal or political agreement is the same as final enforceable law. But the direction is clear enough: Europe is trying to keep the law's risk-based architecture while making the rollout less brittle for companies that have to comply with it.",
+						"The key practical lesson for AI builders is that the EU AI Act is becoming a product-management issue, not just a legal issue. Transparency labels, model documentation, incident handling, risk management, data governance, and human oversight cannot be bolted onto a product a week before a deadline. They have to become part of release planning.",
+						"This is especially true for companies building agentic systems. Once an AI system can call tools, take actions, summarize records, initiate workflows, or influence decisions, governance stops being only about model output. It becomes about permissions, logging, escalation paths, and whether a human can understand why something happened.",
+					},
+				},
+				{
+					Heading: "The White House Puts Cyber Defense at the Center",
+					Paragraphs: []string{
+						"The June 5 White House executive order, titled \"Promoting Advanced Artificial Intelligence Innovation and Security,\" takes a different route. It frames AI less as a general compliance problem and more as a strategic technology that has to be secured, measured, and used by government.",
+						"The order directs federal agencies to prioritize cyber defense for federal systems and critical infrastructure, support access to AI-enabled cybersecurity tools, and create an AI cybersecurity clearinghouse aimed at identifying and remediating software vulnerabilities at scale. It also calls for classified benchmarking of advanced cyber capabilities in AI models and a process for identifying \"covered frontier models.\"",
+						"That last phrase is important. The order says it does not create a mandatory licensing or pre-clearance regime for AI models. Instead, it establishes a voluntary framework for developers to consult with the federal government about whether models meet the covered-frontier-model designation.",
+						"That is a revealing compromise. Washington wants visibility into frontier-model cyber capabilities without presenting the policy as a licensing system. For frontier labs, the practical consequence is likely to be more structured engagement with federal agencies around evaluations, security capabilities, and risk signals. For enterprise AI buyers, the signal is that AI security is becoming procurement-relevant. A model's capabilities will matter, but so will the developer's security posture and willingness to participate in government-facing risk processes.",
+						"The order also reflects a broader shift in how AI cybersecurity is being understood. AI is not only a technology that might introduce new risks. It is also being treated as a defensive tool for software vulnerability discovery, federal system hardening, and critical infrastructure protection. That dual-use tension is now the policy baseline.",
+					},
+				},
+				{
+					Heading: "Sovereignty Is No Longer Just About Chips",
+					Paragraphs: []string{
+						"Europe's June 3 technological sovereignty package adds another layer to the story. The Commission described a package covering semiconductors, AI, cloud, and open source, with plans tied to a Chips Act 2.0 and a Cloud and AI Development Act.",
+						"That matters because AI policy is no longer only about regulating outputs. It is also about control over the infrastructure stack: chips, cloud services, open-source dependencies, data centers, and the public-sector capacity to use and audit AI systems.",
+						"For readers following the AI industry, this is where regulation and infrastructure meet. A government can demand transparency, but it also needs compute, technical staff, cloud access, standards, and evaluation capacity. A company can promise safer deployment, but it needs logging systems, governance tooling, secure software practices, and a way to explain agent behavior after the fact.",
+						"The next phase of AI policy is therefore likely to be less theatrical and more consequential. Instead of one sweeping debate over whether AI should be regulated, we will see dozens of smaller decisions about audit trails, procurement language, technical standards, security benchmarks, synthetic-media labels, and the legal status of model-risk documentation.",
+					},
+				},
+				{
+					Heading: "What AI Teams Should Take From This",
+					Paragraphs: []string{
+						"The immediate takeaway is not panic. It is preparation.",
+						"Companies building AI products should assume that three disciplines are converging: security engineering, compliance operations, and product design. A useful AI system will need to be capable. A deployable AI system will also need to be governable.",
+						"That means teams should know which systems can take action, which systems influence regulated decisions, which systems generate public-facing synthetic content, which systems touch sensitive data, and which systems depend on frontier models with capabilities that may attract government attention.",
+						"The policy mood in June 2026 is not simply 'more regulation.' It is more infrastructure around regulation: offices, codes, benchmarks, clearinghouses, implementation dates, and sovereignty programs. That can feel bureaucratic. It is also what happens when a technology moves from experimental demo to institutional dependency.",
+						"The companies that handle this well will not be the ones that treat policy as a press-release problem. They will be the ones that can show how their AI systems behave, how they fail, how they are secured, and who is accountable when they act.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"European Commission: Strengthening Europe's tech sovereignty, June 3, 2026: https://commission.europa.eu/news-and-media/news/strengthening-europes-tech-sovereignty-2026-06-03_en",
+						"European Commission AI Office: https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+						"White House Executive Order: Promoting Advanced Artificial Intelligence Innovation and Security, June 5, 2026: https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/",
+						"White House fact sheet on the AI innovation and security order, June 5, 2026: https://www.whitehouse.gov/fact-sheets/2026/06/fact-sheet-president-donald-j-trump-promotes-advanced-artificial-intelligence-innovation-and-security/",
+						"White House fact sheet on AI in the national security enterprise, June 5, 2026: https://www.whitehouse.gov/fact-sheets/2026/06/fact-sheet-president-donald-j-trump-signs-historic-directive-on-ai-in-the-national-security-enterprise/",
+						"White House NSPM-11, June 5, 2026: https://www.whitehouse.gov/presidential-actions/2026/06/national-security-presidential-memorandum-nspm-11/",
+						"Latham & Watkins AI Act update analysis: https://www.lw.com/en/insights/ai-act-update-eu-resolves-to-change-rules-and-extend-deadlines",
+						"Stibbe analysis of proposed AI Act changes: https://www.stibbe.com/publications-and-insights/ai-act-reloaded-what-the-latest-ai-act-changes-mean-in-practice",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The CPU Returns to the AI Story: Intel's Rackscale Bet on Agentic Inference",
 			Slug:    "intel-rackscale-agentic-inference-cpu-comeback-2026",
 			Date:    "June 8, 2026",

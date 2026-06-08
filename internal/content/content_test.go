@@ -59,6 +59,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune8 := time.Date(2026, time.June, 8, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune8), "ai-policy-rulebook-principles-to-plumbing-2026") {
+		t.Fatal("publishedPosts() did not include AI policy rulebook article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune8), "intel-rackscale-agentic-inference-cpu-comeback-2026") {
 		t.Fatal("publishedPosts() did not include Intel rackscale article on publication date")
 	}
@@ -159,6 +162,14 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if intelRackscalePost.Title != "The CPU Returns to the AI Story: Intel's Rackscale Bet on Agentic Inference" {
 		t.Fatalf("FindBySlug() returned %q for Intel rackscale post", intelRackscalePost.Title)
+	}
+
+	aiPolicyPost, ok := FindBySlug("ai-policy-rulebook-principles-to-plumbing-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI policy rulebook post")
+	}
+	if aiPolicyPost.Title != "The AI Rulebook Is Moving From Principles to Plumbing" {
+		t.Fatalf("FindBySlug() returned %q for AI policy rulebook post", aiPolicyPost.Title)
 	}
 
 	federalOversightPost, ok := FindBySlug("federal-ai-oversight-frontier-labs-2026")

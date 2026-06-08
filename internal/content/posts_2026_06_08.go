@@ -3,6 +3,79 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The CPU Returns to the AI Story: Intel's Rackscale Bet on Agentic Inference",
+			Slug:    "intel-rackscale-agentic-inference-cpu-comeback-2026",
+			Date:    "June 8, 2026",
+			Tag:     "Infrastructure",
+			Summary: "Intel is arguing that the next phase of AI will not be won by GPUs alone. As agents spend more time planning, calling tools, retrieving context, and coordinating work, the rack around the accelerator may become the real bottleneck.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For most of the generative AI boom, the hardware story has been easy to summarize: GPUs won, everyone else chased. The biggest training runs, the worst shortages, and the largest capital plans all pointed toward accelerators as the center of gravity.",
+						"Intel is now trying to complicate that story.",
+					},
+				},
+				{
+					Heading: "Why Rackscale Matters",
+					Paragraphs: []string{
+						"At Computex 2026, Intel framed its AI pitch around a shift from model training to large-scale inference, and from single-box performance to rackscale systems. The company is arguing that the center of value is moving from a lone accelerator to the full stack around it.",
+						"That matters because AI products are becoming workflow engines. A production agent does not just answer one prompt. It plans, retrieves, calls tools, waits on external systems, reflects on intermediate results, and coordinates multiple steps across software boundaries.",
+					},
+				},
+				{
+					Heading: "Agentic Inference Changes The Bottleneck",
+					Paragraphs: []string{
+						"Intel says AI inference could become nearly 40% of all data center power demand by 2030. It also argues that agentic AI changes the traditional server balance: where frontier training clusters were often discussed in terms of one CPU feeding many GPUs, agentic inference could move closer to a 1:1 CPU-to-GPU ratio, or even make CPU capacity the limiting factor in some deployments.",
+						"That claim should be treated carefully, because Intel clearly benefits if buyers believe CPUs are moving back toward the center of AI infrastructure. But it is directionally plausible. The more AI systems are asked to coordinate memory, policy, authentication, storage, monitoring, and application logic, the more the surrounding infrastructure becomes part of the performance envelope.",
+					},
+				},
+				{
+					Heading: "The Rack Is Where The Cost Shows Up",
+					Paragraphs: []string{
+						"The old AI question was: how fast can the model run?",
+						"The new one is: how much useful work can the entire system complete per watt, per dollar, and per rack?",
+						"That is where energy efficiency stops being a nice-to-have and starts becoming strategic. Training runs can be scheduled and treated as episodic events. Inference is always on. Agentic inference is worse in one specific way: it can multiply the number of steps behind each user request.",
+					},
+				},
+				{
+					Heading: "Intel's Platform Bet",
+					Paragraphs: []string{
+						"The company highlighted Xeon 6+ processors with 288 E-cores, 576MB of L3 cache, and Intel 18A technology. It also pointed to rackscale AI infrastructure work with partners including SambaNova, Foxconn, Vista Equity Partners, and Cambium Equity.",
+						"The pitch is not that CPUs replace accelerators. It is that inference-heavy AI systems need a denser, more balanced fabric around them. The accelerator still matters, but it is no longer the only scarce part of the stack.",
+					},
+				},
+				{
+					Heading: "Why This Fits The Agent Era",
+					Paragraphs: []string{
+						"Enterprise agents have to read purchase orders, check policy, update tickets, ask for approval, retry failed tool calls, and leave an audit trail. Consumer agents have to pull from search, maps, shopping, mail, calendars, and payments without feeling slow or unpredictable.",
+						"Those jobs do not map cleanly onto the idea that AI infrastructure is just a pile of accelerators. Once the agent becomes the product, the rest of the rack starts to look like the product too.",
+					},
+				},
+				{
+					Heading: "Execution Is Still The Hard Part",
+					Paragraphs: []string{
+						"Nvidia still owns the strongest position in the accelerator narrative, and AMD is competing aggressively in GPUs. Intel's best opening is to argue that the AI infrastructure market is widening. If the bottleneck moves from pure model training to inference orchestration, CPU density, platform integration, networking, and power efficiency, Intel has a more natural place to compete.",
+						"The hard part is execution. Buyers do not make infrastructure decisions from press releases. They buy ecosystems, software compatibility, cloud availability, and proven economics. For Intel's rackscale story to matter, customers will need to see measurable gains in real workloads and a software path that does not create friction.",
+					},
+				},
+				{
+					Heading: "What This Actually Means",
+					Paragraphs: []string{
+						"The industry is entering a phase where model quality alone is no longer enough to explain market winners. The same frontier models can be wrapped in very different products, and the difference often comes from memory, tools, permissions, latency, governance, and cost control.",
+						"That makes the CPU newly interesting. Not glamorous, but structurally important. If AI agents become the default interface for work, commerce, customer service, software development, and operations, then the infrastructure problem starts to resemble distributed systems again.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Researcher Wiki.js brief: research/2026-06-08-intel-rackscale-ai",
+						"Intel Newsroom: https://newsroom.intel.com/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon",
+						"Intel Newsroom: https://newsroom.intel.com/artificial-intelligence/intel-announces-new-ai-innovations-at-computex",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The Memory Layer Arrives: Microsoft's Build 2026 Shows What Enterprise Agents Need Next",
 			Slug:    "microsoft-build-2026-agent-memory-layer",
 			Date:    "June 8, 2026",

@@ -57,6 +57,12 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if !containsSlug(publishedPosts(onPublicationJune9), "ai-hardware-race-moves-from-chips-to-systems-2026") {
 		t.Fatal("publishedPosts() did not include AI hardware systems article on publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationJune9), "sap-erp-control-plane-autonomous-enterprise-2026") {
+		t.Fatal("publishedPosts() did not include SAP ERP control plane article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJune9), "quantum-adapters-llm-compression-hardware-path-2026") {
+		t.Fatal("publishedPosts() did not include quantum adapters article on publication date")
+	}
 
 	onPublicationJune7 := time.Date(2026, time.June, 7, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune7), "ibm-google-cloud-gemini-enterprise-ai-modernization-2026") {
@@ -135,6 +141,22 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if aiHardwarePost.Title != "The AI Hardware Race Has Moved From Chips to Systems" {
 		t.Fatalf("FindBySlug() returned %q for AI hardware systems post", aiHardwarePost.Title)
+	}
+
+	sapEnterprisePost, ok := FindBySlug("sap-erp-control-plane-autonomous-enterprise-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find SAP ERP control plane post")
+	}
+	if sapEnterprisePost.Title != "SAP Wants ERP to Become the Control Plane for Enterprise AI" {
+		t.Fatalf("FindBySlug() returned %q for SAP ERP control plane post", sapEnterprisePost.Title)
+	}
+
+	quantumAdaptersPost, ok := FindBySlug("quantum-adapters-llm-compression-hardware-path-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find quantum adapters post")
+	}
+	if quantumAdaptersPost.Title != "Quantum Adapters Offer a Small but Real Hardware Path for LLM Efficiency" {
+		t.Fatalf("FindBySlug() returned %q for quantum adapters post", quantumAdaptersPost.Title)
 	}
 
 	ibmGoogleCloudPost, ok := FindBySlug("ibm-google-cloud-gemini-enterprise-ai-modernization-2026")

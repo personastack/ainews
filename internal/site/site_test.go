@@ -26,6 +26,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"The AI Hardware Race Has Moved From Chips to Systems",
 		"The AI Rulebook Is Moving From Principles to Plumbing",
 		"95% Say It Worked, 17% Say It Wowed: Enterprise AI&#39;s ROI Reckoning Arrives",
 		"Consumer AI vs. The Hype Machine: What&#39;s Real, What&#39;s Bullshit, and What Matters",

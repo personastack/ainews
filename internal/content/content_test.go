@@ -53,6 +53,11 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune9 := time.Date(2026, time.June, 9, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune9), "ai-hardware-race-moves-from-chips-to-systems-2026") {
+		t.Fatal("publishedPosts() did not include AI hardware systems article on publication date")
+	}
+
 	onPublicationJune7 := time.Date(2026, time.June, 7, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune7), "ibm-google-cloud-gemini-enterprise-ai-modernization-2026") {
 		t.Fatal("publishedPosts() did not include IBM and Google Cloud enterprise AI article on publication date")
@@ -124,6 +129,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	aiHardwarePost, ok := FindBySlug("ai-hardware-race-moves-from-chips-to-systems-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI hardware systems post")
+	}
+	if aiHardwarePost.Title != "The AI Hardware Race Has Moved From Chips to Systems" {
+		t.Fatalf("FindBySlug() returned %q for AI hardware systems post", aiHardwarePost.Title)
+	}
+
 	ibmGoogleCloudPost, ok := FindBySlug("ibm-google-cloud-gemini-enterprise-ai-modernization-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find IBM and Google Cloud enterprise AI post")

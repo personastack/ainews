@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune9 := time.Date(2026, time.June, 9, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune9), "uk-ai-hardware-plan-compute-industrial-policy-2026") {
+		t.Fatal("publishedPosts() did not include UK AI hardware plan article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune9), "ai-hardware-race-moves-from-chips-to-systems-2026") {
 		t.Fatal("publishedPosts() did not include AI hardware systems article on publication date")
 	}
@@ -135,6 +138,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	ukAIHardwarePlanPost, ok := FindBySlug("uk-ai-hardware-plan-compute-industrial-policy-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find UK AI hardware plan post")
+	}
+	if ukAIHardwarePlanPost.Title != "Britain's AI Hardware Bet: The Chip Plan That Turns Compute Into Industrial Policy" {
+		t.Fatalf("FindBySlug() returned %q for UK AI hardware plan post", ukAIHardwarePlanPost.Title)
+	}
+
 	aiHardwarePost, ok := FindBySlug("ai-hardware-race-moves-from-chips-to-systems-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI hardware systems post")

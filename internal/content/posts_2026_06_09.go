@@ -3,6 +3,82 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Leaderboard Is No Longer the Product: AI Benchmarks Enter Their Agent Era",
+			Slug:    "ai-benchmarks-enter-agent-era-2026",
+			Date:    "June 9, 2026",
+			Tag:     "Models",
+			Summary: "Frontier models are still posting benchmark wins. The harder question in 2026 is whether a model, scaffold, and tool stack can finish real work without quietly failing on the way.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The simplest way to understand the AI model race used to be a leaderboard. One model beat another on MMLU, HumanEval, GPQA, or a coding benchmark, and the industry had a new shorthand for who was ahead.",
+						"That shorthand is breaking down.",
+						"Not because benchmarks are useless. They are still one of the few shared instruments the field has. But in mid-2026, the most important AI systems are no longer just answering questions in isolation. They are browsing, writing code, calling APIs, operating enterprise workflows, and making multi-step decisions inside software environments that were not built to be neat exam rooms. The result is a measurement problem: a model can look excellent on a static test and still fail as an agent.",
+					},
+				},
+				{
+					Heading: "Model Scores Are Not System Outcomes",
+					Paragraphs: []string{
+						"NVIDIA framed the distinction clearly in a May 19 technical guide on agent evaluation. A model benchmark asks whether a foundation model has enough underlying capability: can it reason, write code, follow instructions, or answer difficult questions? An agent evaluation asks whether a full system can carry out work end to end. That means planning, calling the right tools, respecting schemas, recovering from errors, and completing the job within real constraints.",
+						"That difference matters because the product buyers care about is increasingly the second one.",
+						"A benchmark score can tell a developer whether a model is worth considering. It does not tell an operations team whether an AI support agent will update the right customer record, avoid a forbidden API, stop retrying a broken endpoint, and leave an auditable trail. It does not tell a software team whether a coding agent solved the bug for the right reason or simply produced a patch that passed a narrow test. It does not tell a compliance lead whether an enterprise agent stayed inside policy while crossing tools.",
+					},
+				},
+				{
+					Heading: "SWE-bench Makes The Shift Visible",
+					Paragraphs: []string{
+						"This is why the benchmark story has moved from raw answers to trajectories.",
+						"SWE-bench is a useful example. The benchmark family evaluates whether systems can resolve real GitHub issues, not just write a function in a blank prompt. Its Verified subset is a human-filtered set of 500 instances, designed to make evaluation more reliable by checking that issue descriptions are clear, test patches are correct, and tasks are solvable from the available information.",
+						"The official SWE-bench page now also makes the scaffold part of the story: users can compare full agent systems, or use a minimal mini-SWE-agent setup to put language models into a more controlled bash-only environment.",
+						"That is a quiet but important shift. The unit of competition is not only the model. It is the model plus the agent loop, context strategy, tool interface, retry behavior, and execution environment.",
+					},
+				},
+				{
+					Heading: "The Benchmarks Themselves Have Limits",
+					Paragraphs: []string{
+						"OpenAI's original explanation for SWE-bench Verified shows why this became necessary. The company said evaluation of autonomous software engineering is hard because generated code can be difficult to assess, real development tasks are complex, and benchmark environments can accidentally reject valid solutions.",
+						"OpenAI identified issues such as overly specific unit tests, ambiguous task descriptions, and environment setup failures that could cause benchmarks to underestimate or overestimate actual capability.",
+						"That is the uncomfortable truth behind many headline scores: the measuring instrument is part of the system.",
+						"LiveCodeBench makes a related point from another angle. Its project page emphasizes contamination-free coding evaluation by continuously collecting problems over time and labeling them by release date. That allows evaluators to test models on problems published after a model's training cutoff. It also broadens the idea of code evaluation beyond generation alone, adding scenarios such as self-repair, code execution, and test output prediction.",
+					},
+				},
+				{
+					Heading: "A Single Score Collapses Too Much",
+					Paragraphs: []string{
+						"In other words, even inside coding, there is no single thing called coding ability. There is writing new code, debugging broken code, predicting what code will do, using tests correctly, and repairing mistakes after feedback. A model can be strong on one of those and weaker on another. A leaderboard that collapses all of that into one number is convenient, but it is not the same as a deployment decision.",
+						"The agent era makes that even more obvious. NVIDIA's guide recommends tracking task success rate, tool call accuracy, and trajectory efficiency. Those are practical metrics, not academic decorations. Task success asks whether the system actually fulfilled the user's intent. Tool call accuracy asks whether it selected and invoked external systems correctly. Trajectory efficiency asks whether it reached the result without wasteful loops, unnecessary calls, or brittle detours.",
+						"That last point is easy to miss. Two agents can produce the same final answer while behaving very differently. One may call the right API once and update the right record. Another may guess a schema, fail silently, search the wrong source, retry three times, and then give a polished explanation. A final-answer benchmark might grade them similarly. A production system would not.",
+					},
+				},
+				{
+					Heading: "What Buyers Should Evaluate",
+					Paragraphs: []string{
+						"This is why model evaluation in 2026 is becoming more like systems engineering. The best teams will still watch model leaderboards, but they will treat them as filters, not verdicts. A high score can justify deeper testing. It cannot replace deeper testing.",
+						"For enterprises, the practical lesson is straightforward: evaluate agents where they will live. If the agent will use Salesforce, ServiceNow, GitHub, internal knowledge bases, or payment systems, the test should include realistic permissions, malformed inputs, slow tools, missing data, and policy constraints. If the agent is supposed to write code, measure not only whether the patch passes tests, but whether it is maintainable, localized, and consistent with the repository. If the agent is supposed to produce research, measure citation coverage and source quality, not just fluency.",
+						"For model labs, the implication is more strategic. The market will keep asking who is ahead, but the answer will increasingly depend on the workflow. A model that wins on broad reasoning may not be the best coding agent once context retrieval, terminal execution, and review loops are included. A model that looks slightly behind on a static benchmark may win in a constrained enterprise workflow because it follows schemas more reliably or uses fewer tool calls per success.",
+					},
+				},
+				{
+					Heading: "The Product Is Reliability Under Motion",
+					Paragraphs: []string{
+						"That does not make benchmarks less important. It makes them more demanding.",
+						"The next credible benchmark will not just ask whether the model knew the answer. It will ask whether the system did the work, used the right evidence, made the right calls, stayed inside constraints, and left enough traces for a human to understand what happened. The leaderboard is still useful. It is just no longer the product.",
+						"The product is reliability under motion.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"NVIDIA Technical Blog, Mastering Agentic Techniques: AI Agent Evaluation, May 19, 2026: https://developer.nvidia.com/blog/?p=116877",
+						"SWE-bench Verified official page: https://www.swebench.com/verified.html",
+						"SWE-bench official leaderboards: https://www.swebench.com/",
+						"OpenAI, Introducing SWE-bench Verified, updated February 24, 2025: https://openai.com/index/introducing-swe-bench-verified/",
+						"LiveCodeBench official project page: https://livecodebench.github.io/",
+					},
+				},
+			},
+		},
+		{
 			Title:   "AI Science Enters the Workflow Era",
 			Slug:    "ai-science-workflow-era-2026",
 			Date:    "June 9, 2026",

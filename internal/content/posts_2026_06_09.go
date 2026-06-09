@@ -3,6 +3,65 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "AI Science Enters the Workflow Era",
+			Slug:    "ai-science-workflow-era-2026",
+			Date:    "June 9, 2026",
+			Tag:     "Science",
+			Summary: "The latest AI science story is not a single miracle model. It is the arrival of supervised, workflow-shaped systems that help researchers generate hypotheses, clinicians review evidence, and institutions ask harder questions about proof.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For the first few years of the generative AI boom, the most clickable science stories were about models doing striking things in isolation: solving protein structures, passing medical exams, writing code, or answering questions that looked impossibly specialized. Those moments mattered. They proved that large models could absorb complex scientific language and operate across domains that once required narrow, hand-built systems.",
+						"But the more important shift now looks quieter and more practical. AI for science is being redesigned as workflow infrastructure.",
+						"That matters because real discovery rarely begins and ends with a single answer. A researcher has to form a hypothesis, test whether it is novel, pressure-test it against the literature, design an experiment, interpret messy results, and decide what to try next. A clinician has to connect symptoms, records, guidelines, patient preferences, and institutional constraints under time pressure. In both settings, a model that produces a plausible paragraph is not enough. The useful system has to help humans think, check, debate, and decide.",
+					},
+				},
+				{
+					Heading: "From Single Answer Machines To Workflows",
+					Paragraphs: []string{
+						"Google DeepMind's recent Co-Scientist work is a clear example of this transition. Announced in May, the Gemini-based system is built as a coalition of specialized agents rather than a single chat interface. One group generates hypotheses, another clusters related ideas, another critiques quality and novelty, and another ranks promising paths through a tournament-like process. A supervisor agent coordinates the process.",
+						"The point is not to replace the scientist with a final answer. It is to widen the search space and make the early stage of scientific reasoning more systematic.",
+						"That distinction is crucial. The hardest bottleneck in many research programs is not that scientists lack intelligence. It is that modern science is too large for any one person or lab to hold in working memory. Literature expands faster than humans can read it. Adjacent fields hide useful analogies behind unfamiliar vocabulary. The number of possible experiments can explode before a team has a clear reason to favor one path over another. An AI co-scientist, used carefully, can become a structured brainstorming partner: tireless, broad, and useful precisely because it can be asked to generate, criticize, and revise many candidate ideas before humans commit expensive lab time.",
+					},
+				},
+				{
+					Heading: "Why Medicine Forces Better Standards",
+					Paragraphs: []string{
+						"The same pattern is showing up in medical AI, where the stakes are higher and the tolerance for loose claims should be lower. Google DeepMind's AI co-clinician research initiative describes a supervised care model in which AI agents help patients and clinicians under physician authority.",
+						"The framing is important. It does not present AI as an autonomous doctor. It presents AI as a member of a care team that may help gather evidence, explain options, and extend clinical reach while keeping medical judgment with licensed professionals.",
+						"Recent medical literature helps explain why that caution is necessary. A Nature Medicine review of LLMs in clinical medicine identified 4,609 peer-reviewed studies from January 2022 through September 2025, but only 1,048 used real-world patient data and only 19 were prospective randomized trials. Many studies relied on simulations or exam-style tasks. The review found that LLMs beat humans in only about a third of head-to-head comparisons, and performance depended heavily on how realistic the task was and who the human comparator was.",
+						"That is not an argument against medical AI. It is an argument for better evidence. If a model can summarize a chart, suggest a differential diagnosis, or explain a procedure, the next question is not whether the demo is impressive. The next question is whether the system improves patient outcomes, avoids hidden errors, works across populations, and fits safely into the clinical workflow. The gap between a benchmark and a hospital ward is where most of the real work lives.",
+					},
+				},
+				{
+					Heading: "The Hospital Workflow Problem",
+					Paragraphs: []string{
+						"A June 1 npj Health Systems paper on multi-agent evaluation for inpatient pathways points in the same direction. Inpatient care is not just diagnosis. It includes routing patients to the right department, prioritizing dynamic risks, integrating electronic health record data, and making operational decisions that affect patient flow. That is exactly the kind of setting where AI systems may be useful, but also where narrow tests can mislead. A model that answers a medical exam question may still fail when asked to coordinate care through a changing hospital system.",
+						"The broader lesson for AI science is that the field is maturing from model capability claims into institutional design. Google's May AI recap highlighted Gemini for Science as a collection of tools and experiments for scientific exploration, alongside AlphaEvolve applications in logistics, chip design, molecular simulation, and electrical power grids. Those examples are diverse, but the underlying pattern is consistent: AI is being inserted into loops where humans define goals, machines explore possibilities, and institutions decide what can be trusted.",
+					},
+				},
+				{
+					Heading: "What This Means For Discovery",
+					Paragraphs: []string{
+						"This is a healthier story than the simple narrative that AI will either automate science or fail to live up to the hype. Discovery has always been a social and procedural activity. It depends on peer review, replication, lab craft, funding choices, data quality, and the stubborn ability to notice when a beautiful hypothesis is wrong. AI can accelerate parts of that system, especially search and synthesis. It can also amplify mistakes if it is allowed to outrun evidence.",
+						"The best near-term systems will probably look less like oracles and more like scientific instruments. They will have known operating ranges. They will log their reasoning paths. They will invite critique. They will make it easier to compare alternatives. And they will be judged not by whether they sound authoritative, but by whether they help teams make better decisions than they could make alone.",
+						"For readers watching the AI market, this is also a useful correction. The next phase of AI science may not be won by the model with the flashiest public demo. It may be won by the platform that can sit inside a serious workflow, respect domain constraints, and produce evidence that survives contact with reality. In medicine, that means prospective studies and clinician oversight. In biology, it means experiments that validate generated hypotheses. In engineering, it means designs that work outside the benchmark.",
+						"The promise is still large. AI can help researchers search wider, clinicians see more context, and institutions learn from more data. But the path to impact now runs through disciplined deployment. The future of AI science is not just faster answers. It is better questions, tested more carefully, inside systems built to know the difference.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Google DeepMind, Co-Scientist: A multi-agent AI partner to accelerate research, May 19, 2026: https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/",
+						"Google DeepMind, Enabling a new model for healthcare with AI co-clinician, April 30, 2026: https://deepmind.google/blog/ai-co-clinician/",
+						"Nature Medicine, LLM-assisted systematic review of large language models in clinical medicine, March 3, 2026: https://www.nature.com/articles/s41591-026-04229-5",
+						"npj Health Systems, MAP: evaluation and multi-agent enhancement of large language models for inpatient pathways, June 1, 2026: https://www.nature.com/articles/s44401-026-00085-0",
+						"Google, The latest AI news we announced in May 2026, June 5, 2026: https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Britain's AI Hardware Bet: The Chip Plan That Turns Compute Into Industrial Policy",
 			Slug:    "uk-ai-hardware-plan-compute-industrial-policy-2026",
 			Date:    "June 9, 2026",

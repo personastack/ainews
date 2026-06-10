@@ -53,6 +53,11 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune10 := time.Date(2026, time.June, 10, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune10), "ai-compliance-calendar-global-rulebook-2026") {
+		t.Fatal("publishedPosts() did not include AI compliance calendar article on publication date")
+	}
+
 	onPublicationJune9 := time.Date(2026, time.June, 9, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune9), "ai-benchmarks-enter-agent-era-2026") {
 		t.Fatal("publishedPosts() did not include AI benchmark agent era article on publication date")
@@ -144,6 +149,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	policyCalendarPost, ok := FindBySlug("ai-compliance-calendar-global-rulebook-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI compliance calendar post")
+	}
+	if policyCalendarPost.Title != "AI Compliance Has a Calendar Now: The Global Rulebook Moves From Debate to Deadlines" {
+		t.Fatalf("FindBySlug() returned %q for AI compliance calendar post", policyCalendarPost.Title)
+	}
+
 	ukAIHardwarePlanPost, ok := FindBySlug("uk-ai-hardware-plan-compute-industrial-policy-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find UK AI hardware plan post")

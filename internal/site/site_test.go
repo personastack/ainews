@@ -26,6 +26,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"Claude Fable 5 Shows the Next AI Race Is About Autonomy and Control",
 		"The AI Hardware Race Has Moved From Chips to Systems",
 		"The AI Rulebook Is Moving From Principles to Plumbing",
 		"95% Say It Worked, 17% Say It Wowed: Enterprise AI&#39;s ROI Reckoning Arrives",

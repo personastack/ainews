@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune10 := time.Date(2026, time.June, 10, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune10), "ai-agents-devops-infrastructure-rebuild-2026") {
+		t.Fatal("publishedPosts() did not include AI agents DevOps infrastructure article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune10), "ai-compliance-calendar-global-rulebook-2026") {
 		t.Fatal("publishedPosts() did not include AI compliance calendar article on publication date")
 	}
@@ -149,6 +152,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	aiAgentsDevOpsPost, ok := FindBySlug("ai-agents-devops-infrastructure-rebuild-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI agents DevOps infrastructure post")
+	}
+	if aiAgentsDevOpsPost.Title != "When AI Agents Join the Build Pipeline, DevOps Has to Rebuild" {
+		t.Fatalf("FindBySlug() returned %q for AI agents DevOps infrastructure post", aiAgentsDevOpsPost.Title)
+	}
+
 	policyCalendarPost, ok := FindBySlug("ai-compliance-calendar-global-rulebook-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI compliance calendar post")

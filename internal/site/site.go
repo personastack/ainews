@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/personadock/ainews/internal/content"
@@ -14,15 +15,26 @@ import (
 //go:embed templates/*.html
 var templatesFS embed.FS
 
+const postsPerPage = 12
+
 type Server struct {
 	templates *template.Template
 	mux       *http.ServeMux
 }
 
 type listPageData struct {
-	Title string
-	Deck  string
-	Posts []content.Post
+	Title      string
+	Deck       string
+	Posts      []content.Post
+	Page       int
+	TotalPages int
+	TotalPosts int
+	HasPrev    bool
+	HasNext    bool
+	PrevURL    string
+	NextURL    string
+	Start      int
+	End        int
 }
 
 type postPageData struct {
@@ -71,13 +83,88 @@ func (s *Server) handleIndex(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	posts := content.Posts()
+	page := pageFromRequest(r)
+	pagePosts, totalPages, start, end := paginatePosts(posts, page)
+
 	data := listPageData{
-		Title: "AI News Briefs",
-		Deck:  "Fresh technical briefings on the model race, regulation, and product shifts shaping AI right now.",
-		Posts: content.Posts(),
+		Title:      "AI News Briefs",
+		Deck:       "Fresh technical briefings on the model race, regulation, and product shifts shaping AI right now.",
+		Posts:      pagePosts,
+		Page:       page,
+		TotalPages: totalPages,
+		TotalPosts: len(posts),
+		HasPrev:    page > 1,
+		HasNext:    page < totalPages,
+		PrevURL:    pageURL(page - 1),
+		NextURL:    pageURL(page + 1),
+		Start:      start,
+		End:        end,
 	}
 
 	s.render(w, http.StatusOK, "index", data)
+}
+
+func pageFromRequest(r *http.Request) int {
+	pageParam := r.URL.Query().Get("page")
+	if pageParam == "" {
+		return 1
+	}
+
+	page, err := strconv.Atoi(pageParam)
+	if err != nil || page < 1 {
+		return 1
+	}
+
+	totalPages := totalPages(len(content.Posts()))
+	if page > totalPages {
+		return totalPages
+	}
+
+	return page
+}
+
+func paginatePosts(posts []content.Post, page int) ([]content.Post, int, int, int) {
+	totalPages := totalPages(len(posts))
+	if page < 1 {
+		page = 1
+	}
+	if page > totalPages {
+		page = totalPages
+	}
+
+	start := (page - 1) * postsPerPage
+	if start > len(posts) {
+		start = len(posts)
+	}
+
+	end := start + postsPerPage
+	if end > len(posts) {
+		end = len(posts)
+	}
+
+	return posts[start:end], totalPages, start + 1, end
+}
+
+func totalPages(totalPosts int) int {
+	if totalPosts == 0 {
+		return 1
+	}
+
+	pages := totalPosts / postsPerPage
+	if totalPosts%postsPerPage != 0 {
+		pages++
+	}
+
+	return pages
+}
+
+func pageURL(page int) string {
+	if page <= 1 {
+		return "/"
+	}
+
+	return fmt.Sprintf("/?page=%d", page)
 }
 
 func (s *Server) handlePost(w http.ResponseWriter, r *http.Request) {

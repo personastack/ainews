@@ -66,6 +66,12 @@
       display: grid;
       gap: 1rem;
     }
+    .results {
+      color: var(--muted);
+      font: 600 0.86rem/1.4 Arial, Helvetica, sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
     article {
       background: var(--card);
       backdrop-filter: blur(8px);
@@ -107,10 +113,48 @@
       font: 600 0.95rem/1.2 Arial, Helvetica, sans-serif;
       letter-spacing: 0.03em;
     }
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1rem;
+      font: 600 0.95rem/1.2 Arial, Helvetica, sans-serif;
+    }
+    .page-link {
+      min-width: 8rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(187, 77, 0, 0.35);
+      border-radius: 999px;
+      color: var(--accent);
+      text-align: center;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.48);
+    }
+    .page-link[aria-disabled="true"] {
+      visibility: hidden;
+    }
+    .page-status {
+      color: var(--muted);
+      text-align: center;
+    }
     footer {
       padding: 0 0 3rem;
       color: var(--muted);
       font: 0.92rem/1.5 Arial, Helvetica, sans-serif;
+    }
+    @media (max-width: 620px) {
+      .pagination {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .page-status {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+      .page-link {
+        min-width: 0;
+      }
     }
   </style>
 </head>
@@ -122,6 +166,7 @@
       <p class="dek">{{.Deck}}</p>
     </header>
     <main>
+      <p class="results">Showing {{.Start}}-{{.End}} of {{.TotalPosts}} briefings</p>
       {{range .Posts}}
       <article>
         <div class="meta">
@@ -133,6 +178,19 @@
         <a class="cta" href="/posts/{{.Slug}}">Read the briefing</a>
       </article>
       {{end}}
+      <nav class="pagination" aria-label="Post pagination">
+        {{if .HasPrev}}
+        <a class="page-link" href="{{.PrevURL}}">Newer posts</a>
+        {{else}}
+        <span class="page-link" aria-disabled="true">Newer posts</span>
+        {{end}}
+        <span class="page-status">Page {{.Page}} of {{.TotalPages}}</span>
+        {{if .HasNext}}
+        <a class="page-link" href="{{.NextURL}}">Older posts</a>
+        {{else}}
+        <span class="page-link" aria-disabled="true">Older posts</span>
+        {{end}}
+      </nav>
     </main>
     <footer>
       Technical reporting prepared from current author handoffs and served from a lightweight Go publisher.

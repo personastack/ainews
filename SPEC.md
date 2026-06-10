@@ -32,6 +32,8 @@ Published posts are gated by the `Date` field using Go's `January 2, 2006` layou
 
 AINews currently stores one primary category in `Post.Tag`. Secondary tags from editorial handoff can be reflected in article copy, but the rendered site only exposes the single primary tag.
 
+The June 10, 2026 content batch includes a Platforms article about OpenAI turning ChatGPT reasoning effort into a visible picker control. The story is intentionally framed as product UX and compute allocation, not as a new model launch.
+
 ## Testing
 
 Run:

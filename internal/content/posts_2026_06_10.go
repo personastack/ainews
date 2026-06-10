@@ -3,6 +3,71 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Reasoning Becomes a Button: ChatGPT's New Picker Turns Compute Into UX",
+			Slug:    "chatgpt-reasoning-effort-product-ux-2026",
+			Date:    "June 10, 2026",
+			Tag:     "Platforms",
+			Summary: "OpenAI's June 10 ChatGPT picker update is not a new model launch. It is a product signal: reasoning effort is becoming a user-facing control for speed, latency, and compute allocation.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"OpenAI did not announce a new frontier model on June 10. It did something quieter, and arguably more revealing: it changed how ChatGPT asks users to choose what kind of answer they want.",
+						"In a June 10 ChatGPT release note, OpenAI said it is simplifying the model picker so users can choose the balance of speed and reasoning effort that fits a task. The new visible choices are Instant, Medium, High, Extra High for Pro plans, Pro Standard for Pro plans, and Pro Extended for Pro plans. On iOS and Android, the picker sits at the top of the conversation. On the web, it appears in the message composer. Users can also decide whether Instant should automatically switch to Medium when a prompt needs more reasoning.",
+						"That may sound like interface cleanup. It is more than that. It is a sign that reasoning has become a product surface.",
+						"For the first decade of modern consumer AI, the menu was mostly about model identity. Users chose GPT-4, GPT-4o, o-series models, Claude variants, Gemini variants, or whatever label best represented the vendor's current capability ladder. That made sense when model choice was the simplest shorthand for quality. But as model families became more crowded, and as reasoning models introduced more variable latency and compute cost, the menu started to carry too much technical baggage.",
+						"The new ChatGPT picker abstracts the problem differently. It asks a more practical question: do you want the fast path, the deeper path, or the heaviest path?",
+						"That is a small language change with large implications.",
+					},
+				},
+				{
+					Heading: "Reasoning Effort Is Now A User Choice",
+					Paragraphs: []string{
+						"The most important part of OpenAI's release is not the specific naming scheme. It is the shift from model branding to compute allocation.",
+						"Instant is the everyday answer lane. Medium and High suggest progressively more reasoning effort. Extra High, Pro Standard, and Pro Extended make clear that some levels of reasoning are scarce enough to reserve for higher-tier plans. The old naming map reinforces the point: Thinking Standard becomes Medium, Thinking Extended becomes High, Thinking Heavy becomes Extra High, and Thinking Light is removed.",
+						"In other words, the visible unit of choice is no longer just the model. It is the amount of thinking the product is allowed to spend.",
+						"That matters because users experience reasoning models differently from classic chat models. A lightweight answer can feel immediate and conversational. A high-reasoning answer may take longer but handle planning, math, code review, document analysis, or multi-step comparison more reliably. The product challenge is that users often do not want to learn the internal model lineup before every prompt. They want to decide whether the task deserves more time.",
+						"OpenAI's auto-switch setting points at the tension. A user can keep Instant as the default for speed, while allowing ChatGPT to move to Medium when the system decides the prompt needs more reasoning. That is a familiar design pattern in computing: give the user a simple default, then route intelligently when the workload demands it.",
+					},
+				},
+				{
+					Heading: "The Cloud SKU Comes To The Chat Box",
+					Paragraphs: []string{
+						"There is a useful analogy in cloud infrastructure. Most customers do not want to reason about the physical server behind every workload. They choose a performance tier, memory class, latency target, or cost envelope. The provider handles the underlying routing.",
+						"AI products are moving in the same direction. Reasoning effort is becoming a visible resource, like storage, compute class, or query priority. The user does not need to know every implementation detail, but the product still has to expose enough control to make the tradeoff understandable.",
+						"That tradeoff is economic as much as technical. More reasoning usually means more tokens, more latency, and more compute. For individual users, the cost may be hidden inside a subscription tier. For businesses, it will become part of usage governance. Teams will ask which workflows should run on fast answers, which deserve deeper reasoning, and when automatic escalation is acceptable.",
+						"This is where the UX change becomes strategically interesting. Once reasoning effort is a button, organizations can start building norms around it. A customer support macro might default to fast responses. A contract review, incident analysis, or code migration plan might require a higher reasoning tier. A regulated workflow might disable automatic switching until the organization can log and justify the route.",
+						"The interface is simple, but the policy questions behind it are not.",
+					},
+				},
+				{
+					Heading: "Why This Is Not A Model Launch Story",
+					Paragraphs: []string{
+						"It is important not to overstate the release. OpenAI's June 10 note is not evidence of a new model capability. It does not claim a new benchmark win. It does not say that ChatGPT suddenly reasons better than it did the day before. It is a product packaging change for Plus and Pro users on web, iOS, and Android.",
+						"But product packaging is how AI capability becomes habitual.",
+						"The strongest AI systems will not only be the ones with the best raw benchmark scores. They will be the ones that help users allocate effort correctly. Too little reasoning and the answer is brittle. Too much reasoning and the product feels slow, expensive, or overbuilt for the task. The winning interface has to make that tradeoff legible without turning every prompt into a settings panel.",
+						"That is why this release deserves attention. It shows OpenAI treating reasoning not just as a backend model property, but as something users can steer.",
+					},
+				},
+				{
+					Heading: "The Next Interface Layer",
+					Paragraphs: []string{
+						"The model picker is becoming less like a brand menu and more like a control panel for work quality.",
+						"That trend is likely to spread across the industry. Anthropic, Google, Microsoft, and enterprise AI platforms all face the same problem: they have multiple models, multiple latency profiles, and multiple safety or cost routes. Users and administrators need understandable controls. The deeper the model stack becomes, the more important the interface layer becomes.",
+						"For consumers, this may mean fewer model names and clearer choices. For professionals, it may mean task templates that automatically select reasoning depth. For enterprises, it may mean policies that connect reasoning tiers to budget, risk, audit logs, and data access.",
+						"The larger point is that AI products are entering a phase where capability is not enough. The product must help people decide when to spend that capability.",
+						"That is what makes OpenAI's small picker update worth watching. It turns reasoning from an invisible backend behavior into a designed user decision. The next AI interface may not ask which model you want. It may ask how hard the system should think.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"OpenAI Help Center, ChatGPT Release Notes, June 10, 2026: https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+						"Researcher handoff, OpenAI Turns Reasoning Effort Into Product UX: https://docs.google.com/document/d/1BPl4qmrqcY1mQMkUBUuZaiXSxticVNNtOkZJlkOT9pc/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Claude Fable 5 Shows the Next AI Race Is About Autonomy and Control",
 			Slug:    "claude-fable-5-safety-routed-agent-infrastructure-2026",
 			Date:    "June 10, 2026",

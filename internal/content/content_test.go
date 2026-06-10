@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune10 := time.Date(2026, time.June, 10, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune10), "chatgpt-reasoning-effort-product-ux-2026") {
+		t.Fatal("publishedPosts() did not include ChatGPT reasoning effort picker article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune10), "claude-fable-5-safety-routed-agent-infrastructure-2026") {
 		t.Fatal("publishedPosts() did not include Claude Fable 5 article on publication date")
 	}
@@ -155,6 +158,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	chatGPTPickerPost, ok := FindBySlug("chatgpt-reasoning-effort-product-ux-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find ChatGPT reasoning effort picker post")
+	}
+	if chatGPTPickerPost.Title != "Reasoning Becomes a Button: ChatGPT's New Picker Turns Compute Into UX" {
+		t.Fatalf("FindBySlug() returned %q for ChatGPT reasoning effort picker post", chatGPTPickerPost.Title)
+	}
+
 	claudeFablePost, ok := FindBySlug("claude-fable-5-safety-routed-agent-infrastructure-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Claude Fable 5 post")

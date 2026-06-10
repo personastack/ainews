@@ -26,6 +26,7 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	for _, want := range []string{
+		"Cohere&#39;s North Mini Code Shows the Next Coding Agent Race Is About Control",
 		"Reasoning Becomes a Button: ChatGPT&#39;s New Picker Turns Compute Into UX",
 		"Claude Fable 5 Shows the Next AI Race Is About Autonomy and Control",
 		"The AI Hardware Race Has Moved From Chips to Systems",

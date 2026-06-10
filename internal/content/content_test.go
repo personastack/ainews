@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune10 := time.Date(2026, time.June, 10, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune10), "cohere-north-mini-code-local-coding-agents-2026") {
+		t.Fatal("publishedPosts() did not include Cohere North Mini Code article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune10), "chatgpt-reasoning-effort-product-ux-2026") {
 		t.Fatal("publishedPosts() did not include ChatGPT reasoning effort picker article on publication date")
 	}
@@ -158,6 +161,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	cohereNorthMiniCodePost, ok := FindBySlug("cohere-north-mini-code-local-coding-agents-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Cohere North Mini Code post")
+	}
+	if cohereNorthMiniCodePost.Title != "Cohere's North Mini Code Shows the Next Coding Agent Race Is About Control" {
+		t.Fatalf("FindBySlug() returned %q for Cohere North Mini Code post", cohereNorthMiniCodePost.Title)
+	}
+
 	chatGPTPickerPost, ok := FindBySlug("chatgpt-reasoning-effort-product-ux-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find ChatGPT reasoning effort picker post")

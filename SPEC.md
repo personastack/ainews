@@ -32,7 +32,9 @@ Published posts are gated by the `Date` field using Go's `January 2, 2006` layou
 
 AINews currently stores one primary category in `Post.Tag`. Secondary tags from editorial handoff can be reflected in article copy, but the rendered site only exposes the single primary tag.
 
-The June 10, 2026 content batch includes a Platforms article about OpenAI turning ChatGPT reasoning effort into a visible picker control. The story is intentionally framed as product UX and compute allocation, not as a new model launch.
+The June 10, 2026 content batch includes a DevTools article about Cohere North Mini Code as a local, open, controllable coding-agent layer for enterprises. It should keep the caveat that Cohere's throughput and inter-token latency comparisons are company-reported and should frame the model as routable local or sovereign infrastructure rather than a universal replacement for frontier cloud systems.
+
+The same batch also includes a Platforms article about OpenAI turning ChatGPT reasoning effort into a visible picker control. The story is intentionally framed as product UX and compute allocation, not as a new model launch.
 
 ## Testing
 

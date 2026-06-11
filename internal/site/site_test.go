@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("The First Serious AI Agents May Work in Fraud, Not Chat")) {
-		t.Fatal("response missing Verafin fraud and AML agents article title")
+	if !strings.Contains(body, template.HTMLEscapeString("Atos Has 19,000 AI Agents. Now Comes the Hard Part.")) {
+		t.Fatal("response missing Atos agent governance article title")
 	}
 
 	posts := content.Posts()

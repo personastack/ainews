@@ -38,6 +38,8 @@ The same batch also includes a Platforms article about OpenAI turning ChatGPT re
 
 The June 11, 2026 content batch includes an Enterprise article about Nasdaq Verafin's planned agentic AML and fraud analysts. Keep availability timing precise: general availability is expected in Q3 2026, the third-party deployment model is expected to enter beta in the second half of 2026, and alert auto-dispositioning should be framed as a planned roadmap capability rather than broad production autonomy.
 
+The same batch also includes an Enterprise article about Atos managing a large AI-agent rollout with Microsoft. Keep the rollout scale framed as company-reported: 56,000 employees, 54 countries, and 19,000 AI agents. Preserve the product-naming caveat that Microsoft's source uses Microsoft 365 Copilot E7 while Atos also uses Microsoft 365 E7 wording.
+
 ## Testing
 
 Run:

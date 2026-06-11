@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune11 := time.Date(2026, time.June, 11, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune11), "atos-agent-365-governance-fleet-management-2026") {
+		t.Fatal("publishedPosts() did not include Atos agent governance article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune11), "ai-agents-fraud-aml-verafin-2026") {
 		t.Fatal("publishedPosts() did not include Verafin fraud and AML agents article on publication date")
 	}
@@ -166,6 +169,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	atosPost, ok := FindBySlug("atos-agent-365-governance-fleet-management-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Atos agent governance post")
+	}
+	if atosPost.Title != "Atos Has 19,000 AI Agents. Now Comes the Hard Part." {
+		t.Fatalf("FindBySlug() returned %q for Atos agent governance post", atosPost.Title)
+	}
+
 	verafinPost, ok := FindBySlug("ai-agents-fraud-aml-verafin-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Verafin fraud and AML agents post")

@@ -53,6 +53,11 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune11 := time.Date(2026, time.June, 11, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune11), "ai-agents-fraud-aml-verafin-2026") {
+		t.Fatal("publishedPosts() did not include Verafin fraud and AML agents article on publication date")
+	}
+
 	onPublicationJune10 := time.Date(2026, time.June, 10, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune10), "cohere-north-mini-code-local-coding-agents-2026") {
 		t.Fatal("publishedPosts() did not include Cohere North Mini Code article on publication date")
@@ -161,6 +166,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	verafinPost, ok := FindBySlug("ai-agents-fraud-aml-verafin-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Verafin fraud and AML agents post")
+	}
+	if verafinPost.Title != "The First Serious AI Agents May Work in Fraud, Not Chat" {
+		t.Fatalf("FindBySlug() returned %q for Verafin fraud and AML agents post", verafinPost.Title)
+	}
+
 	cohereNorthMiniCodePost, ok := FindBySlug("cohere-north-mini-code-local-coding-agents-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Cohere North Mini Code post")

@@ -36,6 +36,8 @@ The June 10, 2026 content batch includes a DevTools article about Cohere North M
 
 The same batch also includes a Platforms article about OpenAI turning ChatGPT reasoning effort into a visible picker control. The story is intentionally framed as product UX and compute allocation, not as a new model launch.
 
+The June 11, 2026 content batch includes an Enterprise article about Nasdaq Verafin's planned agentic AML and fraud analysts. Keep availability timing precise: general availability is expected in Q3 2026, the third-party deployment model is expected to enter beta in the second half of 2026, and alert auto-dispositioning should be framed as a planned roadmap capability rather than broad production autonomy.
+
 ## Testing
 
 Run:

@@ -26,6 +26,10 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The First Serious AI Agents May Work in Fraud, Not Chat")) {
+		t.Fatal("response missing Verafin fraud and AML agents article title")
+	}
+
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)

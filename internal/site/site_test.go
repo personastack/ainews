@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("Atos Has 19,000 AI Agents. Now Comes the Hard Part.")) {
-		t.Fatal("response missing Atos agent governance article title")
+	if !strings.Contains(body, template.HTMLEscapeString("Hong Kong Shows How AI Cyber Risk Becomes Financial Regulation")) {
+		t.Fatal("response missing Hong Kong SFC AI cyber risk article title")
 	}
 
 	posts := content.Posts()

@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune11 := time.Date(2026, time.June, 11, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune11), "hong-kong-sfc-ai-cyber-risk-financial-regulation-2026") {
+		t.Fatal("publishedPosts() did not include Hong Kong SFC AI cyber risk article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune11), "atos-agent-365-governance-fleet-management-2026") {
 		t.Fatal("publishedPosts() did not include Atos agent governance article on publication date")
 	}
@@ -169,6 +172,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	hongKongSFCPost, ok := FindBySlug("hong-kong-sfc-ai-cyber-risk-financial-regulation-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Hong Kong SFC AI cyber risk post")
+	}
+	if hongKongSFCPost.Title != "Hong Kong Shows How AI Cyber Risk Becomes Financial Regulation" {
+		t.Fatalf("FindBySlug() returned %q for Hong Kong SFC AI cyber risk post", hongKongSFCPost.Title)
+	}
+
 	atosPost, ok := FindBySlug("atos-agent-365-governance-fleet-management-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Atos agent governance post")

@@ -3,6 +3,60 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Hong Kong Shows How AI Cyber Risk Becomes Financial Regulation",
+			Slug:    "hong-kong-sfc-ai-cyber-risk-financial-regulation-2026",
+			Date:    "June 11, 2026",
+			Tag:     "Security",
+			Summary: "Hong Kong's SFC is treating AI-driven cyber attacks as a mainstream financial-supervision issue, pushing regulated firms to map AI risk onto patching, access, monitoring, vendor, and incident-response controls.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The next phase of AI regulation may not arrive with a banner that says \"AI law.\" It may arrive through the same channels that already govern money, markets, cyber resilience, outsourcing, and client protection.",
+						"That is the useful signal in a June 2 circular from Hong Kong's Securities and Futures Commission. The SFC told licensed corporations, SFC-licensed virtual asset service providers, and associated entities to review and strengthen their cybersecurity frameworks against AI-driven cyber attacks. The circular is narrow in form: it is a cyber-resilience notice for regulated financial firms. But its implications are broader. AI risk is being folded into ordinary financial supervision.",
+						"That matters because the hardest AI security problems are no longer limited to model labs. Banks, brokers, custodians, crypto platforms, asset managers, and research providers are starting to use generative AI inside workflows that touch client data, trading systems, documents, communications, and investment analysis. At the same time, attackers can use AI to write better phishing messages, scale reconnaissance, automate social engineering, generate malicious code, and adapt attacks more quickly.",
+						"The SFC's response is not to invent an entirely new framework. It points firms back to five familiar control areas: patching and vulnerability management, access controls, detection and monitoring, third-party supply-chain risk, and incident response. The message is simple but important: AI makes the old controls more urgent, and in some cases changes what those controls have to cover.",
+						"The regulator also made clear that higher-risk firms should treat the appendix controls as more than a loose menu. The circular highlights firms such as electronic trading businesses, large retail brokers, Type 13 depositaries of SFC-authorized collective investment schemes, and virtual asset trading platforms as organizations expected to implement all of the controls in the appendix, tailored to their business and risk profile.",
+					},
+				},
+				{
+					Heading: "AI Governance Becomes Operational",
+					Paragraphs: []string{
+						"That is the practical shape of AI governance in 2026. It is less abstract than principles about transparency or fairness, and more operational than another public debate over frontier-model licensing. A financial firm has to know who can access what, whether third-party software is trustworthy, whether logs can catch abnormal behavior, whether vulnerable systems are patched, and whether the business can recover when a cyber event occurs. AI does not replace that checklist. It raises the cost of getting it wrong.",
+						"The most interesting part is what this implies for generative AI inside financial work. The SFC circular notes that firms' own use of AI language models can amplify cyber vulnerabilities and introduce additional risks. It also says high-risk uses, including investment recommendations, investment advice, or investment research, may trigger notification obligations under Hong Kong licensing rules.",
+						"That is a very different kind of AI policy from the usual model-release story. If an AI system helps draft a research note, recommend an investment, summarize client documents, or trigger workflow actions, the risk is not just that the chatbot hallucinates. The risk is that untrusted inputs and automated tools sit inside a regulated business process.",
+					},
+				},
+				{
+					Heading: "Prompt Injection Becomes A Control Problem",
+					Paragraphs: []string{
+						"A malicious email, PDF, website, or copied text block can become an attack surface if an AI assistant is allowed to read it and act on it. A model connected to internal systems can be useful precisely because it has context and permissions. Those same attributes make it dangerous if the system treats adversarial instructions as trusted work. In technical circles, this is often discussed as prompt injection, tool misuse, or insecure agent design. In financial regulation, it becomes access control, client protection, operational resilience, recordkeeping, and incident response.",
+						"That translation is important. Boards and compliance teams do not need to become prompt-engineering experts. But they do need to understand that AI security is not only a model-behavior problem. It is an architecture problem. The firm has to decide what data the system can see, what tools it can call, what approvals are required before a privileged action, how outputs are reviewed, and how abnormal behavior is monitored.",
+						"This is also why third-party risk is becoming central. Many firms will not build their own foundation models. They will buy AI features from software vendors, analytics providers, cloud platforms, data providers, and workflow systems. That means an AI risk program has to cover contracts, data handling, auditability, vendor access, incident notification, and the possibility that a vendor's model-enabled feature changes faster than the firm's governance process.",
+					},
+				},
+				{
+					Heading: "A Pattern Beyond Hong Kong",
+					Paragraphs: []string{
+						"The SFC circular is not a global rulebook. It is a Hong Kong supervisory action aimed at a specific regulated sector. But it fits a wider pattern. Regulators are increasingly taking AI out of the novelty box and mapping it onto existing obligations. In finance, that means cyber resilience, market conduct, outsourcing, suitability, disclosures, governance, and operational risk. In healthcare, it will mean clinical safety and privacy. In education, it will mean child protection and assessment integrity. In enterprise software, it will mean identity, permissions, and audit trails.",
+						"For AI builders, the lesson is just as clear. The products that survive in regulated markets will need more than a clever model interface. They will need controls that make sense to security teams and regulators: permission boundaries, source tracking, human approval steps, retention policies, monitoring hooks, and clear explanations of how the system handles untrusted content.",
+						"For financial firms, the lesson is that waiting for a dedicated AI statute may be the wrong move. The obligations are already arriving through the systems they know. AI is becoming part of cyber risk. AI-assisted advice is becoming part of conduct risk. AI vendor features are becoming part of supply-chain risk. AI agents are becoming part of access-control risk.",
+						"That may be less dramatic than a sweeping AI act, but it is probably more consequential. Real regulation often begins when a new technology stops being special and starts being treated as part of the machinery that already keeps markets running.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Hong Kong Securities and Futures Commission, Circular to licensed corporations, SFC-licensed virtual asset service providers and associated entities: Enhanced cybersecurity measures to address AI-driven cyber attacks, 2026-06-02: https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/intermediaries/supervision/doc?refNo=26EC32",
+						"Official SFC circular file: https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/openFile?refNo=26EC32",
+						"Davis Polk, Hong Kong SFC calls for enhanced cybersecurity measures to combat AI-enabled cyber threats: https://www.davispolk.com/insights/client-update/hong-kong-sfc-calls-enhanced-cybersecurity-measures-combat-ai-enabled",
+						"Gibson Dunn, Hong Kong Regulators Call for Strengthened Cyber Resilience Against AI-Enabled Cyber Threats: https://www.gibsondunn.com/hong-kong-regulators-call-for-strengthened-cyber-resilience-against-ai-enabled-cyber-threats/",
+						"Sidley, Asia Funds and Financial Services Newsletter, June 2026: https://www.sidley.com/en/insights/newsupdates/2026/06/asia-funds-and-financial-services-newsletter",
+						"Author article handoff: https://docs.google.com/document/d/1HlKaKQmL0XLh1hitnFpKTY0ngWvDMj-FQMCrztw1h5E/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Atos Has 19,000 AI Agents. Now Comes the Hard Part.",
 			Slug:    "atos-agent-365-governance-fleet-management-2026",
 			Date:    "June 11, 2026",

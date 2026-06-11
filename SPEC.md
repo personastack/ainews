@@ -40,6 +40,8 @@ The June 11, 2026 content batch includes an Enterprise article about Nasdaq Vera
 
 The same batch also includes an Enterprise article about Atos managing a large AI-agent rollout with Microsoft. Keep the rollout scale framed as company-reported: 56,000 employees, 54 countries, and 19,000 AI agents. Preserve the product-naming caveat that Microsoft's source uses Microsoft 365 Copilot E7 while Atos also uses Microsoft 365 E7 wording.
 
+The same batch also includes a Security article about Hong Kong's SFC treating AI cyber risk as financial regulation. Preserve the June 2, 2026 circular date, use "AI-driven" when referring directly to the SFC circular's title and framing, and keep prompt injection framed as technical context rather than a direct SFC quote.
+
 ## Testing
 
 Run:

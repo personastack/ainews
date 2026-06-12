@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("Washington Is Building an AI Review Machine. Anthropic Wants a Veto Button")) {
-		t.Fatal("response missing Anthropic AI review machine article title")
+	if !strings.Contains(body, template.HTMLEscapeString("AI Agents Need Data. Cyera's $600 Million Round Shows the Trust Layer Is Becoming a Market")) {
+		t.Fatal("response missing Cyera trust layer market article title")
 	}
 
 	posts := content.Posts()

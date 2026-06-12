@@ -46,6 +46,8 @@ The June 12, 2026 content batch includes an AI Infrastructure article about the 
 
 The same batch also includes a Policy article about Anthropic asking for legally bounded deployment-blocking authority while the June 2, 2026 White House order builds classified benchmarking, covered-frontier-model designation, and voluntary 30-day pre-release access. Preserve the distinction that the U.S. order does not adopt mandatory licensing, preclearance, permitting, or a deployment-veto regime. Keep the Hong Kong SFC comparison framed as operational-risk supervision for AI-enabled cyber threats, not frontier-model approval or model veto authority.
 
+The same batch also includes a Security article about Cyera's $600 million funding round at a $12 billion valuation as a signal that enterprise AI data governance and trust infrastructure are becoming strategic markets. Preserve the caveat that the round size, valuation, total funding over $2.3 billion, investor list, annual growth, employee/acquisition figures, 95%+ precision claim, and 100+ product capabilities are company-reported or reported funding facts. Do not frame the article as proof that Cyera has solved agentic security; keep the claims to data visibility, access governance, DLP/privacy/identity convergence, and runtime controls for AI use.
+
 ## Testing
 
 Run:

@@ -48,6 +48,8 @@ The same batch also includes a Policy article about Anthropic asking for legally
 
 The same batch also includes a Security article about Cyera's $600 million funding round at a $12 billion valuation as a signal that enterprise AI data governance and trust infrastructure are becoming strategic markets. Preserve the caveat that the round size, valuation, total funding over $2.3 billion, investor list, annual growth, employee/acquisition figures, 95%+ precision claim, and 100+ product capabilities are company-reported or reported funding facts. Do not frame the article as proof that Cyera has solved agentic security; keep the claims to data visibility, access governance, DLP/privacy/identity convergence, and runtime controls for AI use.
 
+The same batch also includes a Science article about TITO, or Transferable Implicit Transfer Operators, as a way to compress molecular dynamics simulation between candidate proposal and lab validation. Preserve the reported scope: more than 10,000x faster than conventional simulations in the studied settings, tested on more than 12,500 organic molecules and more than 1,000 short peptides, demonstrated on small molecular systems and simplified solvent models. Do not frame it as turnkey drug discovery or immediate clinical acceleration.
+
 ## Testing
 
 Run:

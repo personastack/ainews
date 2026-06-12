@@ -42,6 +42,8 @@ The same batch also includes an Enterprise article about Atos managing a large A
 
 The same batch also includes a Security article about Hong Kong's SFC treating AI cyber risk as financial regulation. Preserve the June 2, 2026 circular date, use "AI-driven" when referring directly to the SFC circular's title and framing, and keep prompt injection framed as technical context rather than a direct SFC quote.
 
+The June 12, 2026 content batch includes an AI Infrastructure article about the World Economic Forum's 2026 Technology Pioneers cohort as a signal that AI startup activity is moving toward agent payments, identity, GPU orchestration, energy, grid systems, and vertical deployment infrastructure. Preserve the June 10, 2026 WEF announcement date, the 100-company and 23-country cohort figures, and the framing that Technology Pioneers lists are market-map signals rather than predictions of winners.
+
 ## Testing
 
 Run:

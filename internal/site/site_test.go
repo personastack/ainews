@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("Hong Kong Shows How AI Cyber Risk Becomes Financial Regulation")) {
-		t.Fatal("response missing Hong Kong SFC AI cyber risk article title")
+	if !strings.Contains(body, template.HTMLEscapeString("The Next AI Startup Wave Is Infrastructure, Not Chatbots")) {
+		t.Fatal("response missing AI startup infrastructure article title")
 	}
 
 	posts := content.Posts()

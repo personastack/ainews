@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune12 := time.Date(2026, time.June, 12, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune12), "ai-startups-infrastructure-not-chatbots-2026") {
+		t.Fatal("publishedPosts() did not include AI startup infrastructure article on publication date")
+	}
+
 	onPublicationJune11 := time.Date(2026, time.June, 11, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune11), "ai-startups-infrastructure-not-chatbots-2026") {
+		t.Fatal("publishedPosts() included AI startup infrastructure article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune11), "hong-kong-sfc-ai-cyber-risk-financial-regulation-2026") {
 		t.Fatal("publishedPosts() did not include Hong Kong SFC AI cyber risk article on publication date")
 	}
@@ -172,6 +180,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	aiStartupInfrastructurePost, ok := FindBySlug("ai-startups-infrastructure-not-chatbots-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI startup infrastructure post")
+	}
+	if aiStartupInfrastructurePost.Title != "The Next AI Startup Wave Is Infrastructure, Not Chatbots" {
+		t.Fatalf("FindBySlug() returned %q for AI startup infrastructure post", aiStartupInfrastructurePost.Title)
+	}
+
 	hongKongSFCPost, ok := FindBySlug("hong-kong-sfc-ai-cyber-risk-financial-regulation-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Hong Kong SFC AI cyber risk post")

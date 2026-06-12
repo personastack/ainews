@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("The Next AI Startup Wave Is Infrastructure, Not Chatbots")) {
-		t.Fatal("response missing AI startup infrastructure article title")
+	if !strings.Contains(body, template.HTMLEscapeString("Washington Is Building an AI Review Machine. Anthropic Wants a Veto Button")) {
+		t.Fatal("response missing Anthropic AI review machine article title")
 	}
 
 	posts := content.Posts()

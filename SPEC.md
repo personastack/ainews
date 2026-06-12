@@ -44,6 +44,8 @@ The same batch also includes a Security article about Hong Kong's SFC treating A
 
 The June 12, 2026 content batch includes an AI Infrastructure article about the World Economic Forum's 2026 Technology Pioneers cohort as a signal that AI startup activity is moving toward agent payments, identity, GPU orchestration, energy, grid systems, and vertical deployment infrastructure. Preserve the June 10, 2026 WEF announcement date, the 100-company and 23-country cohort figures, and the framing that Technology Pioneers lists are market-map signals rather than predictions of winners.
 
+The same batch also includes a Policy article about Anthropic asking for legally bounded deployment-blocking authority while the June 2, 2026 White House order builds classified benchmarking, covered-frontier-model designation, and voluntary 30-day pre-release access. Preserve the distinction that the U.S. order does not adopt mandatory licensing, preclearance, permitting, or a deployment-veto regime. Keep the Hong Kong SFC comparison framed as operational-risk supervision for AI-enabled cyber threats, not frontier-model approval or model veto authority.
+
 ## Testing
 
 Run:

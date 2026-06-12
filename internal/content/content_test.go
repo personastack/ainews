@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune12 := time.Date(2026, time.June, 12, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune12), "ai-review-machine-anthropic-veto-power-2026") {
+		t.Fatal("publishedPosts() did not include Anthropic AI review machine article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune12), "ai-startups-infrastructure-not-chatbots-2026") {
 		t.Fatal("publishedPosts() did not include AI startup infrastructure article on publication date")
 	}
 
 	onPublicationJune11 := time.Date(2026, time.June, 11, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune11), "ai-review-machine-anthropic-veto-power-2026") {
+		t.Fatal("publishedPosts() included Anthropic AI review machine article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune11), "ai-startups-infrastructure-not-chatbots-2026") {
 		t.Fatal("publishedPosts() included AI startup infrastructure article before publication date")
 	}
@@ -180,6 +186,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	anthropicReviewPost, ok := FindBySlug("ai-review-machine-anthropic-veto-power-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Anthropic AI review machine post")
+	}
+	if anthropicReviewPost.Title != "Washington Is Building an AI Review Machine. Anthropic Wants a Veto Button" {
+		t.Fatalf("FindBySlug() returned %q for Anthropic AI review machine post", anthropicReviewPost.Title)
+	}
+
 	aiStartupInfrastructurePost, ok := FindBySlug("ai-startups-infrastructure-not-chatbots-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI startup infrastructure post")

@@ -3,6 +3,76 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Agent Registry Is Becoming the New Security Perimeter",
+			Slug:    "agent-registry-security-perimeter-agentic-ai-2026",
+			Date:    "June 13, 2026",
+			Tag:     "Security",
+			Summary: "As AI agents move from chat windows into enterprise workflows, security teams are starting to ask where all these software actors live, what they can touch, and who is accountable when they act.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The first wave of enterprise AI security was mostly about model access. Which employees can use which tools? Which prompts and files should be blocked? Which sensitive data should not leave the company boundary?",
+						"That was the easy version of the problem.",
+						"The harder version is arriving now, because AI systems are beginning to behave less like passive applications and more like delegated software actors. They can call tools, query internal systems, summarize records, draft actions, trigger workflows, and increasingly coordinate with other agents. Once that happens, the old security question of \"who can log in?\" becomes too small. The new question is: what is this agent, what is it allowed to do, what other systems can it talk to, and can the company reconstruct what happened afterward?",
+						"That is why Zscaler's June 9 Zenith Live announcement matters beyond one vendor's product cycle. The company introduced a set of agentic AI security capabilities that includes AI Broker, AI Access Graph, an Agent Registry, and ZAgent, framing them as part of a Zero Trust platform for agentic AI. Strip away the launch language and the important signal is straightforward: enterprise AI security is turning into a control-plane problem.",
+					},
+				},
+				{
+					Heading: "From Model Access To Agent Control",
+					Paragraphs: []string{
+						"AI Broker is meant to secure agent-to-agent and Model Context Protocol communications. The Agent Registry tracks agents and what they are allowed to access. AI Access Graph maps relationships across users, applications, agents, and data sources. ZAgent applies an agentic interface to administration of the security platform itself.",
+						"The details are product-specific, but the pattern is broader. Companies cannot govern AI agents only by approving a model or licensing a chatbot. They need an inventory. They need identity. They need least-privilege permissions. They need communication rules for agent-to-agent traffic. They need logs that show what an agent saw, what tool it used, what action it took, and which human or policy authorized that path.",
+						"In other words, the agent registry may become the new security perimeter.",
+						"That does not mean networks, endpoints, and identity providers go away. It means the perimeter expands to include runtime relationships between software actors. A human employee might ask an AI assistant to reconcile invoices. That assistant might call an ERP system, retrieve contract terms, check a payment history, invoke a policy model, and draft a vendor email. In a traditional application stack, those steps are usually hard-coded and reviewed as part of a workflow. In an agentic stack, some of those decisions may be planned dynamically.",
+						"Dynamic planning is useful. It is also exactly why security teams get nervous.",
+					},
+				},
+				{
+					Heading: "Why Security Teams Are Nervous",
+					Paragraphs: []string{
+						"The risk is not just that an agent will hallucinate. It is that an agent with the wrong permissions can become an amplifier. A prompt-injection attack hidden in a document can try to redirect behavior. A poorly scoped connector can expose data the requesting user should not have. A chain of agents can make it difficult to know where a decision originated. A helpful automation can turn into a compliance problem if it takes an action that was never approved for that business context.",
+						"This is the security difference between AI as a feature and AI as infrastructure. A feature can be reviewed in one product. Infrastructure creates paths between products.",
+						"The emerging answer looks familiar in pieces but new in combination. Agent registries borrow from asset inventories and service catalogs. Agent permissions borrow from identity and access management. Communication controls borrow from network security and API gateways. Access graphs borrow from data-security posture management. Audit trails borrow from compliance systems. What changes is the object being governed: not just users, servers, or apps, but semi-autonomous agents that may reason across tools.",
+						"That also changes who needs to be in the room. Security teams cannot solve the agent-control problem alone. Platform engineering needs to define approved connectors and deployment patterns. Data teams need to classify the sources agents can query. Legal and compliance teams need retention, audit, and approval policies. Business owners need to decide which tasks can be automated and which require human confirmation. Finance teams will care because uncontrolled agent activity can also become uncontrolled inference spend.",
+					},
+				},
+				{
+					Heading: "Governance Becomes Operational",
+					Paragraphs: []string{
+						"This is where agentic AI becomes less magical and more operational. The enterprise winners will not simply be the firms that give every employee a smarter assistant. They will be the firms that know which assistants exist, how they are connected, what they cost, what they are allowed to do, and how to shut them down when something goes wrong.",
+						"There is a useful analogy in the rise of cloud infrastructure. Early cloud adoption often started as convenience: teams could spin up compute quickly. Then organizations discovered shadow IT, unmanaged data stores, unexpected bills, and inconsistent security policies. The response was not to abandon cloud. It was to build cloud governance: identity, tagging, budgets, logging, policy-as-code, and centralized visibility.",
+						"Agentic AI is entering a similar phase, only faster. The first excitement was capability. The next bottleneck is manageability.",
+						"The timing is important. AINews has recently covered agent infrastructure as a budget line, data-security funding as a market signal, and the hidden labor of \"botsitting.\" The security-control-plane story ties those threads together. If agents need supervision, then companies need places to express that supervision in software. If agents need access to data, companies need policy controls around that data. If agents are becoming durable enterprise actors, they need lifecycle management like any other privileged system.",
+					},
+				},
+				{
+					Heading: "The Questions Buyers Should Ask",
+					Paragraphs: []string{
+						"The central lesson is not that every company should buy a specific agent-security platform tomorrow. The market is still early, and vendor claims should be treated as claims. The lesson is that the category is taking shape because the underlying risk is real. Agentic AI shifts security from guarding static applications to managing live relationships among people, models, tools, and data.",
+						"For readers building or buying these systems, the practical questions are already clear.",
+						"Can you list every production AI agent in your environment?",
+						"Can you say what each one is allowed to access?",
+						"Can you distinguish a human request from an agent action?",
+						"Can you see agent-to-agent communication?",
+						"Can you revoke an agent's permissions quickly?",
+						"Can you explain an agent's action to an auditor, customer, or regulator?",
+						"If the answer is no, the organization does not have an AI strategy yet. It has an AI experiment with enterprise access.",
+						"The next phase of AI security will not be defined only by bigger models or scarier demos. It will be defined by mundane controls: registries, graphs, permissions, logs, approvals, and kill switches. That may sound less exciting than autonomous agents that do the work for us. It is also what makes those agents usable in the real world.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Zscaler, Zscaler Unveils New Product Innovations to Secure Agentic AI, June 9, 2026: https://www.zscaler.com/press/zscaler-unveils-new-product-innovations-secure-agentic-ai",
+						"Zscaler, Zenith Live 2026: https://www.zscaler.com/events/zenithlive2026",
+						"Futurum Group, Zscaler Bets on Agentic AI Security at Zenith Live 2026: https://futurumgroup.com/insights/zscaler-bets-on-agentic-ai-security-at-zenith-live-2026/",
+						"Researcher brief, RESEARCH: Agentic AI Security Moves From Theory to Control Planes 2026-06-13: https://docs.google.com/document/d/17R0z5BcXUWyh5Akv0taGdMeAitZudSpCjUG4lalqod0/edit",
+						"Author article handoff: https://docs.google.com/document/d/1tbh408Jzc69uzaZxUMrNWsEektqdjo9wnufPtnnrXGU/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Botsitting Is the Hidden Cost of the AI Productivity Boom",
 			Slug:    "botsitting-hidden-cost-ai-productivity-boom-2026",
 			Date:    "June 13, 2026",

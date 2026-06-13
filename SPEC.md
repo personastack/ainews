@@ -58,6 +58,8 @@ The June 13, 2026 content batch includes a Workforce article about workplace AI 
 
 The same batch also includes an Infrastructure article about OpenText's planned EUR105 million Ireland investment across Cork and Galway as a signal that enterprise agents need geography, data-residency, cybersecurity, and trust boundaries. Preserve that the investment size, 400 planned jobs over three years, and product focus are company-announced figures. Do not imply the 400 jobs already exist or that OpenText has solved sovereign agentic AI deployment.
 
+The same batch also includes a Security article about agent registries and control planes becoming a practical enterprise AI security boundary. Preserve the framing as a security-infrastructure signal rather than proof that Zscaler or any other vendor has solved agentic AI security. Keep Zscaler's AI Broker, AI Access Graph, Agent Registry, and ZAgent details product-specific; do not include unverified CISA/BOD claims, and distinguish agent registry/control-plane needs from broader general agent infrastructure.
+
 ## Testing
 
 Run:

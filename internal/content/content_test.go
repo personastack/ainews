@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune13), "agent-registry-security-perimeter-agentic-ai-2026") {
+		t.Fatal("publishedPosts() did not include agent registry security perimeter article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune13), "botsitting-hidden-cost-ai-productivity-boom-2026") {
 		t.Fatal("publishedPosts() did not include botsitting productivity article on publication date")
 	}
@@ -62,6 +65,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune12 := time.Date(2026, time.June, 12, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune12), "agent-registry-security-perimeter-agentic-ai-2026") {
+		t.Fatal("publishedPosts() included agent registry security perimeter article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune12), "botsitting-hidden-cost-ai-productivity-boom-2026") {
 		t.Fatal("publishedPosts() included botsitting productivity article before publication date")
 	}
@@ -224,6 +230,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	agentRegistryPost, ok := FindBySlug("agent-registry-security-perimeter-agentic-ai-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find agent registry security perimeter post")
+	}
+	if agentRegistryPost.Title != "The Agent Registry Is Becoming the New Security Perimeter" {
+		t.Fatalf("FindBySlug() returned %q for agent registry security perimeter post", agentRegistryPost.Title)
+	}
+
 	botsittingPost, ok := FindBySlug("botsitting-hidden-cost-ai-productivity-boom-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find botsitting productivity post")

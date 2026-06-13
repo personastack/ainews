@@ -54,6 +54,10 @@ The same batch also includes an Enterprise article about agent infrastructure en
 
 The same batch also includes an Accessibility article about Meta's Ray-Ban Meta AI glasses donation program for legally blind U.S. veterans. Preserve the framing as a Meta/BVA/nonprofit partner accessibility distribution and training program, not a Department of Veterans Affairs program based on current sources. Do not describe the glasses as restoring sight, FDA-cleared medical technology, or clinically validated safety-critical vision systems. Keep distribution language careful: eligible veterans can request glasses through the program, but the article should not imply every device has already been delivered.
 
+The June 13, 2026 content batch includes a Workforce article about workplace AI "botsitting" as hidden supervision labor. Preserve the caveat that Glean's 11-hour weekly AI time-saved figure and 6.4-hour weekly botsitting figure are survey-reported worker experience, not independently measured productivity, and that Glean is an enterprise AI vendor. Frame botsitting as the checking, correcting, prompting, and repair work needed to make AI output usable, not as proof that AI is useless.
+
+The same batch also includes an Infrastructure article about OpenText's planned EUR105 million Ireland investment across Cork and Galway as a signal that enterprise agents need geography, data-residency, cybersecurity, and trust boundaries. Preserve that the investment size, 400 planned jobs over three years, and product focus are company-announced figures. Do not imply the 400 jobs already exist or that OpenText has solved sovereign agentic AI deployment.
+
 ## Testing
 
 Run:

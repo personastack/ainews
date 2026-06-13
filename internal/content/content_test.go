@@ -53,7 +53,21 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune13), "botsitting-hidden-cost-ai-productivity-boom-2026") {
+		t.Fatal("publishedPosts() did not include botsitting productivity article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJune13), "opentext-ireland-sovereign-agentic-ai-2026") {
+		t.Fatal("publishedPosts() did not include OpenText Ireland sovereign agentic AI article on publication date")
+	}
+
 	onPublicationJune12 := time.Date(2026, time.June, 12, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune12), "botsitting-hidden-cost-ai-productivity-boom-2026") {
+		t.Fatal("publishedPosts() included botsitting productivity article before publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationJune12), "opentext-ireland-sovereign-agentic-ai-2026") {
+		t.Fatal("publishedPosts() included OpenText Ireland sovereign agentic AI article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune12), "meta-ai-glasses-blind-veterans-accessibility-wearables-2026") {
 		t.Fatal("publishedPosts() did not include Meta AI glasses accessibility article on publication date")
 	}
@@ -210,6 +224,22 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	botsittingPost, ok := FindBySlug("botsitting-hidden-cost-ai-productivity-boom-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find botsitting productivity post")
+	}
+	if botsittingPost.Title != "Botsitting Is the Hidden Cost of the AI Productivity Boom" {
+		t.Fatalf("FindBySlug() returned %q for botsitting productivity post", botsittingPost.Title)
+	}
+
+	openTextPost, ok := FindBySlug("opentext-ireland-sovereign-agentic-ai-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenText Ireland sovereign agentic AI post")
+	}
+	if openTextPost.Title != "OpenText's Ireland Bet Shows Enterprise Agents Need Borders" {
+		t.Fatalf("FindBySlug() returned %q for OpenText Ireland sovereign agentic AI post", openTextPost.Title)
+	}
+
 	metaAIGlassesPost, ok := FindBySlug("meta-ai-glasses-blind-veterans-accessibility-wearables-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Meta AI glasses accessibility post")

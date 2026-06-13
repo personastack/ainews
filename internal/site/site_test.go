@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("Meta's AI Glasses Find the Use Case Wearables Needed")) {
-		t.Fatal("response missing Meta AI glasses accessibility article title")
+	if !strings.Contains(body, template.HTMLEscapeString("Botsitting Is the Hidden Cost of the AI Productivity Boom")) {
+		t.Fatal("response missing botsitting productivity article title")
 	}
 
 	posts := content.Posts()

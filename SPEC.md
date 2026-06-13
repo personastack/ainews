@@ -50,6 +50,8 @@ The same batch also includes a Security article about Cyera's $600 million fundi
 
 The same batch also includes a Science article about TITO, or Transferable Implicit Transfer Operators, as a way to compress molecular dynamics simulation between candidate proposal and lab validation. Preserve the reported scope: more than 10,000x faster than conventional simulations in the studied settings, tested on more than 12,500 organic molecules and more than 1,000 short peptides, demonstrated on small molecular systems and simplified solvent models. Do not frame it as turnkey drug discovery or immediate clinical acceleration.
 
+The same batch also includes an Enterprise article about agent infrastructure entering an IAM, observability, FinOps, and workflow-governance era. Preserve the framing that major platforms are preparing production controls and selected workflows are moving into operational use; do not claim broad autonomous deployment across all enterprises. Treat vendor maturity figures and maturity-index claims as vendor research if used.
+
 ## Testing
 
 Run:

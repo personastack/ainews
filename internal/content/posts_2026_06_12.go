@@ -3,6 +3,79 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Agents Need Managers Now: Enterprise AI Enters Its IAM and FinOps Era",
+			Slug:    "agents-need-managers-enterprise-ai-infrastructure-2026",
+			Date:    "June 12, 2026",
+			Tag:     "Enterprise",
+			Summary: "Enterprise agent infrastructure is becoming an IAM, observability, FinOps, and workflow-governance layer for semi-autonomous software, not just another chatbot budget line.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The first wave of enterprise AI was easy to recognize. It looked like a chat window.",
+						"Employees asked questions. Copilots summarized documents. Developers generated code. Customer support teams tested assistants. The core buying question was straightforward: which model or app could answer more usefully, faster, and with fewer mistakes?",
+						"The next wave is harder to see because it looks less like a product demo and more like infrastructure. Agents are starting to move from passive assistants into managed actors inside business systems. They read tickets, query databases, inspect files, call APIs, draft responses, update records, and sometimes recommend or take the next step in a workflow. Once that happens, the important question changes.",
+						"It is no longer only: how smart is the model?",
+						"It becomes: who is this agent, what can it access, how much can it spend, what did it do, and when should a human stop it?",
+						"That is why agent infrastructure is becoming a real enterprise budget category. The useful comparison is not another chatbot subscription. It is IAM, observability, FinOps, workflow automation, and security operations compressed into one new layer for semi-autonomous software.",
+						"A chatbot can be wrong in a way that is annoying. A production agent can be wrong in a way that is expensive, insecure, or operationally hard to unwind. If an agent can open a cloud bucket, inspect payroll data, approve a refund, close a fraud alert, modify a CRM record, or trigger a deployment, it needs more than a prompt. It needs an identity, a permission boundary, a log, a budget, and a manager.",
+						"The platforms are moving in that direction. Google's June 2026 enterprise agent materials describe agent development and deployment in terms of governance, sharing controls, identity, authorization, and audit logs. Microsoft is putting agent identity and administration into the same enterprise vocabulary as Entra, Defender, Purview, Foundry Agent Service, Work IQ, and Microsoft 365 controls. ServiceNow is describing AI agents as workflow participants that still need business rules, playbooks, stage gates, service-level controls, and auditability. Cloudflare's AI Gateway points to another part of the stack: token usage, request logging, caching, rate limiting, provider routing, and cost controls.",
+						"Those are not glamorous features. They are the kind of features that decide whether a system can leave the pilot phase.",
+					},
+				},
+				{
+					Heading: "Identity Comes First",
+					Paragraphs: []string{
+						"The security issue starts with identity. Human users already have accounts, roles, lifecycle rules, access reviews, and incident response processes. Agents need the same discipline, but they also create new failure modes. A human might click the wrong link once. An agent with broad credentials can repeat a bad action at machine speed, across systems, with convincing explanations attached.",
+						"The riskiest pattern is inherited access: an agent acts with a human user's full permission set because that was the fastest way to make the demo work. That is also how a helpful assistant becomes a high-speed internal threat path. The safer pattern is distinct agent identity, scoped permissions, human sponsorship, short-lived credentials, tool-level allowlists, revoke and rotation workflows, and traceable ownership.",
+						"This is not only a CISO problem. It is also a CFO problem.",
+					},
+				},
+				{
+					Heading: "FinOps Moves Into the Agent Runtime",
+					Paragraphs: []string{
+						"Agentic systems multiply model calls. A single user request might require planning, retrieval, tool calls, retries, validation, summarization, and a final write-back into a system of record. A simple chatbot answer is one cost event. A production agent workflow can be a chain of cost events. Even if token prices keep falling, usage can rise faster than unit prices fall.",
+						"That makes inference economics an operational concern. Enterprises will need runtime systems that can answer practical questions: Which model handled this step? How many tokens did it use? Was the response cached? Did the agent retry? Did it call a frontier model when a smaller one would have been enough? Which department owns the spend? Which workflow is burning budget without improving outcomes?",
+						"This is where AI gateways, model routers, caching layers, rate limits, max-turn controls, and cost telemetry stop being developer conveniences and start looking like the AI version of cloud cost management. The point is not to make every workflow cheap. The point is to make cost visible enough that businesses can decide where expensive reasoning is actually worth it.",
+					},
+				},
+				{
+					Heading: "Observability Is the Debugger",
+					Paragraphs: []string{
+						"Observability is the third pillar. Traditional logs tell an operator what a service returned. Agent traces need to show the reasoning path around the action: the user request, retrieved context, tool calls, guardrail checks, intermediate decisions, errors, retries, escalations, and final output. Without that trace, debugging an agent is like investigating an outage from only the last line of a log file.",
+						"This matters for quality as much as compliance. If an agent gives a bad answer, the fix may not be in the model. It may be stale context, a weak tool description, a missing permission, an overly broad retrieval query, a retry loop, a bad approval rule, or a workflow design that asks the model to decide something a policy engine should decide. Teams need traces to find the actual fault line.",
+						"The enterprise adoption curve will probably reflect that. The first durable deployments may not be the most autonomous ones. They may be the most observable ones. Agents that summarize, route, prepare, reconcile, and recommend inside well-governed workflows are easier to scale than agents that promise broad autonomy with thin controls.",
+					},
+				},
+				{
+					Heading: "The Boring Layer Gets Valuable",
+					Paragraphs: []string{
+						"This is why the next AI winners may look surprisingly boring from the outside. Registries. Gateways. Audit stores. Permission brokers. Model routers. Approval queues. Policy engines. Runtime dashboards. Connectors with serious access controls. These are not the parts of AI that go viral, but they are the parts that procurement, security, compliance, and platform engineering teams can actually sign off on.",
+						"There is a useful lesson from cloud computing here. The cloud did not become enterprise infrastructure simply because virtual machines existed. It became enterprise infrastructure when organizations could manage identity, networking, billing, logging, backup, compliance, incident response, and deployment pipelines around those machines. AI agents are approaching the same threshold. The model is necessary, but the model is not the operating model.",
+						"That shift also changes what buyers should ask vendors. A strong demo is no longer enough. Enterprises should ask whether agents have distinct identities; whether permissions are least-privilege by default; whether tool calls are logged; whether model usage is attributable to teams and workflows; whether consequential actions require approval; whether agents can be paused or revoked; whether traces can be exported into existing observability systems; whether data boundaries are enforceable; and whether runaway loops have hard limits.",
+						"The companies building this layer are not just selling safety. They are selling permission to scale.",
+						"That is the real story behind the new agent infrastructure push. The market is no longer waiting for agents to become magical employees. It is starting to build the management system around them. In the long run, that may matter more than another jump on a benchmark. The enterprise AI race is becoming a race to make agents governable enough to trust with real work.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Researcher brief, RESEARCH: Agent Infrastructure Becomes the New Enterprise AI Budget Line 2026-06-12: https://docs.google.com/document/d/16I8WG4D6Uie-BTrAq5fiYGSJfJCykPgpRzKOjNU7Wk8/edit",
+						"Google Cloud, What Google Cloud announced in AI this month: https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month",
+						"Google Cloud Gemini Enterprise release notes: https://docs.cloud.google.com/gemini/enterprise/docs/release-notes",
+						"Google Cloud, Build AI agents faster with GCS MCP Server: https://cloud.google.com/blog/topics/developers-practitioners/build-ai-agents-faster-with-gcs-google-cloud-storage-mcp-server",
+						"Google Cloud, AlloyDB Remote MCP Server GA: https://cloud.google.com/blog/products/data-analytics/alloydb-remote-mcp-server-ga-secure-ai-agent-access-to-your-data",
+						"Microsoft, Work IQ, production-ready intelligence for every agent: https://devblogs.microsoft.com/microsoft365dev/work-iq-production-ready-intelligence-for-every-agent/",
+						"Microsoft Security, Defense in depth for autonomous AI agents: https://www.microsoft.com/en-us/security/blog/2026/05/14/defense-in-depth-autonomous-ai-agents/",
+						"Microsoft Foundry, Agent Service at Build 2026: https://devblogs.microsoft.com/foundry/agent-service-build2026/",
+						"ServiceNow, Enterprise AI maturity index 2026: https://www.servicenow.com/workflow/ai/enterprise-ai-maturity-index-2026.html",
+						"Cloudflare AI Gateway documentation: https://developers.cloudflare.com/ai-gateway/get-started/",
+						"OpenAI Agents SDK cookbook, agent improvement loop: https://developers.openai.com/cookbook/examples/agents_sdk/agent_improvement_loop",
+						"Author article handoff: https://docs.google.com/document/d/1IB2gu-rhoHg5P-IKrKUsKs0XIaah2gSayQnxNWRlEkA/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "AI Is Learning to Fast-Forward Molecules",
 			Slug:    "tito-ai-fast-forwards-molecular-simulation-2026",
 			Date:    "June 12, 2026",

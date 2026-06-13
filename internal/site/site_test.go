@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("AI Is Learning to Fast-Forward Molecules")) {
-		t.Fatal("response missing TITO molecular simulation article title")
+	if !strings.Contains(body, template.HTMLEscapeString("Agents Need Managers Now: Enterprise AI Enters Its IAM and FinOps Era")) {
+		t.Fatal("response missing enterprise agent infrastructure article title")
 	}
 
 	posts := content.Posts()

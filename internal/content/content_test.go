@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune12 := time.Date(2026, time.June, 12, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune12), "agents-need-managers-enterprise-ai-infrastructure-2026") {
+		t.Fatal("publishedPosts() did not include enterprise agent infrastructure article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune12), "tito-ai-fast-forwards-molecular-simulation-2026") {
 		t.Fatal("publishedPosts() did not include TITO molecular simulation article on publication date")
 	}
@@ -68,6 +71,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune11 := time.Date(2026, time.June, 11, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune11), "agents-need-managers-enterprise-ai-infrastructure-2026") {
+		t.Fatal("publishedPosts() included enterprise agent infrastructure article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune11), "tito-ai-fast-forwards-molecular-simulation-2026") {
 		t.Fatal("publishedPosts() included TITO molecular simulation article before publication date")
 	}
@@ -198,6 +204,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	agentInfrastructurePost, ok := FindBySlug("agents-need-managers-enterprise-ai-infrastructure-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find enterprise agent infrastructure post")
+	}
+	if agentInfrastructurePost.Title != "Agents Need Managers Now: Enterprise AI Enters Its IAM and FinOps Era" {
+		t.Fatalf("FindBySlug() returned %q for enterprise agent infrastructure post", agentInfrastructurePost.Title)
+	}
+
 	titoPost, ok := FindBySlug("tito-ai-fast-forwards-molecular-simulation-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find TITO molecular simulation post")

@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune12 := time.Date(2026, time.June, 12, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune12), "meta-ai-glasses-blind-veterans-accessibility-wearables-2026") {
+		t.Fatal("publishedPosts() did not include Meta AI glasses accessibility article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune12), "agents-need-managers-enterprise-ai-infrastructure-2026") {
 		t.Fatal("publishedPosts() did not include enterprise agent infrastructure article on publication date")
 	}
@@ -71,6 +74,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune11 := time.Date(2026, time.June, 11, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune11), "meta-ai-glasses-blind-veterans-accessibility-wearables-2026") {
+		t.Fatal("publishedPosts() included Meta AI glasses accessibility article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune11), "agents-need-managers-enterprise-ai-infrastructure-2026") {
 		t.Fatal("publishedPosts() included enterprise agent infrastructure article before publication date")
 	}
@@ -204,6 +210,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	metaAIGlassesPost, ok := FindBySlug("meta-ai-glasses-blind-veterans-accessibility-wearables-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Meta AI glasses accessibility post")
+	}
+	if metaAIGlassesPost.Title != "Meta's AI Glasses Find the Use Case Wearables Needed" {
+		t.Fatalf("FindBySlug() returned %q for Meta AI glasses accessibility post", metaAIGlassesPost.Title)
+	}
+
 	agentInfrastructurePost, ok := FindBySlug("agents-need-managers-enterprise-ai-infrastructure-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find enterprise agent infrastructure post")

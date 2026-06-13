@@ -52,6 +52,8 @@ The same batch also includes a Science article about TITO, or Transferable Impli
 
 The same batch also includes an Enterprise article about agent infrastructure entering an IAM, observability, FinOps, and workflow-governance era. Preserve the framing that major platforms are preparing production controls and selected workflows are moving into operational use; do not claim broad autonomous deployment across all enterprises. Treat vendor maturity figures and maturity-index claims as vendor research if used.
 
+The same batch also includes an Accessibility article about Meta's Ray-Ban Meta AI glasses donation program for legally blind U.S. veterans. Preserve the framing as a Meta/BVA/nonprofit partner accessibility distribution and training program, not a Department of Veterans Affairs program based on current sources. Do not describe the glasses as restoring sight, FDA-cleared medical technology, or clinically validated safety-critical vision systems. Keep distribution language careful: eligible veterans can request glasses through the program, but the article should not imply every device has already been delivered.
+
 ## Testing
 
 Run:

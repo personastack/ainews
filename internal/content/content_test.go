@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune13), "fable-5-mythos-5-export-control-shutdown-2026") {
+		t.Fatal("publishedPosts() did not include Fable 5 Mythos 5 export control article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune13), "agent-registry-security-perimeter-agentic-ai-2026") {
 		t.Fatal("publishedPosts() did not include agent registry security perimeter article on publication date")
 	}
@@ -65,6 +68,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune12 := time.Date(2026, time.June, 12, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune12), "fable-5-mythos-5-export-control-shutdown-2026") {
+		t.Fatal("publishedPosts() included Fable 5 Mythos 5 export control article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune12), "agent-registry-security-perimeter-agentic-ai-2026") {
 		t.Fatal("publishedPosts() included agent registry security perimeter article before publication date")
 	}
@@ -230,6 +236,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	fableMythosPost, ok := FindBySlug("fable-5-mythos-5-export-control-shutdown-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Fable 5 Mythos 5 export control post")
+	}
+	if fableMythosPost.Title != "Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway." {
+		t.Fatalf("FindBySlug() returned %q for Fable 5 Mythos 5 export control post", fableMythosPost.Title)
+	}
+
 	agentRegistryPost, ok := FindBySlug("agent-registry-security-perimeter-agentic-ai-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find agent registry security perimeter post")

@@ -60,6 +60,8 @@ The same batch also includes an Infrastructure article about OpenText's planned 
 
 The same batch also includes a Security article about agent registries and control planes becoming a practical enterprise AI security boundary. Preserve the framing as a security-infrastructure signal rather than proof that Zscaler or any other vendor has solved agentic AI security. Keep Zscaler's AI Broker, AI Access Graph, Agent Registry, and ZAgent details product-specific; do not include unverified CISA/BOD claims, and distinguish agent registry/control-plane needs from broader general agent infrastructure.
 
+The same batch also includes a Policy article about the U.S. export-control directive that led Anthropic to suspend Claude Fable 5 and Claude Mythos 5 access. Preserve the caveats that other Claude models are not reported down, the cutoff should not be described as permanent, the directive text/legal pathway/detailed jailbreak evidence are not public in full, and Anthropic's technical rebuttal is Anthropic's account. Frame the June 2 White House executive-order tension carefully: the EO rejects mandatory licensing/preclearance while a separate national-security/export-control action appears to have caused an emergency model-access cutoff.
+
 ## Testing
 
 Run:

@@ -54,6 +54,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune14 := time.Date(2026, time.June, 14, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune14), "openai-ona-codex-enterprise-runtime-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI Ona Codex enterprise runtime article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune14), "claude-tcs-systems-integrator-regulated-ai-2026") {
 		t.Fatal("publishedPosts() did not include Claude TCS systems integrator article on publication date")
 	}
@@ -68,6 +71,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune13), "openai-ona-codex-enterprise-runtime-2026") {
+		t.Fatal("publishedPosts() included OpenAI Ona Codex enterprise runtime article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune13), "claude-tcs-systems-integrator-regulated-ai-2026") {
 		t.Fatal("publishedPosts() included Claude TCS systems integrator article before publication date")
 	}
@@ -262,6 +268,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	openAIOnaPost, ok := FindBySlug("openai-ona-codex-enterprise-runtime-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI Ona Codex enterprise runtime post")
+	}
+	if openAIOnaPost.Title != "The Laptop Becomes a Handoff: OpenAI's Ona Deal Turns Codex Into an Enterprise Runtime" {
+		t.Fatalf("FindBySlug() returned %q for OpenAI Ona Codex enterprise runtime post", openAIOnaPost.Title)
+	}
+
 	claudeTCSPost, ok := FindBySlug("claude-tcs-systems-integrator-regulated-ai-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Claude TCS systems integrator post")

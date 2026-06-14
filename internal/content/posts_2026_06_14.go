@@ -3,6 +3,71 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Laptop Becomes a Handoff: OpenAI's Ona Deal Turns Codex Into an Enterprise Runtime",
+			Slug:    "openai-ona-codex-enterprise-runtime-2026",
+			Date:    "June 14, 2026",
+			Tag:     "Infrastructure",
+			Summary: "OpenAI's agreement to acquire Ona points Codex toward persistent, customer-controlled enterprise cloud runtimes with scoped credentials, audit logs, network boundaries, and review gates.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For most of the last two years, an AI coding agent lived where you did: in your editor, in a chat window, on your laptop. You asked, it answered, and when you closed the lid the work stopped. On June 11, 2026, OpenAI signaled that this arrangement is ending. The company announced it has agreed to acquire Ona, a startup that builds secure, reproducible cloud environments for software work, and said Ona's team will join the Codex effort once the deal closes. The stated goal is plain: give Codex a place to keep working after you've walked away.",
+						"That sounds like a small plumbing upgrade. It isn't. It's a statement about where coding agents are headed: out of the editor and into the data center, where they become persistent, governed infrastructure rather than a feature inside an app.",
+					},
+				},
+				{
+					Heading: "Why A Runtime, And Why Now",
+					Paragraphs: []string{
+						"OpenAI framed the deal around a usage trend it has been watching closely. The company says more than five million people now use Codex every week, up roughly 400% from earlier in 2026, and more tellingly that the most valuable Codex work increasingly takes hours or days, not minutes. A quick autocomplete or a one-shot bug fix fits comfortably inside a chat session. A multi-step refactor that spans dozens of files, runs a test suite, waits on a build, and opens a pull request does not. Long-running work needs somewhere durable to run.",
+						"That is the gap Ona is meant to fill. Ona builds cloud workspaces where agents can check out a repository, run setup scripts, execute terminal commands in a loop, validate their own changes, and produce diffs, all inside a container that outlives any single browser tab. OpenAI says Ona has helped two million developers work in secure, reproducible cloud environments, and Ona says its weekly agent sessions have grown 13x in production since the start of 2026. Both companies already share customers. OpenAI is not buying a research prototype; it is buying a place where agents already run at scale.",
+					},
+				},
+				{
+					Heading: "Intelligence Is Not The Same As Execution",
+					Paragraphs: []string{
+						"The most useful way to read this acquisition is to separate two things that often get blurred together: how smart a model is, and where its work actually happens.",
+						"Model quality, meaning whether the agent can reason through the problem, write correct code, and catch its own mistakes, is what most benchmarks measure and what most coverage obsesses over. But once you let an agent run for hours inside a company's systems, a second set of questions takes over, and they look nothing like benchmark questions.",
+						"Where is this agent allowed to run? What can it read and write? Which credentials does it hold, and for how long? Who can see what it did afterward? How does its work get reviewed before it ships?",
+						"Those are platform and security concerns, the same control-plane logic that governs any production system: identity, scoped credentials, network boundaries, audit logs, policy, and review gates. OpenAI's announcement leans directly into this language, emphasizing control over where agents run, what they can access, how credentials are scoped, how activity is logged, and how work flows through review. Ona's own positioning makes the same case from the other side: agents need context, access, tools, versioning, review, auditing, and sharing under an organization's governance.",
+					},
+				},
+				{
+					Heading: "The Customer's Cloud, Not OpenAI's",
+					Paragraphs: []string{
+						"The detail that makes this more than a typical acqui-hire is where the execution is meant to live. OpenAI says Ona's model will let agents operate inside an organization's own cloud environment, with OpenAI supplying the intelligence and orchestration on top. That is a meaningful inversion of the usual SaaS arrangement. Instead of shipping your code and secrets out to a vendor's servers, you keep the runtime inside your own boundary, with your VPC, logging, and security controls, and let the model reach in to do scoped work.",
+						"For regulated industries and large enterprises that have spent the agentic AI era asking where their data goes, that framing is the whole ballgame. It turns the agent from something you send work to into something you host. It also puts coding agents on the same architectural footing as the rest of a company's production stack, with the same expectations for observability and governance.",
+					},
+				},
+				{
+					Heading: "What We Don't Know Yet",
+					Paragraphs: []string{
+						"It's worth being precise about what has actually happened, because the easy version of this story overshoots. This is an agreement to acquire, not a closed deal. OpenAI and Ona both say the transaction remains subject to customary closing conditions and required regulatory approvals, and that the two companies stay separate and independent until then. Until that closing happens, nothing changes for customers of either product.",
+						"Everything past the deal itself is also still unwritten. OpenAI has not published pricing, rollout timing, supported clouds, a migration path for existing Ona or Codex users, or a detailed product spec. \"Codex will run inside your cloud\" is a direction, not a shipping feature with a date. And the autonomy here is bounded by design: the picture OpenAI describes is sustained, delegated work with progress checks, human direction, and result review, not an agent given the keys to deploy to production on its own. Anyone reading a grander claim into this is reading ahead of the facts.",
+					},
+				},
+				{
+					Heading: "The Bigger Pattern",
+					Paragraphs: []string{
+						"Step back and this deal rhymes with a theme that has run through enterprise AI all year: the budget is moving from the model to the infrastructure around it. Companies have largely stopped asking whether an agent can write code and started asking how to run one safely at scale, with identity, permissions, logs, and review built in. Acquisitions like this are how that demand gets priced.",
+						"OpenAI is not just buying a startup. It is buying the place where agents work, and betting that the runtime, not the autocomplete, is the next thing enterprises will pay for.",
+						"If that bet is right, the laptop doesn't disappear. It changes jobs. It becomes the place where you start a task and review the result, while the durable work happens somewhere governed, somewhere logged, somewhere that keeps going after you close the lid. The interesting question for the rest of 2026 is whether the other labs follow OpenAI into the runtime, or whether they're content to keep selling the brain and let someone else own the body.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"OpenAI, OpenAI to acquire Ona, June 11, 2026: https://openai.com/index/openai-to-acquire-ona/",
+						"Ona, Ona is joining OpenAI, June 11, 2026: https://ona.com/stories/ona-joins-openai",
+						"Bloomberg, OpenAI to Acquire Cloud Platform Ona to Support AI Agents, June 11, 2026: https://www.bloomberg.com/news/articles/2026-06-11/openai-to-acquire-cloud-platform-ona-to-support-ai-agents",
+						"OpenAI Codex cloud documentation: https://developers.openai.com/codex/cloud",
+						"InfoWorld, OpenAI buys Ona to help rein in AI agents: https://www.infoworld.com/article/4184648/openai-buys-ona-to-help-rein-in-ai-agents.html",
+						"TechRadar, OpenAI's latest acquisition could see big changes on the way for its Codex coding assistant: https://www.techradar.com/pro/openais-latest-acquisition-could-see-big-changes-on-the-way-for-its-codex-coding-assistant",
+						"Author article handoff: https://docs.google.com/document/d/1aEFRWnGoWV3s9X_dowrYUL7n1J4txL9ApI4owhCyPEI/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Claude's Next Market Is the Systems Integrator",
 			Slug:    "claude-tcs-systems-integrator-regulated-ai-2026",
 			Date:    "June 14, 2026",

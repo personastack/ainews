@@ -70,6 +70,8 @@ The same batch also includes a Platforms article about Visa's OpenAI collaborati
 
 The same batch also includes an Enterprise article about TCS joining Anthropic's Claude Partner Network as a Global Premier Partner. Keep the 50,000-employee and 56-country figures framed as official company-reported scale claims. Do not imply Claude is automatically approved for regulated industries or already broadly deployed across every named sector. Preserve the framing as systems integration, deployment, governance, training, certification, reusable workflow packaging, and planned industry offerings such as claims processing and lending advisory.
 
+The same batch also includes an Infrastructure article about OpenAI's agreement to acquire Ona as a signal that Codex is moving toward persistent, customer-controlled enterprise cloud runtimes. Preserve the caveat that this is an agreement to acquire, not a closed deal; it remains subject to customary closing conditions and regulatory approvals, and OpenAI and Ona remain separate until close. Do not invent pricing, rollout timing, supported clouds, migration paths, or a full product spec. Treat "runs inside your cloud" as a stated direction rather than a shipped or dated feature, and keep autonomy framed as sustained delegated work with progress checks, human direction, and result review rather than unrestricted autonomous deployment.
+
 ## Testing
 
 Run:

@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Claude's Next Market Is the Systems Integrator")) {
+		t.Fatal("response missing Claude TCS systems integrator article title")
+	}
+	if !strings.Contains(body, template.HTMLEscapeString("ChatGPT Can Shop. Visa Wants to Decide How AI Agents Pay")) {
+		t.Fatal("response missing ChatGPT Visa agentic commerce payments article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Healthcare AI Just Got an Operating Office")) {
 		t.Fatal("response missing healthcare AI operating office article title")
 	}

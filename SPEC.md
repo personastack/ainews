@@ -66,6 +66,10 @@ The June 14, 2026 content batch includes a Policy article about AI safety moving
 
 The same batch also includes a Policy article about CMS creating an Office of Health Technology and Products as reported by Healthcare Dive. Preserve the caveat that Healthcare Dive is the current public source for the specific OHTP details unless an official CMS announcement is added. Do not frame the office as a new AI regulator, clinical-safety regulator, AI approval authority, or sole regulator of healthcare AI. Keep CMS framed as a central payment and policy actor, and preserve the distinction between AI implementation, digital health tools, healthcare data exchange, and clinical AI validation.
 
+The same batch also includes a Platforms article about Visa's OpenAI collaboration for ChatGPT agentic commerce. Preserve the distinction between Visa's payment-network, tokenization, authorization, agent-identification, and fraud-control role and OpenAI's broader commerce and checkout work. Do not frame this as fully autonomous unrestricted ChatGPT spending. Keep the article focused on bounded agentic commerce infrastructure with user limits, approved merchants, approval steps, authorization, agent identification, fraud monitoring, and tokenized credentials. Financial terms, merchant fee structures, and full rollout mechanics are undisclosed.
+
+The same batch also includes an Enterprise article about TCS joining Anthropic's Claude Partner Network as a Global Premier Partner. Keep the 50,000-employee and 56-country figures framed as official company-reported scale claims. Do not imply Claude is automatically approved for regulated industries or already broadly deployed across every named sector. Preserve the framing as systems integration, deployment, governance, training, certification, reusable workflow packaging, and planned industry offerings such as claims processing and lending advisory.
+
 ## Testing
 
 Run:

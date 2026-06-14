@@ -54,6 +54,12 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune14 := time.Date(2026, time.June, 14, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune14), "claude-tcs-systems-integrator-regulated-ai-2026") {
+		t.Fatal("publishedPosts() did not include Claude TCS systems integrator article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJune14), "chatgpt-visa-agentic-commerce-payments-2026") {
+		t.Fatal("publishedPosts() did not include ChatGPT Visa agentic commerce payments article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune14), "healthcare-ai-operating-office-cms-2026") {
 		t.Fatal("publishedPosts() did not include healthcare AI operating office article on publication date")
 	}
@@ -62,6 +68,12 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune13), "claude-tcs-systems-integrator-regulated-ai-2026") {
+		t.Fatal("publishedPosts() included Claude TCS systems integrator article before publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationJune13), "chatgpt-visa-agentic-commerce-payments-2026") {
+		t.Fatal("publishedPosts() included ChatGPT Visa agentic commerce payments article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune13), "healthcare-ai-operating-office-cms-2026") {
 		t.Fatal("publishedPosts() included healthcare AI operating office article before publication date")
 	}
@@ -250,6 +262,22 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	claudeTCSPost, ok := FindBySlug("claude-tcs-systems-integrator-regulated-ai-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Claude TCS systems integrator post")
+	}
+	if claudeTCSPost.Title != "Claude's Next Market Is the Systems Integrator" {
+		t.Fatalf("FindBySlug() returned %q for Claude TCS systems integrator post", claudeTCSPost.Title)
+	}
+
+	chatGPTVisaPost, ok := FindBySlug("chatgpt-visa-agentic-commerce-payments-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find ChatGPT Visa agentic commerce payments post")
+	}
+	if chatGPTVisaPost.Title != "ChatGPT Can Shop. Visa Wants to Decide How AI Agents Pay" {
+		t.Fatalf("FindBySlug() returned %q for ChatGPT Visa agentic commerce payments post", chatGPTVisaPost.Title)
+	}
+
 	healthcareAIPost, ok := FindBySlug("healthcare-ai-operating-office-cms-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find healthcare AI operating office post")

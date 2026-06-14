@@ -26,8 +26,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway.")) {
-		t.Fatal("response missing Fable 5 Mythos 5 export control article title")
+	if !strings.Contains(body, template.HTMLEscapeString("AI Safety Has Left the Lab")) {
+		t.Fatal("response missing AI safety left the lab article title")
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Agent Registry Is Becoming the New Security Perimeter")) {
 		t.Fatal("response missing agent registry security perimeter article title")

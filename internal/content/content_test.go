@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune14 := time.Date(2026, time.June, 14, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune14), "ai-safety-left-lab-courts-g7-2026") {
+		t.Fatal("publishedPosts() did not include AI safety left the lab article on publication date")
+	}
+
 	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune13), "ai-safety-left-lab-courts-g7-2026") {
+		t.Fatal("publishedPosts() included AI safety left the lab article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune13), "fable-5-mythos-5-export-control-shutdown-2026") {
 		t.Fatal("publishedPosts() did not include Fable 5 Mythos 5 export control article on publication date")
 	}
@@ -236,6 +244,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	aiSafetyPost, ok := FindBySlug("ai-safety-left-lab-courts-g7-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI safety left the lab post")
+	}
+	if aiSafetyPost.Title != "AI Safety Has Left the Lab" {
+		t.Fatalf("FindBySlug() returned %q for AI safety left the lab post", aiSafetyPost.Title)
+	}
+
 	fableMythosPost, ok := FindBySlug("fable-5-mythos-5-export-control-shutdown-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Fable 5 Mythos 5 export control post")

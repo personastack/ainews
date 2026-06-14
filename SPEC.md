@@ -62,6 +62,8 @@ The same batch also includes a Security article about agent registries and contr
 
 The same batch also includes a Policy article about the U.S. export-control directive that led Anthropic to suspend Claude Fable 5 and Claude Mythos 5 access. Preserve the caveats that other Claude models are not reported down, the cutoff should not be described as permanent, the directive text/legal pathway/detailed jailbreak evidence are not public in full, and Anthropic's technical rebuttal is Anthropic's account. Frame the June 2 White House executive-order tension carefully: the EO rejects mandatory licensing/preclearance while a separate national-security/export-control action appears to have caused an emergency model-access cutoff.
 
+The June 14, 2026 content batch includes a Policy article about AI safety moving from voluntary lab governance into courts, consumer-protection enforcement, cybercrime disruption, telecom/FBI coordination, and G7 diplomacy. Preserve the caveats that Google alleges an AI-powered smishing/phishing network and that complaint coverage reports Gemini/AI tools were used to help create phishing infrastructure; OpenAI's state-attorney-general scrutiny should be framed as a reported multistate probe without asserting exact subpoena details as independently confirmed; and G7 AI outputs should be described as political coordination and diplomacy rather than binding domestic law.
+
 ## Testing
 
 Run:

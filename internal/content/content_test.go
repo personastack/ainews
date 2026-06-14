@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune14 := time.Date(2026, time.June, 14, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune14), "healthcare-ai-operating-office-cms-2026") {
+		t.Fatal("publishedPosts() did not include healthcare AI operating office article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune14), "ai-safety-left-lab-courts-g7-2026") {
 		t.Fatal("publishedPosts() did not include AI safety left the lab article on publication date")
 	}
 
 	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune13), "healthcare-ai-operating-office-cms-2026") {
+		t.Fatal("publishedPosts() included healthcare AI operating office article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune13), "ai-safety-left-lab-courts-g7-2026") {
 		t.Fatal("publishedPosts() included AI safety left the lab article before publication date")
 	}
@@ -244,6 +250,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	healthcareAIPost, ok := FindBySlug("healthcare-ai-operating-office-cms-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find healthcare AI operating office post")
+	}
+	if healthcareAIPost.Title != "Healthcare AI Just Got an Operating Office" {
+		t.Fatalf("FindBySlug() returned %q for healthcare AI operating office post", healthcareAIPost.Title)
+	}
+
 	aiSafetyPost, ok := FindBySlug("ai-safety-left-lab-courts-g7-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI safety left the lab post")

@@ -64,6 +64,8 @@ The same batch also includes a Policy article about the U.S. export-control dire
 
 The June 14, 2026 content batch includes a Policy article about AI safety moving from voluntary lab governance into courts, consumer-protection enforcement, cybercrime disruption, telecom/FBI coordination, and G7 diplomacy. Preserve the caveats that Google alleges an AI-powered smishing/phishing network and that complaint coverage reports Gemini/AI tools were used to help create phishing infrastructure; OpenAI's state-attorney-general scrutiny should be framed as a reported multistate probe without asserting exact subpoena details as independently confirmed; and G7 AI outputs should be described as political coordination and diplomacy rather than binding domestic law.
 
+The same batch also includes a Policy article about CMS creating an Office of Health Technology and Products as reported by Healthcare Dive. Preserve the caveat that Healthcare Dive is the current public source for the specific OHTP details unless an official CMS announcement is added. Do not frame the office as a new AI regulator, clinical-safety regulator, AI approval authority, or sole regulator of healthcare AI. Keep CMS framed as a central payment and policy actor, and preserve the distinction between AI implementation, digital health tools, healthcare data exchange, and clinical AI validation.
+
 ## Testing
 
 Run:

@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Healthcare AI Just Got an Operating Office")) {
+		t.Fatal("response missing healthcare AI operating office article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Safety Has Left the Lab")) {
 		t.Fatal("response missing AI safety left the lab article title")
 	}

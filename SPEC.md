@@ -72,6 +72,8 @@ The same batch also includes an Enterprise article about TCS joining Anthropic's
 
 The same batch also includes an Infrastructure article about OpenAI's agreement to acquire Ona as a signal that Codex is moving toward persistent, customer-controlled enterprise cloud runtimes. Preserve the caveat that this is an agreement to acquire, not a closed deal; it remains subject to customary closing conditions and regulatory approvals, and OpenAI and Ona remain separate until close. Do not invent pricing, rollout timing, supported clouds, migration paths, or a full product spec. Treat "runs inside your cloud" as a stated direction rather than a shipped or dated feature, and keep autonomy framed as sustained delegated work with progress checks, human direction, and result review rather than unrestricted autonomous deployment.
 
+The June 15, 2026 content batch includes a Science article about self-driving laboratories moving AI for science from passive prediction into closed-loop experiment design, execution, observation, and iteration. Preserve that ASCEND's five-year, 30-million-euro scale, partner list, and catalysis workflow are HZB-reported; DOE Genesis Mission autonomous laboratories are a federal challenge and program direction, not a deployed national lab system; and LabVLA plus the ScienceDirect orchestrated-lab paper are academic context rather than productized tools.
+
 ## Testing
 
 Run:

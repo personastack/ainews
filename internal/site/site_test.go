@@ -32,6 +32,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(body, template.HTMLEscapeString("The Laptop Becomes a Handoff: OpenAI's Ona Deal Turns Codex Into an Enterprise Runtime")) {
 		t.Fatal("response missing OpenAI Ona Codex enterprise runtime article title")
 	}
+	if !strings.Contains(body, template.HTMLEscapeString("Medical AI's Specialist Moat Just Cracked")) {
+		t.Fatal("response missing medical AI specialist moat article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Claude's Next Market Is the Systems Integrator")) {
 		t.Fatal("response missing Claude TCS systems integrator article title")
 	}

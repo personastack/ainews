@@ -65,6 +65,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if !containsSlug(publishedPosts(onPublicationJune14), "openai-ona-codex-enterprise-runtime-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI Ona Codex enterprise runtime article on publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationJune14), "medical-ai-specialist-moat-llm-benchmark-2026") {
+		t.Fatal("publishedPosts() did not include medical AI specialist moat article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune14), "claude-tcs-systems-integrator-regulated-ai-2026") {
 		t.Fatal("publishedPosts() did not include Claude TCS systems integrator article on publication date")
 	}
@@ -81,6 +84,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune13 := time.Date(2026, time.June, 13, 0, 0, 0, 0, time.UTC)
 	if containsSlug(publishedPosts(onPublicationJune13), "openai-ona-codex-enterprise-runtime-2026") {
 		t.Fatal("publishedPosts() included OpenAI Ona Codex enterprise runtime article before publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationJune13), "medical-ai-specialist-moat-llm-benchmark-2026") {
+		t.Fatal("publishedPosts() included medical AI specialist moat article before publication date")
 	}
 	if containsSlug(publishedPosts(onPublicationJune13), "claude-tcs-systems-integrator-regulated-ai-2026") {
 		t.Fatal("publishedPosts() included Claude TCS systems integrator article before publication date")
@@ -276,6 +282,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	medicalAIPost, ok := FindBySlug("medical-ai-specialist-moat-llm-benchmark-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find medical AI specialist moat article")
+	}
+	if medicalAIPost.Title != "Medical AI's Specialist Moat Just Cracked" {
+		t.Fatalf("FindBySlug() returned %q for medical AI specialist moat article", medicalAIPost.Title)
+	}
+
 	openAIOnaPost, ok := FindBySlug("openai-ona-codex-enterprise-runtime-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI Ona Codex enterprise runtime post")

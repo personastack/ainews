@@ -80,6 +80,8 @@ The same batch also includes a Hardware article about the UK's £1.1 billion AI 
 
 The same batch also includes a Policy article about New York's synthetic-performer ad-disclosure law as a signal of state-level AI policy patchwork. Preserve the stated effective dates and penalties: New York effective June 9, 2026 with $1,000 first-violation and $5,000 subsequent-violation penalties; California SB 53, AB 2013, SB 942, and SB 243 effective January 1, 2026 with SB 243 reporting delayed to July 1, 2027; Illinois employment AI rules effective January 2026 and AI Video Interview Act provisions effective February 2026; Colorado AI Act effective June 30, 2026; New Hampshire HB 143 effective January 1, 2026. Washington's chatbot law takes effect in 2027 and should remain excluded from the 2026 effective-law list.
 
+The June 16, 2026 content batch includes an Agents article about the agent demo-to-production gap and vendor convergence on agent gateway/control-plane infrastructure. Preserve the caveat that 88-95% enterprise prototype failure figures are vendor-published estimates and the Gartner 40% cancellation figure is a widely cited projection, not independently confirmed hard fact. Keep the article focused on operations, governance, observability, orchestration, MCP/A2A interoperability, and production control planes rather than claiming the agent gateway pattern is fully standardized or solved.
+
 ## Testing
 
 Run:

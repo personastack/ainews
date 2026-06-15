@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune16 := time.Date(2026, time.June, 16, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune16), "ai-agents-demo-to-production-control-plane-2026") {
+		t.Fatal("publishedPosts() did not include AI agents demo-to-production control plane article on publication date")
+	}
+
 	onPublicationJune15 := time.Date(2026, time.June, 15, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune15), "ai-agents-demo-to-production-control-plane-2026") {
+		t.Fatal("publishedPosts() included AI agents demo-to-production control plane article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune15), "ny-synthetic-performer-ai-ad-law-state-patchwork-2026") {
 		t.Fatal("publishedPosts() did not include New York synthetic performer ad law article on publication date")
 	}

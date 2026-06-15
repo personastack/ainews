@@ -78,6 +78,8 @@ The June 15, 2026 content batch includes a Science article about self-driving la
 
 The same batch also includes a Hardware article about the UK's £1.1 billion AI Hardware Plan and its Advanced Market Commitment for inference chips. Preserve that the public package is an announced commitment, not money already spent; that the plan still relies heavily on US technology stacks while trying to grow domestic AI hardware capacity; and that the public package is small compared with contemporaneous private data-center spending from Microsoft, AMD, Nebius, and other infrastructure investors. Keep the AMC framed as government trying to become an early customer and demand signal, not as proof that UK chip startups will succeed.
 
+The same batch also includes a Policy article about New York's synthetic-performer ad-disclosure law as a signal of state-level AI policy patchwork. Preserve the stated effective dates and penalties: New York effective June 9, 2026 with $1,000 first-violation and $5,000 subsequent-violation penalties; California SB 53, AB 2013, SB 942, and SB 243 effective January 1, 2026 with SB 243 reporting delayed to July 1, 2027; Illinois employment AI rules effective January 2026 and AI Video Interview Act provisions effective February 2026; Colorado AI Act effective June 30, 2026; New Hampshire HB 143 effective January 1, 2026. Washington's chatbot law takes effect in 2027 and should remain excluded from the 2026 effective-law list.
+
 ## Testing
 
 Run:

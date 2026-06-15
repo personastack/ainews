@@ -3,6 +3,59 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "New York Made AI Actors Wear a Label. Welcome to the 50-State Patchwork.",
+			Slug:    "ny-synthetic-performer-ai-ad-law-state-patchwork-2026",
+			Date:    "June 15, 2026",
+			Tag:     "Policy",
+			Summary: "A first-in-the-nation New York law now forces ads to admit when the person on screen isn't real. It's a small rule with a big tell: in the absence of a federal AI law, the states are writing the rulebook one statute at a time.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"On June 9, a New York law quietly changed what a television commercial is allowed to hide. If an ad shown to New Yorkers features a \"synthetic performer\" — a digitally created or altered human likeness that was never a real person standing in front of a camera — the advertiser now has to say so, conspicuously, on the screen.",
+						"Governor Kathy Hochul's office called it the first law in the nation to require disclosure when advertisements include AI-generated people. That framing is doing a lot of work, and it's worth slowing down on. The law is narrow by design. But narrow laws, stacked across enough states, stop being narrow. They become a compliance map that every national brand has to navigate — and right now that map is being drawn in twelve different state capitals at once.",
+						"This is the story worth telling: not one statute, but the patchwork it belongs to.",
+					},
+				},
+				{
+					Heading: "What New York actually did",
+					Paragraphs: []string{
+						"Start with the precise mechanics, because the details define the boundary.",
+						"The law applies to commercial advertising — visual or audiovisual — distributed to a New York audience, whether on broadcast television, streaming, social media, or digital platforms. If an ad knowingly includes a synthetic performer, it must carry a conspicuous disclosure that the performer is AI-generated. \"Knowingly\" matters: the requirement is triggered when the person creating or producing the ad has actual knowledge that a synthetic performer is in it.",
+						"What the statute does not do is prescribe the exact wording, font size, or placement. It says \"conspicuous\" and leaves the rest to advertisers — and, eventually, to enforcement. Civil penalties run to $1,000 for a first violation and $5,000 for each one after that.",
+						"The carve-outs are where the law shows its real shape. It exempts audio-only ads. It exempts AI used purely for language translation. It exempts expressive works — films, television programs, streaming content, documentaries, video games — when the synthetic performer is consistent with the underlying work. And it exempts publishers and distributors who merely carry someone else's ad rather than create it.",
+						"Put plainly: this is a rule about fake people, not fake backgrounds. An AI-generated product shot, an enhanced sky, a synthetic crowd with no recognizable individual — none of that is the target. A convincing spokesperson who never existed is. The law is also not limited to New York companies; it reaches any brand or agency whose ad lands in front of New York consumers, no matter where the work was made.",
+					},
+				},
+				{
+					Heading: "Why one state's ad rule is a national event",
+					Paragraphs: []string{
+						"Here's the part that makes a local statute a story for everyone. Advertising doesn't respect state lines. A national campaign that runs on streaming and social media is, by default, an ad shown to New Yorkers. So a rule written in Albany becomes a rule that a brand in Austin or an agency in Los Angeles has to follow — or build a geofenced version of its campaign to avoid.",
+						"That is the quiet power of state-level regulation in a country without a federal AI law. Each state that acts effectively exports its standard to anyone doing business nationally, because the safest path is usually to comply with the strictest rule everywhere. New York didn't just regulate New York. It nudged the floor for the whole market.",
+					},
+				},
+				{
+					Heading: "The patchwork around it",
+					Paragraphs: []string{
+						"New York is the freshest example, but it isn't alone, and the surrounding activity is what turns a single disclosure rule into a trend. Across 2026, a cluster of states moved on overlapping but non-identical fronts:",
+						"- California has been the most prolific. Three transparency laws took effect on January 1, 2026: SB 53, the Transparency in Frontier AI Act, aimed at the largest model developers; AB 2013, which requires companies to publish summaries of the data used to train generative AI systems; and SB 942, the AI Transparency Act, which pushes disclosure mechanisms for AI-generated content. California's privacy regulators also began phasing in rules on automated decision-making technology this year.",
+						"- Illinois moved on employment. New rules effective in January 2026 bar employers from using AI in hiring and other job decisions in ways that produce discrimination, and provisions of the state's AI Video Interview Act — covering notice, consent, and data handling when AI analyzes applicant interviews — took effect in February. (A broader accountability law for large AI developers passed in Illinois but had its effective date pushed to 2028, so it is not a 2026 rule.)",
+						"- Colorado's AI Act, one of the most ambitious state frameworks for governing high-risk AI systems, is set to take effect on June 30, 2026, with some employment-notice obligations scheduled to follow in 2027.",
+						"- Chatbots drew their own dedicated statutes this year. California's SB 243, the Companion Chatbots Act, took effect January 1, 2026; it requires operators of AI \"companion\" chatbots to make clear that users are talking to a machine, to maintain protocols for handling self-harm and suicide content, and — starting July 1, 2027 — to file annual safety reports. New Hampshire's HB 143, also effective January 1, 2026, takes a child-safety angle: it makes a chatbot operator liable when it knowingly directs a minor toward sexual content, illegal drug or alcohol use, self-harm, or violence, with minimum damages of $1,000 per violation and attorney-general enforcement.",
+						"- Connecticut, Utah, and others have layered on consumer-disclosure and automated-decision rules of their own, with additional frontier-model proposals still moving through 2026 legislative sessions rather than yet being law.",
+						"Notice what that list is and isn't. The themes rhyme — disclosure, provenance, employment, high-risk systems — but the specifics don't. Different triggers, different definitions, different effective dates, different penalties. There is no single \"AI transparency\" standard a company can implement once and be done. There are many, and they only partly overlap.",
+					},
+				},
+				{
+					Heading: "What it adds up to",
+					Paragraphs: []string{
+						"The honest read on New York's synthetic-performer law is that, on its own, it is modest: a disclosure requirement, a knowledge trigger, a few thousand dollars per violation, a list of sensible exemptions. It will not, by itself, reshape advertising.",
+						"But it is a clean data point in a larger pattern. Washington's gridlock on a national AI framework hasn't produced a vacuum — it has produced fifty potential authors. States are filling the space with rules that are individually reasonable and collectively a maze. For companies, the work is no longer guessing whether AI disclosure is coming. It's already here in pieces, and the pieces don't quite fit together.",
+						"That's the thing to sit with. The most consequential AI policy of 2026 may not be a sweeping federal act or an international accord. It may be the slow accumulation of state laws — an ad rule here, a hiring rule there, a training-data summary somewhere else — each small, each local, each binding, quietly converging into a national standard that no one actually sat down to write.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Britain's £1.1 Billion Bet: Become the AI Chip Industry's First Customer",
 			Slug:    "uk-ai-hardware-plan-first-customer-chips-2026",
 			Date:    "June 15, 2026",

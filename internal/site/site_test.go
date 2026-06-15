@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Britain's £1.1 Billion Bet: Become the AI Chip Industry's First Customer")) {
+		t.Fatal("response missing UK AI hardware first customer article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Science Gets a Lab Partner That Runs the Experiments")) {
 		t.Fatal("response missing self-driving labs AI experiments article title")
 	}

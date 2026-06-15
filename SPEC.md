@@ -76,6 +76,8 @@ The same batch also includes an Infrastructure article about OpenAI's agreement 
 
 The June 15, 2026 content batch includes a Science article about self-driving laboratories moving AI for science from passive prediction into closed-loop experiment design, execution, observation, and iteration. Preserve that ASCEND's five-year, 30-million-euro scale, partner list, and catalysis workflow are HZB-reported; DOE Genesis Mission autonomous laboratories are a federal challenge and program direction, not a deployed national lab system; and LabVLA plus the ScienceDirect orchestrated-lab paper are academic context rather than productized tools.
 
+The same batch also includes a Hardware article about the UK's £1.1 billion AI Hardware Plan and its Advanced Market Commitment for inference chips. Preserve that the public package is an announced commitment, not money already spent; that the plan still relies heavily on US technology stacks while trying to grow domestic AI hardware capacity; and that the public package is small compared with contemporaneous private data-center spending from Microsoft, AMD, Nebius, and other infrastructure investors. Keep the AMC framed as government trying to become an early customer and demand signal, not as proof that UK chip startups will succeed.
+
 ## Testing
 
 Run:

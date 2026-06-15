@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune15 := time.Date(2026, time.June, 15, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune15), "uk-ai-hardware-plan-first-customer-chips-2026") {
+		t.Fatal("publishedPosts() did not include UK AI hardware first customer article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune15), "self-driving-labs-ai-runs-experiments-2026") {
 		t.Fatal("publishedPosts() did not include self-driving labs AI experiments article on publication date")
 	}
 
 	onPublicationJune14 := time.Date(2026, time.June, 14, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune14), "uk-ai-hardware-plan-first-customer-chips-2026") {
+		t.Fatal("publishedPosts() included UK AI hardware first customer article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune14), "self-driving-labs-ai-runs-experiments-2026") {
 		t.Fatal("publishedPosts() included self-driving labs AI experiments article before publication date")
 	}
@@ -282,6 +288,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	ukHardwareFirstCustomerPost, ok := FindBySlug("uk-ai-hardware-plan-first-customer-chips-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find UK AI hardware first customer article")
+	}
+	if ukHardwareFirstCustomerPost.Title != "Britain's £1.1 Billion Bet: Become the AI Chip Industry's First Customer" {
+		t.Fatalf("FindBySlug() returned %q for UK AI hardware first customer article", ukHardwareFirstCustomerPost.Title)
+	}
+
 	medicalAIPost, ok := FindBySlug("medical-ai-specialist-moat-llm-benchmark-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find medical AI specialist moat article")

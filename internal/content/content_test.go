@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune16 := time.Date(2026, time.June, 16, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune16), "world-models-predict-action-physical-ai-2026") {
+		t.Fatal("publishedPosts() did not include world models physical AI article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune16), "ai-agents-demo-to-production-control-plane-2026") {
 		t.Fatal("publishedPosts() did not include AI agents demo-to-production control plane article on publication date")
 	}
 
 	onPublicationJune15 := time.Date(2026, time.June, 15, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune15), "world-models-predict-action-physical-ai-2026") {
+		t.Fatal("publishedPosts() included world models physical AI article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune15), "ai-agents-demo-to-production-control-plane-2026") {
 		t.Fatal("publishedPosts() included AI agents demo-to-production control plane article before publication date")
 	}
@@ -302,6 +308,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	worldModelsPost, ok := FindBySlug("world-models-predict-action-physical-ai-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find world models physical AI article")
+	}
+	if worldModelsPost.Title != "World Models Grew Up: AI Stopped Generating Scenes and Started Predicting Actions" {
+		t.Fatalf("FindBySlug() returned %q for world models physical AI article", worldModelsPost.Title)
+	}
+
 	ukHardwareFirstCustomerPost, ok := FindBySlug("uk-ai-hardware-plan-first-customer-chips-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find UK AI hardware first customer article")

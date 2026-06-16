@@ -82,6 +82,8 @@ The same batch also includes a Policy article about New York's synthetic-perform
 
 The June 16, 2026 content batch includes an Agents article about the agent demo-to-production gap and vendor convergence on agent gateway/control-plane infrastructure. Preserve the caveat that 88-95% enterprise prototype failure figures are vendor-published estimates and the Gartner 40% cancellation figure is a widely cited projection, not independently confirmed hard fact. Keep the article focused on operations, governance, observability, orchestration, MCP/A2A interoperability, and production control planes rather than claiming the agent gateway pattern is fully standardized or solved.
 
+The same batch also includes a Science article about world models shifting from scene generation toward physical-action prediction. Use Science as the rendered category because the site does not currently expose a Research tag. Preserve the caveats that NVIDIA Cosmos 3 architecture, training-data scale, robot-training compression, and physics-accuracy claims are company-reported or vendor projections pending independent benchmarks; that Google Project Genie is a staged Google AI Ultra subscriber rollout rather than open general availability; and that Waymo and World Labs examples show practical direction without proving that physical AI is broadly solved.
+
 ## Testing
 
 Run:

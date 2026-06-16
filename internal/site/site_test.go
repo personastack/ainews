@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("World Models Grew Up: AI Stopped Generating Scenes and Started Predicting Actions")) {
+		t.Fatal("response missing world models physical AI article title")
+	}
+	if !strings.Contains(body, template.HTMLEscapeString("The Hardest Part of an AI Agent Isn't the Agent")) {
+		t.Fatal("response missing AI agents demo-to-production control plane article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Britain's £1.1 Billion Bet: Become the AI Chip Industry's First Customer")) {
 		t.Fatal("response missing UK AI hardware first customer article title")
 	}
@@ -49,9 +55,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Safety Has Left the Lab")) {
 		t.Fatal("response missing AI safety left the lab article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Agent Registry Is Becoming the New Security Perimeter")) {
-		t.Fatal("response missing agent registry security perimeter article title")
 	}
 
 	posts := content.Posts()

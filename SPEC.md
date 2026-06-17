@@ -84,6 +84,8 @@ The June 16, 2026 content batch includes an Agents article about the agent demo-
 
 The same batch also includes a Science article about world models shifting from scene generation toward physical-action prediction. Use Science as the rendered category because the site does not currently expose a Research tag. Preserve the caveats that NVIDIA Cosmos 3 architecture, training-data scale, robot-training compression, and physics-accuracy claims are company-reported or vendor projections pending independent benchmarks; that Google Project Genie is a staged Google AI Ultra subscriber rollout rather than open general availability; and that Waymo and World Labs examples show practical direction without proving that physical AI is broadly solved.
 
+The June 17, 2026 content batch includes a Hardware article about power access and high-bandwidth memory replacing GPUs as the binding AI infrastructure bottlenecks. Preserve the hedging that U.S. data-center power demand, announced capacity, and delayed-project figures are reported or forecast figures, not delivered capacity. Keep HBM shortage-through-2027, Micron commitment, AMD Lisa Su, NVIDIA Vera Rubin HBM4, and DDR5/DRAM price-increase claims framed as vendor statements or reported market coverage. Do not name or imply unverified specific power deals.
+
 ## Testing
 
 Run:

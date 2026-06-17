@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory")) {
+		t.Fatal("response missing AI power and memory bottleneck article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("World Models Grew Up: AI Stopped Generating Scenes and Started Predicting Actions")) {
 		t.Fatal("response missing world models physical AI article title")
 	}

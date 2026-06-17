@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune17 := time.Date(2026, time.June, 17, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune17), "ai-real-bottleneck-power-memory-not-chips-2026") {
+		t.Fatal("publishedPosts() did not include AI power and memory bottleneck article on publication date")
+	}
+
 	onPublicationJune16 := time.Date(2026, time.June, 16, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune16), "ai-real-bottleneck-power-memory-not-chips-2026") {
+		t.Fatal("publishedPosts() included AI power and memory bottleneck article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune16), "world-models-predict-action-physical-ai-2026") {
 		t.Fatal("publishedPosts() did not include world models physical AI article on publication date")
 	}
@@ -308,6 +316,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	powerMemoryPost, ok := FindBySlug("ai-real-bottleneck-power-memory-not-chips-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI power and memory bottleneck article")
+	}
+	if powerMemoryPost.Title != "The Chip Stopped Being the Bottleneck — Now It's Power and Memory" {
+		t.Fatalf("FindBySlug() returned %q for AI power and memory bottleneck article", powerMemoryPost.Title)
+	}
+
 	worldModelsPost, ok := FindBySlug("world-models-predict-action-physical-ai-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find world models physical AI article")

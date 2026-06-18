@@ -86,6 +86,8 @@ The same batch also includes a Science article about world models shifting from 
 
 The June 17, 2026 content batch includes a Hardware article about power access and high-bandwidth memory replacing GPUs as the binding AI infrastructure bottlenecks. Preserve the hedging that U.S. data-center power demand, announced capacity, and delayed-project figures are reported or forecast figures, not delivered capacity. Keep HBM shortage-through-2027, Micron commitment, AMD Lisa Su, NVIDIA Vera Rubin HBM4, and DDR5/DRAM price-increase claims framed as vendor statements or reported market coverage. Do not name or imply unverified specific power deals.
 
+The June 18, 2026 content batch includes a Policy article about Anthropic's "When AI builds itself" paper and the recursive-self-improvement debate. Preserve that the 80%+ merged-code share, roughly 8x code-output increase, and roughly four-month task-length doubling are Anthropic-reported or Anthropic-cited figures rather than independently audited facts. Keep Anthropic's slowdown proposal conditional on a coordinated, verifiable, multi-lab and multi-country mechanism; do not frame it as a unilateral or immediate pause call.
+
 ## Testing
 
 Run:

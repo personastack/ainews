@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune18 := time.Date(2026, time.June, 18, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune18), "ai-builds-itself-recursive-self-improvement-coordinated-pause-2026") {
+		t.Fatal("publishedPosts() did not include AI builds itself article on publication date")
+	}
+
 	onPublicationJune17 := time.Date(2026, time.June, 17, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune17), "ai-builds-itself-recursive-self-improvement-coordinated-pause-2026") {
+		t.Fatal("publishedPosts() included AI builds itself article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune17), "ai-real-bottleneck-power-memory-not-chips-2026") {
 		t.Fatal("publishedPosts() did not include AI power and memory bottleneck article on publication date")
 	}

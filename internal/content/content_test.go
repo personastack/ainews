@@ -62,11 +62,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if containsSlug(publishedPosts(onPublicationJune17), "ai-builds-itself-recursive-self-improvement-coordinated-pause-2026") {
 		t.Fatal("publishedPosts() included AI builds itself article before publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationJune17), "reasoning-models-test-time-compute-think-smarter-2026") {
+		t.Fatal("publishedPosts() did not include reasoning models test-time compute article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune17), "ai-real-bottleneck-power-memory-not-chips-2026") {
 		t.Fatal("publishedPosts() did not include AI power and memory bottleneck article on publication date")
 	}
 
 	onPublicationJune16 := time.Date(2026, time.June, 16, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune16), "reasoning-models-test-time-compute-think-smarter-2026") {
+		t.Fatal("publishedPosts() included reasoning models test-time compute article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune16), "ai-real-bottleneck-power-memory-not-chips-2026") {
 		t.Fatal("publishedPosts() included AI power and memory bottleneck article before publication date")
 	}

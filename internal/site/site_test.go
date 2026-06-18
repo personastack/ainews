@@ -29,6 +29,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(body, template.HTMLEscapeString("When the AI Starts Building the AI")) {
 		t.Fatal("response missing AI builds itself article title")
 	}
+	if !strings.Contains(body, template.HTMLEscapeString("Reasoning Models Were Built to Think Longer. 2026 Is Teaching Them When to Stop.")) {
+		t.Fatal("response missing reasoning models test-time compute article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory")) {
 		t.Fatal("response missing AI power and memory bottleneck article title")
 	}
@@ -56,10 +59,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(body, template.HTMLEscapeString("ChatGPT Can Shop. Visa Wants to Decide How AI Agents Pay")) {
 		t.Fatal("response missing ChatGPT Visa agentic commerce payments article title")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("Healthcare AI Just Got an Operating Office")) {
-		t.Fatal("response missing healthcare AI operating office article title")
-	}
-
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)

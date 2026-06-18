@@ -3,6 +3,60 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Reasoning Models Were Built to Think Longer. 2026 Is Teaching Them When to Stop.",
+			Slug:    "reasoning-models-test-time-compute-think-smarter-2026",
+			Date:    "June 17, 2026",
+			Tag:     "Research",
+			Summary: "The industry sold a simple promise: more thinking equals a smarter answer. A wave of 2026 research is rewriting that into something more useful - and a system that taught itself the lesson for about $40.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The industry sold a simple promise: more thinking equals a smarter answer. A wave of 2026 research is rewriting that into something more useful - and a system that taught itself the lesson for about $40.",
+						"For most of 2025, the pitch for the new generation of \"reasoning\" models was seductive in its simplicity: let the model think longer, and it gets smarter. Give it room to work through a problem step by step - what the field calls test-time, or inference-time, compute - and the benchmark scores climb. It was the closest thing AI had found to a free lunch. No retraining. No bigger model. Just more thinking, on demand, at the exact moment you ask the question.",
+						"In 2026, that story is getting a more interesting second chapter. The new research doesn't say the free lunch was a lie. It says most of us have been ordering far too much food.",
+					},
+				},
+				{
+					Heading: "The Part That Held Up",
+					Paragraphs: []string{
+						"Start with what is still clearly true. Recent analyses confirm that spending more compute at inference time reliably improves results on genuinely hard problems. On the toughest benchmarks - multi-step coding-agent tasks and cybersecurity challenges - researchers report that scores are still climbing as they hand models more room to think. In some cases the tested range is not even wide enough to find the ceiling. Give a strong reasoning model more steps and it keeps getting better, and a smaller model with a generous thinking budget can sometimes match a much larger one run on a tight leash.",
+						"But a recent benchmark analysis adds a subtler point that should make anyone reading a leaderboard pause: a model's score is protocol-dependent. How much you let a model think is part of the test, not a footnote to it. Comparing two models at a single fixed \"thinking budget\" can be actively misleading, because one might pull ahead only when given more room. The researchers argue capability should be reported as a curve against compute - a line, not a number. The single benchmark figure we all quote is starting to look like a snapshot of a moving thing.",
+					},
+				},
+				{
+					Heading: "Where More Thinking Stops Helping",
+					Paragraphs: []string{
+						"The more provocative finding is what happens on the other end. More compute is not automatically better. On easier or less stable tasks, the gains flatten out, and the cost of all that extra deliberation stops buying anything. Researchers are increasingly focused not on making models think longer, but on teaching them to spend that effort selectively - to prune dead-end lines of reasoning early, and to stop when an answer is already in hand. A fixed \"think this hard, every time\" setting turns out to leave performance on the table for the hardest problems while quietly burning tokens on the easy ones.",
+						"That reframing matters because, unlike a one-time training run, test-time compute is a recurring bill. Every reasoning step is real compute - electricity, and, as we wrote earlier this week, an increasingly scarce supply of memory and power. A reasoning model that overthinks an easy question is not just slower. It is more expensive, on every single call, forever.",
+					},
+				},
+				{
+					Heading: "The Proof Point: A System That Tuned Itself for $40",
+					Paragraphs: []string{
+						"The clearest sign of where this is heading is a framework called AutoTTS, from researchers at Meta, Google, and several universities. Instead of hand-writing the rules for when a model should branch, explore, or stop, AutoTTS turns that design into an automated search problem. Crucially, it does the searching inside an offline replay environment built from pre-collected reasoning traces - so candidate strategies can be tested cheaply without repeatedly calling the live model.",
+						"The reported results are the kind that get a research team's attention. According to the authors and circulated summaries, the discovered strategies cut token usage by roughly 69.5% compared with a standard self-consistency approach, while preserving - and in some cases improving - accuracy. And the discovery run itself reportedly cost about $40 and took around 160 minutes. As with any single research result, those figures are the team's own and await broader replication. But the direction is hard to miss: a roughly 70% token cut at equal accuracy is a margin story as much as a science story.",
+					},
+				},
+				{
+					Heading: "What It Means",
+					Paragraphs: []string{
+						"The 2025 race was about who had the biggest model and who would give it the longest leash. The 2026 race is starting to look different. The edge is not raw thinking; it is knowing how to allocate thinking - dynamically, per question, as a skill the system can learn rather than a dial a human sets once and forgets.",
+						"That shift has a quietly democratizing edge to it. If smart compute allocation can be discovered automatically and cheaply, the advantage does not belong only to whoever can afford the largest model. It belongs to whoever is most disciplined about waste.",
+						"So the next time a product brags about a new \"reasoning effort\" slider or a \"think longer\" button, the sophisticated question is not whether it can think longer. It is whether it knows when it is wasting your money.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"AutoTTS project page and paper, \"LLMs Improving LLMs: Agentic Discovery for Test-Time Scaling,\" May 2026: https://github.com/zhengkid/AutoTTS and https://arxiv.org/pdf/2605.08083",
+						"VentureBeat coverage of AutoTTS token-usage and strategy-discovery results, May 28, 2026: https://venturebeat.com/orchestration/researchers-automated-llm-reasoning-strategy-design-and-cut-token-usage-by-69-5",
+						"ArXiv paper, \"Sequential Test-time Scaling in General Agents,\" on test-time scaling behavior and instability beyond effective context ceilings: https://arxiv.org/html/2602.18998v1",
+						"Author article handoff: https://docs.google.com/document/d/1B4NZkIDjTfXL7u2C2Mb24Rm4r7VoohgxgHBO2T0Lgbg/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The Chip Stopped Being the Bottleneck — Now It's Power and Memory",
 			Slug:    "ai-real-bottleneck-power-memory-not-chips-2026",
 			Date:    "June 17, 2026",

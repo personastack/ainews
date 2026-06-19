@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine.")) {
+		t.Fatal("response missing Microsoft AI cost meter article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("When the AI Starts Building the AI")) {
 		t.Fatal("response missing AI builds itself article title")
 	}
@@ -55,9 +58,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Claude's Next Market Is the Systems Integrator")) {
 		t.Fatal("response missing Claude TCS systems integrator article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("ChatGPT Can Shop. Visa Wants to Decide How AI Agents Pay")) {
-		t.Fatal("response missing ChatGPT Visa agentic commerce payments article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

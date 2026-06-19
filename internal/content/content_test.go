@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune19 := time.Date(2026, time.June, 19, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune19), "ai-cost-meter-copilot-cowork-deepseek-2026") {
+		t.Fatal("publishedPosts() did not include Microsoft AI cost meter article on publication date")
+	}
+
 	onPublicationJune18 := time.Date(2026, time.June, 18, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune18), "ai-cost-meter-copilot-cowork-deepseek-2026") {
+		t.Fatal("publishedPosts() included Microsoft AI cost meter article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune18), "ai-builds-itself-recursive-self-improvement-coordinated-pause-2026") {
 		t.Fatal("publishedPosts() did not include AI builds itself article on publication date")
 	}

@@ -90,6 +90,8 @@ The same batch also includes a Research article about test-time compute in reaso
 
 The June 18, 2026 content batch includes a Policy article about Anthropic's "When AI builds itself" paper and the recursive-self-improvement debate. Preserve that the 80%+ merged-code share, roughly 8x code-output increase, and roughly four-month task-length doubling are Anthropic-reported or Anthropic-cited figures rather than independently audited facts. Keep Anthropic's slowdown proposal conditional on a coordinated, verifiable, multi-lab and multi-country mechanism; do not frame it as a unilateral or immediate pause call.
 
+The June 19, 2026 content batch includes an Enterprise article about Microsoft making Copilot Cowork generally available with usage-based Copilot Credits and reported consideration of DeepSeek V4 or another open-source model as a lower-cost Cowork engine. Preserve that Copilot Credits pricing, billing in arrears, tenant pooling, cost inputs, license prerequisite, planning-example credit ranges, and Frontier grace-period details come from Microsoft sources. Keep the DeepSeek/open-source model detail hedged as Axios-reported intent rather than a confirmed model choice, and do not include unverified social-media token-price comparisons.
+
 ## Testing
 
 Run:

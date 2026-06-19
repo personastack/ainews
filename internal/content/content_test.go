@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune19 := time.Date(2026, time.June, 19, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune19), "glm-5-2-open-weights-frontier-coding-cost-2026") {
+		t.Fatal("publishedPosts() did not include GLM-5.2 open-weights coding article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune19), "ai-cost-meter-copilot-cowork-deepseek-2026") {
 		t.Fatal("publishedPosts() did not include Microsoft AI cost meter article on publication date")
 	}
 
 	onPublicationJune18 := time.Date(2026, time.June, 18, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune18), "glm-5-2-open-weights-frontier-coding-cost-2026") {
+		t.Fatal("publishedPosts() included GLM-5.2 open-weights coding article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune18), "ai-cost-meter-copilot-cowork-deepseek-2026") {
 		t.Fatal("publishedPosts() included Microsoft AI cost meter article before publication date")
 	}
@@ -338,6 +344,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	glmPost, ok := FindBySlug("glm-5-2-open-weights-frontier-coding-cost-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find GLM-5.2 open-weights coding article")
+	}
+	if glmPost.Title != "An Open-Weights Model Just Caught the Frontier on Coding — at One-Sixth the Price" {
+		t.Fatalf("FindBySlug() returned %q for GLM-5.2 open-weights coding article", glmPost.Title)
+	}
+
 	powerMemoryPost, ok := FindBySlug("ai-real-bottleneck-power-memory-not-chips-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI power and memory bottleneck article")

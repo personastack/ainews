@@ -92,6 +92,8 @@ The June 18, 2026 content batch includes a Policy article about Anthropic's "Whe
 
 The June 19, 2026 content batch includes an Enterprise article about Microsoft making Copilot Cowork generally available with usage-based Copilot Credits and reported consideration of DeepSeek V4 or another open-source model as a lower-cost Cowork engine. Preserve that Copilot Credits pricing, billing in arrears, tenant pooling, cost inputs, license prerequisite, planning-example credit ranges, and Frontier grace-period details come from Microsoft sources. Keep the DeepSeek/open-source model detail hedged as Axios-reported intent rather than a confirmed model choice, and do not include unverified social-media token-price comparisons.
 
+The same batch also includes an LLMs article about Z.ai GLM-5.2 narrowing the coding gap with closed frontier models at lower cost. Preserve the caveats that Z.ai's Terminal-Bench 2.1 and SWE-bench Pro gains are first-party benchmarks, independent comparisons against GPT-5.5 and Claude Opus 4.8 are still filling in, and the model is framed as a coding and knowledge-work specialist rather than a universal multimodal frontier model. Keep the pricing claims tied to Z.ai first-party pricing and VentureBeat's one-sixth-cost framing, and keep open weights framed as a deployment-control and ownership shift, not proof that closed labs are obsolete.
+
 ## Testing
 
 Run:

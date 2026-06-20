@@ -8,6 +8,12 @@ type Section struct {
 	Paragraphs []string
 }
 
+// Link points readers to a related AINews story.
+type Link struct {
+	Title string
+	Slug  string
+}
+
 // Post represents a published AINews article.
 type Post struct {
 	Title    string
@@ -16,6 +22,7 @@ type Post struct {
 	Tag      string
 	Summary  string
 	Sections []Section
+	Related  []Link
 }
 
 var posts = []Post{

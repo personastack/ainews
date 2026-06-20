@@ -8,6 +8,12 @@ func init() {
 			Date:    "June 20, 2026",
 			Tag:     "Hardware",
 			Summary: "Copper is becoming the thing AI clusters trip over, so the next infrastructure race is moving light into the package: co-packaged optics and silicon photonics are turning into shipping interconnects, not just lab demos.",
+			Related: []Link{
+				{
+					Title: "The Chip Stopped Being the Bottleneck — Now It's Power and Memory",
+					Slug:  "ai-real-bottleneck-power-memory-not-chips-2026",
+				},
+			},
 			Sections: []Section{
 				{
 					Paragraphs: []string{

@@ -93,6 +93,28 @@
       color: var(--muted);
       font: 0.94rem/1.5 Arial, Helvetica, sans-serif;
     }
+    .related {
+      margin-top: 2.2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+    }
+    .related h2 {
+      margin: 0 0 0.7rem;
+      font-size: 1.05rem;
+    }
+    .related ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .related li {
+      margin: 0.35rem 0;
+    }
+    .related a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+    }
   </style>
 </head>
 <body>
@@ -109,6 +131,16 @@
       <section>
         {{if .Heading}}<h2>{{.Heading}}</h2>{{end}}
         {{range .Paragraphs}}<p>{{.}}</p>{{end}}
+      </section>
+      {{end}}
+      {{if .Post.Related}}
+      <section class="related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Related reading</h2>
+        <ul>
+          {{range .Post.Related}}
+          <li><a href="/posts/{{.Slug}}">{{.Title}}</a></li>
+          {{end}}
+        </ul>
       </section>
       {{end}}
     </article>

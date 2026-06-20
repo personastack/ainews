@@ -143,6 +143,32 @@ func TestPostRoute(t *testing.T) {
 	}
 }
 
+func TestPostRouteRendersRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/ai-silicon-photonics-interconnect-light-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-real-bottleneck-power-memory-not-chips-2026"`,
+		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
 func TestPostsAPI(t *testing.T) {
 	server, err := New()
 	if err != nil {

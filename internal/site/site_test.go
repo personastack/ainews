@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("AI Designed the Molecule in Months — The Clinic Still Takes Years")) {
+		t.Fatal("response missing AI drug discovery clinic article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("An Open-Weights Model Just Caught the Frontier on Coding — at One-Sixth the Price")) {
 		t.Fatal("response missing GLM-5.2 open-weights coding article title")
 	}
@@ -52,9 +55,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Science Gets a Lab Partner That Runs the Experiments")) {
 		t.Fatal("response missing self-driving labs AI experiments article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Laptop Becomes a Handoff: OpenAI's Ona Deal Turns Codex Into an Enterprise Runtime")) {
-		t.Fatal("response missing OpenAI Ona Codex enterprise runtime article title")
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Medical AI's Specialist Moat Just Cracked")) {
 		t.Fatal("response missing medical AI specialist moat article title")

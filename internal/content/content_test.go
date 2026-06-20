@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune20 := time.Date(2026, time.June, 20, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune20), "ai-drug-discovery-clinic-not-approval-2026") {
+		t.Fatal("publishedPosts() did not include AI drug discovery clinic article on publication date")
+	}
+
 	onPublicationJune19 := time.Date(2026, time.June, 19, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune19), "ai-drug-discovery-clinic-not-approval-2026") {
+		t.Fatal("publishedPosts() included AI drug discovery clinic article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune19), "glm-5-2-open-weights-frontier-coding-cost-2026") {
 		t.Fatal("publishedPosts() did not include GLM-5.2 open-weights coding article on publication date")
 	}

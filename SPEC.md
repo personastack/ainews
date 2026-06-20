@@ -94,6 +94,8 @@ The June 19, 2026 content batch includes an Enterprise article about Microsoft m
 
 The same batch also includes an LLMs article about Z.ai GLM-5.2 narrowing the coding gap with closed frontier models at lower cost. Preserve the caveats that Z.ai's Terminal-Bench 2.1 and SWE-bench Pro gains are first-party benchmarks, independent comparisons against GPT-5.5 and Claude Opus 4.8 are still filling in, and the model is framed as a coding and knowledge-work specialist rather than a universal multimodal frontier model. Keep the pricing claims tied to Z.ai first-party pricing and VentureBeat's one-sixth-cost framing, and keep open weights framed as a deployment-control and ownership shift, not proof that closed labs are obsolete.
 
+The June 20, 2026 content batch includes a Science article about AI drug discovery's transition from accelerated molecular design to clinical readouts. Preserve the caveat that Insilico Medicine's ISM001-055/rentosertib Phase 2a IPF signal is encouraging but early, based on 71 patients across 21 sites in China and 12-week FVC data; do not frame it as an approval, cure, or Phase 3 success. Keep the larger thesis precise: as of mid-2026 there are zero FDA-approved AI-discovered drugs, so 2026 should be framed as a year of AI-drug readouts rather than approvals, with clinical failure base rates still applying.
+
 ## Testing
 
 Run:

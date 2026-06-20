@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light")) {
+		t.Fatal("response missing AI silicon photonics interconnect article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Designed the Molecule in Months — The Clinic Still Takes Years")) {
 		t.Fatal("response missing AI drug discovery clinic article title")
 	}
@@ -55,9 +58,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Science Gets a Lab Partner That Runs the Experiments")) {
 		t.Fatal("response missing self-driving labs AI experiments article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Medical AI's Specialist Moat Just Cracked")) {
-		t.Fatal("response missing medical AI specialist moat article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

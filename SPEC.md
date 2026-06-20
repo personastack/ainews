@@ -96,6 +96,8 @@ The same batch also includes an LLMs article about Z.ai GLM-5.2 narrowing the co
 
 The June 20, 2026 content batch includes a Science article about AI drug discovery's transition from accelerated molecular design to clinical readouts. Preserve the caveat that Insilico Medicine's ISM001-055/rentosertib Phase 2a IPF signal is encouraging but early, based on 71 patients across 21 sites in China and 12-week FVC data; do not frame it as an approval, cure, or Phase 3 success. Keep the larger thesis precise: as of mid-2026 there are zero FDA-approved AI-discovered drugs, so 2026 should be framed as a year of AI-drug readouts rather than approvals, with clinical failure base rates still applying.
 
+The same batch also includes a Hardware article about silicon photonics and co-packaged optics moving from research demos into AI interconnect products. Preserve the frame that light is replacing copper for high-scale AI interconnects, not that optical computing has broadly replaced electronic accelerators. Keep NVIDIA Quantum-X Photonics figures framed as NVIDIA-published or product-roadmap figures: 115 Tb/s switching capacity, 144 ports at 800 Gb/s, four times fewer lasers, 3.5x power efficiency, 10x resiliency, and early-2026 availability. Keep Lightmatter Passage M1000 at 114 Tbps as Lightmatter-published interposer bandwidth, imec thin-film LiNbO3 at a reported 320 Gb/s optical-link demonstration, and ASU Jiaqi Gu's June 18, 2026 NSF CAREER award as open-source electronic-photonic design automation research rather than a shipping product.
+
 ## Testing
 
 Run:

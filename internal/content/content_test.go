@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune20 := time.Date(2026, time.June, 20, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune20), "ai-silicon-photonics-interconnect-light-2026") {
+		t.Fatal("publishedPosts() did not include AI silicon photonics interconnect article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune20), "ai-drug-discovery-clinic-not-approval-2026") {
 		t.Fatal("publishedPosts() did not include AI drug discovery clinic article on publication date")
 	}
 
 	onPublicationJune19 := time.Date(2026, time.June, 19, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune19), "ai-silicon-photonics-interconnect-light-2026") {
+		t.Fatal("publishedPosts() included AI silicon photonics interconnect article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune19), "ai-drug-discovery-clinic-not-approval-2026") {
 		t.Fatal("publishedPosts() included AI drug discovery clinic article before publication date")
 	}
@@ -352,6 +358,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	siliconPhotonicsPost, ok := FindBySlug("ai-silicon-photonics-interconnect-light-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI silicon photonics interconnect article")
+	}
+	if siliconPhotonicsPost.Title != "The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light" {
+		t.Fatalf("FindBySlug() returned %q for AI silicon photonics interconnect article", siliconPhotonicsPost.Title)
+	}
+
 	glmPost, ok := FindBySlug("glm-5-2-open-weights-frontier-coding-cost-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find GLM-5.2 open-weights coding article")

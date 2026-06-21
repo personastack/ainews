@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune21 := time.Date(2026, time.June, 21, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune21), "agentic-ai-verification-oracle-chip-design-2026") {
+		t.Fatal("publishedPosts() did not include agentic AI verification oracle article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune21), "eu-ai-act-deadline-us-state-preemption-divergence-2026") {
 		t.Fatal("publishedPosts() did not include EU AI Act and US state preemption article on publication date")
 	}
 
 	onPublicationJune20 := time.Date(2026, time.June, 20, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune20), "agentic-ai-verification-oracle-chip-design-2026") {
+		t.Fatal("publishedPosts() included agentic AI verification oracle article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune20), "eu-ai-act-deadline-us-state-preemption-divergence-2026") {
 		t.Fatal("publishedPosts() included EU AI Act and US state preemption article before publication date")
 	}
@@ -366,6 +372,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	agenticVerificationPost, ok := FindBySlug("agentic-ai-verification-oracle-chip-design-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find agentic AI verification oracle article")
+	}
+	if agenticVerificationPost.Title != "The Real Test for AI Agents Isn't Autonomy — It's Whether They Can Check Their Own Work" {
+		t.Fatalf("FindBySlug() returned %q for agentic AI verification oracle article", agenticVerificationPost.Title)
+	}
+	if len(agenticVerificationPost.Related) != 2 {
+		t.Fatalf("agentic AI verification oracle article related count = %d, want 2", len(agenticVerificationPost.Related))
+	}
+
 	euAIActPost, ok := FindBySlug("eu-ai-act-deadline-us-state-preemption-divergence-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find EU AI Act and US state preemption article")

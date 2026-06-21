@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The Real Test for AI Agents Isn't Autonomy — It's Whether They Can Check Their Own Work")) {
+		t.Fatal("response missing agentic AI verification oracle article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'")) {
 		t.Fatal("response missing EU AI Act and US state preemption article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("New York Made AI Actors Wear a Label. Welcome to the 50-State Patchwork.")) {
 		t.Fatal("response missing New York synthetic performer ad law article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Britain's £1.1 Billion Bet: Become the AI Chip Industry's First Customer")) {
-		t.Fatal("response missing UK AI hardware first customer article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -152,7 +152,7 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/posts/eu-ai-act-deadline-us-state-preemption-divergence-2026", nil)
+	req := httptest.NewRequest(http.MethodGet, "/posts/agentic-ai-verification-oracle-chip-design-2026", nil)
 	rec := httptest.NewRecorder()
 	server.ServeHTTP(rec, req)
 
@@ -163,10 +163,10 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 	body := rec.Body.String()
 	for _, want := range []string{
 		"Related reading",
-		`href="/posts/ai-policy-rulebook-principles-to-plumbing-2026"`,
-		`href="/posts/ai-compliance-calendar-global-rulebook-2026"`,
-		template.HTMLEscapeString("The AI Rulebook Is Moving From Principles to Plumbing"),
-		template.HTMLEscapeString("AI Compliance Has a Calendar Now: The Global Rulebook Moves From Debate to Deadlines"),
+		`href="/posts/ai-agents-demo-to-production-control-plane-2026"`,
+		`href="/posts/reasoning-models-test-time-compute-think-smarter-2026"`,
+		template.HTMLEscapeString("The Hardest Part of an AI Agent Isn't the Agent"),
+		template.HTMLEscapeString("Reasoning Models Were Built to Think Longer. 2026 Is Teaching Them When to Stop."),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

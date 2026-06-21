@@ -101,6 +101,8 @@ The same batch also includes a Hardware article about silicon photonics and co-p
 
 The silicon photonics article carries a related-reading link back to the June 17, 2026 Hardware article on power access and high-bandwidth memory replacing chips as the visible AI infrastructure bottleneck. This preserves the editorial continuity that AI infrastructure constraints are moving from the accelerator to power, memory, and now interconnect.
 
+The June 21, 2026 content batch includes a Policy article about the EU AI Act high-risk classification guidance arriving late while the U.S. federal government pushes back against state AI laws. Preserve the timing: European Commission draft high-risk guidance published May 19, 2026, consultation closing July 23, 2026, original February 2, 2026 guidance deadline, and statutory August 2, 2026 high-risk obligations date. Keep the U.S. side framed around federal preemption pressure, DOJ task-force/legal-challenge posture, Commerce listing, and broadband/BEAD funding leverage, with fraud, consumer-protection, and child-safety carve-outs. Oklahoma SB1734 should remain a narrow public-school AI guardrails law signed May 12, 2026, while broader Oklahoma AI bills stalled. The article carries related-reading links to the earlier EU AI Act rulebook and global AI compliance calendar stories to preserve the editorial thread that AI governance is moving from principles to operational deadlines.
+
 ## Testing
 
 Run:

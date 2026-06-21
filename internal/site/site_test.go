@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'")) {
+		t.Fatal("response missing EU AI Act and US state preemption article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light")) {
 		t.Fatal("response missing AI silicon photonics interconnect article title")
 	}
@@ -53,11 +56,11 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(body, template.HTMLEscapeString("The Hardest Part of an AI Agent Isn't the Agent")) {
 		t.Fatal("response missing AI agents demo-to-production control plane article title")
 	}
+	if !strings.Contains(body, template.HTMLEscapeString("New York Made AI Actors Wear a Label. Welcome to the 50-State Patchwork.")) {
+		t.Fatal("response missing New York synthetic performer ad law article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Britain's £1.1 Billion Bet: Become the AI Chip Industry's First Customer")) {
 		t.Fatal("response missing UK AI hardware first customer article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Science Gets a Lab Partner That Runs the Experiments")) {
-		t.Fatal("response missing self-driving labs AI experiments article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -149,7 +152,7 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/posts/ai-silicon-photonics-interconnect-light-2026", nil)
+	req := httptest.NewRequest(http.MethodGet, "/posts/eu-ai-act-deadline-us-state-preemption-divergence-2026", nil)
 	rec := httptest.NewRecorder()
 	server.ServeHTTP(rec, req)
 
@@ -160,8 +163,10 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 	body := rec.Body.String()
 	for _, want := range []string{
 		"Related reading",
-		`href="/posts/ai-real-bottleneck-power-memory-not-chips-2026"`,
-		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
+		`href="/posts/ai-policy-rulebook-principles-to-plumbing-2026"`,
+		`href="/posts/ai-compliance-calendar-global-rulebook-2026"`,
+		template.HTMLEscapeString("The AI Rulebook Is Moving From Principles to Plumbing"),
+		template.HTMLEscapeString("AI Compliance Has a Calendar Now: The Global Rulebook Moves From Debate to Deadlines"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

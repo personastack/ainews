@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune21 := time.Date(2026, time.June, 21, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune21), "eu-ai-act-deadline-us-state-preemption-divergence-2026") {
+		t.Fatal("publishedPosts() did not include EU AI Act and US state preemption article on publication date")
+	}
+
 	onPublicationJune20 := time.Date(2026, time.June, 20, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune20), "eu-ai-act-deadline-us-state-preemption-divergence-2026") {
+		t.Fatal("publishedPosts() included EU AI Act and US state preemption article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune20), "ai-silicon-photonics-interconnect-light-2026") {
 		t.Fatal("publishedPosts() did not include AI silicon photonics interconnect article on publication date")
 	}
@@ -358,6 +366,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	euAIActPost, ok := FindBySlug("eu-ai-act-deadline-us-state-preemption-divergence-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find EU AI Act and US state preemption article")
+	}
+	if euAIActPost.Title != "Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'" {
+		t.Fatalf("FindBySlug() returned %q for EU AI Act and US state preemption article", euAIActPost.Title)
+	}
+	if len(euAIActPost.Related) != 2 {
+		t.Fatalf("EU AI Act and US state preemption article related count = %d, want 2", len(euAIActPost.Related))
+	}
+
 	siliconPhotonicsPost, ok := FindBySlug("ai-silicon-photonics-interconnect-light-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI silicon photonics interconnect article")

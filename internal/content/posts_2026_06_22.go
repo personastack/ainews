@@ -3,6 +3,46 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?",
+			Slug:    "enterprise-ai-roi-gap-pilots-production-ownership-2026",
+			Date:    "June 22, 2026",
+			Tag:     "Enterprise",
+			Summary: "In 2026, almost every large company turned on AI agents. Far fewer can prove the money came back. The gap between the two isn't a model problem — it's an ownership problem, and that's the more fixable kind.",
+			Related: []Link{
+				{
+					Title: "The Hardest Part of an AI Agent Isn't the Agent",
+					Slug:  "ai-agents-demo-to-production-control-plane-2026",
+				},
+				{
+					Title: "Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine.",
+					Slug:  "ai-cost-meter-copilot-cowork-deepseek-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"There is a particular kind of silence that settles over a company about nine months after it goes all-in on something. The press release is long forgotten. The budget has been spent. And someone in finance, quietly, starts asking the question nobody wanted to ask first: did it actually work?",
+						"That is where enterprise AI sits in the middle of 2026. The adoption argument is over — AI won it. WRITER's 2026 AI Adoption in the Enterprise report, run with the research firm Workplace Intelligence, found that 97% of executives say their company deployed AI agents in the past year, and 78% of organizations now use AI in at least one business function, up from 55% just three years ago. Budgets tell the same story: 86% of companies say their AI spend is going up, not down. By the numbers, the technology has been adopted faster than almost anything in the history of corporate IT.",
+						"And yet. In that same WRITER survey, only 29% of organizations report significant ROI from generative AI, and just 23% see it from AI agents specifically. Seventy-nine percent say they're hitting real challenges getting value out of AI — a double-digit jump from the year before. Read those two halves together and you get the defining tension of the year: near-universal deployment, narrow-band returns. Almost everyone turned the agents on. Most cannot yet show what came back.",
+						"The instinct is to blame the models. It's the wrong instinct. The frontier systems shipping in 2026 are, by every benchmark we cover, dramatically more capable than the ones that kicked off this cycle. The friction isn't in the model — it's in everything around it.",
+						"Gartner saw this coming a year ago, and its forecast has aged uncomfortably well. In June 2025 the firm predicted that more than 40% of agentic AI projects would be canceled by the end of 2027, citing escalating costs, unclear business value, and inadequate risk controls — not poor model quality. Gartner also coined the year's most useful piece of vocabulary: \"agent washing,\" its term for vendors slapping the word \"agent\" on software that mostly isn't. Of the thousands of companies marketing agentic AI, Gartner estimated only around 130 were building the real thing. When you buy washing instead of substance, the pilot stalls, and the stall gets blamed on \"AI\" rather than on the procurement decision that caused it.",
+						"Look closely at the projects that die and a pattern emerges that has nothing to do with intelligence. They die because no one wrote down what success was supposed to look like before the build started. They die because the agent couldn't reach the data or the tools it needed to actually finish a job. They die because the thing worked impressively in a demo and then quietly drifted in production while no single person owned the result. These are not research problems. They are management problems — scoping, access, and accountability — dressed up in a research costume.",
+						"That reframing matters, because management problems are the kind enterprises already know how to solve. The companies pulling genuine returns out of AI in 2026 tend to share an unglamorous set of habits. They define the metric first — hours saved, tickets deflected, cycle time cut — and they define it in a way finance will accept before a line of integration code is written. They give the agent real, governed access to the systems where work actually happens, instead of fencing it into a sandbox where it can only impress. And they put a named human on the hook for the outcome, not just the launch. The pattern across the winners isn't a better model. It's a clearer contract.",
+						"There's a sobering number underneath all of this that should keep the hype honest: despite the record spending, the majority of organizations still report no measurable impact on enterprise-level profit. That is not evidence that AI doesn't work. It's evidence that deploying a capability and capturing its value are two entirely different projects, and most companies have only finished the first one. The capability is bought. The value is still being left on the table.",
+						"The optimistic read — and it is genuinely optimistic — is that the hardest part is now the most familiar part. We have spent three years asking whether the technology could do the work. In 2026 that question has largely been answered yes. The question that decides the next three years is quieter and more human: who owns the outcome, what does winning look like, and can you show the receipt? Those are questions every well-run company already knows how to answer. The ones that start asking them now are the ones who will still be running agents in 2028 — and proving, line by line, that they paid.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"WRITER, 2026 AI Adoption in the Enterprise with Workplace Intelligence: https://writer.com/blog/enterprise-ai-adoption-2026/",
+						"Gartner, \"Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027,\" June 25, 2025: https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
+						"NVIDIA, State of AI Report 2026: https://blogs.nvidia.com/blog/state-of-ai-report-2026/",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The Smartest Model in Your Stack Might Be the Smallest",
 			Slug:    "retrieval-layer-small-embedding-models-rag-accuracy-2026",
 			Date:    "June 22, 2026",

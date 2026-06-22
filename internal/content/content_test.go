@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune22 := time.Date(2026, time.June, 22, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune22), "enterprise-ai-roi-gap-pilots-production-ownership-2026") {
+		t.Fatal("publishedPosts() did not include enterprise AI ROI gap article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune22), "retrieval-layer-small-embedding-models-rag-accuracy-2026") {
 		t.Fatal("publishedPosts() did not include retrieval layer small embedding models article on publication date")
 	}
 
 	onPublicationJune21 := time.Date(2026, time.June, 21, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune21), "enterprise-ai-roi-gap-pilots-production-ownership-2026") {
+		t.Fatal("publishedPosts() included enterprise AI ROI gap article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune21), "retrieval-layer-small-embedding-models-rag-accuracy-2026") {
 		t.Fatal("publishedPosts() included retrieval layer small embedding models article before publication date")
 	}
@@ -380,6 +386,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	enterpriseAgentROIPost, ok := FindBySlug("enterprise-ai-roi-gap-pilots-production-ownership-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find enterprise AI ROI gap article")
+	}
+	if enterpriseAgentROIPost.Title != "Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?" {
+		t.Fatalf("FindBySlug() returned %q for enterprise AI ROI gap article", enterpriseAgentROIPost.Title)
+	}
+	if len(enterpriseAgentROIPost.Related) != 2 {
+		t.Fatalf("enterprise AI ROI gap article related count = %d, want 2", len(enterpriseAgentROIPost.Related))
+	}
+
 	retrievalPost, ok := FindBySlug("retrieval-layer-small-embedding-models-rag-accuracy-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find retrieval layer small embedding models article")

@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?")) {
+		t.Fatal("response missing enterprise AI ROI gap article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Smartest Model in Your Stack Might Be the Smallest")) {
 		t.Fatal("response missing retrieval layer small embedding models article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("World Models Grew Up: AI Stopped Generating Scenes and Started Predicting Actions")) {
 		t.Fatal("response missing world models physical AI article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Hardest Part of an AI Agent Isn't the Agent")) {
-		t.Fatal("response missing AI agents demo-to-production control plane article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

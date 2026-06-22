@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune22 := time.Date(2026, time.June, 22, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune22), "retrieval-layer-small-embedding-models-rag-accuracy-2026") {
+		t.Fatal("publishedPosts() did not include retrieval layer small embedding models article on publication date")
+	}
+
 	onPublicationJune21 := time.Date(2026, time.June, 21, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune21), "retrieval-layer-small-embedding-models-rag-accuracy-2026") {
+		t.Fatal("publishedPosts() included retrieval layer small embedding models article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune21), "agentic-ai-verification-oracle-chip-design-2026") {
 		t.Fatal("publishedPosts() did not include agentic AI verification oracle article on publication date")
 	}
@@ -372,6 +380,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	retrievalPost, ok := FindBySlug("retrieval-layer-small-embedding-models-rag-accuracy-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find retrieval layer small embedding models article")
+	}
+	if retrievalPost.Title != "The Smartest Model in Your Stack Might Be the Smallest" {
+		t.Fatalf("FindBySlug() returned %q for retrieval layer small embedding models article", retrievalPost.Title)
+	}
+	if len(retrievalPost.Related) != 2 {
+		t.Fatalf("retrieval layer small embedding models article related count = %d, want 2", len(retrievalPost.Related))
+	}
+
 	agenticVerificationPost, ok := FindBySlug("agentic-ai-verification-oracle-chip-design-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find agentic AI verification oracle article")

@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Washington Wrote the Rulebook for Frontier AI — And the First Lab It Touched Is Suing")) {
+		t.Fatal("response missing US AI national security executive order article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The AI Bottleneck Moved Off the Chip and Onto the Power Grid")) {
 		t.Fatal("response missing AI power grid bottleneck article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Reasoning Models Were Built to Think Longer. 2026 Is Teaching Them When to Stop.")) {
 		t.Fatal("response missing reasoning models test-time compute article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory")) {
-		t.Fatal("response missing AI power and memory bottleneck article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -152,7 +152,7 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/posts/ai-power-grid-bottleneck-electricity-bills-nuclear-2026", nil)
+	req := httptest.NewRequest(http.MethodGet, "/posts/us-ai-national-security-executive-order-anthropic-lawsuit-2026", nil)
 	rec := httptest.NewRecorder()
 	server.ServeHTTP(rec, req)
 
@@ -163,10 +163,10 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 	body := rec.Body.String()
 	for _, want := range []string{
 		"Related reading",
-		`href="/posts/ai-real-bottleneck-power-memory-not-chips-2026"`,
-		`href="/posts/ai-silicon-photonics-interconnect-light-2026"`,
-		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
-		template.HTMLEscapeString("The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light"),
+		`href="/posts/fable-5-mythos-5-export-control-shutdown-2026"`,
+		`href="/posts/eu-ai-act-deadline-us-state-preemption-divergence-2026"`,
+		template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway."),
+		template.HTMLEscapeString("Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

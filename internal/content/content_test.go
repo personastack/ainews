@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune23 := time.Date(2026, time.June, 23, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune23), "us-ai-national-security-executive-order-anthropic-lawsuit-2026") {
+		t.Fatal("publishedPosts() did not include US AI national security executive order article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune23), "ai-power-grid-bottleneck-electricity-bills-nuclear-2026") {
 		t.Fatal("publishedPosts() did not include AI power grid bottleneck article on publication date")
 	}
 
 	onPublicationJune22 := time.Date(2026, time.June, 22, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune22), "us-ai-national-security-executive-order-anthropic-lawsuit-2026") {
+		t.Fatal("publishedPosts() included US AI national security executive order article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune22), "ai-power-grid-bottleneck-electricity-bills-nuclear-2026") {
 		t.Fatal("publishedPosts() included AI power grid bottleneck article before publication date")
 	}
@@ -394,6 +400,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	nationalSecurityPost, ok := FindBySlug("us-ai-national-security-executive-order-anthropic-lawsuit-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find US AI national security executive order article")
+	}
+	if nationalSecurityPost.Title != "Washington Wrote the Rulebook for Frontier AI — And the First Lab It Touched Is Suing" {
+		t.Fatalf("FindBySlug() returned %q for US AI national security executive order article", nationalSecurityPost.Title)
+	}
+	if len(nationalSecurityPost.Related) != 2 {
+		t.Fatalf("US AI national security executive order article related count = %d, want 2", len(nationalSecurityPost.Related))
+	}
+
 	powerGridBottleneckPost, ok := FindBySlug("ai-power-grid-bottleneck-electricity-bills-nuclear-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI power grid bottleneck article")

@@ -111,6 +111,8 @@ The same batch also includes an Enterprise article about the gap between broad A
 
 The June 23, 2026 content batch includes a Hardware article about AI's binding infrastructure constraint moving from chips to grid power, ratepayer electricity bills, and firm generation supply. Preserve the PJM capacity-auction framing, the socialized-cost question for households and small businesses, and the caveat that efficiency gains are a pressure valve rather than a complete solution. The article carries related-reading links to the June 17 power/memory story and the June 20 silicon-photonics interconnect story to maintain the hardware-series thesis that AI constraints are moving outward from the transistor to memory, interconnects, and the grid.
 
+The same batch also includes a Policy article about Executive Order 14409 making national security the center of U.S. frontier-AI policy and Anthropic suing over the first contested model-access action in that framework. Preserve the distinction that the order rejects mandatory licensing, preclearance, and permitting while creating voluntary covered-frontier-model access and cyber-defense processes. Keep Anthropic's jailbreak rebuttal framed as Anthropic's account, and keep the article threaded to the prior Fable/Mythos shutdown story and the June 21 EU-vs-U.S. governance divergence story.
+
 ## Testing
 
 Run:

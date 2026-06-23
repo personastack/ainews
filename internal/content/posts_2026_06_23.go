@@ -3,6 +3,47 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Washington Wrote the Rulebook for Frontier AI — And the First Lab It Touched Is Suing",
+			Slug:    "us-ai-national-security-executive-order-anthropic-lawsuit-2026",
+			Date:    "June 23, 2026",
+			Tag:     "Policy",
+			Summary: "How a June executive order made \"national security\" the organizing principle of U.S. AI policy, and why the most safety-focused lab in the field ended up on the wrong side of it.",
+			Related: []Link{
+				{
+					Title: "Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway.",
+					Slug:  "fable-5-mythos-5-export-control-shutdown-2026",
+				},
+				{
+					Title: "Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'",
+					Slug:  "eu-ai-act-deadline-us-state-preemption-divergence-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For three years, the central question in American AI policy was whether Washington would regulate frontier models at all. This month it answered — not with a licensing regime, and not with the kind of mandatory safety testing Europe wrote into the AI Act, but with an executive order that reframes the whole problem as a matter of national security. And almost as soon as the framework existed, it produced its first courtroom fight.",
+						"On June 2, President Trump signed Executive Order 14409, \"Promoting Advanced Artificial Intelligence Innovation and Security.\" Read quickly, it looks like deregulation: the order explicitly rules out mandatory licensing, preclearance, or permitting for advanced models, and frames the prior administration's approach as excessive constraint on developers. Read carefully, it is something more interesting — the first attempt to build a standing federal process for the most capable models in existence, and to wire that process directly into the country's cyber-defense agencies.",
+						"The mechanism is voluntary, at least on paper. Under the order, a company can approach the government to determine whether its system qualifies as a \"covered frontier model,\" grant federal agencies a 30-day window of access before a broader public release, and help select trusted early-access partners. In parallel, the order sets aggressive deadlines for the security side of government: within 30 days, bodies including the National Security Systems committee, the Defense Department, CISA, and Treasury are directed to set cyber-defense priorities, issue binding operational directives, and stand up an \"AI cybersecurity clearinghouse.\" Within 60 days, agencies are to build frameworks for assessing AI models and to expand cybersecurity hiring. The order also calls for classified benchmarking of AI cyber capabilities and prioritized criminal enforcement against AI-enabled intrusion and data theft.",
+						"Strip away the politics and a clear thesis emerges. The administration's bet is that the real danger of frontier AI is not bias or misinformation or labor displacement — the worries that animated state legislatures and the EU — but offensive cyber capability in the wrong hands. So the policy it built is less a consumer-protection rulebook than a national-security one: voluntary access for the government, mandatory speed for the defenders, and no paperwork for everyone else.",
+						"That framing collides, hard, with the story already unfolding around Anthropic.",
+						"The friction predates the order. Back in March, the Pentagon labeled Anthropic a \"supply chain risk\" and left it out while signing eight other AI vendors for classified networks. The dispute, by multiple accounts, was not about capability but about conditions: Anthropic declined to let the military use Claude for mass domestic surveillance and lethal autonomous weapons without safety restrictions. In other words, the lab was excluded for insisting on more guardrails, not fewer.",
+						"The conflict escalated this month. Anthropic released the full version of its most capable model, Mythos, to a small set of partners, and on June 9 shipped a public version with guardrails called Fable 5. Days later, the administration issued an export-control order requiring the company to block foreign nationals from its latest technology — and Anthropic pulled public access to both models entirely to comply. (We covered that shutdown when it happened; this is the next chapter.)",
+						"The justification is where the story turns genuinely strange. According to Anthropic, the government believed it had found a way to \"jailbreak\" Fable 5 — to defeat its safety guardrails. The \"jailbreak,\" by the company's telling, amounted to asking the model to read a codebase and fix the software flaws it found. The vulnerabilities it surfaced were, in Anthropic's words, \"previously known, minor\" issues that other publicly available models could turn up with no special prompting at all. The company is now complying with the directive while disagreeing publicly with it, and it has sued the White House over the blacklist, arguing that a narrow, contested jailbreak finding should not justify recalling a commercial model already deployed to hundreds of millions of people.",
+						"It did not stay a private quarrel. Dozens of cybersecurity researchers, AI entrepreneurs, and corporate executives signed an open letter criticizing the government's handling of the episode and urging the administration to commit to \"an open, scientific and transparent process\" for AI risk assessments going forward.",
+						"Here is the part worth sitting with. The same capability that makes a model a national-security asset — finding and fixing software vulnerabilities faster than a human can — is also what got one flagged as a national-security threat. EO 14409 is built almost entirely around that dual-use reality: classified cyber benchmarks, a clearinghouse, early federal access to the most capable systems. But the order describes a tidy, cooperative process, while the Anthropic case shows how the same facts can be read two ways depending on who is holding the pen. A lab that leaned hard into safety ended up cast as the risk; a \"jailbreak\" that looks, on inspection, like ordinary code review became grounds for a recall.",
+						"The deeper signal is that U.S. AI policy now has a center of gravity, and it is the security state, not the consumer-protection agencies or the standards bodies. That resolves the three-year question of whether Washington would act. It opens a sharper one in its place: when \"national security\" becomes the master frame for governing a general-purpose technology, who decides what counts as a threat — and what recourse does a company have when it disagrees? Anthropic just gave its answer. It went to court. The rest of the industry is watching to see what the judge says, because the next \"covered frontier model\" could be theirs.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Sources: White House, Executive Order 14409, \"Promoting Advanced Artificial Intelligence Innovation and Security\" (June 2, 2026); CNN Business; VentureBeat; The Hill.",
+						"Author article handoff: https://docs.google.com/document/d/1HbANKz5-VS23vcbgu8tdsKjQBd8W0TVfPkFuMGaPmKo/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The AI Bottleneck Moved Off the Chip and Onto the Power Grid",
 			Slug:    "ai-power-grid-bottleneck-electricity-bills-nuclear-2026",
 			Date:    "June 23, 2026",

@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune23 := time.Date(2026, time.June, 23, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune23), "ai-power-grid-bottleneck-electricity-bills-nuclear-2026") {
+		t.Fatal("publishedPosts() did not include AI power grid bottleneck article on publication date")
+	}
+
 	onPublicationJune22 := time.Date(2026, time.June, 22, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune22), "ai-power-grid-bottleneck-electricity-bills-nuclear-2026") {
+		t.Fatal("publishedPosts() included AI power grid bottleneck article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune22), "enterprise-ai-roi-gap-pilots-production-ownership-2026") {
 		t.Fatal("publishedPosts() did not include enterprise AI ROI gap article on publication date")
 	}
@@ -386,6 +394,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	powerGridBottleneckPost, ok := FindBySlug("ai-power-grid-bottleneck-electricity-bills-nuclear-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI power grid bottleneck article")
+	}
+	if powerGridBottleneckPost.Title != "The AI Bottleneck Moved Off the Chip and Onto the Power Grid" {
+		t.Fatalf("FindBySlug() returned %q for AI power grid bottleneck article", powerGridBottleneckPost.Title)
+	}
+	if len(powerGridBottleneckPost.Related) != 2 {
+		t.Fatalf("AI power grid bottleneck article related count = %d, want 2", len(powerGridBottleneckPost.Related))
+	}
+
 	enterpriseAgentROIPost, ok := FindBySlug("enterprise-ai-roi-gap-pilots-production-ownership-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find enterprise AI ROI gap article")

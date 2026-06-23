@@ -109,6 +109,8 @@ The June 22, 2026 content batch includes an LLMs article about Liquid AI's 350M-
 
 The same batch also includes an Enterprise article about the gap between broad AI-agent deployment and provable ROI. Preserve WRITER's survey framing: 97% of executives say their company deployed AI agents in the past year, 78% of organizations use AI in at least one business function, 86% say AI spend is rising, while only 29% report significant generative-AI ROI and 23% report significant AI-agent ROI. Keep Gartner's June 2025 agentic-AI cancellation forecast tied to escalating costs, unclear business value, and inadequate risk controls rather than weak model quality, and keep "agent washing" as Gartner's vendor-labeling critique. The article carries related-reading links to the agent control-plane story and the Microsoft Copilot Cowork cost-meter story to frame enterprise AI returns as an ownership, governance, and cost-accountability problem.
 
+The June 23, 2026 content batch includes a Hardware article about AI's binding infrastructure constraint moving from chips to grid power, ratepayer electricity bills, and firm generation supply. Preserve the PJM capacity-auction framing, the socialized-cost question for households and small businesses, and the caveat that efficiency gains are a pressure valve rather than a complete solution. The article carries related-reading links to the June 17 power/memory story and the June 20 silicon-photonics interconnect story to maintain the hardware-series thesis that AI constraints are moving outward from the transistor to memory, interconnects, and the grid.
+
 ## Testing
 
 Run:

@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The AI Bottleneck Moved Off the Chip and Onto the Power Grid")) {
+		t.Fatal("response missing AI power grid bottleneck article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?")) {
 		t.Fatal("response missing enterprise AI ROI gap article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory")) {
 		t.Fatal("response missing AI power and memory bottleneck article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("World Models Grew Up: AI Stopped Generating Scenes and Started Predicting Actions")) {
-		t.Fatal("response missing world models physical AI article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -152,7 +152,7 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/posts/retrieval-layer-small-embedding-models-rag-accuracy-2026", nil)
+	req := httptest.NewRequest(http.MethodGet, "/posts/ai-power-grid-bottleneck-electricity-bills-nuclear-2026", nil)
 	rec := httptest.NewRecorder()
 	server.ServeHTTP(rec, req)
 
@@ -163,10 +163,10 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 	body := rec.Body.String()
 	for _, want := range []string{
 		"Related reading",
-		`href="/posts/ai-cost-meter-copilot-cowork-deepseek-2026"`,
-		`href="/posts/ai-startups-infrastructure-not-chatbots-2026"`,
-		template.HTMLEscapeString("Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine."),
-		template.HTMLEscapeString("The Next AI Startup Wave Is Infrastructure, Not Chatbots"),
+		`href="/posts/ai-real-bottleneck-power-memory-not-chips-2026"`,
+		`href="/posts/ai-silicon-photonics-interconnect-light-2026"`,
+		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
+		template.HTMLEscapeString("The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune24 := time.Date(2026, time.June, 24, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune24), "ai-agent-spending-governance-gap-control-plane-2026") {
+		t.Fatal("publishedPosts() did not include AI agent spending governance gap article on publication date")
+	}
+
 	onPublicationJune23 := time.Date(2026, time.June, 23, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune23), "ai-agent-spending-governance-gap-control-plane-2026") {
+		t.Fatal("publishedPosts() included AI agent spending governance gap article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune23), "us-ai-national-security-executive-order-anthropic-lawsuit-2026") {
 		t.Fatal("publishedPosts() did not include US AI national security executive order article on publication date")
 	}
@@ -400,6 +408,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	agentGovernancePost, ok := FindBySlug("ai-agent-spending-governance-gap-control-plane-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI agent spending governance gap article")
+	}
+	if agentGovernancePost.Title != "Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them" {
+		t.Fatalf("FindBySlug() returned %q for AI agent spending governance gap article", agentGovernancePost.Title)
+	}
+	if len(agentGovernancePost.Related) != 3 {
+		t.Fatalf("AI agent spending governance gap article related count = %d, want 3", len(agentGovernancePost.Related))
+	}
+
 	nationalSecurityPost, ok := FindBySlug("us-ai-national-security-executive-order-anthropic-lawsuit-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find US AI national security executive order article")

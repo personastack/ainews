@@ -113,6 +113,8 @@ The June 23, 2026 content batch includes a Hardware article about AI's binding i
 
 The same batch also includes a Policy article about Executive Order 14409 making national security the center of U.S. frontier-AI policy and Anthropic suing over the first contested model-access action in that framework. Preserve the distinction that the order rejects mandatory licensing, preclearance, and permitting while creating voluntary covered-frontier-model access and cyber-defense processes. Keep Anthropic's jailbreak rebuttal framed as Anthropic's account, and keep the article threaded to the prior Fable/Mythos shutdown story and the June 21 EU-vs-U.S. governance divergence story.
 
+The June 24, 2026 content batch includes an Enterprise article about the gap between projected AI-agent software spending and the governance/control-plane layer needed to manage deployed agent fleets. Preserve Gartner's $86.4B 2025, $206.5B 2026, $376.3B 2027, 47% total-AI-spend growth, and more-than-40% cancellation figures as forecasted/reported market context rather than audited spend. Keep WSO2 Agent Manager, HPE/NVIDIA AI Factory, Cognizant/ServiceNow Neuro, and Kyndryl/AWS examples framed as product/category signals that agent governance, identity, observability, verification, and policy enforcement are becoming the control-plane market, not proof that agent sprawl is solved. The article carries related-reading links to the June 22 agent ROI story, the June 16 agent control-plane story, and the June 21 agent verification story to maintain the editorial thread that enterprise agent value depends on ownership, controls, and verifiers.
+
 ## Testing
 
 Run:

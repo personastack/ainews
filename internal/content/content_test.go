@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune25 := time.Date(2026, time.June, 25, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune25), "ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026") {
+		t.Fatal("publishedPosts() did not include AI materials discovery rare-earth magnet article on publication date")
+	}
+
 	onPublicationJune24 := time.Date(2026, time.June, 24, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune24), "ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026") {
+		t.Fatal("publishedPosts() included AI materials discovery rare-earth magnet article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune24), "ai-agent-spending-governance-gap-control-plane-2026") {
 		t.Fatal("publishedPosts() did not include AI agent spending governance gap article on publication date")
 	}
@@ -408,6 +416,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	magnetPost, ok := FindBySlug("ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI materials discovery rare-earth magnet article")
+	}
+	if magnetPost.Title != "AI Is Hunting a Magnet That Could Break China's Grip on Rare Earths — It Hasn't Caught One Yet" {
+		t.Fatalf("FindBySlug() returned %q for AI materials discovery rare-earth magnet article", magnetPost.Title)
+	}
+	if len(magnetPost.Related) != 2 {
+		t.Fatalf("AI materials discovery rare-earth magnet article related count = %d, want 2", len(magnetPost.Related))
+	}
+
 	agentGovernancePost, ok := FindBySlug("ai-agent-spending-governance-gap-control-plane-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI agent spending governance gap article")

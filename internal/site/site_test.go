@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("AI Is Hunting a Magnet That Could Break China's Grip on Rare Earths — It Hasn't Caught One Yet")) {
+		t.Fatal("response missing AI materials discovery rare-earth magnet article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them")) {
 		t.Fatal("response missing AI agent spending governance gap article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine.")) {
 		t.Fatal("response missing Microsoft AI cost meter article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("When the AI Starts Building the AI")) {
-		t.Fatal("response missing AI builds itself article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -197,6 +197,34 @@ func TestPostRouteRendersThreeRelatedStories(t *testing.T) {
 		template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?"),
 		template.HTMLEscapeString("The Hardest Part of an AI Agent Isn't the Agent"),
 		template.HTMLEscapeString("The Real Test for AI Agents Isn't Autonomy — It's Whether They Can Check Their Own Work"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersMagnetRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-drug-discovery-clinic-not-approval-2026"`,
+		`href="/posts/self-driving-labs-ai-runs-experiments-2026"`,
+		template.HTMLEscapeString("AI Designed the Molecule in Months — The Clinic Still Takes Years"),
+		template.HTMLEscapeString("Science Gets a Lab Partner That Runs the Experiments"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

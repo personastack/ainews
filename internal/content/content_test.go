@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune25 := time.Date(2026, time.June, 25, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune25), "ai-model-release-firehose-cadence-eval-debt-2026") {
+		t.Fatal("publishedPosts() did not include AI model release firehose article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune25), "ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026") {
 		t.Fatal("publishedPosts() did not include AI materials discovery rare-earth magnet article on publication date")
 	}
 
 	onPublicationJune24 := time.Date(2026, time.June, 24, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune24), "ai-model-release-firehose-cadence-eval-debt-2026") {
+		t.Fatal("publishedPosts() included AI model release firehose article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune24), "ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026") {
 		t.Fatal("publishedPosts() included AI materials discovery rare-earth magnet article before publication date")
 	}
@@ -416,6 +422,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	modelFirehosePost, ok := FindBySlug("ai-model-release-firehose-cadence-eval-debt-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI model release firehose article")
+	}
+	if modelFirehosePost.Title != "A Frontier Model Every Two Weeks: The Real AI Story of 2026 Is the Pace, Not the Peak" {
+		t.Fatalf("FindBySlug() returned %q for AI model release firehose article", modelFirehosePost.Title)
+	}
+	if len(modelFirehosePost.Related) != 2 {
+		t.Fatalf("AI model release firehose article related count = %d, want 2", len(modelFirehosePost.Related))
+	}
+
 	magnetPost, ok := FindBySlug("ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI materials discovery rare-earth magnet article")

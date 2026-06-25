@@ -3,6 +3,60 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "A Frontier Model Every Two Weeks: The Real AI Story of 2026 Is the Pace, Not the Peak",
+			Slug:    "ai-model-release-firehose-cadence-eval-debt-2026",
+			Date:    "June 25, 2026",
+			Tag:     "LLMs",
+			Summary: "The defining feature of 2026 AI isn't where the frontier sits this week — it's how fast everything moves underneath you. The binding constraint has shifted from model capability to the cost of keeping up.",
+			Related: []Link{
+				{
+					Title: "An Open-Weights Model Just Caught the Frontier on Coding — at One-Sixth the Price",
+					Slug:  "glm-5-2-open-weights-frontier-coding-cost-2026",
+				},
+				{
+					Title: "Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine.",
+					Slug:  "ai-cost-meter-copilot-cowork-deepseek-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"The headline-grabbing question in AI is always the same: which model is best this week? It is the wrong question. The defining feature of 2026 is not where the frontier sits on any given Tuesday — it is how fast the whole field is moving underneath you.",
+						"Consider the last few weeks. Public release trackers logged a near-frontier or frontier model landing roughly every couple of days through June. In the first half of the month alone you could count Microsoft's MAI-Code-1-Flash on June 2, NVIDIA's 550-billion-parameter Nemotron 3 Ultra on June 4, Anthropic's Claude Fable 5 and Cohere's North Mini Code on June 9, Google's DiffusionGemma on June 10, Moonshot's Kimi K2.7 Code on June 12, and Zhipu's open-weight GLM-5.2 on June 16 — before you even get to the closed-lab heavyweights. One widely cited roundup counted twelve distinct frontier or near-frontier releases in the first two weeks of June across Anthropic, OpenAI, Google, Meta, Alibaba, DeepSeek, Tencent, Baidu, ByteDance, Mistral, and Zhipu. The site llm-stats now tracks more than 320 model releases overall, and the closed labs have settled into something like a six-week cadence for major versions.",
+						"That is a firehose, and it changes the job.",
+					},
+				},
+				{
+					Paragraphs: []string{
+						"When a genuinely better model arrived once or twice a year, \"use the best model\" was a sound strategy. You evaluated, you integrated, you shipped, and you had months before the ground shifted. At today's pace, that same instinct turns into a treadmill. By the time your team finishes migrating to this month's leader, two more contenders have shipped, each claiming a benchmark win, a price cut, or a new context window. Chasing every release is not diligence. It is a way to never finish anything.",
+						"The constraint, in other words, has quietly moved. For most of the last decade the binding limit on what you could build with AI was model capability — the model simply could not do the thing yet. In 2026, for a large and growing share of real applications, the model can do the thing. The binding limit is now organizational: how cheaply can you absorb change? How fast can you tell whether a new model is actually better for your task, not just better on a leaderboard? How much does it cost you to swap engines without breaking everything downstream?",
+						"Those questions have unglamorous, deeply practical answers, and the teams pulling ahead are the ones treating them as core infrastructure rather than afterthoughts.",
+					},
+				},
+				{
+					Paragraphs: []string{
+						"The first answer is an abstraction layer. If your application calls one vendor's API directly, threaded through a hundred files, every model change is a migration project. If it calls an internal interface that hides the specific model behind it, a swap becomes a config change. This is not a new idea — it is the same logic that put databases behind an ORM — but the release cadence has turned it from good hygiene into a competitive necessity.",
+						"The second is an evaluation harness you actually trust. Public benchmarks tell you how a model does on someone else's problem. They cannot tell you whether GLM-5.2 or Gemini or the latest Qwen is better at your support tickets, your contracts, your codebase. Teams that can answer that in an afternoon — because they have a curated set of real tasks with graded outputs wired to a dashboard — treat each new release as a cheap experiment. Teams that cannot are reduced to vibes and vendor marketing, and they either churn constantly or freeze on a model long past its prime. The industry has a name for the gap between those two states: eval debt, the accumulated cost of not knowing how well your system actually works.",
+					},
+				},
+				{
+					Paragraphs: []string{
+						"There is a deeper economic current under all of this. The same trackers that count the releases also note that the price of a fixed level of capability has been falling roughly an order of magnitude per year. A task that was frontier-only and expensive in 2025 is mid-tier and cheap in 2026, and open-weight models — GLM, Qwen, DeepSeek, Llama — keep collapsing the distance to the closed leaders. The strategic implication is counterintuitive: tying your product's identity to a specific model is a depreciating asset. The model you are proud of today is a commodity in a year. What compounds is everything around it — your data, your evaluation suite, your integration surface, the workflow you have earned the right to automate.",
+						"So the right response to a frontier model every two weeks is not to sprint after each one. It is to build the machinery that makes any given model swappable, and then to spend your scarce attention on the parts of the problem the firehose cannot solve for you. Pin a known-good model for production stability. Run the new arrivals through your own evals on a schedule, not on adrenaline. Upgrade when your numbers — not the launch-day charts — say it is worth it.",
+						"The labs will keep shipping. That is the one safe prediction in AI right now. The question worth sitting with is the one the release calendar quietly poses to everyone building on top of it: if the model is no longer the hard part, what is your team actually building a lead in? In 2026, the winners are starting to look less like the fastest adopters and more like the best-prepared — the ones who turned the firehose from a threat into a tailwind.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"llm-stats, LLM updates tracker: https://llm-stats.com/llm-updates",
+						"Presenc AI Research, \"June 2026 LLM Release Roundup\": https://presenc.ai/research/june-2026-llm-release-roundup",
+						"Author article handoff: https://docs.google.com/document/d/13JjinfJP8UToE77sfErXizbasP8tcfC1ezQXNnGD3HE/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "AI Is Hunting a Magnet That Could Break China's Grip on Rare Earths — It Hasn't Caught One Yet",
 			Slug:    "ai-materials-discovery-rare-earth-magnet-roadmap-not-magnet-2026",
 			Date:    "June 25, 2026",

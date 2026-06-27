@@ -3,6 +3,7 @@ package site
 import (
 	"embed"
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -16,6 +17,7 @@ import (
 var templatesFS embed.FS
 
 const postsPerPage = 12
+const siteBaseURL = "https://ainews.personastack.ai"
 
 type Server struct {
 	templates *template.Template
@@ -74,6 +76,9 @@ func (s *Server) routes() {
 	s.mux.HandleFunc("/", s.handleIndex)
 	s.mux.HandleFunc("/posts/", s.handlePost)
 	s.mux.HandleFunc("/api/posts", s.handlePostsAPI)
+	s.mux.HandleFunc("/robots.txt", s.handleRobots)
+	s.mux.HandleFunc("/sitemap.xml", s.handleSitemap)
+	s.mux.HandleFunc("/health", s.handleHealthz)
 	s.mux.HandleFunc("/healthz", s.handleHealthz)
 }
 
@@ -218,6 +223,46 @@ func (s *Server) handleHealthz(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	_, _ = w.Write([]byte("ok"))
+}
+
+func (s *Server) handleRobots(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		w.Header().Set("Allow", http.MethodGet)
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	_, _ = fmt.Fprintf(w, "User-agent: *\nAllow: /\nSitemap: %s/sitemap.xml\n", siteBaseURL)
+}
+
+func (s *Server) handleSitemap(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		w.Header().Set("Allow", http.MethodGet)
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
+	type urlEntry struct {
+		Loc string `xml:"loc"`
+	}
+	type urlSet struct {
+		XMLName xml.Name   `xml:"urlset"`
+		Xmlns   string     `xml:"xmlns,attr"`
+		URLs    []urlEntry `xml:"url"`
+	}
+
+	entries := []urlEntry{{Loc: siteBaseURL + "/"}}
+	for _, post := range content.Posts() {
+		entries = append(entries, urlEntry{Loc: siteBaseURL + "/posts/" + post.Slug})
+	}
+
+	w.Header().Set("Content-Type", "application/xml; charset=utf-8")
+	_, _ = w.Write([]byte(xml.Header))
+	_ = xml.NewEncoder(w).Encode(urlSet{
+		Xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9",
+		URLs:  entries,
+	})
 }
 
 func (s *Server) render(w http.ResponseWriter, status int, name string, data any) {

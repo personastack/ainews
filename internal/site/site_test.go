@@ -351,3 +351,74 @@ func TestHealthz(t *testing.T) {
 		t.Fatalf("body = %q, want ok", got)
 	}
 }
+
+func TestHealthAlias(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/health", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	if got := strings.TrimSpace(rec.Body.String()); got != "ok" {
+		t.Fatalf("body = %q, want ok", got)
+	}
+}
+
+func TestRobots(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/robots.txt", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"User-agent: *",
+		"Allow: /",
+		"Sitemap: https://ainews.personastack.ai/sitemap.xml",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing robots content %q", want)
+		}
+	}
+}
+
+func TestSitemap(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/sitemap.xml", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+		"<loc>https://ainews.personastack.ai/</loc>",
+		"<loc>https://ainews.personastack.ai/posts/ai-model-release-firehose-cadence-eval-debt-2026</loc>",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing sitemap content %q", want)
+		}
+	}
+}

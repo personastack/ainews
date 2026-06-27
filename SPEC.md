@@ -119,6 +119,8 @@ The June 25, 2026 content batch includes a Science article about AI-assisted mat
 
 The same batch also includes an LLMs article about the accelerating frontier-model release cadence and the operational cost of keeping up. Preserve the framing that "roughly every couple of days," "twelve in two weeks," the 320-plus tracked releases, the six-week major-version cadence, and the order-of-magnitude annual capability-price decline are tracker-attributed estimates rather than hard universal claims. Keep the thesis focused on abstraction layers, trusted task-specific evaluations, eval debt, and swappable model infrastructure rather than declaring any single June 2026 model the winner. The article carries related-reading links to the June 19 GLM-5.2 open-weights story and the June 19 Microsoft Copilot Cowork cost-meter story to maintain the editorial thread that models are commoditizing while the surrounding machinery becomes the moat.
 
+The June 27, 2026 content batch includes an Enterprise article about Samsung's companywide ChatGPT Enterprise and Codex rollout as a signal that coding agents are moving from developer-only tools into general workplace software creation. Preserve the reversal framing from Samsung's 2023 ChatGPT ban to the 2026 enterprise-governed deployment, and keep the governance caveat central: the story is about data boundaries, admin controls, and review processes as much as productivity. The article carries related-reading links to the June 24 agent governance/control-plane story and the June 22 enterprise ROI story to maintain the editorial thread that broad enterprise AI adoption depends on ownership and controls.
+
 ## Testing
 
 Run:

@@ -53,6 +53,16 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune27 := time.Date(2026, time.June, 27, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune27), "samsung-codex-non-developers-citizen-software-2026") {
+		t.Fatal("publishedPosts() did not include Samsung Codex citizen software article on publication date")
+	}
+
+	onPublicationJune26 := time.Date(2026, time.June, 26, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune26), "samsung-codex-non-developers-citizen-software-2026") {
+		t.Fatal("publishedPosts() included Samsung Codex citizen software article before publication date")
+	}
+
 	onPublicationJune25 := time.Date(2026, time.June, 25, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJune25), "ai-model-release-firehose-cadence-eval-debt-2026") {
 		t.Fatal("publishedPosts() did not include AI model release firehose article on publication date")
@@ -422,6 +432,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	samsungCodexPost, ok := FindBySlug("samsung-codex-non-developers-citizen-software-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Samsung Codex citizen software article")
+	}
+	if samsungCodexPost.Title != "Samsung Banned ChatGPT in 2023. Now It's Handing Every Employee a Coding Agent." {
+		t.Fatalf("FindBySlug() returned %q for Samsung Codex citizen software article", samsungCodexPost.Title)
+	}
+	if len(samsungCodexPost.Related) != 2 {
+		t.Fatalf("Samsung Codex citizen software article related count = %d, want 2", len(samsungCodexPost.Related))
+	}
+
 	modelFirehosePost, ok := FindBySlug("ai-model-release-firehose-cadence-eval-debt-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI model release firehose article")

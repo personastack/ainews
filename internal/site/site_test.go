@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Samsung Banned ChatGPT in 2023. Now It's Handing Every Employee a Coding Agent.")) {
+		t.Fatal("response missing Samsung Codex citizen software article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("A Frontier Model Every Two Weeks: The Real AI Story of 2026 Is the Pace, Not the Peak")) {
 		t.Fatal("response missing AI model release firehose article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Designed the Molecule in Months — The Clinic Still Takes Years")) {
 		t.Fatal("response missing AI drug discovery clinic article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("An Open-Weights Model Just Caught the Frontier on Coding — at One-Sixth the Price")) {
-		t.Fatal("response missing GLM-5.2 open-weights coding article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -167,6 +167,34 @@ func TestPostRouteRendersModelReleaseFirehoseRelatedStories(t *testing.T) {
 		`href="/posts/ai-cost-meter-copilot-cowork-deepseek-2026"`,
 		template.HTMLEscapeString("An Open-Weights Model Just Caught the Frontier on Coding — at One-Sixth the Price"),
 		template.HTMLEscapeString("Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersSamsungCodexRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/samsung-codex-non-developers-citizen-software-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-agent-spending-governance-gap-control-plane-2026"`,
+		`href="/posts/enterprise-ai-roi-gap-pilots-production-ownership-2026"`,
+		template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them"),
+		template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

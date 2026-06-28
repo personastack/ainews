@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Built Its Own Chip in Nine Months. The Real Target Isn't Nvidia — It's the Inference Bill.")) {
+		t.Fatal("response missing OpenAI Broadcom Jalapeno inference chip article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Samsung Banned ChatGPT in 2023. Now It's Handing Every Employee a Coding Agent.")) {
 		t.Fatal("response missing Samsung Codex citizen software article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light")) {
 		t.Fatal("response missing AI silicon photonics interconnect article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("AI Designed the Molecule in Months — The Clinic Still Takes Years")) {
-		t.Fatal("response missing AI drug discovery clinic article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -195,6 +195,36 @@ func TestPostRouteRendersSamsungCodexRelatedStories(t *testing.T) {
 		`href="/posts/enterprise-ai-roi-gap-pilots-production-ownership-2026"`,
 		template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them"),
 		template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersJalapenoRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/openai-broadcom-jalapeno-inference-chip-custom-silicon-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-real-bottleneck-power-memory-not-chips-2026"`,
+		`href="/posts/ai-power-grid-bottleneck-electricity-bills-nuclear-2026"`,
+		`href="/posts/ai-silicon-photonics-interconnect-light-2026"`,
+		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
+		template.HTMLEscapeString("The AI Bottleneck Moved Off the Chip and Onto the Power Grid"),
+		template.HTMLEscapeString("The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune28 := time.Date(2026, time.June, 28, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune28), "openai-broadcom-jalapeno-inference-chip-custom-silicon-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI Broadcom Jalapeno inference chip article on publication date")
+	}
+
 	onPublicationJune27 := time.Date(2026, time.June, 27, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune27), "openai-broadcom-jalapeno-inference-chip-custom-silicon-2026") {
+		t.Fatal("publishedPosts() included OpenAI Broadcom Jalapeno inference chip article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune27), "samsung-codex-non-developers-citizen-software-2026") {
 		t.Fatal("publishedPosts() did not include Samsung Codex citizen software article on publication date")
 	}
@@ -432,6 +440,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	jalapenoPost, ok := FindBySlug("openai-broadcom-jalapeno-inference-chip-custom-silicon-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI Broadcom Jalapeno inference chip article")
+	}
+	if jalapenoPost.Title != "OpenAI Built Its Own Chip in Nine Months. The Real Target Isn't Nvidia — It's the Inference Bill." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI Broadcom Jalapeno inference chip article", jalapenoPost.Title)
+	}
+	if len(jalapenoPost.Related) != 3 {
+		t.Fatalf("OpenAI Broadcom Jalapeno inference chip article related count = %d, want 3", len(jalapenoPost.Related))
+	}
+
 	samsungCodexPost, ok := FindBySlug("samsung-codex-non-developers-citizen-software-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Samsung Codex citizen software article")

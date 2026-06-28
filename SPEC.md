@@ -121,6 +121,8 @@ The same batch also includes an LLMs article about the accelerating frontier-mod
 
 The June 27, 2026 content batch includes an Enterprise article about Samsung's companywide ChatGPT Enterprise and Codex rollout as a signal that coding agents are moving from developer-only tools into general workplace software creation. Preserve the reversal framing from Samsung's 2023 ChatGPT ban to the 2026 enterprise-governed deployment, and keep the governance caveat central: the story is about data boundaries, admin controls, and review processes as much as productivity. The article carries related-reading links to the June 24 agent governance/control-plane story and the June 22 enterprise ROI story to maintain the editorial thread that broad enterprise AI adoption depends on ownership and controls.
 
+The June 28, 2026 content batch includes a Hardware article about OpenAI and Broadcom's "Jalapeño" inference ASIC as an operating-cost story rather than a broad Nvidia-displacement story. Preserve the distinction between inference ASIC economics and general-purpose training GPUs, keep the roughly $14B 2025 inference-spend and roughly 50% lab cost-savings figures framed as reported claims, and treat engineering samples, end-2026 initial deployment, 2027 ramp, and 2028 scale as announced targets rather than delivered fleet economics. The article carries related-reading links to the power/memory, power-grid, and silicon-photonics stories to maintain the hardware-economics series thesis that AI constraints are moving across chips, power, memory, interconnect, and now inference unit costs.
+
 ## Testing
 
 Run:

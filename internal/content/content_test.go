@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune29 := time.Date(2026, time.June, 29, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune29), "openai-gpt-5-6-sol-government-gated-frontier-release-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI GPT-5.6 Sol government-gated release article on publication date")
+	}
+
 	onPublicationJune28 := time.Date(2026, time.June, 28, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune28), "openai-gpt-5-6-sol-government-gated-frontier-release-2026") {
+		t.Fatal("publishedPosts() included OpenAI GPT-5.6 Sol government-gated release article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune28), "openai-broadcom-jalapeno-inference-chip-custom-silicon-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI Broadcom Jalapeno inference chip article on publication date")
 	}
@@ -440,6 +448,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	gptSolPost, ok := FindBySlug("openai-gpt-5-6-sol-government-gated-frontier-release-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI GPT-5.6 Sol government-gated release article")
+	}
+	if gptSolPost.Title != "OpenAI Shipped Its Most Powerful Model. Only 20 Companies — All Government-Approved — Can Use It." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI GPT-5.6 Sol government-gated release article", gptSolPost.Title)
+	}
+	if len(gptSolPost.Related) != 3 {
+		t.Fatalf("OpenAI GPT-5.6 Sol government-gated release article related count = %d, want 3", len(gptSolPost.Related))
+	}
+
 	jalapenoPost, ok := FindBySlug("openai-broadcom-jalapeno-inference-chip-custom-silicon-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI Broadcom Jalapeno inference chip article")

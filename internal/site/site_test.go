@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Language's Frontier Is Locking Down. Robotics' Frontier Just Went Open.")) {
+		t.Fatal("response missing NVIDIA Cosmos 3 open physical AI world model article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Shipped Its Most Powerful Model. Only 20 Companies — All Government-Approved — Can Use It.")) {
 		t.Fatal("response missing OpenAI GPT-5.6 Sol government-gated release article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Real Test for AI Agents Isn't Autonomy — It's Whether They Can Check Their Own Work")) {
 		t.Fatal("response missing agentic AI verification oracle article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'")) {
-		t.Fatal("response missing EU AI Act and US state preemption article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -197,6 +197,36 @@ func TestPostRouteRendersGPTSolRelatedStories(t *testing.T) {
 		template.HTMLEscapeString("Washington Wrote the Rulebook for Frontier AI — And the First Lab It Touched Is Suing"),
 		template.HTMLEscapeString("A Frontier Model Every Two Weeks: The Real AI Story of 2026 Is the Pace, Not the Peak"),
 		template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersCosmosOpenWorldModelRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/nvidia-cosmos-3-open-physical-ai-world-model-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/world-models-predict-action-physical-ai-2026"`,
+		`href="/posts/openai-gpt-5-6-sol-government-gated-frontier-release-2026"`,
+		`href="/posts/ai-real-bottleneck-power-memory-not-chips-2026"`,
+		template.HTMLEscapeString("World Models Grew Up: AI Stopped Generating Scenes and Started Predicting Actions"),
+		template.HTMLEscapeString("OpenAI Shipped Its Most Powerful Model. Only 20 Companies — All Government-Approved — Can Use It."),
+		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)
@@ -475,6 +505,7 @@ func TestSitemap(t *testing.T) {
 	for _, want := range []string{
 		`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
 		"<loc>https://ainews.personastack.ai/</loc>",
+		"<loc>https://ainews.personastack.ai/posts/nvidia-cosmos-3-open-physical-ai-world-model-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/openai-gpt-5-6-sol-government-gated-frontier-release-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/ai-model-release-firehose-cadence-eval-debt-2026</loc>",
 	} {

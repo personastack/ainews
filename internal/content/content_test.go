@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJune30 := time.Date(2026, time.June, 30, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune30), "nvidia-cosmos-3-open-physical-ai-world-model-2026") {
+		t.Fatal("publishedPosts() did not include NVIDIA Cosmos 3 open physical AI world model article on publication date")
+	}
+
 	onPublicationJune29 := time.Date(2026, time.June, 29, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune29), "nvidia-cosmos-3-open-physical-ai-world-model-2026") {
+		t.Fatal("publishedPosts() included NVIDIA Cosmos 3 open physical AI world model article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune29), "openai-gpt-5-6-sol-government-gated-frontier-release-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI GPT-5.6 Sol government-gated release article on publication date")
 	}
@@ -448,6 +456,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	cosmosPost, ok := FindBySlug("nvidia-cosmos-3-open-physical-ai-world-model-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find NVIDIA Cosmos 3 open physical AI world model article")
+	}
+	if cosmosPost.Title != "Language's Frontier Is Locking Down. Robotics' Frontier Just Went Open." {
+		t.Fatalf("FindBySlug() returned %q for NVIDIA Cosmos 3 open physical AI world model article", cosmosPost.Title)
+	}
+	if len(cosmosPost.Related) != 3 {
+		t.Fatalf("NVIDIA Cosmos 3 open physical AI world model article related count = %d, want 3", len(cosmosPost.Related))
+	}
+
 	gptSolPost, ok := FindBySlug("openai-gpt-5-6-sol-government-gated-frontier-release-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI GPT-5.6 Sol government-gated release article")

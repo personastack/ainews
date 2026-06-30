@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The Year Companies Were Told to Use All the AI They Wanted. Then the Bill Came.")) {
+		t.Fatal("response missing AI cost reckoning tokenmaxxing article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Language's Frontier Is Locking Down. Robotics' Frontier Just Went Open.")) {
 		t.Fatal("response missing NVIDIA Cosmos 3 open physical AI world model article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Smartest Model in Your Stack Might Be the Smallest")) {
 		t.Fatal("response missing retrieval layer small embedding models article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Real Test for AI Agents Isn't Autonomy — It's Whether They Can Check Their Own Work")) {
-		t.Fatal("response missing agentic AI verification oracle article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -227,6 +227,36 @@ func TestPostRouteRendersCosmosOpenWorldModelRelatedStories(t *testing.T) {
 		template.HTMLEscapeString("World Models Grew Up: AI Stopped Generating Scenes and Started Predicting Actions"),
 		template.HTMLEscapeString("OpenAI Shipped Its Most Powerful Model. Only 20 Companies — All Government-Approved — Can Use It."),
 		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersCostReckoningRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-cost-meter-copilot-cowork-deepseek-2026"`,
+		`href="/posts/enterprise-ai-roi-gap-pilots-production-ownership-2026"`,
+		`href="/posts/ai-agent-spending-governance-gap-control-plane-2026"`,
+		template.HTMLEscapeString("Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine."),
+		template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?"),
+		template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

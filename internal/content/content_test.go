@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJune30 := time.Date(2026, time.June, 30, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJune30), "ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026") {
+		t.Fatal("publishedPosts() did not include AI cost reckoning tokenmaxxing article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune30), "nvidia-cosmos-3-open-physical-ai-world-model-2026") {
 		t.Fatal("publishedPosts() did not include NVIDIA Cosmos 3 open physical AI world model article on publication date")
 	}
 
 	onPublicationJune29 := time.Date(2026, time.June, 29, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune29), "ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026") {
+		t.Fatal("publishedPosts() included AI cost reckoning tokenmaxxing article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune29), "nvidia-cosmos-3-open-physical-ai-world-model-2026") {
 		t.Fatal("publishedPosts() included NVIDIA Cosmos 3 open physical AI world model article before publication date")
 	}
@@ -456,6 +462,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	costReckoningPost, ok := FindBySlug("ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI cost reckoning tokenmaxxing article")
+	}
+	if costReckoningPost.Title != "The Year Companies Were Told to Use All the AI They Wanted. Then the Bill Came." {
+		t.Fatalf("FindBySlug() returned %q for AI cost reckoning tokenmaxxing article", costReckoningPost.Title)
+	}
+	if len(costReckoningPost.Related) != 3 {
+		t.Fatalf("AI cost reckoning tokenmaxxing article related count = %d, want 3", len(costReckoningPost.Related))
+	}
+
 	cosmosPost, ok := FindBySlug("nvidia-cosmos-3-open-physical-ai-world-model-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find NVIDIA Cosmos 3 open physical AI world model article")

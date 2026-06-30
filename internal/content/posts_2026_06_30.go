@@ -3,6 +3,79 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Year Companies Were Told to Use All the AI They Wanted. Then the Bill Came.",
+			Slug:    "ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026",
+			Date:    "June 30, 2026",
+			Tag:     "Enterprise",
+			Summary: "A wave of spend caps at Uber, Amazon, and Walmart marks the quiet end of 'tokenmaxxing.' The binding constraint on enterprise AI just flipped from capability to cost — and the reason is a billing model almost nobody was paying attention to.",
+			Related: []Link{
+				{
+					Title: "Microsoft Put a Meter on Its AI. Then It Went Shopping for a Cheaper Engine.",
+					Slug:  "ai-cost-meter-copilot-cowork-deepseek-2026",
+				},
+				{
+					Title: "Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?",
+					Slug:  "enterprise-ai-roi-gap-pilots-production-ownership-2026",
+				},
+				{
+					Title: "Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them",
+					Slug:  "ai-agent-spending-governance-gap-control-plane-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For most of the last eighteen months, the instruction coming down from the top of large companies was refreshingly simple: use as much AI as you can. Adopt the tools, wire them into everything, don't overthink the bill. The fear was being left behind, not running up a tab.",
+						"In the summer of 2026, that instruction is being rewritten in real time. The new memo, increasingly, is: use AI, but justify it — and here is your cap.",
+						"Uber is the cleanest example. The company set a $1,500-per-month ceiling on what any single employee can spend on an individual AI tool, a guardrail it reached for after burning through its entire 2026 AI coding budget by April. Internally, monthly bills had been running anywhere from $500 to $2,000 per engineer, and adoption among its roughly 5,000 engineers had jumped from 32% to 84% in just four months. The usage was real. The problem, as Uber's COO put it, was that it was \"becoming harder to connect growing token spending with measurable improvements in consumer products.\" That sentence is the whole story of enterprise AI right now.",
+						"Uber is not alone. Amazon, Walmart, Cisco, and Meta have all introduced some form of spending control on internal AI use — Walmart with a token cap on its internal AI agent, the others with budget guardrails of their own. After a year of being told to lean in, employees at some of the largest companies in the world are now being asked a much older question: is this worth what it costs?",
+					},
+				},
+				{
+					Heading: "The Number That Started the Panic",
+					Paragraphs: []string{
+						"To understand why finance departments suddenly care, look at the spread. According to Ramp's June 2026 AI Index, which tracks spending across more than 70,000 U.S. businesses, the median company now spends about $11.38 per employee per month on AI tokens. That sounds harmless. But the top 1% of firms spend roughly $7,450 per employee per month — and those heavy users are exactly the high-growth, AI-forward companies the rest of the market is trying to imitate.",
+						"The gap between those two numbers is where careers and budgets are now being made and lost. The FinOps Foundation's 2026 State of FinOps report found that 73% of enterprises reported their AI costs exceeded original projections, and the foundation now names AI cost management as the single top forward-looking priority for finance-operations teams this year. \"Companies reported being 3x over their entire 2026 token budgets by April,\" said J.R. Storment, who leads the foundation. \"The conversation shifted from aggressive growth to implementing guardrails.\"",
+						"The horror stories travel fast. One company ran up a reported $500 million Claude bill after failing to set usage limits. A healthcare enterprise consumed a trillion tokens in six months — more than $6 million in costs nobody had forecast — before anyone in finance understood what was driving the meter. Priceline watched a Cursor contract renewal climb four to five times in price. \"This resembles addiction dynamics,\" the company's IT-finance lead, Chris Reed, said. \"They let you try it free, now you depend on it.\"",
+					},
+				},
+				{
+					Heading: "Why Now: The Meter Got Turned On",
+					Paragraphs: []string{
+						"None of this is because AI got more expensive. Per-token prices have actually fallen, sharply. What changed is two things colliding.",
+						"First, the billing model flipped. Through 2025, much enterprise AI was sold as flat-rate subscriptions — predictable, all-you-can-eat. In 2026, Anthropic and OpenAI moved customers onto token-based billing, where you pay for exactly what you consume. That single change took the cost of intelligence, which had been invisible, and put it on a live meter. The automation platform Workato saw its AI spend jump sevenfold in a single day after Anthropic switched it to token-based pricing. Nothing about the work changed; only the visibility did.",
+						"Second, the workload exploded. Agentic AI — the autonomous, multi-step systems every company spent 2025 piloting — consumes far more than a chatbot. By most estimates an agent burns 10 to 30 times the tokens of a simple chat query, because it reasons, calls tools, retries, and reasons again. As Cisco's chief product officer put it, \"the infrastructure required to operate an agent is meaningfully greater than that needed for a chatbot.\" Cheaper tokens, multiplied by a 10-to-30x heavier task, run in the wrong direction. Goldman Sachs projects global token consumption will rise roughly 24-fold by 2030.",
+					},
+				},
+				{
+					Heading: "The Fix Has a Name: 'Tokenmaxxing' Is Over",
+					Paragraphs: []string{
+						"The behavior now in retreat even has a label: token maxing — the reflex of defaulting to the most capable, most expensive model for every task, with no routing logic and no cost visibility. With a reported 4,500x price spread between the cheapest and priciest models on the market, sending a one-line classification job to a frontier model is like couriering a postcard by chartered jet.",
+						"The emerging discipline is the opposite, and it is borrowed almost wholesale from the cloud era. Intelligent model routing — sending easy tasks to small, cheap models and reserving frontier models for genuine reasoning — is reported to cut costs 60 to 80% with little to no quality loss. Factory, among others, has shipped an automatic model router to do exactly this. Many firms are also routing simple queries to cheaper open-weight and Chinese models; DeepSeek permanently cut its V4-Pro pricing to a quarter of the original after a discount war, and Tom's Hardware reports a wave of companies turning to Chinese and open-source models specifically to stretch budgets.",
+						"Around all of this, a governance layer is hardening fast. A new market of \"agent FinOps\" vendors — Pay-i, Paid, Jellyfish, Waydev, Faros AI — has appeared alongside incumbents like Ramp, Datadog, and New Relic adding AI-spend features. Google Cloud now offers hard Spend Caps that pause API traffic when a budget is hit. And the Linux Foundation is standing up a Tokenomics Foundation, launching in July 2026, to do for token economics what FinOps did for cloud — agree on the metrics and definitions before everyone invents their own. OpenAI's Alexander Embiricos summed up the shift bluntly: \"Our conversations are never about capability anymore. Now they focus on visibility, auditability, token controls, and model efficiency.\"",
+					},
+				},
+				{
+					Heading: "What to Actually Watch",
+					Paragraphs: []string{
+						"It would be easy to read the caps at Uber and Walmart as a retreat from AI. They are not. A two-year Faros AI study of 20,000 developers found output genuinely rising — the heaviest token users were about twice as productive — even as bugs and rewrites rose alongside it. The value is real; it is just no longer free, and no longer unmeasured.",
+						"The through-line connecting this to every other enterprise-AI story of 2026 — the ROI gap between pilots and production, the scramble to govern runaway agent spend — is the same. The first phase of corporate AI rewarded enthusiasm. The second phase rewards accounting. The companies that win the next year won't be the ones using the most AI, or the least. They'll be the ones who can tell you, to the token, exactly what their intelligence costs and exactly what it bought.",
+						"The meter is on now. That turns out to be the most important product update of the year — and no model lab shipped it on purpose.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"TechCrunch, \"The token bill comes due,\" June 5, 2026.",
+						"Ramp, June 2026 AI Index.",
+						"FinOps Foundation, 2026 State of FinOps.",
+						"Tom's Hardware, InfoWorld, Google Cloud Blog, Linux Foundation, CBC, and CryptoBriefing reporting on AI token spend, model routing, spend caps, token economics, and model pricing.",
+						"Author article handoff: https://docs.google.com/document/d/1HV-wlsC63QPVdJHkhYavwvNbr2FBbTKbcjkELKLQhGY/edit",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Language's Frontier Is Locking Down. Robotics' Frontier Just Went Open.",
 			Slug:    "nvidia-cosmos-3-open-physical-ai-world-model-2026",
 			Date:    "June 30, 2026",

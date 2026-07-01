@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("AI's Quiet Second Frontier: Foundation Models Built for the Data That Actually Runs Your Business")) {
+		t.Fatal("response missing tabular foundation models article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The First Big American AI Law Was Supposed to Take Effect Yesterday. It No Longer Exists.")) {
 		t.Fatal("response missing Colorado AI Act repeal article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The AI Bottleneck Moved Off the Chip and Onto the Power Grid")) {
 		t.Fatal("response missing AI power grid bottleneck article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?")) {
-		t.Fatal("response missing enterprise AI ROI gap article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -287,6 +287,34 @@ func TestPostRouteRendersColoradoAIActRelatedStories(t *testing.T) {
 		template.HTMLEscapeString("Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'"),
 		template.HTMLEscapeString("Washington Wrote the Rulebook for Frontier AI — And the First Lab It Touched Is Suing"),
 		template.HTMLEscapeString("The AI Rulebook Is Moving From Principles to Plumbing"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersTabularFoundationModelsRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/tabular-foundation-models-ai-second-frontier-structured-data-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026"`,
+		`href="/posts/retrieval-layer-small-embedding-models-rag-accuracy-2026"`,
+		template.HTMLEscapeString("The Year Companies Were Told to Use All the AI They Wanted. Then the Bill Came."),
+		template.HTMLEscapeString("The Smartest Model in Your Stack Might Be the Smallest"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

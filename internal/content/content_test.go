@@ -54,11 +54,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly1 := time.Date(2026, time.July, 1, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly1), "tabular-foundation-models-ai-second-frontier-structured-data-2026") {
+		t.Fatal("publishedPosts() did not include tabular foundation models article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly1), "colorado-ai-act-repealed-first-us-ai-law-deadline-2026") {
 		t.Fatal("publishedPosts() did not include Colorado AI Act repeal article on publication date")
 	}
 
 	onPublicationJune30 := time.Date(2026, time.June, 30, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune30), "tabular-foundation-models-ai-second-frontier-structured-data-2026") {
+		t.Fatal("publishedPosts() included tabular foundation models article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJune30), "colorado-ai-act-repealed-first-us-ai-law-deadline-2026") {
 		t.Fatal("publishedPosts() included Colorado AI Act repeal article before publication date")
 	}
@@ -470,6 +476,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	tabularFoundationModelsPost, ok := FindBySlug("tabular-foundation-models-ai-second-frontier-structured-data-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find tabular foundation models article")
+	}
+	if tabularFoundationModelsPost.Title != "AI's Quiet Second Frontier: Foundation Models Built for the Data That Actually Runs Your Business" {
+		t.Fatalf("FindBySlug() returned %q for tabular foundation models article", tabularFoundationModelsPost.Title)
+	}
+	if len(tabularFoundationModelsPost.Related) != 2 {
+		t.Fatalf("tabular foundation models article related count = %d, want 2", len(tabularFoundationModelsPost.Related))
+	}
+
 	coloradoAIActPost, ok := FindBySlug("colorado-ai-act-repealed-first-us-ai-law-deadline-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Colorado AI Act repeal article")

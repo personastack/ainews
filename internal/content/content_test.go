@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly1 := time.Date(2026, time.July, 1, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly1), "colorado-ai-act-repealed-first-us-ai-law-deadline-2026") {
+		t.Fatal("publishedPosts() did not include Colorado AI Act repeal article on publication date")
+	}
+
 	onPublicationJune30 := time.Date(2026, time.June, 30, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJune30), "colorado-ai-act-repealed-first-us-ai-law-deadline-2026") {
+		t.Fatal("publishedPosts() included Colorado AI Act repeal article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJune30), "ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026") {
 		t.Fatal("publishedPosts() did not include AI cost reckoning tokenmaxxing article on publication date")
 	}
@@ -462,6 +470,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	coloradoAIActPost, ok := FindBySlug("colorado-ai-act-repealed-first-us-ai-law-deadline-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Colorado AI Act repeal article")
+	}
+	if coloradoAIActPost.Title != "The First Big American AI Law Was Supposed to Take Effect Yesterday. It No Longer Exists." {
+		t.Fatalf("FindBySlug() returned %q for Colorado AI Act repeal article", coloradoAIActPost.Title)
+	}
+	if len(coloradoAIActPost.Related) != 3 {
+		t.Fatalf("Colorado AI Act repeal article related count = %d, want 3", len(coloradoAIActPost.Related))
+	}
+
 	costReckoningPost, ok := FindBySlug("ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI cost reckoning tokenmaxxing article")

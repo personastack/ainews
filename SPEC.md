@@ -133,6 +133,8 @@ The July 1, 2026 content batch includes a Policy article about Colorado repealin
 
 The same batch also includes a Models & Research article about tabular foundation models and structured-data foundation models becoming an enterprise AI category, anchored on SAP's planned Prior Labs acquisition and TabPFN-3. Preserve the framing that SAP committed more than one billion euros over four years and that the transaction was still expected to close this quarter/pending approval as of July 1, 2026. Keep the category thesis focused on purpose-built structured-data, relational, and time-series models for auditable enterprise prediction rather than treating LLMs as obsolete. The article carries related-reading links to the June 30 AI cost-reckoning story and the June 22 small-retriever story to maintain the thesis that enterprise value is shifting toward cheaper, auditable, purpose-built models.
 
+The July 2, 2026 content batch includes a Hardware article about the AI memory crunch, DRAM/HBM allocation, consumer RAM price spikes, and a new antitrust suit against Samsung, SK Hynix, and Micron. Preserve the hedging around single-source retail estimates and analyst wafer-start figures, keep the lawsuit framed as allegations and discovery rather than proven coordination, and maintain the core distinction between real AI demand and the open question of whether oligopoly supply behavior amplified the shortage. The article carries related-reading links to the June 17 power/memory bottleneck story, the June 23 power-grid story, and the June 28 OpenAI/Broadcom Jalapeño inference-chip story to continue the hardware bottleneck series.
+
 ## Testing
 
 Run:

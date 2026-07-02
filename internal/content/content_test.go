@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly2 := time.Date(2026, time.July, 2, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly2), "ai-memory-crunch-dram-hbm-shortage-or-strategy-2026") {
+		t.Fatal("publishedPosts() did not include AI memory crunch DRAM HBM article on publication date")
+	}
+
 	onPublicationJuly1 := time.Date(2026, time.July, 1, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly1), "ai-memory-crunch-dram-hbm-shortage-or-strategy-2026") {
+		t.Fatal("publishedPosts() included AI memory crunch DRAM HBM article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly1), "tabular-foundation-models-ai-second-frontier-structured-data-2026") {
 		t.Fatal("publishedPosts() did not include tabular foundation models article on publication date")
 	}
@@ -476,6 +484,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	memoryCrunchPost, ok := FindBySlug("ai-memory-crunch-dram-hbm-shortage-or-strategy-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI memory crunch DRAM HBM article")
+	}
+	if memoryCrunchPost.Title != "The Memory Tax: Did the AI Boom Break the RAM Market, or Rig It?" {
+		t.Fatalf("FindBySlug() returned %q for AI memory crunch DRAM HBM article", memoryCrunchPost.Title)
+	}
+	if len(memoryCrunchPost.Related) != 3 {
+		t.Fatalf("AI memory crunch DRAM HBM article related count = %d, want 3", len(memoryCrunchPost.Related))
+	}
+
 	tabularFoundationModelsPost, ok := FindBySlug("tabular-foundation-models-ai-second-frontier-structured-data-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find tabular foundation models article")

@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly3 := time.Date(2026, time.July, 3, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly3), "agentic-arbitrage-saas-seat-licensing-234-billion-2026") {
+		t.Fatal("publishedPosts() did not include agentic arbitrage SaaS seat licensing article on publication date")
+	}
+
 	onPublicationJuly2 := time.Date(2026, time.July, 2, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly2), "agentic-arbitrage-saas-seat-licensing-234-billion-2026") {
+		t.Fatal("publishedPosts() included agentic arbitrage SaaS seat licensing article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly2), "ai-memory-crunch-dram-hbm-shortage-or-strategy-2026") {
 		t.Fatal("publishedPosts() did not include AI memory crunch DRAM HBM article on publication date")
 	}
@@ -484,6 +492,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	agenticArbitragePost, ok := FindBySlug("agentic-arbitrage-saas-seat-licensing-234-billion-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find agentic arbitrage SaaS seat licensing article")
+	}
+	if agenticArbitragePost.Title != "Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software" {
+		t.Fatalf("FindBySlug() returned %q for agentic arbitrage SaaS seat licensing article", agenticArbitragePost.Title)
+	}
+	if len(agenticArbitragePost.Related) != 3 {
+		t.Fatalf("agentic arbitrage SaaS seat licensing article related count = %d, want 3", len(agenticArbitragePost.Related))
+	}
+
 	memoryCrunchPost, ok := FindBySlug("ai-memory-crunch-dram-hbm-shortage-or-strategy-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI memory crunch DRAM HBM article")

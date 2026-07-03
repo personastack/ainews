@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software")) {
+		t.Fatal("response missing agentic arbitrage SaaS seat licensing article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Memory Tax: Did the AI Boom Break the RAM Market, or Rig It?")) {
 		t.Fatal("response missing AI memory crunch DRAM HBM article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them")) {
 		t.Fatal("response missing AI agent spending governance gap article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Washington Wrote the Rulebook for Frontier AI — And the First Lab It Touched Is Suing")) {
-		t.Fatal("response missing US AI national security executive order article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -317,6 +317,36 @@ func TestPostRouteRendersMemoryCrunchRelatedStories(t *testing.T) {
 		template.HTMLEscapeString("The Chip Stopped Being the Bottleneck — Now It's Power and Memory"),
 		template.HTMLEscapeString("The AI Bottleneck Moved Off the Chip and Onto the Power Grid"),
 		template.HTMLEscapeString("OpenAI Built Its Own Chip in Nine Months. The Real Target Isn't Nvidia — It's the Inference Bill."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersAgenticArbitrageRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/agentic-arbitrage-saas-seat-licensing-234-billion-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-cost-reckoning-tokenmaxxing-spend-caps-finops-2026"`,
+		`href="/posts/ai-agent-spending-governance-gap-control-plane-2026"`,
+		`href="/posts/enterprise-ai-roi-gap-pilots-production-ownership-2026"`,
+		template.HTMLEscapeString("The Year Companies Were Told to Use All the AI They Wanted. Then the Bill Came."),
+		template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them"),
+		template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

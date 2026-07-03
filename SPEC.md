@@ -135,6 +135,8 @@ The same batch also includes a Models & Research article about tabular foundatio
 
 The July 2, 2026 content batch includes a Hardware article about the AI memory crunch, DRAM/HBM allocation, consumer RAM price spikes, and a new antitrust suit against Samsung, SK Hynix, and Micron. Preserve the hedging around single-source retail estimates and analyst wafer-start figures, keep the lawsuit framed as allegations and discovery rather than proven coordination, and maintain the core distinction between real AI demand and the open question of whether oligopoly supply behavior amplified the shortage. The article carries related-reading links to the June 17 power/memory bottleneck story, the June 23 power-grid story, and the June 28 OpenAI/Broadcom Jalapeño inference-chip story to continue the hardware bottleneck series.
 
+The July 3, 2026 content batch includes an Enterprise article about Gartner's agentic-arbitrage forecast and the pressure AI agents put on per-seat SaaS licensing. Preserve the framing that the $234 billion figure is exposed enterprise application software spending through 2030, not realized lost revenue, and that roughly 20% of enterprise application SaaS spending is a forecasted exposure. Keep the story focused on the vendor/supply-side economics of agents bypassing human interfaces, shifting buyers from seats and dashboards toward outcomes, consumption, institutional context, and horizontal agentic platforms. The article carries related-reading links to the June 30 AI cost-reckoning story, the June 24 agent governance/control-plane story, and the June 22 enterprise AI ROI gap story to continue the enterprise-AI economics series.
+
 ## Testing
 
 Run:

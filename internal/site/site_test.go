@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("To Beat Nvidia, Qualcomm Didn't Buy a Faster Chip — It Bought a Compiler")) {
+		t.Fatal("response missing Qualcomm Modular compiler article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software")) {
 		t.Fatal("response missing agentic arbitrage SaaS seat licensing article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Is Hunting a Magnet That Could Break China's Grip on Rare Earths — It Hasn't Caught One Yet")) {
 		t.Fatal("response missing AI materials discovery rare-earth magnet article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them")) {
-		t.Fatal("response missing AI agent spending governance gap article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly4 := time.Date(2026, time.July, 4, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly4), "qualcomm-modular-cuda-moat-compiler-nvidia-2026") {
+		t.Fatal("publishedPosts() did not include Qualcomm Modular compiler article on publication date")
+	}
+
 	onPublicationJuly3 := time.Date(2026, time.July, 3, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly3), "qualcomm-modular-cuda-moat-compiler-nvidia-2026") {
+		t.Fatal("publishedPosts() included Qualcomm Modular compiler article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly3), "agentic-arbitrage-saas-seat-licensing-234-billion-2026") {
 		t.Fatal("publishedPosts() did not include agentic arbitrage SaaS seat licensing article on publication date")
 	}

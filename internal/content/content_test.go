@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly5 := time.Date(2026, time.July, 5, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly5), "china-domestic-ai-chips-longcat-export-controls-2026") {
+		t.Fatal("publishedPosts() did not include China domestic AI chips LongCat article on publication date")
+	}
+
 	onPublicationJuly4 := time.Date(2026, time.July, 4, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly4), "china-domestic-ai-chips-longcat-export-controls-2026") {
+		t.Fatal("publishedPosts() included China domestic AI chips LongCat article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly4), "qualcomm-modular-cuda-moat-compiler-nvidia-2026") {
 		t.Fatal("publishedPosts() did not include Qualcomm Modular compiler article on publication date")
 	}

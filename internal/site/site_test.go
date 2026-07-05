@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("China Just Trained a Frontier Model on 50,000 of Its Own Chips. The Export Controls Were Supposed to Make That Impossible.")) {
+		t.Fatal("response missing China domestic AI chips LongCat article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("To Beat Nvidia, Qualcomm Didn't Buy a Faster Chip — It Bought a Compiler")) {
 		t.Fatal("response missing Qualcomm Modular compiler article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("A Frontier Model Every Two Weeks: The Real AI Story of 2026 Is the Pace, Not the Peak")) {
 		t.Fatal("response missing AI model release firehose article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("AI Is Hunting a Magnet That Could Break China's Grip on Rare Earths — It Hasn't Caught One Yet")) {
-		t.Fatal("response missing AI materials discovery rare-earth magnet article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

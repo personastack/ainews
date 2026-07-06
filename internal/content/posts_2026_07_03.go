@@ -3,6 +3,61 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The Agents Are Talking. Nobody Checked Their IDs.",
+			Slug:    "agent-identity-zero-trust-non-human-identity-2026",
+			Date:    "July 3, 2026",
+			Tag:     "Agents / Security",
+			Summary: "The industry spent the first half of 2026 arguing over which protocol AI agents would use to talk to each other. The breach data says we built the roads before we built the driver's licenses — and July's scramble toward \"Agent Zero Trust\" is the belated correction.",
+			Related: []Link{
+				{
+					Title: "Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them",
+					Slug:  "ai-agent-spending-governance-gap-control-plane-2026",
+				},
+				{
+					Title: "Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software",
+					Slug:  "agentic-arbitrage-saas-seat-licensing-234-billion-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"For most of this year, the loudest argument in enterprise AI has been about plumbing. Would agents reach their tools through Anthropic's Model Context Protocol (MCP)? Would they coordinate with one another over Google's Agent-to-Agent protocol (A2A), now stewarded by the Linux Foundation? Where does IBM's Agent Communication Protocol fit in? The consensus that emerged is tidy: MCP for the vertical link between an agent and its tools, A2A for the horizontal link between one agent and another. Two layers, and the enterprise stack finally has a shape.",
+						"It's a good story about connectivity. It quietly skipped a harder question: when Agent A asks Agent B to pull a customer record, who decides that Agent A is allowed to ask — and how does Agent B know that Agent A is really Agent A?",
+						"That question is now arriving all at once, and the numbers behind it are the actual AI story of mid-2026.",
+					},
+				},
+				{
+					Heading: "The identity nobody provisioned",
+					Paragraphs: []string{
+						"Start with a ratio. Non-human identities — the service accounts, API keys, OAuth tokens, and now the agents themselves — already outnumber human employees in the average enterprise by roughly 80 to 1, according to KPMG's 2026 cybersecurity report. Other counts land lower (Rubrik Zero Labs puts it near 45 to 1) or much higher (heavily automated shops report several hundred to one), but every estimate points the same way: the population of things holding credentials on your network is overwhelmingly not people, and agents are the fastest-growing slice of it.",
+						"Here's the uncomfortable part. Human identity is a mostly-solved problem: you have onboarding, single sign-on, and a badge that gets revoked the day someone leaves. Most agents have none of that. An agent inherits a static API key, or borrows a service account that was over-provisioned years ago \"to be safe,\" and then keeps it indefinitely. The interoperability protocols standardized how agents connect. They never standardized who agents are.",
+					},
+				},
+				{
+					Heading: "The bill for skipping it",
+					Paragraphs: []string{
+						"The breach data is catching up to the gap. Among enterprises that have actually deployed agents, 88% report at least one security incident tied to those agents, per figures circulating in this year's agentic-security roundups. The most common root cause isn't exotic model jailbreaking — it's boring, and worse for being boring: 61% of those incidents trace back to over-permissioned credentials. Prompt injection shows up in 34%; unauthorized data actions in 27%. The average cost of an agent-related breach is being pegged around $4.7 million.",
+						"Treat those specific numbers with care — they come from vendor and survey compilations, not audited books, and \"incident\" is a stretchy word. But the direction is corroborated across sources: Darktrace's State of AI Cybersecurity 2026 found 92% of security leaders worried about the impact of agents, and non-human-identity compromise keeps ranking as the fastest-growing enterprise attack vector.",
+						"And the protocols we spent the year celebrating are, awkwardly, the connective tissue in the incidents. The same MCP that lets an agent reach a database also — when a server is stood up without authentication — lets anyone else reach it too. This year's messes (poisoned configuration files, malicious third-party \"skills\" installed from agent marketplaces, MCP servers exposed to the open internet with no auth in front of them) are less about clever attackers than about a young ecosystem shipping connectivity faster than it ships control.",
+					},
+				},
+				{
+					Heading: "Zero trust, aimed at your own software",
+					Paragraphs: []string{
+						"Which brings us to the phrase suddenly everywhere this July: Agent Zero Trust. The idea is a direct import from the human-identity playbook, pointed at your own digital workers. Treat every agent as a potential insider threat. Give it a cryptographically verifiable identity, not a shared key. Scope its permissions to the single task in front of it, not the whole database. Log what it does at the protocol layer, so \"did Agent A have the authority to ask that?\" stops being a guessing game and becomes a query you can run.",
+						"None of this is conceptually new — it's the same least-privilege, verify-don't-trust discipline that human IT security learned the hard way over two decades. What's new is the scale and the speed. You have twenty years of muscle memory for provisioning a person. You have, in most organizations, about eighteen months of agents, multiplying at triple-digit annual growth, each one a small autonomous actor with real credentials and no HR file.",
+					},
+				},
+				{
+					Heading: "The question that actually matters",
+					Paragraphs: []string{
+						"The protocol wars were never unimportant; interoperability is the reason agents can do useful cross-system work at all. But they answered the wrong question first. We figured out how agents talk before we figured out how to know who is talking — and the gap between those two milestones is exactly where 2026's agent breaches are living.",
+						"The tell for whether your organization has absorbed the lesson isn't which protocol you standardized on. It's a smaller, more revealing question: can you name every agent with access to your production systems, say precisely what each one is allowed to do, and switch any single one of them off in under a minute? For most companies the honest answer is still no. Closing that gap — not winning the protocol war — is the work of the back half of the year.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software",
 			Slug:    "agentic-arbitrage-saas-seat-licensing-234-billion-2026",
 			Date:    "July 3, 2026",

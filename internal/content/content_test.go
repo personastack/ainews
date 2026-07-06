@@ -54,13 +54,13 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly5 := time.Date(2026, time.July, 5, 0, 0, 0, 0, time.UTC)
-	if !containsSlug(publishedPosts(onPublicationJuly5), "china-domestic-ai-chips-longcat-export-controls-2026") {
-		t.Fatal("publishedPosts() did not include China domestic AI chips LongCat article on publication date")
+	if !containsSlug(publishedPosts(onPublicationJuly5), "china-domestic-chips-longcat-frontier-model-export-controls") {
+		t.Fatal("publishedPosts() did not include China domestic chips LongCat article on publication date")
 	}
 
 	onPublicationJuly4 := time.Date(2026, time.July, 4, 0, 0, 0, 0, time.UTC)
-	if containsSlug(publishedPosts(onPublicationJuly4), "china-domestic-ai-chips-longcat-export-controls-2026") {
-		t.Fatal("publishedPosts() included China domestic AI chips LongCat article before publication date")
+	if containsSlug(publishedPosts(onPublicationJuly4), "china-domestic-chips-longcat-frontier-model-export-controls") {
+		t.Fatal("publishedPosts() included China domestic chips LongCat article before publication date")
 	}
 	if !containsSlug(publishedPosts(onPublicationJuly4), "qualcomm-modular-cuda-moat-compiler-nvidia-2026") {
 		t.Fatal("publishedPosts() did not include Qualcomm Modular compiler article on publication date")
@@ -70,11 +70,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if containsSlug(publishedPosts(onPublicationJuly3), "qualcomm-modular-cuda-moat-compiler-nvidia-2026") {
 		t.Fatal("publishedPosts() included Qualcomm Modular compiler article before publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationJuly3), "agent-identity-zero-trust-non-human-identity-2026") {
+		t.Fatal("publishedPosts() did not include agent identity zero trust article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly3), "agentic-arbitrage-saas-seat-licensing-234-billion-2026") {
 		t.Fatal("publishedPosts() did not include agentic arbitrage SaaS seat licensing article on publication date")
 	}
 
 	onPublicationJuly2 := time.Date(2026, time.July, 2, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly2), "agent-identity-zero-trust-non-human-identity-2026") {
+		t.Fatal("publishedPosts() included agent identity zero trust article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly2), "agentic-arbitrage-saas-seat-licensing-234-billion-2026") {
 		t.Fatal("publishedPosts() included agentic arbitrage SaaS seat licensing article before publication date")
 	}
@@ -508,6 +514,31 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	longCatPost, ok := FindBySlug("china-domestic-chips-longcat-frontier-model-export-controls")
+	if !ok {
+		t.Fatal("FindBySlug() did not find China domestic chips LongCat article")
+	}
+	if longCatPost.Title != "China Just Trained a Frontier Model on 50,000 of Its Own Chips. The Export Controls Were Supposed to Make That Impossible." {
+		t.Fatalf("FindBySlug() returned %q for China domestic chips LongCat article", longCatPost.Title)
+	}
+	if len(longCatPost.Related) != 1 {
+		t.Fatalf("China domestic chips LongCat article related count = %d, want 1", len(longCatPost.Related))
+	}
+	if _, ok := FindBySlug("china-domestic-ai-chips-longcat-export-controls-2026"); ok {
+		t.Fatal("FindBySlug() found retired China domestic AI chips LongCat slug")
+	}
+
+	agentIdentityPost, ok := FindBySlug("agent-identity-zero-trust-non-human-identity-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find agent identity zero trust article")
+	}
+	if agentIdentityPost.Title != "The Agents Are Talking. Nobody Checked Their IDs." {
+		t.Fatalf("FindBySlug() returned %q for agent identity zero trust article", agentIdentityPost.Title)
+	}
+	if len(agentIdentityPost.Related) != 2 {
+		t.Fatalf("agent identity zero trust article related count = %d, want 2", len(agentIdentityPost.Related))
+	}
+
 	agenticArbitragePost, ok := FindBySlug("agentic-arbitrage-saas-seat-licensing-234-billion-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find agentic arbitrage SaaS seat licensing article")

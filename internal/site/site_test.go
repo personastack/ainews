@@ -27,10 +27,13 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 
 	body := rec.Body.String()
 	if !strings.Contains(body, template.HTMLEscapeString("China Just Trained a Frontier Model on 50,000 of Its Own Chips. The Export Controls Were Supposed to Make That Impossible.")) {
-		t.Fatal("response missing China domestic AI chips LongCat article title")
+		t.Fatal("response missing China domestic chips LongCat article title")
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("To Beat Nvidia, Qualcomm Didn't Buy a Faster Chip — It Bought a Compiler")) {
 		t.Fatal("response missing Qualcomm Modular compiler article title")
+	}
+	if !strings.Contains(body, template.HTMLEscapeString("The Agents Are Talking. Nobody Checked Their IDs.")) {
+		t.Fatal("response missing agent identity zero trust article title")
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software")) {
 		t.Fatal("response missing agentic arbitrage SaaS seat licensing article title")
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Samsung Banned ChatGPT in 2023. Now It's Handing Every Employee a Coding Agent.")) {
 		t.Fatal("response missing Samsung Codex citizen software article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("A Frontier Model Every Two Weeks: The Real AI Story of 2026 Is the Pace, Not the Peak")) {
-		t.Fatal("response missing AI model release firehose article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,75 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersLongCatRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/china-domestic-chips-longcat-frontier-model-export-controls", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/qualcomm-modular-cuda-moat-compiler-nvidia-2026"`,
+		template.HTMLEscapeString("To Beat Nvidia, Qualcomm Didn't Buy a Faster Chip — It Bought a Compiler"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteDoesNotRenderRetiredLongCatSlug(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/china-domestic-ai-chips-longcat-export-controls-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusNotFound {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusNotFound)
+	}
+}
+
+func TestPostRouteRendersAgentIdentityRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/agent-identity-zero-trust-non-human-identity-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-agent-spending-governance-gap-control-plane-2026"`,
+		`href="/posts/agentic-arbitrage-saas-seat-licensing-234-billion-2026"`,
+		template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them"),
+		template.HTMLEscapeString("Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

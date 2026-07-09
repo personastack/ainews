@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The Model Was Never the Hard Part")) {
+		t.Fatal("response missing Microsoft Frontier deployment article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("China Just Trained a Frontier Model on 50,000 of Its Own Chips. The Export Controls Were Supposed to Make That Impossible.")) {
 		t.Fatal("response missing China domestic chips LongCat article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Built Its Own Chip in Nine Months. The Real Target Isn't Nvidia — It's the Inference Bill.")) {
 		t.Fatal("response missing OpenAI Broadcom Jalapeno inference chip article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Samsung Banned ChatGPT in 2023. Now It's Handing Every Employee a Coding Agent.")) {
-		t.Fatal("response missing Samsung Codex citizen software article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersMicrosoftFrontierRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/microsoft-frontier-deployment-last-mile-enterprise-ai-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/enterprise-ai-roi-gap-pilots-production-ownership-2026"`,
+		`href="/posts/agentic-arbitrage-saas-seat-licensing-234-billion-2026"`,
+		`href="/posts/claude-tcs-systems-integrator-regulated-ai-2026"`,
+		template.HTMLEscapeString("Everyone Shipped the Agents. Now Comes the Hard Question — Did They Pay?"),
+		template.HTMLEscapeString("Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software"),
+		template.HTMLEscapeString("Claude's Next Market Is the Systems Integrator"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

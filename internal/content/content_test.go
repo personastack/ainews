@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly6 := time.Date(2026, time.July, 6, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly6), "microsoft-frontier-deployment-last-mile-enterprise-ai-2026") {
+		t.Fatal("publishedPosts() did not include Microsoft Frontier deployment article on publication date")
+	}
+
 	onPublicationJuly5 := time.Date(2026, time.July, 5, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly5), "microsoft-frontier-deployment-last-mile-enterprise-ai-2026") {
+		t.Fatal("publishedPosts() included Microsoft Frontier deployment article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly5), "china-domestic-chips-longcat-frontier-model-export-controls") {
 		t.Fatal("publishedPosts() did not include China domestic chips LongCat article on publication date")
 	}
@@ -514,6 +522,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	microsoftFrontierPost, ok := FindBySlug("microsoft-frontier-deployment-last-mile-enterprise-ai-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Microsoft Frontier deployment article")
+	}
+	if microsoftFrontierPost.Title != "The Model Was Never the Hard Part" {
+		t.Fatalf("FindBySlug() returned %q for Microsoft Frontier deployment article", microsoftFrontierPost.Title)
+	}
+	if len(microsoftFrontierPost.Related) != 3 {
+		t.Fatalf("Microsoft Frontier deployment article related count = %d, want 3", len(microsoftFrontierPost.Related))
+	}
+
 	longCatPost, ok := FindBySlug("china-domestic-chips-longcat-frontier-model-export-controls")
 	if !ok {
 		t.Fatal("FindBySlug() did not find China domestic chips LongCat article")

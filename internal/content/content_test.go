@@ -37,6 +37,16 @@ func TestPostsReturnsPublishedPosts(t *testing.T) {
 	}
 }
 
+func TestPostsHaveUniqueSlugs(t *testing.T) {
+	seen := make(map[string]bool)
+	for _, post := range posts {
+		if seen[post.Slug] {
+			t.Fatalf("duplicate post slug %q", post.Slug)
+		}
+		seen[post.Slug] = true
+	}
+}
+
 func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 	now := time.Now().UTC()
 
@@ -53,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly10 := time.Date(2026, time.July, 10, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly10), "openai-gpt-5-6-general-availability-government-gate-precedent-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI GPT-5.6 general availability article on publication date")
+	}
+
 	onPublicationJuly7 := time.Date(2026, time.July, 7, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly7), "openai-gpt-5-6-general-availability-government-gate-precedent-2026") {
+		t.Fatal("publishedPosts() included OpenAI GPT-5.6 general availability article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly7), "claude-science-agentic-research-workbench-reproducibility-2026") {
 		t.Fatal("publishedPosts() did not include Claude Science article on publication date")
 	}
@@ -530,6 +548,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	gptGeneralAvailabilityPost, ok := FindBySlug("openai-gpt-5-6-general-availability-government-gate-precedent-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI GPT-5.6 general availability article")
+	}
+	if gptGeneralAvailabilityPost.Title != "Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI GPT-5.6 general availability article", gptGeneralAvailabilityPost.Title)
+	}
+	if len(gptGeneralAvailabilityPost.Related) != 2 {
+		t.Fatalf("OpenAI GPT-5.6 general availability article related count = %d, want 2", len(gptGeneralAvailabilityPost.Related))
+	}
+
 	claudeSciencePost, ok := FindBySlug("claude-science-agentic-research-workbench-reproducibility-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Claude Science article")

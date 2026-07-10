@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million.")) {
+		t.Fatal("response missing OpenAI GPT-5.6 general availability article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Chatbot Grew a Lab Bench")) {
 		t.Fatal("response missing Claude Science article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Language's Frontier Is Locking Down. Robotics' Frontier Just Went Open.")) {
 		t.Fatal("response missing NVIDIA Cosmos 3 open physical AI world model article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Shipped Its Most Powerful Model. Only 20 Companies — All Government-Approved — Can Use It.")) {
-		t.Fatal("response missing OpenAI GPT-5.6 Sol government-gated release article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,34 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersGPTGeneralAvailabilityRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/openai-gpt-5-6-general-availability-government-gate-precedent-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/openai-gpt-5-6-sol-government-gated-frontier-release-2026"`,
+		`href="/posts/us-ai-national-security-executive-order-anthropic-lawsuit-2026"`,
+		template.HTMLEscapeString("OpenAI Shipped Its Most Powerful Model. Only 20 Companies — All Government-Approved — Can Use It."),
+		template.HTMLEscapeString("Washington Wrote the Rulebook for Frontier AI — And the First Lab It Touched Is Suing"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

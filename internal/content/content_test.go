@@ -53,7 +53,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly7 := time.Date(2026, time.July, 7, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly7), "claude-science-agentic-research-workbench-reproducibility-2026") {
+		t.Fatal("publishedPosts() did not include Claude Science article on publication date")
+	}
+
 	onPublicationJuly6 := time.Date(2026, time.July, 6, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly6), "claude-science-agentic-research-workbench-reproducibility-2026") {
+		t.Fatal("publishedPosts() included Claude Science article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly6), "microsoft-frontier-deployment-last-mile-enterprise-ai-2026") {
 		t.Fatal("publishedPosts() did not include Microsoft Frontier deployment article on publication date")
 	}
@@ -522,6 +530,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	claudeSciencePost, ok := FindBySlug("claude-science-agentic-research-workbench-reproducibility-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Claude Science article")
+	}
+	if claudeSciencePost.Title != "The Chatbot Grew a Lab Bench" {
+		t.Fatalf("FindBySlug() returned %q for Claude Science article", claudeSciencePost.Title)
+	}
+	if len(claudeSciencePost.Related) != 2 {
+		t.Fatalf("Claude Science article related count = %d, want 2", len(claudeSciencePost.Related))
+	}
+
 	microsoftFrontierPost, ok := FindBySlug("microsoft-frontier-deployment-last-mile-enterprise-ai-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Microsoft Frontier deployment article")

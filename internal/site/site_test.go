@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Nobody Funded a Smarter Agent This Week. They Funded the Gym.")) {
+		t.Fatal("response missing agent training environments reliability investment article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million.")) {
 		t.Fatal("response missing OpenAI GPT-5.6 general availability article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Year Companies Were Told to Use All the AI They Wanted. Then the Bill Came.")) {
 		t.Fatal("response missing AI cost reckoning tokenmaxxing article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Language's Frontier Is Locking Down. Robotics' Frontier Just Went Open.")) {
-		t.Fatal("response missing NVIDIA Cosmos 3 open physical AI world model article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersAgentTrainingEnvironmentsRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/agent-training-environments-reliability-investment-bet-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-agents-demo-to-production-control-plane-2026"`,
+		`href="/posts/agentic-ai-verification-oracle-chip-design-2026"`,
+		`href="/posts/ai-agent-spending-governance-gap-control-plane-2026"`,
+		template.HTMLEscapeString("The Hardest Part of an AI Agent Isn't the Agent"),
+		template.HTMLEscapeString("The Real Test for AI Agents Isn't Autonomy — It's Whether They Can Check Their Own Work"),
+		template.HTMLEscapeString("Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

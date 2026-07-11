@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly11 := time.Date(2026, time.July, 11, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly11), "agent-training-environments-reliability-investment-bet-2026") {
+		t.Fatal("publishedPosts() did not include agent training environments reliability investment article on publication date")
+	}
+
 	onPublicationJuly10 := time.Date(2026, time.July, 10, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly10), "agent-training-environments-reliability-investment-bet-2026") {
+		t.Fatal("publishedPosts() included agent training environments reliability investment article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly10), "openai-gpt-5-6-general-availability-government-gate-precedent-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI GPT-5.6 general availability article on publication date")
 	}

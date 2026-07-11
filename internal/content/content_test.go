@@ -64,11 +64,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly11 := time.Date(2026, time.July, 11, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly11), "china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026") {
+		t.Fatal("publishedPosts() did not include China anthropomorphic AI interaction rules article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly11), "agent-training-environments-reliability-investment-bet-2026") {
 		t.Fatal("publishedPosts() did not include agent training environments reliability investment article on publication date")
 	}
 
 	onPublicationJuly10 := time.Date(2026, time.July, 10, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly10), "china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026") {
+		t.Fatal("publishedPosts() included China anthropomorphic AI interaction rules article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly10), "agent-training-environments-reliability-investment-bet-2026") {
 		t.Fatal("publishedPosts() included agent training environments reliability investment article before publication date")
 	}
@@ -556,6 +562,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	chinaAnthropomorphicAIPost, ok := FindBySlug("china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find China anthropomorphic AI interaction rules article")
+	}
+	if chinaAnthropomorphicAIPost.Title != "China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You." {
+		t.Fatalf("FindBySlug() returned %q for China anthropomorphic AI interaction rules article", chinaAnthropomorphicAIPost.Title)
+	}
+	if len(chinaAnthropomorphicAIPost.Related) != 2 {
+		t.Fatalf("China anthropomorphic AI interaction rules article related count = %d, want 2", len(chinaAnthropomorphicAIPost.Related))
+	}
+
 	gptGeneralAvailabilityPost, ok := FindBySlug("openai-gpt-5-6-general-availability-government-gate-precedent-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI GPT-5.6 general availability article")

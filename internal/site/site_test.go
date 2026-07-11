@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You.")) {
+		t.Fatal("response missing China anthropomorphic AI interaction rules article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Nobody Funded a Smarter Agent This Week. They Funded the Gym.")) {
 		t.Fatal("response missing agent training environments reliability investment article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The First Big American AI Law Was Supposed to Take Effect Yesterday. It No Longer Exists.")) {
 		t.Fatal("response missing Colorado AI Act repeal article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Year Companies Were Told to Use All the AI They Wanted. Then the Bill Came.")) {
-		t.Fatal("response missing AI cost reckoning tokenmaxxing article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,34 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersChinaAnthropomorphicAIRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/colorado-ai-act-repealed-first-us-ai-law-deadline-2026"`,
+		`href="/posts/openai-gpt-5-6-general-availability-government-gate-precedent-2026"`,
+		template.HTMLEscapeString("The First Big American AI Law Was Supposed to Take Effect Yesterday. It No Longer Exists."),
+		template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

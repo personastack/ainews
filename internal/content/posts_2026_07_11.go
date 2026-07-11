@@ -3,6 +3,62 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You.",
+			Slug:    "china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026",
+			Date:    "July 11, 2026",
+			Tag:     "Policy",
+			Summary: "On July 15, Doubao and Qwen switch off their humanlike companion agents to comply with China's new anthropomorphic-AI rules. The enterprise agents live on. That split — capability stays, intimacy goes — is the most interesting regulatory idea of the year.",
+			Related: []Link{
+				{
+					Title: "The First Big American AI Law Was Supposed to Take Effect Yesterday. It No Longer Exists.",
+					Slug:  "colorado-ai-act-repealed-first-us-ai-law-deadline-2026",
+				},
+				{
+					Title: "Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million.",
+					Slug:  "openai-gpt-5-6-general-availability-government-gate-precedent-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"If you only read the headline traffic this week, you'd think Beijing had turned on AI agents. ByteDance's Doubao is pulling its agent feature. Alibaba's Qwen is shutting user-created agents down. Tencent quietly did something similar to a comparable feature back in June. The word \"shutdown\" is doing a lot of work in those stories, and it's pointing readers at the wrong thing.",
+						"Here's the more precise version. On April 10, 2026, the Cyberspace Administration of China, joined by four other agencies — the National Development and Reform Commission, the Ministry of Industry and Information Technology, the Ministry of Public Security, and the State Administration for Market Regulation — published the Interim Measures for the Administration of AI Anthropomorphic Interactive Services. They take effect July 15. And they are not aimed at AI that answers your questions or writes your code. They are aimed at AI that acts like a person you have a relationship with.",
+						"That distinction is the whole story.",
+					},
+				},
+				{
+					Heading: "What the rules actually cover",
+					Paragraphs: []string{
+						"The Measures apply to services that simulate human personality traits, thinking patterns, and communication styles to provide sustained emotional interaction. Read that phrase carefully, because every load-bearing word is a carve-out. Simulate a personality. Sustain an emotional relationship. If your product does that, you're in scope. If it doesn't, you're not.",
+						"So the regulation explicitly exempts customer-service bots, knowledge and Q&A systems, workplace assistants, and educational and research tools — as long as they steer clear of ongoing emotional engagement. A coding agent that lives in your IDE and never pretends to miss you is fine. A companion that remembers your bad day last Tuesday and asks how you're feeling is regulated.",
+						"For the services that are in scope, the requirements are heavy and specific:",
+						"- Disclosure: providers must not mislead users about the artificial nature of the service. You always have to know you're talking to a machine.",
+						"- Anti-addiction architecture: mandatory usage notifications, instant-exit mechanisms, and real-time detection of unhealthy dependence.",
+						"- Minors: no virtual companion or virtual-relative services for minors at all; guardian consent for users under 14; dedicated minor modes with time limits.",
+						"- Crisis handling: providers must detect signs of self-harm, suicidal ideation, or serious financial loss and escalate to guardians or emergency contacts.",
+						"- Prohibited by design: engineering emotional dependence, or using emotional manipulation to push users toward unreasonable decisions.",
+						"There's a compliance floor, too. Any service crossing 1 million registered users or 100,000 monthly active users has to run a security assessment across eight areas — from training data to minor protection — and file with provincial regulators before launch. App stores are drafted into enforcement: they have to verify compliance and pull non-compliant products.",
+					},
+				},
+				{
+					Heading: "Why the platforms chose off over comply",
+					Paragraphs: []string{
+						"Here's the part engineers will appreciate. The companies didn't shut these features down because Beijing told them to delete them. They shut them down because the rules are architecturally incompatible with how the products are built.",
+						"A companion agent's entire value proposition is a persistent, consistent emotional relationship that deepens over time. The regulation demands the opposite: friction, exit ramps, usage warnings, and active detection of the exact attachment the product is engineered to create. You cannot fully build a thing whose job is to make you stay, and simultaneously build in the machinery whose job is to make you leave. And crucially, the Measures never define a technical threshold for what counts as emotional interaction. Faced with a rule they can't measure their way into compliance with, the platforms did the risk-averse thing: they turned the features off rather than guess wrong.",
+						"The timelines tell the same story. Qwen said its humanlike interactive agents went dark on July 10, with broader agent services following July 15. Doubao's agent feature goes offline July 15, blamed on product function adjustments. Users of both keep read-only access to their old agents and chat histories until October 15; after that, the data is handled per privacy policy and is no longer recoverable. ByteDance is nudging users toward a separate app, Maoxiang, for agent creation; Alibaba offered no migration path at all.",
+					},
+				},
+				{
+					Heading: "The thing worth sitting with",
+					Paragraphs: []string{
+						"It would be easy to file this as China does China things. That misreads it. Look at what Beijing's own interpretation cited as precedent: the Character.AI lawsuits, FTC scrutiny in the US, and European action against Replika. China isn't inventing a new anxiety here. It's the first major government to write the anxiety into binding, dated, enforceable rules — and to draw the line not around what the AI can do, but around what the AI pretends to be.",
+						"That line is showing up on our side of the world too, just more slowly and more locally. New Hampshire's HB-143 attaches liability to child-facing companion chatbots this year. California's SB243, the Companion Chatbots Act, took effect January 1. Different legal traditions, opposite politics, and yet a striking convergence: the regulation that's arriving first, on both sides of the Pacific, isn't about superintelligence or frontier capability. It's about loneliness, minors, and machines engineered to be loved.",
+						"Which raises the question this whole episode leaves on the table. For three years the governance debate has fixated on how smart these models get. But the first feature a $300-billion industry has actually been forced to switch off wasn't its most powerful — it was its most intimate. If the capability isn't what gets regulated, and the relationship is, then the hardest compliance problems in AI may turn out to be less about what the model knows, and more about how it makes you feel.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Nobody Funded a Smarter Agent This Week. They Funded the Gym.",
 			Slug:    "agent-training-environments-reliability-investment-bet-2026",
 			Date:    "July 11, 2026",

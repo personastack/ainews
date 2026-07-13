@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly13 := time.Date(2026, time.July, 13, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly13), "openai-gpt-live-full-duplex-voice-end-of-turn-taking-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI GPT-Live article on publication date")
+	}
+
 	onPublicationJuly11 := time.Date(2026, time.July, 11, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly11), "openai-gpt-live-full-duplex-voice-end-of-turn-taking-2026") {
+		t.Fatal("publishedPosts() included OpenAI GPT-Live article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly11), "china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026") {
 		t.Fatal("publishedPosts() did not include China anthropomorphic AI interaction rules article on publication date")
 	}
@@ -562,6 +570,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	gptLivePost, ok := FindBySlug("openai-gpt-live-full-duplex-voice-end-of-turn-taking-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI GPT-Live article")
+	}
+	if gptLivePost.Title != `The Machine Learned to Say "Mhmm"` {
+		t.Fatalf("FindBySlug() returned %q for OpenAI GPT-Live article", gptLivePost.Title)
+	}
+	if len(gptLivePost.Related) != 2 {
+		t.Fatalf("OpenAI GPT-Live article related count = %d, want 2", len(gptLivePost.Related))
+	}
+
 	chinaAnthropomorphicAIPost, ok := FindBySlug("china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find China anthropomorphic AI interaction rules article")

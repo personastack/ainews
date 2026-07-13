@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString(`The Machine Learned to Say "Mhmm"`)) {
+		t.Fatal("response missing OpenAI GPT-Live article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You.")) {
 		t.Fatal("response missing China anthropomorphic AI interaction rules article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI's Quiet Second Frontier: Foundation Models Built for the Data That Actually Runs Your Business")) {
 		t.Fatal("response missing tabular foundation models article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The First Big American AI Law Was Supposed to Take Effect Yesterday. It No Longer Exists.")) {
-		t.Fatal("response missing Colorado AI Act repeal article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -674,6 +674,34 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 		`href="/posts/eu-ai-act-deadline-us-state-preemption-divergence-2026"`,
 		template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway."),
 		template.HTMLEscapeString("Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersGPTLiveRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/openai-gpt-live-full-duplex-voice-end-of-turn-taking-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026"`,
+		`href="/posts/openai-gpt-5-6-general-availability-government-gate-precedent-2026"`,
+		template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You."),
+		template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million."),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

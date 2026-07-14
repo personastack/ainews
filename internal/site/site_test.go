@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit")) {
+		t.Fatal("response missing Nvidia Rubin Ultra reticle limit article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString(`The Machine Learned to Say "Mhmm"`)) {
 		t.Fatal("response missing OpenAI GPT-Live article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Memory Tax: Did the AI Boom Break the RAM Market, or Rig It?")) {
 		t.Fatal("response missing AI memory crunch DRAM HBM article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("AI's Quiet Second Frontier: Foundation Models Built for the Data That Actually Runs Your Business")) {
-		t.Fatal("response missing tabular foundation models article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -702,6 +702,36 @@ func TestPostRouteRendersGPTLiveRelatedStories(t *testing.T) {
 		`href="/posts/openai-gpt-5-6-general-availability-government-gate-precedent-2026"`,
 		template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You."),
 		template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersRubinUltraRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-silicon-photonics-interconnect-light-2026"`,
+		`href="/posts/ai-memory-crunch-dram-hbm-shortage-or-strategy-2026"`,
+		`href="/posts/qualcomm-modular-cuda-moat-compiler-nvidia-2026"`,
+		template.HTMLEscapeString("The Wire Became the Bottleneck — So AI Is Rebuilding It Out of Light"),
+		template.HTMLEscapeString("The Memory Tax: Did the AI Boom Break the RAM Market, or Rig It?"),
+		template.HTMLEscapeString("To Beat Nvidia, Qualcomm Didn't Buy a Faster Chip — It Bought a Compiler"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

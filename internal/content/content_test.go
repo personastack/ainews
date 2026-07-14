@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly14 := time.Date(2026, time.July, 14, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly14), "nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026") {
+		t.Fatal("publishedPosts() did not include Nvidia Rubin Ultra reticle limit article on publication date")
+	}
+
 	onPublicationJuly13 := time.Date(2026, time.July, 13, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly13), "nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026") {
+		t.Fatal("publishedPosts() included Nvidia Rubin Ultra reticle limit article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly13), "openai-gpt-live-full-duplex-voice-end-of-turn-taking-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI GPT-Live article on publication date")
 	}
@@ -570,6 +578,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	rubinUltraPost, ok := FindBySlug("nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Nvidia Rubin Ultra reticle limit article")
+	}
+	if rubinUltraPost.Title != "Nvidia's Roadmap Just Hit the Reticle Limit" {
+		t.Fatalf("FindBySlug() returned %q for Nvidia Rubin Ultra reticle limit article", rubinUltraPost.Title)
+	}
+	if len(rubinUltraPost.Related) != 3 {
+		t.Fatalf("Nvidia Rubin Ultra reticle limit article related count = %d, want 3", len(rubinUltraPost.Related))
+	}
+
 	gptLivePost, ok := FindBySlug("openai-gpt-live-full-duplex-voice-end-of-turn-taking-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI GPT-Live article")

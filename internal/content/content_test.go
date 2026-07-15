@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly15 := time.Date(2026, time.July, 15, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly15), "grok-4-5-spacexai-cursor-coding-benchmark-harness-2026") {
+		t.Fatal("publishedPosts() did not include Grok 4.5 SpaceXAI Cursor benchmark harness article on publication date")
+	}
+
 	onPublicationJuly14 := time.Date(2026, time.July, 14, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly14), "grok-4-5-spacexai-cursor-coding-benchmark-harness-2026") {
+		t.Fatal("publishedPosts() included Grok 4.5 SpaceXAI Cursor benchmark harness article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly14), "nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026") {
 		t.Fatal("publishedPosts() did not include Nvidia Rubin Ultra reticle limit article on publication date")
 	}
@@ -578,6 +586,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	grokCodingPost, ok := FindBySlug("grok-4-5-spacexai-cursor-coding-benchmark-harness-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Grok 4.5 SpaceXAI Cursor benchmark harness article")
+	}
+	if grokCodingPost.Title != "The Rocket Company Ships a Coding Model — And the Benchmark Depends on Who's Grading" {
+		t.Fatalf("FindBySlug() returned %q for Grok 4.5 SpaceXAI Cursor benchmark harness article", grokCodingPost.Title)
+	}
+	if len(grokCodingPost.Related) != 1 {
+		t.Fatalf("Grok 4.5 SpaceXAI Cursor benchmark harness article related count = %d, want 1", len(grokCodingPost.Related))
+	}
+
 	rubinUltraPost, ok := FindBySlug("nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Nvidia Rubin Ultra reticle limit article")

@@ -157,6 +157,8 @@ The July 13, 2026 content batch includes a Models article at slug `openai-gpt-li
 
 The July 14, 2026 content batch includes a Hardware article at slug `nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026` about Nvidia reportedly scaling Rubin Ultra from quad-die/sixteen-HBM4E to dual-die/eight-HBM4E because of package warpage, cooling, and reticle-limit manufacturability. Preserve the distinction that current Rubin shipments are still on schedule while the 2027 Rubin Ultra design was reportedly reduced; keep SemiAnalysis, Taiwan Commercial Times, and Nvidia rack-scale reframing tied to reported/Author-verified sourcing. The article carries related-reading links to the June 20 silicon-photonics interconnect story, the July 2 HBM/memory crunch story, and the July 4 Qualcomm/Modular CUDA-moat story to continue the hardware bottleneck series across interconnect, memory, software portability, and packaging physics.
 
+The July 15, 2026 content batch includes a Models article at slug `grok-4-5-spacexai-cursor-coding-benchmark-harness-2026` about Grok 4.5 as SpaceXAI's first coding-model release after the SpaceX-xAI-Cursor combination. Preserve the central benchmark caveat: Grok 4.5 and Opus 4.8 trade places depending on whether DeepSWE is run under xAI's provider harness or a neutral third-party harness, so vendor "beats" claims should be framed as harness-dependent rather than absolute. Keep the pricing, context-window, reasoning-effort, EU-availability, and output-token-efficiency details tied to Author-reported sourcing. The article carries a related-reading link to the July 13 GPT-Live story to continue the Models thread about post-reorganization product bets at frontier labs.
+
 ## Testing
 
 Run:

@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The Rocket Company Ships a Coding Model — And the Benchmark Depends on Who's Grading")) {
+		t.Fatal("response missing Grok 4.5 SpaceXAI Cursor benchmark harness article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit")) {
 		t.Fatal("response missing Nvidia Rubin Ultra reticle limit article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Agents Don't Buy Seats: The $234 Billion Question Hanging Over Enterprise Software")) {
 		t.Fatal("response missing agentic arbitrage SaaS seat licensing article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Memory Tax: Did the AI Boom Break the RAM Market, or Rig It?")) {
-		t.Fatal("response missing AI memory crunch DRAM HBM article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -674,6 +674,32 @@ func TestPostRouteRendersRelatedStories(t *testing.T) {
 		`href="/posts/eu-ai-act-deadline-us-state-preemption-divergence-2026"`,
 		template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway."),
 		template.HTMLEscapeString("Two Roads, One Month: The EU Tightens Its AI Rulebook as Washington Moves to Tear Up the States'"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersGrokCodingBenchmarkRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/grok-4-5-spacexai-cursor-coding-benchmark-harness-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/openai-gpt-live-full-duplex-voice-end-of-turn-taking-2026"`,
+		template.HTMLEscapeString(`The Machine Learned to Say "Mhmm"`),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

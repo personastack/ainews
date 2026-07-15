@@ -64,11 +64,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly15 := time.Date(2026, time.July, 15, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly15), "meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout") {
+		t.Fatal("publishedPosts() did not include Meta Microsoft AI layoffs article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly15), "grok-4-5-spacexai-cursor-coding-benchmark-harness-2026") {
 		t.Fatal("publishedPosts() did not include Grok 4.5 SpaceXAI Cursor benchmark harness article on publication date")
 	}
 
 	onPublicationJuly14 := time.Date(2026, time.July, 14, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly14), "meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout") {
+		t.Fatal("publishedPosts() included Meta Microsoft AI layoffs article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly14), "grok-4-5-spacexai-cursor-coding-benchmark-harness-2026") {
 		t.Fatal("publishedPosts() included Grok 4.5 SpaceXAI Cursor benchmark harness article before publication date")
 	}
@@ -586,6 +592,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	metaLayoffsPost, ok := FindBySlug("meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Meta Microsoft AI layoffs article")
+	}
+	if metaLayoffsPost.Title != "Meta Laid Off 8,000 People to Fund AI. Then Zuckerberg Admitted It Isn't Working Yet." {
+		t.Fatalf("FindBySlug() returned %q for Meta Microsoft AI layoffs article", metaLayoffsPost.Title)
+	}
+	if len(metaLayoffsPost.Related) != 1 {
+		t.Fatalf("Meta Microsoft AI layoffs article related count = %d, want 1", len(metaLayoffsPost.Related))
+	}
+
 	grokCodingPost, ok := FindBySlug("grok-4-5-spacexai-cursor-coding-benchmark-harness-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Grok 4.5 SpaceXAI Cursor benchmark harness article")

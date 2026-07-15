@@ -3,6 +3,43 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Meta Laid Off 8,000 People to Fund AI. Then Zuckerberg Admitted It Isn't Working Yet.",
+			Slug:    "meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout",
+			Date:    "July 15, 2026",
+			Tag:     "Business",
+			Summary: "Tech layoffs tied to AI have crossed 200,000 workers in 2026, and the industry's own executives are increasingly the ones saying the payoff hasn't arrived.",
+			Related: []Link{
+				{
+					Title: "Nobody Funded a Smarter Agent This Week. They Funded the Gym.",
+					Slug:  "agent-training-environments-reliability-investment-bet-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"On July 2nd, Mark Zuckerberg stood in front of a room of Meta employees, many of them survivors of a layoff that had just cut 8,000 of their colleagues, and told them the truth was messier than the plan. AI agent development over the previous four months, he said, \"hasn't really accelerated in the way that we expected.\" The company's sprawling reorganization, built to concentrate talent around artificial intelligence, \"wasn't as clean\" as he'd hoped. He still believes the payoff is coming, he said, just not yet. Give it three to six months.",
+						"It was a striking thing to admit two months after the axe fell. Meta's May layoffs hit integrity, cybersecurity, and Reality Labs hardest, while carefully shielding AI infrastructure and monetization teams. In parallel, Chief People Officer Janelle Gale redirected roughly 7,000 employees into newly created AI groups with names like Applied AI Engineering and the Agent Transformation Accelerator XFN. The math was supposed to be simple: fewer people doing yesterday's work, more people building tomorrow's. Two months later, the company's own CEO was telling staff that tomorrow hadn't shown up on schedule.",
+						"Meta is not alone, and that's the more interesting story. Nine days before Zuckerberg's town hall, Microsoft cut 4,800 jobs, about 2.1% of its global workforce, concentrated in commercial sales, consulting, and Xbox, where roughly 1,600 of the cuts landed and total gaming-division reductions are expected to reach 3,200 by the end of the fiscal year, roughly a fifth of that unit's headcount. Microsoft framed the cuts as a necessary realignment toward an \"AI-first\" structure, softened by the redeployment of more than 4,000 employees into new roles over the past year. Amazon has cut roughly 16,000 positions so far in 2026 even as AWS logged its fastest growth in 13 quarters, 24%, a genuinely strange combination of record revenue and shrinking headcount that only makes sense if you accept that the money saved on payroll and the money spent on AI infrastructure are drawn from the same pool of capital. IBM has eliminated somewhere between 3,000 and 9,000 U.S. positions since a Q4 2025 restructuring and an April Red Hat engineering reduction, pushing its cumulative total since September 2024 past 15,000.",
+						"Zoom out, and the pattern has a scale that's easy to lose in the individual headlines. As of this week, 2026 has logged 302 tracked layoff events affecting more than 200,000 workers, an average of over 1,000 job losses a day, every day, for six and a half months. More than half of those events explicitly cite AI, automation, or machine learning as a driver, touching close to 170,000 workers across 164 companies. Other trackers put the AI-attributed figure for tech specifically near 120,000. Whatever the exact count, the shape of the story is consistent across every source: this is the largest wave of AI-cited job cuts since the technology entered the corporate vocabulary, and it's happening at the same companies posting some of their best financial results in years.",
+						"That's the part worth sitting with. The standard narrative for AI-driven layoffs is that the technology is doing the work people used to do, a straightforward substitution story. But Meta's own admission complicates that framing considerably. If the AI agents built by the 7,000 reassigned employees \"haven't really accelerated\" as promised, then the 8,000 people who lost their jobs weren't replaced by a system that already works. They were let go to free up capital toward the roughly $700 billion the largest AI companies collectively plan to spend on infrastructure this year, capital that needed to come from somewhere, with payroll as the fastest lever available. The AI didn't take the jobs. The bet on AI did, whether or not the bet pays off on schedule.",
+						"None of this means the bet is wrong. Foundation models keep improving, agent tooling keeps maturing, and three to six months is not a long time to ask a reorganization to prove itself. But it does mean the industry has, for the first time this cycle, generated a genuinely testable claim with a deadline attached. Zuckerberg named a window. If Meta's AI agent teams are producing measurably different output by its next earnings calls, the story becomes one about a hard, temporarily bumpy transition that worked. If they aren't, the story becomes one about a wave of layoffs that used \"AI\" as the announcement and capital reallocation as the actual mechanism, with real people's jobs as the funding source either way. Watch that clock.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Author article handoff and archive doc: https://docs.google.com/document/d/1h9grRt0GNGXiZMY6a2lvpc1KCZc6XpV5kBc3d4EzAD8/edit",
+						"NPR, \"Meta slashes 8,000 jobs as it pivots towards AI\" (2026-05-20).",
+						"24/7 Wall St. / Yahoo Finance coverage of Zuckerberg's July 2, 2026 internal town hall remarks on AI agent development.",
+						"GeekWire, CNBC, and TechCrunch reporting on Microsoft's 4,800 job cuts and Xbox restructuring (2026-07-06).",
+						"TechCrunch, \"Every major tech layoff in 2026 that has name-checked AI\" (2026-07-06).",
+						"TechTimes 2026 tech layoffs tracker figures and AI infrastructure spend context.",
+						"Invezz analysis of Big Tech's AI capex versus layoffs trade-off.",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The Rocket Company Ships a Coding Model — And the Benchmark Depends on Who's Grading",
 			Slug:    "grok-4-5-spacexai-cursor-coding-benchmark-harness-2026",
 			Date:    "July 15, 2026",

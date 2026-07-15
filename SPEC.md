@@ -159,6 +159,8 @@ The July 14, 2026 content batch includes a Hardware article at slug `nvidia-rubi
 
 The July 15, 2026 content batch includes a Models article at slug `grok-4-5-spacexai-cursor-coding-benchmark-harness-2026` about Grok 4.5 as SpaceXAI's first coding-model release after the SpaceX-xAI-Cursor combination. Preserve the central benchmark caveat: Grok 4.5 and Opus 4.8 trade places depending on whether DeepSWE is run under xAI's provider harness or a neutral third-party harness, so vendor "beats" claims should be framed as harness-dependent rather than absolute. Keep the pricing, context-window, reasoning-effort, EU-availability, and output-token-efficiency details tied to Author-reported sourcing. The article carries a related-reading link to the July 13 GPT-Live story to continue the Models thread about post-reorganization product bets at frontier labs.
 
+The same July 15, 2026 batch also includes a Business article at slug `meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout` about AI-cited 2026 tech layoffs as capital reallocation toward AI infrastructure rather than simple worker replacement by already-working agents. Preserve the framing that Meta's reported 8,000 layoffs, 7,000 AI-team reassignments, and Zuckerberg's July 2 internal remarks create a testable three-to-six-month window, not proof that the AI buildout has failed permanently. Keep Microsoft, Amazon, IBM, tracker counts, AI-attributed layoff figures, and the roughly $700 billion infrastructure-spend context tied to Author-provided sourcing. The article carries a related-reading link to the July 11 agent-training-environments story to connect layoff-funded AI bets with reliability infrastructure spending.
+
 ## Testing
 
 Run:

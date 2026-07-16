@@ -64,11 +64,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly16 := time.Date(2026, time.July, 16, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly16), "enterprise-ai-agent-governance-visibility-gap-control-plane-2026") {
+		t.Fatal("publishedPosts() did not include enterprise AI agent governance article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly16), "ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode") {
 		t.Fatal("publishedPosts() did not include AI Safety Index article on publication date")
 	}
 
 	onPublicationJuly15 := time.Date(2026, time.July, 15, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly15), "enterprise-ai-agent-governance-visibility-gap-control-plane-2026") {
+		t.Fatal("publishedPosts() included enterprise AI agent governance article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly15), "ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode") {
 		t.Fatal("publishedPosts() included AI Safety Index article before publication date")
 	}
@@ -600,6 +606,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	agentVisibilityPost, ok := FindBySlug("enterprise-ai-agent-governance-visibility-gap-control-plane-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find enterprise AI agent governance article")
+	}
+	if agentVisibilityPost.Title != "82 Percent of Enterprises Just Found an AI Agent They Didn't Know They Had" {
+		t.Fatalf("FindBySlug() returned %q for enterprise AI agent governance article", agentVisibilityPost.Title)
+	}
+	if len(agentVisibilityPost.Related) != 3 {
+		t.Fatalf("enterprise AI agent governance article related count = %d, want 3", len(agentVisibilityPost.Related))
+	}
+
 	aiSafetyIndexPost, ok := FindBySlug("ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI Safety Index article")

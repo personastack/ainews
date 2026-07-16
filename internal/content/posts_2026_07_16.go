@@ -3,6 +3,81 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "82 Percent of Enterprises Just Found an AI Agent They Didn't Know They Had",
+			Slug:    "enterprise-ai-agent-governance-visibility-gap-control-plane-2026",
+			Date:    "July 16, 2026",
+			Tag:     "Agents / Governance",
+			Summary: "Companies are deploying autonomous agents faster than they can count them — and a new wave of \"control plane\" startups is racing to fill the gap before the first big incident does the explaining for them.",
+			Related: []Link{
+				{
+					Title: "The Agents Are Talking. Nobody Checked Their IDs.",
+					Slug:  "agent-identity-zero-trust-non-human-identity-2026",
+				},
+				{
+					Title: "Nobody Funded a Smarter Agent This Week. They Funded the Gym.",
+					Slug:  "agent-training-environments-reliability-investment-bet-2026",
+				},
+				{
+					Title: "Enterprises Will Spend $206 Billion on AI Agents This Year — They're Governing a Fraction of Them",
+					Slug:  "ai-agent-spending-governance-gap-control-plane-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"Ask a CIO in July 2026 how many AI agents are running inside their company, and you'll get one of two answers: a confident-sounding number, or an honest shrug. New survey data suggests the confident number is usually wrong.",
+						"According to a joint study from the Cloud Security Alliance and Token Security, titled Autonomous but Not Controlled, 68 percent of organizations say they have high visibility into the AI agents and autonomous workflows running in their environment. But when the same organizations went looking, 82 percent discovered at least one agent or workflow that security or IT didn't know existed. Sixty-five percent had already suffered an AI agent security incident in the past year — most commonly, the report found, resulting in data exposure.",
+						"That gap between what companies believe about their agent fleets and what's actually running is becoming the defining problem of enterprise AI's second year.",
+					},
+				},
+				{
+					Heading: "The Adoption Curve Got Steep, Fast",
+					Paragraphs: []string{
+						"It's worth remembering how quickly this happened. In August 2025, Gartner forecast that 40 percent of enterprise applications would ship with a task-specific AI agent embedded by the end of 2026 — up from less than 5 percent the year before. That's roughly an eightfold jump in twelve months, one of the fastest platform shifts Gartner has tracked since the move to public cloud.",
+						"Deloitte's 2026 State of AI in the Enterprise survey, which polled 3,235 business and IT leaders across 24 countries, shows that forecast playing out. Seventy-four percent of respondents expect their companies to be using AI agents at least \"moderately\" by 2027; 23 percent expect \"extensive\" use. But the same survey found that security and compliance concerns have gotten worse, not better, as adoption accelerated: 80 percent of leaders piloting agents now cite security and compliance as their leading obstacle, up from 68 percent just a year earlier. Only 21 percent say their organization has a mature governance model for agentic AI in place at all.",
+						"Put plainly: the agents showed up on schedule. The guardrails didn't.",
+					},
+				},
+				{
+					Heading: "Why This Isn't Just \"Shadow IT\" Again",
+					Paragraphs: []string{
+						"It's tempting to file this under a familiar heading — employees signing up for unsanctioned SaaS tools, IT scrambling to catalog them after the fact. Enterprises have lived through that cycle before, with browser extensions, with personal Dropbox accounts, with the first wave of generative AI chatbots.",
+						"Agents are a different animal. A rogue spreadsheet tool stores data insecurely. A rogue agent acts — it reads inputs, executes multi-step workflows, and decides what to do next without a human necessarily reviewing each step. The kinds of agents now running inside large organizations modify financial records, trigger payments, and approve workflows with the operational authority the company granted them, intentionally or not. When the artifact you've lost track of can also move money, \"shadow IT\" undersells the stakes.",
+					},
+				},
+				{
+					Heading: "The Vendors Racing to Build the Missing Layer",
+					Paragraphs: []string{
+						"That gap is exactly why a new category of \"agent control plane\" companies has materialized this summer. On July 14, at Google Cloud Next 2026, governance infrastructure company Devenex launched what it calls an Execution Control Plane for AI agents — pre-execution policy enforcement, human-in-the-loop checkpoints for consequential actions, and an immutable audit trail meant to answer the question \"what did this agent actually do, and who approved it?\" A company co-founder put the pitch bluntly: \"no infrastructure layer exists to govern what these agents actually do.\"",
+						"The infrastructure incumbents are making the same bet at larger scale. HPE's June announcement with Nvidia — bringing agentic AI into production with added security, governance, and sovereignty controls — leans on Nvidia's new Vera CPU, purpose-built to handle the tool calls and orchestration inherent to agent workflows, alongside Nvidia's Agent Toolkit for managing autonomous agents once they're live. Microsoft has moved in the same direction from the software side: Foundry Agent Service reached general availability in early July with sandboxed execution sessions and multi-agent orchestration, while Microsoft 365 Copilot picked up policy-based bulk agent installation and scheduled-prompt controls aimed squarely at IT teams trying to keep an inventory of what's deployed.",
+						"None of these products existed as shipping enterprise features a year ago. That they all arrived within weeks of each other isn't a coincidence — it's a market responding to the same survey data cited above, in real time.",
+					},
+				},
+				{
+					Heading: "The Thing Worth Sitting With",
+					Paragraphs: []string{
+						"Here's the uncomfortable part: governance tooling is, definitionally, a step behind the thing it governs. Every agent control plane launched this month was built in response to agents that were already running unmonitored somewhere. The 82 percent figure isn't a warning about a future problem — it's a description of the present one.",
+						"The open question for the back half of 2026 isn't whether enterprises will keep deploying agents. Gartner's curve and Deloitte's adoption numbers both say that's settled. The real question is whether governance infrastructure can close the visibility gap before regulators, auditors, or an actual incident close it for them — because right now, the honest answer to \"how many agents do you have running\" is still, for most companies, a shrug dressed up as a number.",
+						"Related reading: our July 3 piece on agent-to-agent authentication covered a narrower slice of this same problem — agents impersonating other agents in multi-agent systems. Our July 11 piece on agent training environments looked at the investment case for making agents more reliable before they're deployed. This piece is about what happens after they are.",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Author article handoff and archive doc: https://docs.google.com/document/d/1sGgpkfvv1CdJSdH18zkeu7XvKvQLQJbwnwptCIw9IUA/edit",
+						"Cloud Security Alliance / Token Security, Autonomous but Not Controlled report: https://cloudsecurityalliance.org/artifacts/autonomous-but-not-controlled-ai-agent-incidents-now-common-in-enterprises",
+						"Cloud Security Alliance press release on unknown AI agents: https://cloudsecurityalliance.org/press-releases/2026/04/21/new-cloud-security-alliance-survey-reveals-82-of-enterprises-have-unknown-ai-agents-in-their-environments",
+						"Gartner press release on enterprise applications with task-specific AI agents: https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025",
+						"Deloitte 2026 State of AI in the Enterprise: https://www.deloitte.com/us/en/about/press-room/state-of-ai-report-2026.html",
+						"Devenex Execution Control Plane launch: https://www.prnewswire.com/news-releases/as-ai-agents-scale-enterprises-demand-execution-control--devenex-takes-control-302825506.html",
+						"HPE and NVIDIA agentic AI factory announcement: https://www.hpe.com/us/en/newsroom/press-release/2026/06/hpe-brings-agentic-ai-into-production-with-nvidia-delivering-security-governance-scale-and-sovereignty.html",
+						"Microsoft Foundry Agent Service announcement: https://devblogs.microsoft.com/foundry/agent-service-build2026/",
+						"Microsoft 365 Copilot release notes and scheduled prompts documentation: https://learn.microsoft.com/en-us/microsoft-365/copilot/release-notes",
+					},
+				},
+			},
+		},
+		{
 			Title:   "The AI Industry Graded Its Own Safety Homework. Nobody Passed.",
 			Slug:    "ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode",
 			Date:    "July 16, 2026",

@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly16 := time.Date(2026, time.July, 16, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly16), "ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode") {
+		t.Fatal("publishedPosts() did not include AI Safety Index article on publication date")
+	}
+
 	onPublicationJuly15 := time.Date(2026, time.July, 15, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly15), "ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode") {
+		t.Fatal("publishedPosts() included AI Safety Index article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly15), "meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout") {
 		t.Fatal("publishedPosts() did not include Meta Microsoft AI layoffs article on publication date")
 	}
@@ -592,6 +600,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	aiSafetyIndexPost, ok := FindBySlug("ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI Safety Index article")
+	}
+	if aiSafetyIndexPost.Title != "The AI Industry Graded Its Own Safety Homework. Nobody Passed." {
+		t.Fatalf("FindBySlug() returned %q for AI Safety Index article", aiSafetyIndexPost.Title)
+	}
+	if len(aiSafetyIndexPost.Related) != 1 {
+		t.Fatalf("AI Safety Index article related count = %d, want 1", len(aiSafetyIndexPost.Related))
+	}
+
 	metaLayoffsPost, ok := FindBySlug("meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Meta Microsoft AI layoffs article")

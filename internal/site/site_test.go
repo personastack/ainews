@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("AI Isn't Just Answering Physics Questions Anymore — It's Running the Experiments")) {
+		t.Fatal("response missing AI lab instrument physics article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Satya Nadella Says You're Paying for AI Twice. The Second Bill Never Stops.")) {
 		t.Fatal("response missing Nadella Reverse Information Paradox article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Chatbot Grew a Lab Bench")) {
 		t.Fatal("response missing Claude Science article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Model Was Never the Hard Part")) {
-		t.Fatal("response missing Microsoft Frontier deployment article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -253,6 +253,32 @@ func TestPostRouteRendersClaudeScienceRelatedStories(t *testing.T) {
 		`href="/posts/ai-drug-discovery-clinic-not-approval-2026"`,
 		template.HTMLEscapeString("Science Gets a Lab Partner That Runs the Experiments"),
 		template.HTMLEscapeString("AI Designed the Molecule in Months — The Clinic Still Takes Years"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersAILabInstrumentRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/ai-lab-instrument-superconductor-neutron-star-simulation-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/claude-science-agentic-research-workbench-reproducibility-2026"`,
+		template.HTMLEscapeString("The Chatbot Grew a Lab Bench"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

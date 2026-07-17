@@ -64,11 +64,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly17 := time.Date(2026, time.July, 17, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly17), "ai-lab-instrument-superconductor-neutron-star-simulation-2026") {
+		t.Fatal("publishedPosts() did not include AI lab instrument physics article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly17), "nadella-reverse-information-paradox-enterprise-ai-data-2026") {
 		t.Fatal("publishedPosts() did not include Nadella Reverse Information Paradox article on publication date")
 	}
 
 	onPublicationJuly16 := time.Date(2026, time.July, 16, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly16), "ai-lab-instrument-superconductor-neutron-star-simulation-2026") {
+		t.Fatal("publishedPosts() included AI lab instrument physics article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly16), "nadella-reverse-information-paradox-enterprise-ai-data-2026") {
 		t.Fatal("publishedPosts() included Nadella Reverse Information Paradox article before publication date")
 	}
@@ -711,6 +717,17 @@ func TestFindBySlug(t *testing.T) {
 	}
 	if len(claudeSciencePost.Related) != 2 {
 		t.Fatalf("Claude Science article related count = %d, want 2", len(claudeSciencePost.Related))
+	}
+
+	aiLabInstrumentPost, ok := FindBySlug("ai-lab-instrument-superconductor-neutron-star-simulation-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI lab instrument physics article")
+	}
+	if aiLabInstrumentPost.Title != "AI Isn't Just Answering Physics Questions Anymore — It's Running the Experiments" {
+		t.Fatalf("FindBySlug() returned %q for AI lab instrument physics article", aiLabInstrumentPost.Title)
+	}
+	if len(aiLabInstrumentPost.Related) != 1 {
+		t.Fatalf("AI lab instrument physics article related count = %d, want 1", len(aiLabInstrumentPost.Related))
 	}
 
 	microsoftFrontierPost, ok := FindBySlug("microsoft-frontier-deployment-last-mile-enterprise-ai-2026")

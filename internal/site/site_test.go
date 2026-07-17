@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Satya Nadella Says You're Paying for AI Twice. The Second Bill Never Stops.")) {
+		t.Fatal("response missing Nadella Reverse Information Paradox article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("82 Percent of Enterprises Just Found an AI Agent They Didn't Know They Had")) {
 		t.Fatal("response missing enterprise AI agent governance article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Model Was Never the Hard Part")) {
 		t.Fatal("response missing Microsoft Frontier deployment article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("China Just Trained a Frontier Model on 50,000 of Its Own Chips. The Export Controls Were Supposed to Make That Impossible.")) {
-		t.Fatal("response missing China domestic chips LongCat article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

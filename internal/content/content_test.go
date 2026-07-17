@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly17 := time.Date(2026, time.July, 17, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly17), "nadella-reverse-information-paradox-enterprise-ai-data-2026") {
+		t.Fatal("publishedPosts() did not include Nadella Reverse Information Paradox article on publication date")
+	}
+
 	onPublicationJuly16 := time.Date(2026, time.July, 16, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly16), "nadella-reverse-information-paradox-enterprise-ai-data-2026") {
+		t.Fatal("publishedPosts() included Nadella Reverse Information Paradox article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly16), "enterprise-ai-agent-governance-visibility-gap-control-plane-2026") {
 		t.Fatal("publishedPosts() did not include enterprise AI agent governance article on publication date")
 	}

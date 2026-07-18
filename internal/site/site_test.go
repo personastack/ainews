@@ -946,6 +946,32 @@ func TestPostsAPI(t *testing.T) {
 	}
 }
 
+func TestPostRouteRendersAppleOpenAITradeSecretRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/apple-openai-trade-secret-lawsuit-io-products-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
+		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
 func TestHealthz(t *testing.T) {
 	server, err := New()
 	if err != nil {

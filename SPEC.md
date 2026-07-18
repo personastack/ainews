@@ -8,6 +8,7 @@ AINews is a small Go web service that publishes static AI news articles at `aine
 - `internal/site` owns routing, template parsing, HTML rendering, the `/api/posts` JSON feed, and `/healthz`.
 - `internal/content` owns the in-memory article catalog and publication filtering.
 - `Dockerfile` is a multi-stage container build that runs `CGO_ENABLED=0 go test ./...` before compiling a static Linux binary into a distroless runtime image.
+- `railway.json` is Railway config-as-code for source-triggered deploys. It explicitly selects the root `Dockerfile`, checks `/healthz`, and keeps crash restarts bounded so dashboard/service setting drift does not change the expected production build path.
 
 ## Content Model
 

@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway.")) {
+		t.Fatal("response missing chip earnings selloff Kimi K3 article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Apple Says OpenAI Turned Job Interviews Into a Trade Secrets Pipeline")) {
 		t.Fatal("response missing Apple OpenAI trade secret lawsuit article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Nobody Funded a Smarter Agent This Week. They Funded the Gym.")) {
 		t.Fatal("response missing agent training environments reliability investment article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million.")) {
-		t.Fatal("response missing OpenAI GPT-5.6 general availability article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -965,6 +965,34 @@ func TestPostRouteRendersAppleOpenAITradeSecretRelatedStories(t *testing.T) {
 		"Related reading",
 		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
 		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersChipEarningsRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/chip-earnings-record-profits-stock-selloff-kimi-k3-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
+		`href="/posts/grok-4-5-spacexai-cursor-coding-benchmark-harness-2026"`,
+		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+		template.HTMLEscapeString("The Rocket Company Ships a Coding Model — And the Benchmark Depends on Who's Grading"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

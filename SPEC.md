@@ -172,6 +172,8 @@ The same July 17, 2026 content batch includes a Science article at slug `ai-lab-
 
 The July 18, 2026 content batch introduces the Legal category with a post at slug `apple-openai-trade-secret-lawsuit-io-products-2026` about Apple's Northern District of California trade-secret lawsuit against OpenAI, Tang Tan, Chang Liu, and io Products. Preserve the framing that the complaint contains allegations rather than proven findings, that OpenAI disputes the claims, and that the central legal tension is between protectable trade secrets and California worker mobility. The article carries a loose related-reading link to the July 14 Nvidia Rubin Ultra hardware-bottleneck story to connect the lawsuit with the broader AI hardware race.
 
+The same July 18, 2026 batch includes a Hardware article at slug `chip-earnings-record-profits-stock-selloff-kimi-k3-2026` about record chip-sector Q2 results colliding with a SOX bear-market selloff after Moonshot AI's Kimi K3 release. Preserve the tension between strong TSMC, Samsung, and ASML fundamentals and investor anxiety over whether efficient open-weight models could change AI silicon demand. Keep Intel's High-NA EUV milestone framed as a real but narrow technical win for select Panther Lake layers on 18A, not a broad verdict on Intel Foundry profitability. Keep market-move figures, Kimi K3 benchmark/pricing claims, and General Compute financing details tied to Author-provided or source-attributed reporting. The article carries related-reading links to the July 14 Nvidia Rubin Ultra hardware-bottleneck story and the July 15 Grok 4.5 benchmark-harness story.
+
 ## Testing
 
 Run:

@@ -64,11 +64,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly18 := time.Date(2026, time.July, 18, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly18), "chip-earnings-record-profits-stock-selloff-kimi-k3-2026") {
+		t.Fatal("publishedPosts() did not include chip earnings selloff Kimi K3 article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly18), "apple-openai-trade-secret-lawsuit-io-products-2026") {
 		t.Fatal("publishedPosts() did not include Apple OpenAI trade secret lawsuit article on publication date")
 	}
 
 	onPublicationJuly17 := time.Date(2026, time.July, 17, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly17), "chip-earnings-record-profits-stock-selloff-kimi-k3-2026") {
+		t.Fatal("publishedPosts() included chip earnings selloff Kimi K3 article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly17), "apple-openai-trade-secret-lawsuit-io-products-2026") {
 		t.Fatal("publishedPosts() included Apple OpenAI trade secret lawsuit article before publication date")
 	}
@@ -628,6 +634,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	chipEarningsPost, ok := FindBySlug("chip-earnings-record-profits-stock-selloff-kimi-k3-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find chip earnings selloff Kimi K3 article")
+	}
+	if chipEarningsPost.Title != "The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway." {
+		t.Fatalf("FindBySlug() returned %q for chip earnings selloff Kimi K3 article", chipEarningsPost.Title)
+	}
+	if len(chipEarningsPost.Related) != 2 {
+		t.Fatalf("chip earnings selloff Kimi K3 article related count = %d, want 2", len(chipEarningsPost.Related))
+	}
+
 	agentVisibilityPost, ok := FindBySlug("enterprise-ai-agent-governance-visibility-gap-control-plane-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find enterprise AI agent governance article")

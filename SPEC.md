@@ -169,6 +169,8 @@ The July 17, 2026 content batch includes an Enterprise article at slug `nadella-
 
 The same July 17, 2026 content batch includes a Science article at slug `ai-lab-instrument-superconductor-neutron-star-simulation-2026` about machine learning moving from research assistant into embedded physics instrumentation: SuperC's ML-guided kagome superconductor search and GSI/FAIR's RHINE neural-network approximation for r-process heating in neutron-star merger simulations. Preserve the distinction that the neural networks are steering or approximating established physics rather than replacing the physics, keep YRu3B2 and LuRu3B2 framed as far-too-cold proof-of-method materials rather than a room-temperature breakthrough, and keep RHINE framed as a public, learned approximation that makes hydrodynamic simulations cheaper and more detailed. The article carries a related-reading link to the July 7 Claude Science workbench story to continue the science-series thread about AI moving down the research stack while validation and data quality remain the gate.
 
+The July 18, 2026 content batch introduces the Legal category with a post at slug `apple-openai-trade-secret-lawsuit-io-products-2026` about Apple's Northern District of California trade-secret lawsuit against OpenAI, Tang Tan, Chang Liu, and io Products. Preserve the framing that the complaint contains allegations rather than proven findings, that OpenAI disputes the claims, and that the central legal tension is between protectable trade secrets and California worker mobility. The article carries a loose related-reading link to the July 14 Nvidia Rubin Ultra hardware-bottleneck story to connect the lawsuit with the broader AI hardware race.
+
 ## Testing
 
 Run:

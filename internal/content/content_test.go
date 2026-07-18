@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly18 := time.Date(2026, time.July, 18, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly18), "apple-openai-trade-secret-lawsuit-io-products-2026") {
+		t.Fatal("publishedPosts() did not include Apple OpenAI trade secret lawsuit article on publication date")
+	}
+
 	onPublicationJuly17 := time.Date(2026, time.July, 17, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly17), "apple-openai-trade-secret-lawsuit-io-products-2026") {
+		t.Fatal("publishedPosts() included Apple OpenAI trade secret lawsuit article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly17), "ai-lab-instrument-superconductor-neutron-star-simulation-2026") {
 		t.Fatal("publishedPosts() did not include AI lab instrument physics article on publication date")
 	}

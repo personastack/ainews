@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Apple Says OpenAI Turned Job Interviews Into a Trade Secrets Pipeline")) {
+		t.Fatal("response missing Apple OpenAI trade secret lawsuit article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Isn't Just Answering Physics Questions Anymore — It's Running the Experiments")) {
 		t.Fatal("response missing AI lab instrument physics article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million.")) {
 		t.Fatal("response missing OpenAI GPT-5.6 general availability article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Chatbot Grew a Lab Bench")) {
-		t.Fatal("response missing Claude Science article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

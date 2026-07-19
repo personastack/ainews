@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Is Racing OpenAI to Wall Street. Its Own Revenue Number May Not Survive the Trip.")) {
+		t.Fatal("response missing Anthropic IPO revenue accounting article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Two AI Superpowers Just Built Rival Alliances. One Country Already Joined Both.")) {
 		t.Fatal("response missing WAICO Pax Silica alliances article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString(`The Machine Learned to Say "Mhmm"`)) {
 		t.Fatal("response missing OpenAI GPT-Live article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You.")) {
-		t.Fatal("response missing China anthropomorphic AI interaction rules article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

@@ -64,11 +64,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly19 := time.Date(2026, time.July, 19, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly19), "anthropic-ipo-openai-race-revenue-accounting-2026") {
+		t.Fatal("publishedPosts() did not include Anthropic IPO revenue accounting article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly19), "two-ai-superpowers-rival-alliances-one-country-joined-both-2026") {
 		t.Fatal("publishedPosts() did not include WAICO Pax Silica alliances article on publication date")
 	}
 
 	onPublicationJuly18 := time.Date(2026, time.July, 18, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly18), "anthropic-ipo-openai-race-revenue-accounting-2026") {
+		t.Fatal("publishedPosts() included Anthropic IPO revenue accounting article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly18), "two-ai-superpowers-rival-alliances-one-country-joined-both-2026") {
 		t.Fatal("publishedPosts() included WAICO Pax Silica alliances article before publication date")
 	}

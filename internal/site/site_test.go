@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Two AI Superpowers Just Built Rival Alliances. One Country Already Joined Both.")) {
+		t.Fatal("response missing WAICO Pax Silica alliances article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway.")) {
 		t.Fatal("response missing chip earnings selloff Kimi K3 article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You.")) {
 		t.Fatal("response missing China anthropomorphic AI interaction rules article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Nobody Funded a Smarter Agent This Week. They Funded the Gym.")) {
-		t.Fatal("response missing agent training environments reliability investment article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -993,6 +993,34 @@ func TestPostRouteRendersChipEarningsRelatedStories(t *testing.T) {
 		`href="/posts/grok-4-5-spacexai-cursor-coding-benchmark-harness-2026"`,
 		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
 		template.HTMLEscapeString("The Rocket Company Ships a Coding Model — And the Benchmark Depends on Who's Grading"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersWAICOPaxSilicaRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/two-ai-superpowers-rival-alliances-one-country-joined-both-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/china-anthropomorphic-ai-interaction-rules-companion-shutdown-2026"`,
+		`href="/posts/openai-gpt-5-6-general-availability-government-gate-precedent-2026"`,
+		template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You."),
+		template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million."),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly19 := time.Date(2026, time.July, 19, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly19), "two-ai-superpowers-rival-alliances-one-country-joined-both-2026") {
+		t.Fatal("publishedPosts() did not include WAICO Pax Silica alliances article on publication date")
+	}
+
 	onPublicationJuly18 := time.Date(2026, time.July, 18, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly18), "two-ai-superpowers-rival-alliances-one-country-joined-both-2026") {
+		t.Fatal("publishedPosts() included WAICO Pax Silica alliances article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly18), "chip-earnings-record-profits-stock-selloff-kimi-k3-2026") {
 		t.Fatal("publishedPosts() did not include chip earnings selloff Kimi K3 article on publication date")
 	}
@@ -634,6 +642,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	waicoPost, ok := FindBySlug("two-ai-superpowers-rival-alliances-one-country-joined-both-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find WAICO Pax Silica alliances article")
+	}
+	if waicoPost.Title != "Two AI Superpowers Just Built Rival Alliances. One Country Already Joined Both." {
+		t.Fatalf("FindBySlug() returned %q for WAICO Pax Silica alliances article", waicoPost.Title)
+	}
+	if len(waicoPost.Related) != 2 {
+		t.Fatalf("WAICO Pax Silica alliances article related count = %d, want 2", len(waicoPost.Related))
+	}
+
 	chipEarningsPost, ok := FindBySlug("chip-earnings-record-profits-stock-selloff-kimi-k3-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find chip earnings selloff Kimi K3 article")

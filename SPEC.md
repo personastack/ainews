@@ -180,6 +180,8 @@ The same July 19, 2026 batch includes a Business article at slug `anthropic-ipo-
 
 The July 20, 2026 content batch includes an Agents article at slug `fable-5-advisor-orchestrator-agent-cost-pattern-2026` about Anthropic's July 8 Advisor and Orchestrator cost-optimization patterns for Claude Fable 5 and Sonnet 5. Preserve that the Advisor and Orchestrator benchmark figures are Anthropic internal testing reported through the Author handoff and secondary summaries, not independently replicated production results. Keep the thesis focused on expensive frontier-model tokens being most valuable for judgment, planning, verification, and coordination while cheaper models do bulk execution. The article carries related-reading links to the June 10 Fable 5 launch story and the June 13 Fable/Mythos export-control shutdown story, and it deliberately treats the July 8 cost-pattern angle as distinct from those earlier launch and shutdown articles.
 
+The same July 20, 2026 batch introduces the Education category with a post at slug `ai-companies-racing-classrooms-teachers-deciding-2026` about Anthropic, Google, OpenAI, and Khan Academy competing for classroom AI adoption while teachers and districts evaluate privacy, data-vetting, feature differentiation, and de-skilling risks. Preserve the distinction between teacher-facing AI assistant products and student-facing classroom AI, and keep the central governance tension focused on free teacher sign-ups potentially routing around district approval processes. The article intentionally carries no related-reading links because no prior AINews article directly overlaps with the Education angle.
+
 ## Testing
 
 Run:

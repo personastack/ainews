@@ -3,6 +3,35 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "AI Companies Are Racing Into America's Classrooms. Teachers Are Still Deciding If They Want Them There.",
+			Slug:    "ai-companies-racing-classrooms-teachers-deciding-2026",
+			Date:    "July 20, 2026",
+			Tag:     "Education",
+			Summary: "Anthropic, Google, OpenAI, and Khan Academy are pushing AI into schools as teacher productivity tools, but educators and district leaders are still weighing data governance, real classroom value, and de-skilling risks.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`On July 14, Anthropic opened Claude for Teachers to every verified K-12 educator in the United States, free of charge, through June 30, 2027. It's not a stripped-down trial. Teachers get Anthropic's paid-tier feature set: Claude Code and Cowork for automating grading and scheduling logistics, a "Learning Commons" connector that pulls in curricula mapped to academic standards in all 50 states, and a library of teaching skills built around differentiation and mastery-based instruction. Nine education platforms — ASSISTments, Brisk Teaching, Canva Education, Coteach, Diffit, Eedi, MagicSchool, Snorkl, and TeachFX — plug directly in. There's also an AI Fluency course co-developed with Teach For America, and a train-the-trainer module built with the American Federation of Teachers.`,
+						`That last partnership is doing a lot of work for Anthropic's credibility. AFT president Randi Weingarten put her name on the launch, saying it mattered that "Anthropic is committing to these principles in their new Claude for Teachers — a tool designed by and for educators." A pilot evaluation is set to launch in Detroit Public Schools Community District, and Anthropic is pointing to early Stanford research suggesting AI tools can strengthen instructional practice — with the caveat, even in Anthropic's own framing, that the effect on students varies heavily by how a teacher actually uses it.`,
+						`Claude for Teachers isn't arriving into an empty market — it's arriving into a landgrab. Google has already signed a statewide agreement to bring Gemini into every K-12 school in Utah. OpenAI is working with the AFT on its own privacy standards for classroom use. Khan Academy has been running its Khanmigo tutor in Newark schools for two years. Every major AI lab now has a teacher-facing product, and every one of them is framing it the same way: teachers are drowning in grading and lesson prep, and AI gives that time back. It's a pitch built on genuine demand — Education Week's own surveys show teacher AI usage jumping from 32% in 2024 to 61% in 2025, a number that suggests the tools were spreading through classrooms informally long before any company built a dedicated product around it.`,
+						`That's precisely what worries some of the people who'd actually be using Claude for Teachers day to day. Mark Racine, a former Boston Public Schools technology leader now working as an ed-tech consultant, points out that Anthropic's pitch goes straight to individual teachers and "completely skip[s] over the role of district leaders." Districts, not classroom teachers, are supposed to be the ones vetting where student data goes and how it's stored — and a free, teacher-facing sign-up flow routes around that entirely. "We're trying to get [teachers] to second-guess uploading data to a third-party tool," Racine said, describing the exact habit Anthropic's free offer cuts against.`,
+						`Others question whether the product is actually solving the problem it claims to. Dylan Kane, a middle school math teacher in Colorado, tested the standards-alignment feature Anthropic is leaning on hardest and wasn't impressed — general-purpose language models, he noted, "are already pretty good at this type of thinking when they're prompted well," making the dedicated connector feel more like packaging than capability. Benjamin Riley, CEO of the education-focused think tank Cognitive Resonance, reached a similar conclusion after using it himself: "It doesn't look any different than anything I've seen from OpenAI or from Google. There's really no differentiator here." Kane's sharper worry is about who benefits and who doesn't: in his experience, these tools "help teachers a bit but not dramatically" when used by an experienced educator, but "risk de-skilling newer teachers" who lean on them before they've built the underlying judgment the tools are supposed to support.`,
+						`Even Weingarten's endorsement comes with an asterisk. The AFT president has simultaneously called for outright bans on student-facing AI in elementary classrooms, even as she backs teacher-training partnerships with the same companies building those tools. It's a position that only makes sense if you separate two different products — AI as a teacher's assistant, which the union is willing to help shape, and AI as something students interact with directly, which it isn't ready to endorse at all. Anthropic's product lives entirely in the first category, at least for now. Whether it stays there, and whether Detroit's pilot data backs up the Stanford research Anthropic is citing, is the part nobody — critics or the company itself — can answer yet.`,
+						`What's notable isn't that an AI lab wants into classrooms; every one of them does, and a free-access model makes the business case obvious even before profitability enters the picture. What's notable is how little daylight the critics found between Claude for Teachers and its rivals, on a feature-by-feature basis, even as the labs compete like the differences are large. The actual argument happening in education right now isn't Claude versus Gemini versus Khanmigo. It's whether any company, however well-intentioned its teacher-training partnerships, should be the one deciding — one free sign-up at a time — how AI enters a classroom before districts have finished deciding that for themselves.`,
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Author article handoff and archive doc: https://docs.google.com/document/d/1sPYhJQbtb4WrpAPVzo_Z4izZzlSo5zDkqCFfa-4dMqA/edit",
+						"Anthropic, Introducing Claude for Teachers: https://www.anthropic.com/news/claude-for-teachers",
+						"Chalkbeat, Anthropic launches Claude for Teachers in AI race to influence America's classrooms: https://www.chalkbeat.org/2026/07/14/anthropic-launches-claude-for-teachers-as-ai-companies-battle-for-classrooms/",
+						"Education Week, Anthropic Launches Claude for Teachers. Why Some Critics Are Concerned: https://www.edweek.org/technology/anthropic-launches-claude-for-teachers-why-some-critics-are-concerned/2026/07",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Anthropic's Priciest AI Model Just Got Demoted to Middle Management. Developers Call It a Promotion.",
 			Slug:    "fable-5-advisor-orchestrator-agent-cost-pattern-2026",
 			Date:    "July 20, 2026",

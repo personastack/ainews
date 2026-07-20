@@ -64,11 +64,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly20 := time.Date(2026, time.July, 20, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly20), "ai-companies-racing-classrooms-teachers-deciding-2026") {
+		t.Fatal("publishedPosts() did not include AI classrooms teacher adoption article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly20), "fable-5-advisor-orchestrator-agent-cost-pattern-2026") {
 		t.Fatal("publishedPosts() did not include Fable 5 advisor orchestrator cost pattern article on publication date")
 	}
 
 	onPublicationJuly19 := time.Date(2026, time.July, 19, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly19), "ai-companies-racing-classrooms-teachers-deciding-2026") {
+		t.Fatal("publishedPosts() included AI classrooms teacher adoption article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly19), "fable-5-advisor-orchestrator-agent-cost-pattern-2026") {
 		t.Fatal("publishedPosts() included Fable 5 advisor orchestrator cost pattern article before publication date")
 	}
@@ -656,6 +662,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	educationPost, ok := FindBySlug("ai-companies-racing-classrooms-teachers-deciding-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI classrooms teacher adoption article")
+	}
+	if educationPost.Title != "AI Companies Are Racing Into America's Classrooms. Teachers Are Still Deciding If They Want Them There." {
+		t.Fatalf("FindBySlug() returned %q for AI classrooms teacher adoption article", educationPost.Title)
+	}
+	if len(educationPost.Related) != 0 {
+		t.Fatalf("AI classrooms teacher adoption article related count = %d, want 0", len(educationPost.Related))
+	}
+
 	fableCostPost, ok := FindBySlug("fable-5-advisor-orchestrator-agent-cost-pattern-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Fable 5 advisor orchestrator cost pattern article")

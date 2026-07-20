@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Anthropic's Priciest AI Model Just Got Demoted to Middle Management. Developers Call It a Promotion.")) {
+		t.Fatal("response missing Fable 5 advisor orchestrator cost pattern article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Is Racing OpenAI to Wall Street. Its Own Revenue Number May Not Survive the Trip.")) {
 		t.Fatal("response missing Anthropic IPO revenue accounting article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit")) {
 		t.Fatal("response missing Nvidia Rubin Ultra reticle limit article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString(`The Machine Learned to Say "Mhmm"`)) {
-		t.Fatal("response missing OpenAI GPT-Live article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -1021,6 +1021,34 @@ func TestPostRouteRendersWAICOPaxSilicaRelatedStories(t *testing.T) {
 		`href="/posts/openai-gpt-5-6-general-availability-government-gate-precedent-2026"`,
 		template.HTMLEscapeString("China Isn't Banning AI Agents. It's Banning the Ones That Pretend to Love You."),
 		template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersFableCostPatternRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/fable-5-advisor-orchestrator-agent-cost-pattern-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/claude-fable-5-safety-routed-agent-infrastructure-2026"`,
+		`href="/posts/fable-5-mythos-5-export-control-shutdown-2026"`,
+		template.HTMLEscapeString("Claude Fable 5 Shows the Next AI Race Is About Autonomy and Control"),
+		template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway."),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

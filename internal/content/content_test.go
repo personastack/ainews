@@ -63,7 +63,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly20 := time.Date(2026, time.July, 20, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly20), "fable-5-advisor-orchestrator-agent-cost-pattern-2026") {
+		t.Fatal("publishedPosts() did not include Fable 5 advisor orchestrator cost pattern article on publication date")
+	}
+
 	onPublicationJuly19 := time.Date(2026, time.July, 19, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly19), "fable-5-advisor-orchestrator-agent-cost-pattern-2026") {
+		t.Fatal("publishedPosts() included Fable 5 advisor orchestrator cost pattern article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly19), "anthropic-ipo-openai-race-revenue-accounting-2026") {
 		t.Fatal("publishedPosts() did not include Anthropic IPO revenue accounting article on publication date")
 	}
@@ -648,6 +656,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	fableCostPost, ok := FindBySlug("fable-5-advisor-orchestrator-agent-cost-pattern-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Fable 5 advisor orchestrator cost pattern article")
+	}
+	if fableCostPost.Title != "Anthropic's Priciest AI Model Just Got Demoted to Middle Management. Developers Call It a Promotion." {
+		t.Fatalf("FindBySlug() returned %q for Fable 5 advisor orchestrator cost pattern article", fableCostPost.Title)
+	}
+	if len(fableCostPost.Related) != 2 {
+		t.Fatalf("Fable 5 advisor orchestrator cost pattern article related count = %d, want 2", len(fableCostPost.Related))
+	}
+
 	waicoPost, ok := FindBySlug("two-ai-superpowers-rival-alliances-one-country-joined-both-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find WAICO Pax Silica alliances article")

@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Brussels Just Ordered Google to Share Android's AI Controls With Rivals. Google Says the Order Is the Privacy Risk.")) {
+		t.Fatal("response missing EU Google Android AI interoperability article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Companies Are Racing Into America's Classrooms. Teachers Are Still Deciding If They Want Them There.")) {
 		t.Fatal("response missing AI classrooms teacher adoption article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Meta Laid Off 8,000 People to Fund AI. Then Zuckerberg Admitted It Isn't Working Yet.")) {
 		t.Fatal("response missing Meta Microsoft AI layoffs article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The Rocket Company Ships a Coding Model — And the Benchmark Depends on Who's Grading")) {
-		t.Fatal("response missing Grok 4.5 SpaceXAI Cursor benchmark harness article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -1049,6 +1049,34 @@ func TestPostRouteRendersFableCostPatternRelatedStories(t *testing.T) {
 		`href="/posts/fable-5-mythos-5-export-control-shutdown-2026"`,
 		template.HTMLEscapeString("Claude Fable 5 Shows the Next AI Race Is About Autonomy and Control"),
 		template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersEUGoogleAndroidAIRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/eu-forces-google-share-android-ai-search-data-rivals-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/openai-gpt-5-6-general-availability-government-gate-precedent-2026"`,
+		`href="/posts/two-ai-superpowers-rival-alliances-one-country-joined-both-2026"`,
+		template.HTMLEscapeString("Six Weeks Ago, 20 Companies Could Use It. Now It's a Dollar a Million."),
+		template.HTMLEscapeString("Two AI Superpowers Just Built Rival Alliances. One Country Already Joined Both."),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

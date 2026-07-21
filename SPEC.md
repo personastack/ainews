@@ -182,6 +182,8 @@ The July 20, 2026 content batch includes an Agents article at slug `fable-5-advi
 
 The same July 20, 2026 batch introduces the Education category with a post at slug `ai-companies-racing-classrooms-teachers-deciding-2026` about Anthropic, Google, OpenAI, and Khan Academy competing for classroom AI adoption while teachers and districts evaluate privacy, data-vetting, feature differentiation, and de-skilling risks. Preserve the distinction between teacher-facing AI assistant products and student-facing classroom AI, and keep the central governance tension focused on free teacher sign-ups potentially routing around district approval processes. The article intentionally carries no related-reading links because no prior AINews article directly overlaps with the Education angle.
 
+The July 21, 2026 content batch includes a Policy article at slug `eu-forces-google-share-android-ai-search-data-rivals-2026` about the European Commission's Digital Markets Act decisions requiring Google to open Android AI-assistant capabilities and share anonymized search data with rivals. Preserve the staged compliance timeline: template licensing agreements and sample test data by September 2026, search-data pricing and access beginning in January 2027, and Android interoperability changes expected around the next major Android release in mid-2027. Keep Google's response framed as a privacy and security objection, not a denial of market dominance, and keep the Commission's position tied to multi-layered anonymization and competition access under the DMA. The article carries related-reading links to the July 10 GPT-5.6 government-gate story and the July 19 US-China AI-governance alliances story.
+
 ## Testing
 
 Run:

@@ -63,7 +63,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly21 := time.Date(2026, time.July, 21, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly21), "eu-forces-google-share-android-ai-search-data-rivals-2026") {
+		t.Fatal("publishedPosts() did not include EU Google Android AI interoperability article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly21), "ai-companies-racing-classrooms-teachers-deciding-2026") {
+		t.Fatal("publishedPosts() did not include AI classrooms teacher adoption article on July 21")
+	}
+
 	onPublicationJuly20 := time.Date(2026, time.July, 20, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly20), "eu-forces-google-share-android-ai-search-data-rivals-2026") {
+		t.Fatal("publishedPosts() included EU Google Android AI interoperability article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly20), "ai-companies-racing-classrooms-teachers-deciding-2026") {
 		t.Fatal("publishedPosts() did not include AI classrooms teacher adoption article on publication date")
 	}
@@ -662,6 +673,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	euGooglePost, ok := FindBySlug("eu-forces-google-share-android-ai-search-data-rivals-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find EU Google Android AI interoperability article")
+	}
+	if euGooglePost.Title != "Brussels Just Ordered Google to Share Android's AI Controls With Rivals. Google Says the Order Is the Privacy Risk." {
+		t.Fatalf("FindBySlug() returned %q for EU Google Android AI interoperability article", euGooglePost.Title)
+	}
+	if len(euGooglePost.Related) != 2 {
+		t.Fatalf("EU Google Android AI interoperability article related count = %d, want 2", len(euGooglePost.Related))
+	}
+
 	educationPost, ok := FindBySlug("ai-companies-racing-classrooms-teachers-deciding-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI classrooms teacher adoption article")

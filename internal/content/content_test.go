@@ -64,6 +64,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly21 := time.Date(2026, time.July, 21, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly21), "tsmc-arizona-265-billion-packaging-bottleneck-2026") {
+		t.Fatal("publishedPosts() did not include TSMC Arizona packaging bottleneck article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly21), "eu-forces-google-share-android-ai-search-data-rivals-2026") {
 		t.Fatal("publishedPosts() did not include EU Google Android AI interoperability article on publication date")
 	}
@@ -72,6 +75,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJuly20 := time.Date(2026, time.July, 20, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly20), "tsmc-arizona-265-billion-packaging-bottleneck-2026") {
+		t.Fatal("publishedPosts() included TSMC Arizona packaging bottleneck article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly20), "eu-forces-google-share-android-ai-search-data-rivals-2026") {
 		t.Fatal("publishedPosts() included EU Google Android AI interoperability article before publication date")
 	}
@@ -673,6 +679,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	tsmcArizonaPost, ok := FindBySlug("tsmc-arizona-265-billion-packaging-bottleneck-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find TSMC Arizona packaging bottleneck article")
+	}
+	if tsmcArizonaPost.Title != `TSMC Just Pushed Its Arizona Bet to $265 Billion. The New Money Finally Targets the Part Critics Called a "Paperweight."` {
+		t.Fatalf("FindBySlug() returned %q for TSMC Arizona packaging bottleneck article", tsmcArizonaPost.Title)
+	}
+	if len(tsmcArizonaPost.Related) != 2 {
+		t.Fatalf("TSMC Arizona packaging bottleneck article related count = %d, want 2", len(tsmcArizonaPost.Related))
+	}
+
 	euGooglePost, ok := FindBySlug("eu-forces-google-share-android-ai-search-data-rivals-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find EU Google Android AI interoperability article")

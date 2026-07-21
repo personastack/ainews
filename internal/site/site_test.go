@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString(`TSMC Just Pushed Its Arizona Bet to $265 Billion. The New Money Finally Targets the Part Critics Called a "Paperweight."`)) {
+		t.Fatal("response missing TSMC Arizona packaging bottleneck article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Brussels Just Ordered Google to Share Android's AI Controls With Rivals. Google Says the Order Is the Privacy Risk.")) {
 		t.Fatal("response missing EU Google Android AI interoperability article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The AI Industry Graded Its Own Safety Homework. Nobody Passed.")) {
 		t.Fatal("response missing AI Safety Index article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Meta Laid Off 8,000 People to Fund AI. Then Zuckerberg Admitted It Isn't Working Yet.")) {
-		t.Fatal("response missing Meta Microsoft AI layoffs article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -993,6 +993,34 @@ func TestPostRouteRendersChipEarningsRelatedStories(t *testing.T) {
 		`href="/posts/grok-4-5-spacexai-cursor-coding-benchmark-harness-2026"`,
 		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
 		template.HTMLEscapeString("The Rocket Company Ships a Coding Model — And the Benchmark Depends on Who's Grading"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersTSMCArizonaPackagingRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/tsmc-arizona-265-billion-packaging-bottleneck-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/chip-earnings-record-profits-stock-selloff-kimi-k3-2026"`,
+		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
+		template.HTMLEscapeString("The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway."),
+		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

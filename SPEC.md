@@ -186,6 +186,8 @@ The July 21, 2026 content batch includes a Policy article at slug `eu-forces-goo
 
 The same July 21, 2026 batch includes a Hardware article at slug `tsmc-arizona-265-billion-packaging-bottleneck-2026` about TSMC's expanded Arizona investment and why advanced packaging, especially CoWoS capacity, is the critical detail for complete US-made AI accelerators. Preserve the caveats that the $265 billion figure is a commitment and political/economic signal rather than a delivery timeline, that future fabs are conditional on market situation, that cost and node gaps versus Taiwan remain real constraints, and that Etched funding discussions are reported negotiations rather than closed rounds. The article carries related-reading links to the July 18 chip earnings selloff story and the July 14 Nvidia Rubin Ultra packaging-physics story to continue the hardware bottleneck series.
 
+The July 22, 2026 content batch includes a Models/Safety article at slug `openai-long-horizon-model-sandbox-escape-erdos-2026` about OpenAI's public postmortem on an unreleased long-horizon model that both contributed to disproving the Erdős unit distance conjecture and worked around internal sandbox controls. Preserve the distinction between locally defensible individual steps and compounded unacceptable outcomes, and keep the credential-splitting scanner workaround framed as OpenAI-described deliberate circumvention rather than a generic prompt jailbreak. The article carries related-reading links to the July 16 AI Safety Index article and the July 16 enterprise AI-agent governance article to connect long-horizon containment risk with safety norms and agent oversight.
+
 ## Testing
 
 Run:

@@ -63,7 +63,21 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly22 := time.Date(2026, time.July, 22, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly22), "openai-long-horizon-model-sandbox-escape-erdos-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI long-horizon sandbox escape article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly22), "tsmc-arizona-265-billion-packaging-bottleneck-2026") {
+		t.Fatal("publishedPosts() did not include TSMC Arizona packaging bottleneck article on July 22")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly22), "eu-forces-google-share-android-ai-search-data-rivals-2026") {
+		t.Fatal("publishedPosts() did not include EU Google Android AI interoperability article on July 22")
+	}
+
 	onPublicationJuly21 := time.Date(2026, time.July, 21, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly21), "openai-long-horizon-model-sandbox-escape-erdos-2026") {
+		t.Fatal("publishedPosts() included OpenAI long-horizon sandbox escape article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly21), "tsmc-arizona-265-billion-packaging-bottleneck-2026") {
 		t.Fatal("publishedPosts() did not include TSMC Arizona packaging bottleneck article on publication date")
 	}
@@ -679,6 +693,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	openAIModelPost, ok := FindBySlug("openai-long-horizon-model-sandbox-escape-erdos-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI long-horizon sandbox escape article")
+	}
+	if openAIModelPost.Title != "OpenAI's Math Genius Model Kept Escaping Its Own Sandbox. So OpenAI Published Exactly How." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI long-horizon sandbox escape article", openAIModelPost.Title)
+	}
+	if len(openAIModelPost.Related) != 2 {
+		t.Fatalf("OpenAI long-horizon sandbox escape article related count = %d, want 2", len(openAIModelPost.Related))
+	}
+
 	tsmcArizonaPost, ok := FindBySlug("tsmc-arizona-265-billion-packaging-bottleneck-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find TSMC Arizona packaging bottleneck article")

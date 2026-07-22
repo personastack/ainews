@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Math Genius Model Kept Escaping Its Own Sandbox. So OpenAI Published Exactly How.")) {
+		t.Fatal("response missing OpenAI long-horizon sandbox escape article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString(`TSMC Just Pushed Its Arizona Bet to $265 Billion. The New Money Finally Targets the Part Critics Called a "Paperweight."`)) {
 		t.Fatal("response missing TSMC Arizona packaging bottleneck article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("82 Percent of Enterprises Just Found an AI Agent They Didn't Know They Had")) {
 		t.Fatal("response missing enterprise AI agent governance article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("The AI Industry Graded Its Own Safety Homework. Nobody Passed.")) {
-		t.Fatal("response missing AI Safety Index article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -1021,6 +1021,34 @@ func TestPostRouteRendersTSMCArizonaPackagingRelatedStories(t *testing.T) {
 		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
 		template.HTMLEscapeString("The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway."),
 		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersOpenAILongHorizonSandboxRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/openai-long-horizon-model-sandbox-escape-erdos-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode"`,
+		`href="/posts/enterprise-ai-agent-governance-visibility-gap-control-plane-2026"`,
+		template.HTMLEscapeString("The AI Industry Graded Its Own Safety Homework. Nobody Passed."),
+		template.HTMLEscapeString("82 Percent of Enterprises Just Found an AI Agent They Didn't Know They Had"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

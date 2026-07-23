@@ -67,7 +67,6 @@ func init() {
 						"Cohere announcement, Introducing North Mini Code: Cohere's first model for developers: https://cohere.com/blog/north-mini-code",
 						"CohereLabs technical post on Hugging Face, Introducing North Mini Code: Cohere's First Model For Developers: https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
 						"Artificial Analysis, North Mini Code: Cohere's small coding-focused MoE model: https://artificialanalysis.ai/articles/north-mini-code-cohere-s-small-coding-focused-moe-model",
-						"Researcher handoff, Cohere North Mini Code Makes Small Open Coding Agents Practical: https://docs.google.com/document/d/1xjR23XnhPzOPx6mfMQhx7CGpqP7iJsnaltCDfiwxK1I/edit",
 					},
 				},
 			},
@@ -132,7 +131,6 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"OpenAI Help Center, ChatGPT Release Notes, June 10, 2026: https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
-						"Researcher handoff, OpenAI Turns Reasoning Effort Into Product UX: https://docs.google.com/document/d/1BPl4qmrqcY1mQMkUBUuZaiXSxticVNNtOkZJlkOT9pc/edit",
 					},
 				},
 			},
@@ -218,7 +216,6 @@ func init() {
 						"Anthropic launch announcement: https://www.anthropic.com/news/claude-fable-5-mythos-5",
 						"Anthropic Claude Fable product page: https://www.anthropic.com/claude/fable",
 						"Anthropic model documentation: https://platform.claude.com/docs/en/about-claude/models/overview",
-						"Research handoff document: https://docs.google.com/document/d/1cTBhWblYpn6W6_TgFztCIQE-ppT_5vYBoB6zWir2XAE/edit",
 					},
 				},
 			},
@@ -297,7 +294,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Researcher brief: RESEARCH: GitLab Restructures as Agentic Workloads Stress Dev Platforms 2026-06-10, Wiki.js path research/2026-06-10/gitlab-ai-workloads-restructure",
 						"GitLab, GitLab Act 2: https://about.gitlab.com/blog/gitlab-act-2/",
 						"GitLab, Building for the AI era: https://about.gitlab.com/blog/2026/05/15/building-for-the-ai-era/",
 						"TechCrunch, GitLab cuts 14% of staff as it scales its platform to serve AI workloads: https://techcrunch.com/2026/06/03/gitlab-cuts-14-of-staff-as-it-scales-its-platform-to-serve-ai-workloads/",

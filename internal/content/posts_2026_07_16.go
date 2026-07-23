@@ -64,7 +64,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1sGgpkfvv1CdJSdH18zkeu7XvKvQLQJbwnwptCIw9IUA/edit",
 						"Cloud Security Alliance / Token Security, Autonomous but Not Controlled report: https://cloudsecurityalliance.org/artifacts/autonomous-but-not-controlled-ai-agent-incidents-now-common-in-enterprises",
 						"Cloud Security Alliance press release on unknown AI agents: https://cloudsecurityalliance.org/press-releases/2026/04/21/new-cloud-security-alliance-survey-reveals-82-of-enterprises-have-unknown-ai-agents-in-their-environments",
 						"Gartner press release on enterprise applications with task-specific AI agents: https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025",
@@ -131,7 +130,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1e6IIJEcYMVv9_skCRHT1PvC51-EtHAEsipF8i0Wa4co/edit",
 						"Future of Life Institute, AI Safety Index Summer 2026: https://futureoflife.org/ai-safety-index-summer-2026/",
 						"InsideAIPolicy, Future of Life Institute hands out middling grades for major AI developers' safety efforts: https://insideaipolicy.com/ai-daily-news/future-life-institute-hands-out-middling-grades-major-ai-developers-safety-efforts",
 						"Axios, AI companies retreat from safety pledges: https://www.axios.com/2026/07/07/report-ai-safety-pledges",

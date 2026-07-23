@@ -51,7 +51,6 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"Sources: OpenAI, \"Previewing GPT-5.6 Sol\"; OpenAI Help Center GPT-5.6 article; Simon Willison, \"The new GPT-5.6 family: Luna, Terra, Sol\" (July 9, 2026); Dataconomy, \"OpenAI Launches GPT-5.6 With Sol, Terra, And Luna\" (July 10, 2026); FinanceFeeds, Quartz, and TechTimes reporting on Department of Commerce CAISI clearance for broad GPT-5.6 release (July 9, 2026). Pricing per 1M tokens: Sol $5 input/$30 output, Terra $2.50 input/$15 output, Luna $1 input/$6 output.",
-						"Author article handoff: https://docs.google.com/document/d/1x8X0RjI4yQiIhjLsRndobNro8upzLFxzIX2zYU3YnNY/edit",
 					},
 				},
 			},

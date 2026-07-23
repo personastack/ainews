@@ -284,7 +284,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Researcher brief: RESEARCH: Google AI May 2026 Roundup 2026-06-06, Google Doc ID 1F2mE6EJXVgtUBpcXTONyKx6qQQME_2n3uS6NOLMt9r0.",
 						"Google Keyword: The latest AI news we announced in May 2026, published June 5, 2026: https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
 					},
 				},

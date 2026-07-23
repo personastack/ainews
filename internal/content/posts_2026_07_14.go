@@ -39,8 +39,9 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1Q0kQrQb__CDhTK1kTpHUjKjqmpRcbIGcbQx6djAAj0k/edit",
-						"Author reported independent WebSearch sourcing against Nvidia Rubin production reporting, SemiAnalysis Rubin Ultra redesign coverage, and Taiwan Commercial Times fallback-design reporting as of July 14, 2026.",
+						"Tom's Hardware, Nvidia reportedly cancels quad-die Rubin Ultra GPU in favor of dual-GPU design: https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-reportedly-cancels-quad-die-rubin-ultra-gpu-in-favor-of-dual-gpu-design-report-claims-complex-design-purportedly-scrapped-over-manufacturing-execution-concerns",
+						"TrendForce, NVIDIA's Rubin Ultra seen sticking to dual-die design on packaging constraints: https://www.trendforce.com/news/2026/04/01/news-nvidias-rubin-ultra-seen-sticking-to-dual-die-design-on-packaging-constraints-tsmc-3nm-demand-intact/",
+						"Tom's Hardware, Nvidia details Rubin architectural optimizations for inference: https://www.tomshardware.com/pc-components/gpus/nvidia-details-rubin-architectural-optimizations-for-inference-improvements-target-better-performance-and-efficiency-from-the-gpu-to-the-rack",
 					},
 				},
 			},

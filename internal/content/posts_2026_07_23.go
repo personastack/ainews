@@ -56,7 +56,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1d5PjDStLf72-zZIXMqju-pH4sqaA7gbKSmlhV_aoGUs/edit",
 						"Google, Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/",
 						"9to5Google, Gemini 3.5 Pro delays due to coding performance: https://9to5google.com/2026/07/16/gemini-3-5-pro-delays/",
 						"Geeky Gadgets, Stopgap Gemini 3.6 Flash May Launch During Gemini 3.5 Pro Delay: https://www.geeky-gadgets.com/gemini-3-5-pro-delayed-again/",

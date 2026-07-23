@@ -51,7 +51,6 @@ func init() {
 					Paragraphs: []string{
 						"llm-stats, LLM updates tracker: https://llm-stats.com/llm-updates",
 						"Presenc AI Research, \"June 2026 LLM Release Roundup\": https://presenc.ai/research/june-2026-llm-release-roundup",
-						"Author article handoff: https://docs.google.com/document/d/13JjinfJP8UToE77sfErXizbasP8tcfC1ezQXNnGD3HE/edit",
 					},
 				},
 			},
@@ -109,7 +108,6 @@ func init() {
 						"Ames National Laboratory, \"Ames Lab scientist provides AI-driven roadmap for future permanent magnet design\": https://www.ameslab.gov/news/ames-lab-scientist-provides-ai-driven-roadmap-for-future-permanent-magnet-design",
 						"CSIS, \"China's New Rare Earth and Magnet Restrictions Threaten U.S. Defense Supply Chains\": https://www.csis.org/analysis/chinas-new-rare-earth-and-magnet-restrictions-threaten-us-defense-supply-chains",
 						"Rare Earth Exchanges, \"Can AI Break the Rare Earth Magnet Monopoly? Ames Lab Thinks So\": https://rareearthexchanges.com/news/can-ai-break-the-rare-earth-magnet-monopoly-ames-lab-thinks-so/",
-						"Author article handoff: https://docs.google.com/document/d/1wvfHSFFO_P1wZ-m0ZQI2YTDUID_YaaYMg8GkLqjXDWU/edit",
 					},
 				},
 			},

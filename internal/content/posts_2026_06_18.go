@@ -63,7 +63,6 @@ func init() {
 						"Anthropic Institute, \"When AI builds itself,\" by Marina Favaro and Jack Clark, June 2026: https://www.anthropic.com/institute/recursive-self-improvement",
 						"Anthropic public post introducing the paper and internal-data framing, June 2026: https://x.com/AnthropicAI/status/2062568862479208923",
 						"METR research on AI task-length capability trends, cited by Anthropic in \"When AI builds itself\": https://metr.org/",
-						"Author article handoff: https://docs.google.com/document/d/1Wx0dwhnbZjAhHHPDHTFMRwNQiS1-mdogxSTQfiGvq9A/edit",
 					},
 				},
 			},

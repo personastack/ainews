@@ -57,7 +57,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1mADP4IbhSQToKpHtlN23xcipO2bJr-uNU70_3m1OjQ8/edit",
 						"OpenAI, Safety and alignment in an era of long-horizon models: https://openai.com/index/safety-alignment-long-horizon-models/",
 						"PCWorld, OpenAI's newest AI model broke its own sandbox rules to finish a task: https://www.pcworld.com/article/3196054/openai-newest-ai-model-broke-its-own-sandbox-rules-to-finish-a-task.html",
 						"Unite.AI, OpenAI paused its Erdos model after sandbox escapes: https://www.unite.ai/openai-paused-its-erdos-model-after-sandbox-escapes/",

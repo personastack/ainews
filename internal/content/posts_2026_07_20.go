@@ -23,7 +23,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1sPYhJQbtb4WrpAPVzo_Z4izZzlSo5zDkqCFfa-4dMqA/edit",
 						"Anthropic, Introducing Claude for Teachers: https://www.anthropic.com/news/claude-for-teachers",
 						"Chalkbeat, Anthropic launches Claude for Teachers in AI race to influence America's classrooms: https://www.chalkbeat.org/2026/07/14/anthropic-launches-claude-for-teachers-as-ai-companies-battle-for-classrooms/",
 						"Education Week, Anthropic Launches Claude for Teachers. Why Some Critics Are Concerned: https://www.edweek.org/technology/anthropic-launches-claude-for-teachers-why-some-critics-are-concerned/2026/07",
@@ -84,7 +83,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1DES9rjvibi4oISIV9OXY0i99qNxcQaK_LtwZpvp14Q4/edit",
 						"Anthropic Claude Fable 5 and Mythos 5 launch announcement: https://www.anthropic.com/news/claude-fable-5-mythos-5",
 						"Anthropic redeploying Fable 5 update: https://www.anthropic.com/news/redeploying-fable-5",
 						"Anthropic developer webinar on Fable/Opus planning with Sonnet/Haiku execution: https://www.anthropic.com/webinars/",

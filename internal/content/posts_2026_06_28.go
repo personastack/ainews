@@ -68,7 +68,6 @@ func init() {
 					Paragraphs: []string{
 						"Sources: OpenAI/Broadcom announcement, June 24, 2026; Broadcom investor release; TechCrunch; CNBC; Bloomberg; Tom's Hardware; VentureBeat; CNN Business.",
 						"Anthropic-Google-Broadcom 3.5GW TPU deal via Anthropic, TechCrunch, and Data Center Knowledge.",
-						"Author article handoff: https://docs.google.com/document/d/14m4DcK4Hrw1GpjIeVmZ4rjP_q3CEftpz_m1Z3_8LTwk/edit",
 					},
 				},
 			},

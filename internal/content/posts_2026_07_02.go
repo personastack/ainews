@@ -56,7 +56,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1d8P9j324ssLQAdVM3hekgLpSZ0NF99-GA-KpaTn_OCg/edit",
 						"Research verified against IEEE Spectrum, Tom's Hardware, CNBC, Network World, TechTimes, and IDC as of July 2, 2026.",
 					},
 				},

@@ -1,6 +1,7 @@
 package content
 
 import (
+	"strings"
 	"testing"
 	"time"
 )
@@ -44,6 +45,72 @@ func TestPostsHaveUniqueSlugs(t *testing.T) {
 			t.Fatalf("duplicate post slug %q", post.Slug)
 		}
 		seen[post.Slug] = true
+	}
+}
+
+func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
+	blockedText := []string{
+		"docs.google.com",
+		"drive.google.com",
+		"Google Doc ID",
+	}
+
+	for _, post := range posts {
+		fields := []string{
+			post.Title,
+			post.Slug,
+			post.Date,
+			post.Tag,
+			post.Summary,
+		}
+		for _, link := range post.Related {
+			fields = append(fields, link.Title, link.Slug)
+		}
+		for _, section := range post.Sections {
+			fields = append(fields, section.Heading)
+			for _, paragraph := range section.Paragraphs {
+				fields = append(fields, paragraph)
+			}
+		}
+
+		for _, field := range fields {
+			for _, blocked := range blockedText {
+				if strings.Contains(field, blocked) {
+					t.Fatalf("post %q exposes internal Google Docs/Drive reference in %q", post.Slug, field)
+				}
+			}
+		}
+	}
+}
+
+func TestSourceSectionsUsePublicCitationText(t *testing.T) {
+	blockedSourceText := []string{
+		"Author article handoff",
+		"Researcher brief",
+		"Researcher handoff",
+		"Research handoff",
+		"archive doc",
+		"WebSearch",
+		"WebFetch",
+		"Wiki.js path",
+	}
+
+	for _, post := range posts {
+		for _, section := range post.Sections {
+			if section.Heading != "Sources" {
+				continue
+			}
+			if len(section.Paragraphs) == 0 {
+				t.Fatalf("post %q has an empty Sources section", post.Slug)
+			}
+			for _, paragraph := range section.Paragraphs {
+				for _, blocked := range blockedSourceText {
+					if strings.Contains(paragraph, blocked) {
+						t.Fatalf("post %q exposes internal source process text in %q", post.Slug, paragraph)
+					}
+				}
+			}
+		}
 	}
 }
 

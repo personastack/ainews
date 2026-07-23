@@ -59,7 +59,6 @@ func init() {
 						"The Decoder, \"Samsung rolls out ChatGPT Enterprise and Codex to employees in South Korea\": https://the-decoder.com/samsung-rolls-out-chatgpt-enterprise-and-codex-to-employees-in-south-korea/",
 						"TechTimes coverage of Samsung's ChatGPT Enterprise and Codex deployment.",
 						"Dataconomy coverage of Samsung's ChatGPT Enterprise and Codex deployment.",
-						"Author article handoff: https://docs.google.com/document/d/1EiT1zlRUs8jeXdAneYAiKA6MRD9QL2in_NorN-_MZ3w/edit",
 					},
 				},
 			},

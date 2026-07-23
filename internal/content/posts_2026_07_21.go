@@ -61,7 +61,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/16-f0UOZArS6tmgu-XxRqm13dWM4qizVo0tddxlGCtDY/edit",
 						"KTAR, TSMC Arizona $100 billion investment: https://ktar.com/arizona-business/tsmc-arizona-100-billion-invest/5889392/",
 						"Slashdot, TSMC to invest additional $100 billion in Arizona: https://news.slashdot.org/story/26/07/16/2158219/tsmc-to-invest-additional-100-billion-in-arizona",
 						"KJZZ, TSMC will invest another $100 million in Arizona. How significant will it be for the state?: https://www.kjzz.org/the-show/2026-07-20/tsmc-will-invest-another-100-million-in-arizona-how-significant-will-it-be-for-the-state",
@@ -105,7 +104,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1Ztef-hf2Zpt8G-YNAB3DKq5ADUoytsC5KGF64K2equw/edit",
 						"European Commission, Digital Markets Act, Commission provides guidance to Google for AI interoperability on Android and sharing of Google Search data under the Digital Markets Act: https://digital-markets-act.ec.europa.eu/",
 						"Unite.AI, EU Compels Google to Share Android and Search Data With Rival AI Assistants: https://www.unite.ai/",
 						"The Register, EU forces Google to share its toys with the other AI and search kids: https://www.theregister.com/",

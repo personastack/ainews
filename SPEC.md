@@ -30,7 +30,7 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
-Published posts are gated by the `Date` field using Go's `January 2, 2006` layout. `Posts()` and `FindBySlug()` hide posts dated after the current UTC date. Article additions should use the intended publication date and include a final `Sources` section with the backing links from Author or Researcher.
+Published posts are gated by the `Date` field using Go's `January 2, 2006` layout. `Posts()` and `FindBySlug()` hide posts dated after the current UTC date. Article additions should use the intended publication date and include a final `Sources` section with publicly available backing links from Author or Researcher. Internal Google Docs or Google Drive URLs are drafting handoff artifacts only; never publish them in article copy, citation/source sections, or related links. If an Author handoff contains only an internal document URL for a claim, replace it with the underlying public source before publishing or drop the citation when no public source is available.
 
 AINews currently stores one primary category in `Post.Tag`. Secondary tags from editorial handoff can be reflected in article copy, but the rendered site only exposes the single primary tag.
 
@@ -199,3 +199,5 @@ TMPDIR=/workspace/ainews/.tmp CGO_ENABLED=0 go test ./...
 ```
 
 Use `CGO_ENABLED=0` in this environment because the default cgo toolchain may not have a working assembler. Content additions should update tests in `internal/content/content_test.go` for publication gating and slug lookup. If the new article should be visible on the homepage, include its escaped title expectation in `internal/site/site_test.go`.
+
+`internal/content/content_test.go` also rejects `docs.google.com` and `drive.google.com` links anywhere in the compiled article catalog so internal drafting documents cannot leak into published source lists.

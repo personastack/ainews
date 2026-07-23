@@ -59,7 +59,6 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"Sources: Gartner AI agent software spending forecast ($86.4B 2025 to $206.5B 2026 to $376.3B 2027; total AI spend +47% 2026; more than 40% agentic projects canceled by 2027); WSO2 Agent Manager GA June 2026; HPE Discover Las Vegas June 16, 2026 HPE and NVIDIA AI Factory expansion; Kyndryl/AWS agentic partnership.",
-						"Author article handoff: https://docs.google.com/document/d/1KQcS957PvC-IA39yHAaj1b2_Zq4vWrAgtB1Z4u7varw/edit",
 					},
 				},
 			},

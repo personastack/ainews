@@ -38,7 +38,6 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"Sources: White House, Executive Order 14409, \"Promoting Advanced Artificial Intelligence Innovation and Security\" (June 2, 2026); CNN Business; VentureBeat; The Hill.",
-						"Author article handoff: https://docs.google.com/document/d/1HbANKz5-VS23vcbgu8tdsKjQBd8W0TVfPkFuMGaPmKo/edit",
 					},
 				},
 			},
@@ -79,7 +78,10 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff: https://docs.google.com/document/d/16GsWrin9RkwnYYzzN7scjPVkWbgtVkhprRFSyreib_U/edit",
+						"Utility Dive, Data centers were 40% of PJM capacity costs in last auction: https://www.utilitydive.com/news/data-centers-pjm-capacity-auction/808951/",
+						"IEEFA, Projected data center growth spurs PJM capacity prices by factor of 10: https://ieefa.org/resources/projected-data-center-growth-spurs-pjm-capacity-prices-factor-10",
+						"PJM, 2026/2027 Base Residual Auction report: https://www.pjm.com/-/media/DotCom/markets-ops/rpm/rpm-auction-info/2026-2027/2026-2027-bra-report.pdf",
+						"CBS News, Amazon and Google have plans for fueling their data centers: https://www.cbsnews.com/news/amazon-nuclear-reactor-investment-google-kairos-power/",
 					},
 				},
 			},

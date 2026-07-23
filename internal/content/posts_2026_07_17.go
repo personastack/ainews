@@ -52,7 +52,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1nLcv-cG80kEIKMaU6o4TQhp5kdRnyVyw1-kfPDG8D8k/edit",
 						"Aalto University, researchers identify new superconductors: https://www.aalto.fi/en/news/researchers-identify-new-superconductors-unlocking-process-that-could-yield-thousands-more",
 						"ScienceDaily coverage of the superconductor discovery: https://www.sciencedaily.com/releases/2026/07/260701205006.htm",
 						"Physical Review Research publication for superconductivity in YRu3B2 and LuRu3B2: https://journals.aps.org/prresearch/abstract/10.1103/lpqj-7hyg",
@@ -120,7 +119,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1qY5SbREB_O2087WDTaEzPRiy7tzudFdPL23LGHvn614/edit",
 						"Satya Nadella, The Reverse Information Paradox: https://x.com/satyanadella/article/2076323181154230284",
 						"Fortune coverage of Nadella's warning on enterprise AI know-how: https://fortune.com/2026/07/16/microsoft-ceo-satya-nadella-warns-enterprises-that-ai-labs-are-stealing-their-know-how/",
 						"TechCrunch coverage of Nadella's post: https://techcrunch.com/2026/07/13/satya-nadella-has-issued-a-shocking-warning-to-companies-using-ai/",

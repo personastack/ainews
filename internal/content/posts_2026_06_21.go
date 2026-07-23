@@ -49,7 +49,6 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"Sources: Cadence Design Systems newsroom and BusinessWire (ChipStack AI Super Agent, autonomous virtual design engineer, May 31, 2026); EE Times and HPCwire/AIwire reporting on Cadence agentic chip design; Kyndryl and AWS expanded Strategic Collaboration Agreement (PRNewswire, June 18, 2026) and the Kyndryl Readiness Report; Harvard Business School Working Knowledge, \"Who's Adopting AI Agents and What They're Actually Doing With Them.\"",
-						"Author article handoff: https://docs.google.com/document/d/1_liCJfAByj78GnkzA45iVqBzG9DrTZOXX7IG3lQ6ckQ/edit",
 					},
 				},
 			},
@@ -123,7 +122,6 @@ func init() {
 						"KGOU, \"Oklahoma holding back on AI regulations amid Trump's order for states not to stifle the new technology,\" June 18, 2026: https://www.kgou.org/politics-and-government/2026-06-18/oklahoma-holding-back-on-ai-regulations-amid-trumps-order-for-states-not-to-stifle-the-new-technology",
 						"Oklahoma Legislature, Senate Bill 1734: https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1734&Session=2600",
 						"LegiScan, \"OK SB1734\": https://legiscan.com/OK/text/SB1734/id/3374080",
-						"Author article handoff: https://docs.google.com/document/d/17O4pJWu4miuiBGqGj7tFyq2uW7Omxpm93aYugfhoVYM/edit",
 					},
 				},
 			},

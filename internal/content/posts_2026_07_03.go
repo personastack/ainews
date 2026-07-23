@@ -118,7 +118,6 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"Gartner press release, July 1, 2026, \"Gartner Says $234 Billion in Enterprise Application Software Spend Is at Risk from Agentic AI\": https://www.gartner.com/en/newsroom/press-releases/2026-07-01-gartner-says-us-dollars-234-billion-in-enterprise-application-software-spend-is-at-risk-from-agentic-artificial-intelligence",
-						"Author article handoff and archive doc: https://docs.google.com/document/d/157-v9OeIow7cGGT6XZozD88CE1gC9gQJMABhbJKq2VM/edit",
 						"Facts verified via Gartner and trade-press mirrors including IT Brief Asia and Business Standard as of July 3, 2026.",
 					},
 				},

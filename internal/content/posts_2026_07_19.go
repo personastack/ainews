@@ -52,7 +52,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1hAClUXd9USbu3EdE_CVmH8_n80LMCuMufLDqK095w5g/edit",
 						"Anthropic announcement of its confidential draft S-1 submission: https://www.anthropic.com/news/confidential-draft-s1-sec",
 						"Investor's Business Daily summary of Bloomberg-reported Anthropic IPO timing and valuation: https://www.investors.com/news/technology/anthropic-ipo-open-ai-stocks/",
 						"Forbes analysis of OpenAI and Anthropic revenue-recognition differences: https://www.forbes.com/sites/josipamajic/2026/03/25/openai-and-anthropic-count-revenue-differently-and-investors-are-looking-into-it/",
@@ -95,7 +94,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/18gLxfTBoUixPEIhBkpInFqYKv9zhrJTt29uJhJybAb4/edit",
 						"Al Jazeera coverage of China's WAICO launch and AI governance pitch: https://www.aljazeera.com/news/2026/7/17/chinas-xi-jinping-launches-new-ai-alliance-what-is-it",
 						"Xinhua coverage of Xi's World AI Conference remarks and WAICO unveiling: https://english.news.cn/20260717/ce32e833ab5d47f883ad44e1f73cb634/c.html",
 						"Chinese government/Xinhua release on the 29-country WAICO founding agreement: https://english.www.gov.cn/news/202607/17/content_WS6a59a226c6d00ca5f9a0c432.html",

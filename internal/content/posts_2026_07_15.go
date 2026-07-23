@@ -28,7 +28,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1h9grRt0GNGXiZMY6a2lvpc1KCZc6XpV5kBc3d4EzAD8/edit",
 						"NPR, \"Meta slashes 8,000 jobs as it pivots towards AI\" (2026-05-20).",
 						"24/7 Wall St. / Yahoo Finance coverage of Zuckerberg's July 2, 2026 internal town hall remarks on AI agent development.",
 						"GeekWire, CNBC, and TechCrunch reporting on Microsoft's 4,800 job cuts and Xbox restructuring (2026-07-06).",
@@ -66,8 +65,10 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1NFXhAZ-FnnwCPiZD_kfi69Lfi-qLAwxUsn_MgbZdZiM/edit",
-						"Author reported independent WebSearch and WebFetch sourcing against kingy.ai, benchlm.ai, Yahoo Finance, and general search as of July 15, 2026.",
+						"SpaceXAI, Introducing Grok 4.5: https://x.ai/news/grok-4-5",
+						"BenchLM.ai, Grok 4.5 benchmarks, pricing, and speed: https://benchlm.ai/models/grok-4-5",
+						"ExplainX, Grok 4.5 vs Claude Opus 4.7 and 4.8 comparison: https://explainx.ai/blog/grok-4-5-vs-claude-opus-4-7-4-8-comparison-2026",
+						"InfoWorld, SpaceXAI launches Grok 4.5, touts lower coding-task costs than AI rivals: https://www.infoworld.com/article/4194895/spacexai-launches-grok-4-5-touts-lower-coding-task-costs-than-ai-rivals.html",
 					},
 				},
 			},

@@ -34,7 +34,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/1T6En1BbwlrR6PCNHAW2Tl6q0xfN62PYWCGoGQa36bgY/edit",
 						"TSMC Q2 2026 earnings release: https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf",
 						"Yahoo Finance coverage of TSMC's Q2 results and Arizona investment: https://finance.yahoo.com/technology/articles/tsmc-adds-100bn-us-arizona-081156641.html",
 						"The Next Web coverage of Samsung's preliminary Q2 2026 profit: https://thenextweb.com/news/samsung-q2-2026-operating-profit-record-ai-memory",
@@ -74,7 +73,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Author article handoff and archive doc: https://docs.google.com/document/d/13cABBIhzEUCUabPvpJzi9-U2p-A-HzDH_bnwnrcbj34/edit",
 						"CourtListener docket for Apple Inc. v. Liu, 5:26-cv-07078: https://www.courtlistener.com/docket/73602437/apple-inc-v-liu/",
 						"TechCrunch, Apple sues OpenAI over alleged trade secret theft: https://techcrunch.com/2026/07/10/apple-sues-openai-over-alleged-trade-secret-theft/",
 						"TechCrunch, the wildest allegations in Apple's trade secrets lawsuit against OpenAI: https://techcrunch.com/2026/07/13/the-wildest-allegations-in-apples-trade-secrets-lawsuit-against-openai/",

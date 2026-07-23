@@ -101,7 +101,6 @@ func init() {
 						"Liquid AI, \"LFM2.5 Retrievers\": https://www.liquid.ai/blog/lfm2-5-retrievers",
 						"MarkTechPost coverage of LFM2.5-Embedding-350M and LFM2.5-ColBERT-350M, June 19, 2026: https://www.marktechpost.com/",
 						"Liquid AI on Hugging Face, LFM Open License v1.0: https://huggingface.co/LiquidAI",
-						"Author article handoff: https://docs.google.com/document/d/1AsLcgFcnMr9FNTjwQyCE9QhDK1dlLO0u3Cieqz7jE7o/edit",
 					},
 				},
 			},

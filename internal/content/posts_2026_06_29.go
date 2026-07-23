@@ -59,7 +59,6 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"Sources: Axios; OpenAI preview coverage via Senswit and TheAICareerLab mirrors; LetsDataScience executive-order explainer.",
-						"Author article handoff: https://docs.google.com/document/d/1IFfLQDlyYvDGVqDDwKt3VTSncsZLNGNUA3N5fs7ts2k/edit",
 					},
 				},
 			},

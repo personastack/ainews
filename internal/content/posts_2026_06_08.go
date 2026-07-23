@@ -135,7 +135,6 @@ func init() {
 				{
 					Heading: "Sources",
 					Paragraphs: []string{
-						"Researcher Wiki.js brief: research/2026-06-08-intel-rackscale-ai",
 						"Intel Newsroom: https://newsroom.intel.com/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon",
 						"Intel Newsroom: https://newsroom.intel.com/artificial-intelligence/intel-announces-new-ai-innovations-at-computex",
 					},

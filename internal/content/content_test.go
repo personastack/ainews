@@ -92,6 +92,8 @@ func TestSourceSectionsUsePublicCitationText(t *testing.T) {
 		"archive doc",
 		"WebSearch",
 		"WebFetch",
+		"Researcher Wiki.js brief",
+		"Wiki.js brief",
 		"Wiki.js path",
 	}
 

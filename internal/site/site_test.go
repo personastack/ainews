@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString(`A Judge Wouldn't Stop Meta's Layoffs. He Also Said the AI Discrimination Claims Raise "Serious Questions."`)) {
+		t.Fatal("response missing Meta AI layoff discrimination lawsuit article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Google Just Shipped Three New Gemini Models. The One Everyone Actually Wants Still Isn't Ready.")) {
 		t.Fatal("response missing Gemini 3.5 Pro Flash stopgap article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Isn't Just Answering Physics Questions Anymore — It's Running the Experiments")) {
 		t.Fatal("response missing AI lab instrument physics article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Satya Nadella Says You're Paying for AI Twice. The Second Bill Never Stops.")) {
-		t.Fatal("response missing Nadella Reverse Information Paradox article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -1021,6 +1021,34 @@ func TestPostRouteRendersTSMCArizonaPackagingRelatedStories(t *testing.T) {
 		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
 		template.HTMLEscapeString("The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway."),
 		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersMetaAILayoffDiscriminationRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/meta-ai-layoff-discrimination-orrick-injunction-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout"`,
+		`href="/posts/enterprise-ai-agent-governance-visibility-gap-control-plane-2026"`,
+		template.HTMLEscapeString("Meta Laid Off 8,000 People to Fund AI. Then Zuckerberg Admitted It Isn't Working Yet."),
+		template.HTMLEscapeString("82 Percent of Enterprises Just Found an AI Agent They Didn't Know They Had"),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

@@ -133,6 +133,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly23 := time.Date(2026, time.July, 23, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly23), "meta-ai-layoff-discrimination-orrick-injunction-2026") {
+		t.Fatal("publishedPosts() did not include Meta AI layoff discrimination lawsuit article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly23), "gemini-3-5-pro-third-delay-flash-stopgap-2026") {
 		t.Fatal("publishedPosts() did not include Gemini 3.5 Pro Flash stopgap article on publication date")
 	}
@@ -141,6 +144,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJuly22 := time.Date(2026, time.July, 22, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly22), "meta-ai-layoff-discrimination-orrick-injunction-2026") {
+		t.Fatal("publishedPosts() included Meta AI layoff discrimination lawsuit article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly22), "gemini-3-5-pro-third-delay-flash-stopgap-2026") {
 		t.Fatal("publishedPosts() included Gemini 3.5 Pro Flash stopgap article before publication date")
 	}
@@ -773,6 +779,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	metaAILayoffPost, ok := FindBySlug("meta-ai-layoff-discrimination-orrick-injunction-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Meta AI layoff discrimination lawsuit article")
+	}
+	if metaAILayoffPost.Title != `A Judge Wouldn't Stop Meta's Layoffs. He Also Said the AI Discrimination Claims Raise "Serious Questions."` {
+		t.Fatalf("FindBySlug() returned %q for Meta AI layoff discrimination lawsuit article", metaAILayoffPost.Title)
+	}
+	if len(metaAILayoffPost.Related) != 2 {
+		t.Fatalf("Meta AI layoff discrimination lawsuit article related count = %d, want 2", len(metaAILayoffPost.Related))
+	}
+
 	geminiStopgapPost, ok := FindBySlug("gemini-3-5-pro-third-delay-flash-stopgap-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Gemini 3.5 Pro Flash stopgap article")

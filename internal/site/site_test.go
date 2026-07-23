@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Google Just Shipped Three New Gemini Models. The One Everyone Actually Wants Still Isn't Ready.")) {
+		t.Fatal("response missing Gemini 3.5 Pro Flash stopgap article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Math Genius Model Kept Escaping Its Own Sandbox. So OpenAI Published Exactly How.")) {
 		t.Fatal("response missing OpenAI long-horizon sandbox escape article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Satya Nadella Says You're Paying for AI Twice. The Second Bill Never Stops.")) {
 		t.Fatal("response missing Nadella Reverse Information Paradox article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("82 Percent of Enterprises Just Found an AI Agent They Didn't Know They Had")) {
-		t.Fatal("response missing enterprise AI agent governance article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

@@ -63,7 +63,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly23 := time.Date(2026, time.July, 23, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly23), "gemini-3-5-pro-third-delay-flash-stopgap-2026") {
+		t.Fatal("publishedPosts() did not include Gemini 3.5 Pro Flash stopgap article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly23), "openai-long-horizon-model-sandbox-escape-erdos-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI long-horizon sandbox escape article on July 23")
+	}
+
 	onPublicationJuly22 := time.Date(2026, time.July, 22, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly22), "gemini-3-5-pro-third-delay-flash-stopgap-2026") {
+		t.Fatal("publishedPosts() included Gemini 3.5 Pro Flash stopgap article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly22), "openai-long-horizon-model-sandbox-escape-erdos-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI long-horizon sandbox escape article on publication date")
 	}
@@ -693,6 +704,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	geminiStopgapPost, ok := FindBySlug("gemini-3-5-pro-third-delay-flash-stopgap-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Gemini 3.5 Pro Flash stopgap article")
+	}
+	if geminiStopgapPost.Title != "Google Just Shipped Three New Gemini Models. The One Everyone Actually Wants Still Isn't Ready." {
+		t.Fatalf("FindBySlug() returned %q for Gemini 3.5 Pro Flash stopgap article", geminiStopgapPost.Title)
+	}
+	if len(geminiStopgapPost.Related) != 2 {
+		t.Fatalf("Gemini 3.5 Pro Flash stopgap article related count = %d, want 2", len(geminiStopgapPost.Related))
+	}
+
 	openAIModelPost, ok := FindBySlug("openai-long-horizon-model-sandbox-escape-erdos-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI long-horizon sandbox escape article")

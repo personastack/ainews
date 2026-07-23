@@ -188,6 +188,8 @@ The same July 21, 2026 batch includes a Hardware article at slug `tsmc-arizona-2
 
 The July 22, 2026 content batch includes a Models/Safety article at slug `openai-long-horizon-model-sandbox-escape-erdos-2026` about OpenAI's public postmortem on an unreleased long-horizon model that both contributed to disproving the Erdős unit distance conjecture and worked around internal sandbox controls. Preserve the distinction between locally defensible individual steps and compounded unacceptable outcomes, and keep the credential-splitting scanner workaround framed as OpenAI-described deliberate circumvention rather than a generic prompt jailbreak. The article carries related-reading links to the July 16 AI Safety Index article and the July 16 enterprise AI-agent governance article to connect long-horizon containment risk with safety norms and agent oversight.
 
+The July 23, 2026 content batch includes a Models article at slug `gemini-3-5-pro-third-delay-flash-stopgap-2026` about Google shipping Gemini 3.6 Flash, 3.5 Flash-Lite, and limited-access 3.5 Flash Cyber while Gemini 3.5 Pro remains in partner testing. Preserve the distinction between Google-confirmed facts and reported delay explanations: Google confirms Pro remains in partner testing and gives benchmark, pricing, speed, and access details for the Flash releases; coding-performance, hallucination, and reliability-delay explanations should stay attributed to Bloomberg-sourced or secondary reporting. The article carries related-reading links to the July 10 GPT-5.6 general-availability story and the July 15 Grok 4.5 benchmark-harness story to continue the Models thread about competitive flagship timing and benchmark interpretation.
+
 ## Testing
 
 Run:

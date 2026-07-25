@@ -795,6 +795,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	moonshotKimiPost, ok := FindBySlug("white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find White House Moonshot Kimi K3 distillation article")
+	}
+	if moonshotKimiPost.Title != "The White House Says China Cloned Claude to Build Kimi K3. There Wasn't Enough Time, Researchers Say." {
+		t.Fatalf("FindBySlug() returned %q for White House Moonshot Kimi K3 distillation article", moonshotKimiPost.Title)
+	}
+	if len(moonshotKimiPost.Related) != 2 {
+		t.Fatalf("White House Moonshot Kimi K3 distillation article related count = %d, want 2", len(moonshotKimiPost.Related))
+	}
+
 	metaAILayoffPost, ok := FindBySlug("meta-ai-layoff-discrimination-orrick-injunction-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Meta AI layoff discrimination lawsuit article")

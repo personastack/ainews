@@ -7,7 +7,7 @@ func init() {
 			Slug:    "white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026",
 			Date:    "July 25, 2026",
 			Tag:     "Policy",
-			Summary: "OSTP director Michael Kratsios accused Moonshot AI of distilling Anthropic's Fable model and routing banned Nvidia chips through Thailand to build Kimi K3. The chip-access claim is easier to test. The distillation claim has a timing problem.",
+			Summary: "OSTP director Michael Kratsios accused Moonshot AI of distilling Anthropic's Fable model and routing banned Nvidia chips through Thailand to build Kimi K3. The chip-access claim is hard to dispute. The distillation claim ran into a problem: AI researchers say there wasn't enough time to do what Washington describes.",
 			Related: []Link{
 				{
 					Title: "The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway.",
@@ -21,38 +21,37 @@ func init() {
 			Sections: []Section{
 				{
 					Paragraphs: []string{
-						"Six days after Kimi K3 became the largest open-weight AI model ever released, the White House accused its maker of stealing the model that made it possible.",
-						"On July 22, Michael Kratsios, director of the White House Office of Science and Technology Policy, accused Moonshot AI of distilling Anthropic's Fable model into Kimi K3 through a large-scale internal platform that switched between access methods to avoid detection. Kratsios also alleged Moonshot acquired GB300-equipped servers and accessed GB300s in Thailand to train AI models, even though Nvidia's Blackwell-generation GB300 chips are restricted from export to China.",
-						"The charge landed at a delicate moment. Moonshot has reportedly been preparing a final pre-IPO funding round that could value the company at $50 billion ahead of a possible Hong Kong listing. Kimi K3 itself is a 2.8 trillion-parameter mixture-of-experts model with a one-million-token context window, and Moonshot has promoted it as the largest open-weight model released so far.",
+						`Six days after Kimi K3 became the largest open-weight AI model ever released, the White House accused its maker of stealing the model that made it possible.`,
+						`On July 22, Michael Kratsios, director of the White House Office of Science and Technology Policy, posted on X that Beijing-based Moonshot AI had "distilled Anthropic's Fable for the development of its K3 model," using what he described as "a sophisticated internal platform to conduct large scale distillation against U.S. models, allowing them to quickly switch between multiple methods of access to avoid detection." He added that Moonshot had "acquired GB300-equipped servers and has accessed GB300s in Thailand, likely to train its AI models" — Nvidia's most advanced Blackwell-generation chip, and one the U.S. has restricted from export to China for years. Kratsios called the alleged campaign "unacceptable."`,
+						`It's a serious charge, and it landed at a delicate moment. Moonshot is reportedly preparing a final pre-IPO funding round in August, targeting a $50 billion valuation ahead of a Hong Kong listing that could arrive before year's end, according to Bloomberg. Kimi K3 — a 2.8 trillion-parameter mixture-of-experts model with a 1-million-token context window — is the reason investors are interested in the first place. Moonshot says it's the largest open-weight model ever built, and it has already posted results beating Claude Fable 5 on at least one closely watched coding benchmark, Frontend Code Arena, per Tom's Hardware.`,
 					},
 				},
 				{
-					Heading: "The timeline problem",
+					Heading: "THE TIMELINE PROBLEM",
 					Paragraphs: []string{
-						"Fable 5 became publicly reachable on July 1. Anthropic had launched it on June 9, but U.S. export controls forced the company to suspend access three days later until the restrictions were lifted on June 30. Kimi K3 shipped on July 16. That gives a maximum public distillation window of fifteen days.",
-						"Researchers interviewed by TechCrunch said that timeline does not fit the strongest version of Washington's claim. Braden Hancock, co-founder of Snorkel AI, said he did not think a model could get that strong that quickly through distillation alone, even though distillation is a real technique. He also noted that Moonshot employs legitimate researchers and engineers, including people trained at Carnegie Mellon.",
-						"Nathan Lambert of the Allen Institute for AI raised the compute problem. Reinforcement-learning distillation at this scale requires enormous numbers of agent rollouts; doing that through a rival's paid API would be expensive and bottlenecked by access limits. Supervised fine-tuning on another model's answers helps, but near the frontier it usually has diminishing returns. If it were enough by itself, he argued, catching up would be easy for everyone.",
-						"Kratsios did not publish technical evidence for the distillation allegation. Moonshot had not responded to requests for comment in the public reports the Author used for this article.",
+						`Here's what makes independent AI researchers skeptical: Fable 5 only became available to the general public on July 1. It had actually launched June 9, but the U.S. government applied export controls to it three days later over national-security concerns about foreign access, forcing Anthropic to suspend the model entirely until the restrictions lifted on June 30. Kimi K3 shipped on July 16 — fifteen days after Fable 5 was even accessible to distill from.`,
+						`"I don't think you get a model this strong and this quickly on the heels of Fable doing strictly distillation," Braden Hancock, co-founder of Snorkel AI and a researcher at the Laude Institute, told TechCrunch. Distillation — training a smaller or competing model by learning from a larger model's outputs — is a real and widely used technique, but doing it at a scale sufficient to produce a 2.8-trillion-parameter frontier model, then training and shipping that model, in barely two weeks strikes Hancock as implausible. He also pushed back on the framing itself, noting Moonshot's team includes CMU-trained researchers: "These are legitimate researchers and engineers doing solid work."`,
+						`Nathan Lambert of the Allen Institute for AI raised a related, more technical objection: the reinforcement-learning-based distillation techniques capable of meaningfully lifting a frontier model's performance require enormous compute — potentially tens of millions of agent rollouts — and running that against a rival lab's paid API would be, in his words, "insanely expensive," with "time bottlenecks" that would blow past any two-week window. Simpler supervised fine-tuning on a competitor's outputs, meanwhile, delivers diminishing returns the closer a model gets to the frontier. If SFT-on-outputs were really enough to conjure a K3-caliber model out of Fable, Lambert argued, "everyone would be easily able to catch up" the same way.`,
+						`Kratsios did not publish evidence for the distillation claim, and Moonshot did not respond to requests for comment from multiple outlets that covered the accusation.`,
 					},
 				},
 				{
-					Heading: "The chip trail is a separate story",
+					Heading: "THE CHIP TRAIL IS A SEPARATE — AND HARDER TO WAVE AWAY — STORY",
 					Paragraphs: []string{
-						"The Nvidia allegation is different. Thailand is not covered by the same export restrictions as China, and Southeast Asian data-center capacity has expanded as hyperscalers diversify where they run compute. A Chinese lab could plausibly rent or route training capacity across a border, though the public reporting has not independently verified that Moonshot did so.",
-						"That makes the chip-access claim narrower and easier to investigate than the claim that Kimi K3 was cloned from Fable. Regulators do not need to settle the training-method debate to ask where restricted GPUs were physically located, who controlled the servers, and whether any provider knowingly helped a Chinese lab evade U.S. export rules.",
+						`The Nvidia allegation stands on different footing. Thailand isn't covered by the same export restrictions that bar advanced chips from reaching China directly, and data-center capacity in Southeast Asia has grown quickly as hyperscalers diversify where they build. That gap is exactly the kind of enforcement seam sanctions-watchers have been warning about for months: a lab doesn't need to smuggle a physical chip across a border if it can rent compute sitting on the other side of one. Whether Moonshot actually did what Kratsios describes hasn't been independently verified either, but it's a narrower, more checkable claim than "they cloned our model" — and it's the one likely to draw the most scrutiny from export-control enforcers rather than AI researchers.`,
 					},
 				},
 				{
-					Heading: "A pattern, not an isolated incident",
+					Heading: "A PATTERN, NOT AN ISOLATED INCIDENT",
 					Paragraphs: []string{
-						"This is not the first accusation of a Chinese lab harvesting U.S. model outputs. In a June 10 letter to the Senate Banking Committee, Anthropic accused Alibaba's Qwen team of running what it called the largest known distillation campaign against Claude: roughly 25,000 fraudulent accounts and more than 28.8 million exchanges from April 22 to June 5. Alibaba has denied wrongdoing, and the public record still depends heavily on the accusing company's telemetry and analysis.",
-						"Congress has been circling the same issue since April, with House committees investigating whether Chinese AI labs have integrated U.S. model outputs into their own systems. The Moonshot claim fits the broader political pattern: Chinese open-weight models are closing capability gaps faster than Washington expected, and one increasingly common explanation is that they copied U.S. frontier systems. The open question is whether the evidence in this case supports that explanation.",
+						`This isn't the first time Washington and Anthropic have leveled this kind of accusation at a Chinese lab. In a June 10 letter to the Senate Banking Committee, Anthropic accused Alibaba's Qwen team of running what it called the largest known distillation campaign against Claude: roughly 25,000 fraudulent accounts generating more than 28.8 million exchanges with Claude between April 22 and June 5, allegedly to harvest outputs for training Qwen's models. Alibaba denies it. Neither figure in either case — Alibaba's 28.8 million queries or Moonshot's alleged distillation platform — has been independently verified by an outside auditor; both rest on the accusing party's own telemetry and analysis.`,
+						`Congress has been circling this territory since at least April, when House committees opened investigations into how thoroughly Chinese AI labs are integrating U.S. model outputs into their own training pipelines. The Moonshot accusation slots into that same investigation, and into a broader pattern: as Chinese open-weight models close the performance gap with U.S. frontier labs faster than many expected, the U.S. government's go-to explanation is increasingly "they copied it," while the researchers who actually build these systems for a living are increasingly unconvinced the math supports that story on this particular timeline.`,
 					},
 				},
 				{
-					Heading: "What to watch",
+					Heading: "WHAT TO WATCH",
 					Paragraphs: []string{
-						"Two threads matter now. The first is whether the White House or Anthropic publishes evidence specific enough to convince outside researchers that distillation explains Kimi K3's capability jump. The second is whether the Thailand chip-access allegation leads to enforcement against compute providers or intermediaries. The second case may be easier for Washington: it depends less on reconstructing Moonshot's training recipe and more on following the servers.",
+						`Two threads here are worth separating, because they'll likely resolve on different clocks: whether investigators ever produce evidence specific enough to convince skeptical researchers that distillation explains Kimi K3, and whether the Thailand chip-access allegation turns into an actual enforcement action against the compute providers involved. The second one doesn't require anyone to agree on what happened inside Moonshot's training runs — it just requires proving where the GPUs physically were. That's a much easier case to make, and a much easier one for Washington to actually win.`,
 					},
 				},
 				{

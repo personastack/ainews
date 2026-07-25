@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The White House Says China Cloned Claude to Build Kimi K3. There Wasn't Enough Time, Researchers Say.")) {
+		t.Fatal("response missing White House Moonshot Kimi K3 distillation article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString(`A Judge Wouldn't Stop Meta's Layoffs. He Also Said the AI Discrimination Claims Raise "Serious Questions."`)) {
 		t.Fatal("response missing Meta AI layoff discrimination lawsuit article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Apple Says OpenAI Turned Job Interviews Into a Trade Secrets Pipeline")) {
 		t.Fatal("response missing Apple OpenAI trade secret lawsuit article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("AI Isn't Just Answering Physics Questions Anymore — It's Running the Experiments")) {
-		t.Fatal("response missing AI lab instrument physics article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,34 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersMoonshotKimiK3RelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/chip-earnings-record-profits-stock-selloff-kimi-k3-2026"`,
+		`href="/posts/ai-safety-index-summer-2026-anthropic-c-plus-pause-pledges-erode"`,
+		template.HTMLEscapeString("The Chip Industry Just Had Its Best Quarter Ever. Wall Street Sold It Anyway."),
+		template.HTMLEscapeString("The AI Industry Graded Its Own Safety Homework. Nobody Passed."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

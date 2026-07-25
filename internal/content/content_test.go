@@ -132,6 +132,22 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly25 := time.Date(2026, time.July, 25, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly25), "white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026") {
+		t.Fatal("publishedPosts() did not include White House Moonshot Kimi K3 distillation article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly25), "meta-ai-layoff-discrimination-orrick-injunction-2026") {
+		t.Fatal("publishedPosts() did not include Meta AI layoff discrimination lawsuit article on July 25")
+	}
+
+	onPublicationJuly24 := time.Date(2026, time.July, 24, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly24), "white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026") {
+		t.Fatal("publishedPosts() included White House Moonshot Kimi K3 distillation article before publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly24), "meta-ai-layoff-discrimination-orrick-injunction-2026") {
+		t.Fatal("publishedPosts() did not include Meta AI layoff discrimination lawsuit article on July 24")
+	}
+
 	onPublicationJuly23 := time.Date(2026, time.July, 23, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationJuly23), "meta-ai-layoff-discrimination-orrick-injunction-2026") {
 		t.Fatal("publishedPosts() did not include Meta AI layoff discrimination lawsuit article on publication date")

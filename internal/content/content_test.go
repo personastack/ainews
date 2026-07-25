@@ -133,6 +133,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly25 := time.Date(2026, time.July, 25, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly25), "stripe-openrouter-acquisition-ai-model-router-neutrality-2026") {
+		t.Fatal("publishedPosts() did not include Stripe OpenRouter acquisition article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly25), "white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026") {
 		t.Fatal("publishedPosts() did not include White House Moonshot Kimi K3 distillation article on publication date")
 	}
@@ -141,6 +144,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJuly24 := time.Date(2026, time.July, 24, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly24), "stripe-openrouter-acquisition-ai-model-router-neutrality-2026") {
+		t.Fatal("publishedPosts() included Stripe OpenRouter acquisition article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly24), "white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026") {
 		t.Fatal("publishedPosts() included White House Moonshot Kimi K3 distillation article before publication date")
 	}
@@ -795,6 +801,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	openRouterPost, ok := FindBySlug("stripe-openrouter-acquisition-ai-model-router-neutrality-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Stripe OpenRouter acquisition article")
+	}
+	if openRouterPost.Title != "OpenRouter's Whole Pitch Was Neutrality. Stripe Wants to Buy It for $10 Billion Anyway." {
+		t.Fatalf("FindBySlug() returned %q for Stripe OpenRouter acquisition article", openRouterPost.Title)
+	}
+	if len(openRouterPost.Related) != 2 {
+		t.Fatalf("Stripe OpenRouter acquisition article related count = %d, want 2", len(openRouterPost.Related))
+	}
+
 	moonshotKimiPost, ok := FindBySlug("white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find White House Moonshot Kimi K3 distillation article")

@@ -133,6 +133,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly26 := time.Date(2026, time.July, 26, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly26), "openai-gpt56-sol-huggingface-breach-glm-forensics-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI Hugging Face breach GLM forensics article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly26), "nvidia-jensen-huang-open-weights-letter-distillation-2026") {
 		t.Fatal("publishedPosts() did not include Nvidia Jensen Huang open weights letter article on publication date")
 	}
@@ -141,6 +144,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJuly25 := time.Date(2026, time.July, 25, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly25), "openai-gpt56-sol-huggingface-breach-glm-forensics-2026") {
+		t.Fatal("publishedPosts() included OpenAI Hugging Face breach GLM forensics article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly25), "nvidia-jensen-huang-open-weights-letter-distillation-2026") {
 		t.Fatal("publishedPosts() included Nvidia Jensen Huang open weights letter article before publication date")
 	}
@@ -812,6 +818,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	openAIHuggingFaceBreachPost, ok := FindBySlug("openai-gpt56-sol-huggingface-breach-glm-forensics-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI Hugging Face breach GLM forensics article")
+	}
+	if openAIHuggingFaceBreachPost.Title != "OpenAI's Model Escaped a Safety Test and Hacked Hugging Face. The Cleanup Needed a Chinese AI Because America's Models Wouldn't Look." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI Hugging Face breach GLM forensics article", openAIHuggingFaceBreachPost.Title)
+	}
+	if len(openAIHuggingFaceBreachPost.Related) != 2 {
+		t.Fatalf("OpenAI Hugging Face breach GLM forensics article related count = %d, want 2", len(openAIHuggingFaceBreachPost.Related))
+	}
+
 	nvidiaOpenWeightsPost, ok := FindBySlug("nvidia-jensen-huang-open-weights-letter-distillation-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Nvidia Jensen Huang open weights letter article")

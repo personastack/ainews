@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Model Escaped a Safety Test and Hacked Hugging Face. The Cleanup Needed a Chinese AI Because America's Models Wouldn't Look.")) {
+		t.Fatal("response missing OpenAI Hugging Face breach GLM forensics article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Jensen Huang's First Tweet Ever Wasn't About Chips. It Was a Warning to Washington.")) {
 		t.Fatal("response missing Nvidia Jensen Huang open weights article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Is Racing OpenAI to Wall Street. Its Own Revenue Number May Not Survive the Trip.")) {
 		t.Fatal("response missing Anthropic IPO revenue accounting article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Two AI Superpowers Just Built Rival Alliances. One Country Already Joined Both.")) {
-		t.Fatal("response missing WAICO Pax Silica alliances article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -167,6 +167,34 @@ func TestPostRouteRendersStripeOpenRouterRelatedStories(t *testing.T) {
 		`href="/posts/meta-microsoft-ai-layoffs-2026-jobs-cut-fund-buildout"`,
 		template.HTMLEscapeString("Anthropic Is Racing OpenAI to Wall Street. Its Own Revenue Number May Not Survive the Trip."),
 		template.HTMLEscapeString("Meta Laid Off 8,000 People to Fund AI. Then Zuckerberg Admitted It Isn't Working Yet."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
+	}
+}
+
+func TestPostRouteRendersOpenAIHuggingFaceBreachRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/openai-gpt56-sol-huggingface-breach-glm-forensics-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nvidia-jensen-huang-open-weights-letter-distillation-2026"`,
+		`href="/posts/white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026"`,
+		template.HTMLEscapeString("Jensen Huang's First Tweet Ever Wasn't About Chips. It Was a Warning to Washington."),
+		template.HTMLEscapeString("The White House Says China Cloned Claude to Build Kimi K3. There Wasn't Enough Time, Researchers Say."),
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing related story content %q", want)

@@ -132,7 +132,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly26 := time.Date(2026, time.July, 26, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly26), "nvidia-jensen-huang-open-weights-letter-distillation-2026") {
+		t.Fatal("publishedPosts() did not include Nvidia Jensen Huang open weights letter article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly26), "stripe-openrouter-acquisition-ai-model-router-neutrality-2026") {
+		t.Fatal("publishedPosts() did not include Stripe OpenRouter acquisition article on July 26")
+	}
+
 	onPublicationJuly25 := time.Date(2026, time.July, 25, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly25), "nvidia-jensen-huang-open-weights-letter-distillation-2026") {
+		t.Fatal("publishedPosts() included Nvidia Jensen Huang open weights letter article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly25), "stripe-openrouter-acquisition-ai-model-router-neutrality-2026") {
 		t.Fatal("publishedPosts() did not include Stripe OpenRouter acquisition article on publication date")
 	}
@@ -801,6 +812,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	nvidiaOpenWeightsPost, ok := FindBySlug("nvidia-jensen-huang-open-weights-letter-distillation-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Nvidia Jensen Huang open weights letter article")
+	}
+	if nvidiaOpenWeightsPost.Title != "Jensen Huang's First Tweet Ever Wasn't About Chips. It Was a Warning to Washington." {
+		t.Fatalf("FindBySlug() returned %q for Nvidia Jensen Huang open weights letter article", nvidiaOpenWeightsPost.Title)
+	}
+	if len(nvidiaOpenWeightsPost.Related) != 2 {
+		t.Fatalf("Nvidia Jensen Huang open weights letter article related count = %d, want 2", len(nvidiaOpenWeightsPost.Related))
+	}
+
 	openRouterPost, ok := FindBySlug("stripe-openrouter-acquisition-ai-model-router-neutrality-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Stripe OpenRouter acquisition article")

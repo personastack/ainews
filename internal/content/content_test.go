@@ -132,7 +132,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly27 := time.Date(2026, time.July, 27, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly27), "nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026") {
+		t.Fatal("publishedPosts() did not include Nvidia OpenAI Ohio data center financing article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly27), "openai-gpt56-sol-huggingface-breach-glm-forensics-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI Hugging Face breach GLM forensics article on July 27")
+	}
+
 	onPublicationJuly26 := time.Date(2026, time.July, 26, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly26), "nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026") {
+		t.Fatal("publishedPosts() included Nvidia OpenAI Ohio data center financing article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly26), "openai-gpt56-sol-huggingface-breach-glm-forensics-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI Hugging Face breach GLM forensics article on publication date")
 	}
@@ -818,6 +829,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	nvidiaOpenAIOhioPost, ok := FindBySlug("nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Nvidia OpenAI Ohio data center financing article")
+	}
+	if nvidiaOpenAIOhioPost.Title != "OpenAI Wants a $500 Billion Data Center. It Needed Nvidia to Cosign the Lease." {
+		t.Fatalf("FindBySlug() returned %q for Nvidia OpenAI Ohio data center financing article", nvidiaOpenAIOhioPost.Title)
+	}
+	if len(nvidiaOpenAIOhioPost.Related) != 2 {
+		t.Fatalf("Nvidia OpenAI Ohio data center financing article related count = %d, want 2", len(nvidiaOpenAIOhioPost.Related))
+	}
+
 	openAIHuggingFaceBreachPost, ok := FindBySlug("openai-gpt56-sol-huggingface-breach-glm-forensics-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI Hugging Face breach GLM forensics article")

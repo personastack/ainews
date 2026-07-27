@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Wants a $500 Billion Data Center. It Needed Nvidia to Cosign the Lease.")) {
+		t.Fatal("response missing Nvidia OpenAI Ohio data center financing article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Model Escaped a Safety Test and Hacked Hugging Face. The Cleanup Needed a Chinese AI Because America's Models Wouldn't Look.")) {
 		t.Fatal("response missing OpenAI Hugging Face breach GLM forensics article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Anthropic's Priciest AI Model Just Got Demoted to Middle Management. Developers Call It a Promotion.")) {
 		t.Fatal("response missing Fable 5 advisor orchestrator cost pattern article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Is Racing OpenAI to Wall Street. Its Own Revenue Number May Not Survive the Trip.")) {
-		t.Fatal("response missing Anthropic IPO revenue accounting article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,34 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersNvidiaOpenAIOhioDataCenterRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
+		`href="/posts/anthropic-ipo-openai-race-revenue-accounting-2026"`,
+		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+		template.HTMLEscapeString("Anthropic Is Racing OpenAI to Wall Street. Its Own Revenue Number May Not Survive the Trip."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

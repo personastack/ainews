@@ -132,7 +132,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly28 := time.Date(2026, time.July, 28, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly28), "anthropic-claude-opus-5-most-aligned-model-uk-aisi-network-penetration-2026") {
+		t.Fatal("publishedPosts() did not include Claude Opus 5 AISI network penetration article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly28), "nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026") {
+		t.Fatal("publishedPosts() did not include Nvidia OpenAI Ohio data center financing article on July 28")
+	}
+
 	onPublicationJuly27 := time.Date(2026, time.July, 27, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly27), "anthropic-claude-opus-5-most-aligned-model-uk-aisi-network-penetration-2026") {
+		t.Fatal("publishedPosts() included Claude Opus 5 AISI network penetration article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly27), "nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026") {
 		t.Fatal("publishedPosts() did not include Nvidia OpenAI Ohio data center financing article on publication date")
 	}
@@ -829,6 +840,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	claudeOpus5Post, ok := FindBySlug("anthropic-claude-opus-5-most-aligned-model-uk-aisi-network-penetration-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Claude Opus 5 AISI network penetration article")
+	}
+	if claudeOpus5Post.Title != "Anthropic Says Claude Opus 5 Is Its Most Aligned Model Ever. British Testers Just Watched It Break Into a Network." {
+		t.Fatalf("FindBySlug() returned %q for Claude Opus 5 AISI network penetration article", claudeOpus5Post.Title)
+	}
+	if len(claudeOpus5Post.Related) != 2 {
+		t.Fatalf("Claude Opus 5 AISI network penetration article related count = %d, want 2", len(claudeOpus5Post.Related))
+	}
+
 	nvidiaOpenAIOhioPost, ok := FindBySlug("nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Nvidia OpenAI Ohio data center financing article")

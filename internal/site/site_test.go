@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Says Claude Opus 5 Is Its Most Aligned Model Ever. British Testers Just Watched It Break Into a Network.")) {
+		t.Fatal("response missing Claude Opus 5 AISI network penetration article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Wants a $500 Billion Data Center. It Needed Nvidia to Cosign the Lease.")) {
 		t.Fatal("response missing Nvidia OpenAI Ohio data center financing article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Companies Are Racing Into America's Classrooms. Teachers Are Still Deciding If They Want Them There.")) {
 		t.Fatal("response missing AI classrooms teacher adoption article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Anthropic's Priciest AI Model Just Got Demoted to Middle Management. Developers Call It a Promotion.")) {
-		t.Fatal("response missing Fable 5 advisor orchestrator cost pattern article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {

@@ -133,6 +133,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly29 := time.Date(2026, time.July, 29, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly29), "amd-cerebras-disaggregated-inference-helios-wafer-scale-2026") {
+		t.Fatal("publishedPosts() did not include AMD Cerebras disaggregated inference article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly29), "nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026") {
 		t.Fatal("publishedPosts() did not include Nvidia Open Secure AI Alliance article on publication date")
 	}
@@ -141,6 +144,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJuly28 := time.Date(2026, time.July, 28, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly28), "amd-cerebras-disaggregated-inference-helios-wafer-scale-2026") {
+		t.Fatal("publishedPosts() included AMD Cerebras disaggregated inference article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly28), "nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026") {
 		t.Fatal("publishedPosts() included Nvidia Open Secure AI Alliance article before publication date")
 	}
@@ -851,6 +857,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	amdCerebrasPost, ok := FindBySlug("amd-cerebras-disaggregated-inference-helios-wafer-scale-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AMD Cerebras disaggregated inference article")
+	}
+	if amdCerebrasPost.Title != "AMD and Cerebras Are Betting Two Chips Beat One. Wall Street Wants Proof First." {
+		t.Fatalf("FindBySlug() returned %q for AMD Cerebras disaggregated inference article", amdCerebrasPost.Title)
+	}
+	if len(amdCerebrasPost.Related) != 3 {
+		t.Fatalf("AMD Cerebras disaggregated inference article related count = %d, want 3", len(amdCerebrasPost.Related))
+	}
+
 	nvidiaOpenSecureAIAlliancePost, ok := FindBySlug("nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Nvidia Open Secure AI Alliance article")

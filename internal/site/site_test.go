@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("AMD and Cerebras Are Betting Two Chips Beat One. Wall Street Wants Proof First.")) {
+		t.Fatal("response missing AMD Cerebras disaggregated inference article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Nvidia Built a Coalition to Stop Rogue AI Agents. The Labs Whose Agents Went Rogue Didn't Join.")) {
 		t.Fatal("response missing Nvidia Open Secure AI Alliance article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString(`TSMC Just Pushed Its Arizona Bet to $265 Billion. The New Money Finally Targets the Part Critics Called a "Paperweight."`)) {
 		t.Fatal("response missing TSMC Arizona packaging bottleneck article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Brussels Just Ordered Google to Share Android's AI Controls With Rivals. Google Says the Order Is the Privacy Risk.")) {
-		t.Fatal("response missing EU Google Android AI interoperability article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersAMDCerebrasDisaggregatedInferenceRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/amd-cerebras-disaggregated-inference-helios-wafer-scale-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/tsmc-arizona-265-billion-packaging-bottleneck-2026"`,
+		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
+		`href="/posts/openai-broadcom-jalapeno-inference-chip-custom-silicon-2026"`,
+		template.HTMLEscapeString(`TSMC Just Pushed Its Arizona Bet to $265 Billion. The New Money Finally Targets the Part Critics Called a "Paperweight."`),
+		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+		template.HTMLEscapeString("OpenAI's Secret Chip Project Just Put a Name on the AI Cost Problem"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

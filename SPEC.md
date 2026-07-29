@@ -206,6 +206,8 @@ The July 28, 2026 content batch includes a Models article at slug `anthropic-cla
 
 The July 29, 2026 content batch includes a Safety article at slug `nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026` about Nvidia's Open Secure AI Alliance as an open defense-stack response to rogue agent and cyber-forensics failures. Preserve the central membership contrast: infrastructure, enterprise, and open-model companies joined, while OpenAI, Google, and Anthropic were absent and did not give on-the-record explanations in the cited launch coverage. Keep NOOA, Safetensors, SPIFFE/SPIRE, Lightwell, and MDASH framed as contributed tools and efforts rather than proof the alliance fully solves agent security. The article carries related-reading links to the July 26 OpenAI/Hugging Face breach story and the July 28 Claude Opus 5 network-penetration story.
 
+The same July 29, 2026 content batch includes a Hardware article at slug `amd-cerebras-disaggregated-inference-helios-wafer-scale-2026` about AMD and Cerebras partnering on disaggregated inference that splits prompt processing onto AMD Helios systems and token generation onto Cerebras wafer-scale systems. Preserve that the claimed up to 5x tokens-per-second-per-watt figure is joint internal modeling by AMD Performance Labs and Cerebras using Moonshot AI's Kimi 2.6 model, not an independently reproduced customer benchmark. Keep the stock-market reaction framed as short-term investor interpretation and execution skepticism, not a definitive technical verdict. The article carries related-reading links to the July 21 TSMC Arizona packaging article, the July 14 Nvidia Rubin Ultra hardware-bottleneck article, and the June 27 OpenAI/Broadcom Jalapeno inference-chip article.
+
 ## Testing
 
 Run:

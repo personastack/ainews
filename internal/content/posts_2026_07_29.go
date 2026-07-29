@@ -3,6 +3,76 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "AMD and Cerebras Are Betting Two Chips Beat One. Wall Street Wants Proof First.",
+			Slug:    "amd-cerebras-disaggregated-inference-helios-wafer-scale-2026",
+			Date:    "July 29, 2026",
+			Tag:     "Hardware",
+			Summary: "The two companies just unveiled a disaggregated inference system that splits AI workloads between AMD's rack-scale Helios systems and Cerebras' wafer-sized chips, promising up to 5x more tokens per watt. The market's response - AMD down, Cerebras up - says more about how investors are grading the AI hardware race than the technology itself.",
+			Related: []Link{
+				{
+					Title: "TSMC Just Pushed Its Arizona Bet to $265 Billion. The New Money Finally Targets the Part Critics Called a \"Paperweight.\"",
+					Slug:  "tsmc-arizona-265-billion-packaging-bottleneck-2026",
+				},
+				{
+					Title: "Nvidia's Roadmap Just Hit the Reticle Limit",
+					Slug:  "nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026",
+				},
+				{
+					Title: "OpenAI's Secret Chip Project Just Put a Name on the AI Cost Problem",
+					Slug:  "openai-broadcom-jalapeno-inference-chip-custom-silicon-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`For three years, the story of AI hardware has mostly been a story about one company. Nvidia builds the GPUs, Nvidia writes the software layer everyone's models run on, and everyone else fights over what's left. On July 23, 2026, at AMD's Advancing AI event, AMD and Cerebras Systems tried something different: instead of building a better version of Nvidia's approach, they stitched two very different kinds of chips together and bet that the combination beats either one alone.`,
+					},
+				},
+				{
+					Heading: "Two Chips, One Job, Split in Half",
+					Paragraphs: []string{
+						`The technical idea is called disaggregated inference, and it works by breaking a single AI response into two jobs that are good at different things.`,
+						`The first job is reading. When you send a prompt to a large language model - especially a long one, with a big attached document or a sprawling conversation history - the system has to process every token of that input before it can start responding. That's a throughput problem: it rewards raw parallel horsepower. AMD's Helios racks, built around Instinct GPUs and EPYC CPUs, handle that half.`,
+						`The second job is writing. Once the model starts generating its response, speed is measured differently - not in how much you can chew through at once, but in how fast you can produce the next word, over and over, with as little delay as possible. That's a memory-bandwidth problem, and it's exactly what Cerebras' Wafer-Scale Engine was built for: a single chip the size of a dinner plate, with enough on-chip memory bandwidth to keep token generation moving with minimal lag.`,
+						`Instead of asking one chip to do both jobs adequately, AMD and Cerebras are proposing that two specialized chips, wired together as a single pipeline, do both jobs well. AMD and Cerebras say the combination delivers up to 5x more tokens generated per second per watt of power than a Cerebras Wafer-Scale system running alone - a figure from joint modeling by AMD's Performance Labs and Cerebras using Moonshot AI's 1-trillion-parameter Kimi 2.6 model as the test case.`,
+						`"Together with Cerebras, we are extending that leadership into the most latency-sensitive applications and creating a powerful new platform for real-time agentic AI," said AMD CEO Lisa Su. Cerebras CEO Andrew Feldman put it more bluntly: "Partnering with AMD gives us an incredible opportunity to bring that performance to even more customers."`,
+						`Cerebras plans to run AMD Helios systems inside its own data centers, with the combined offering reaching customers through Cerebras Cloud starting in the second half of 2026.`,
+					},
+				},
+				{
+					Heading: "Worth Noting: The 5x Number Is a Model, Not a Measurement",
+					Paragraphs: []string{
+						`It's worth being precise about what's actually been demonstrated here versus what's been projected. The 5x efficiency figure comes from internal modeling done by the two companies involved - not from an independent lab, a third-party benchmark, or a live customer deployment. That doesn't make it wrong; vendor performance modeling based on real architectural specs is a normal part of how hardware roadmaps get previewed months before shipping product. But it does mean the number describes a best case under controlled assumptions, not a result anyone outside AMD and Cerebras has yet reproduced. The real test arrives in the second half of 2026, when actual customers run actual workloads through Cerebras Cloud.`,
+					},
+				},
+				{
+					Heading: "The Market's Verdict: Interesting, Not Yet Proven",
+					Paragraphs: []string{
+						`If the announcement was meant to read as an unambiguous win, the stock market didn't cooperate. AMD shares dipped roughly 3-3.5% during the Advancing AI event itself, while Cerebras shares - which only began trading publicly this year - climbed nearly 4-5% on the news.`,
+						`That split matters more than either number alone. AMD's stock had already more than doubled earlier in 2026, meaning a lot of good news was priced in before Lisa Su ever took the stage; a dip after a big keynote is as often about "priced for perfection" investor psychology as it is a verdict on the technology. Cerebras, by contrast, is the smaller, newer public company for whom a marquee partnership with AMD is unambiguously additive - it gives Cerebras a path to scale its wafer-scale chips into far more data centers than it could reach alone.`,
+						`Read together, the market reaction looks less like skepticism about disaggregated inference as an idea, and more like investors reserving judgment on execution: can AMD and Cerebras actually ship this integration on schedule, and will it hold up once real enterprise inference traffic - not a benchmark model - is running through it?`,
+					},
+				},
+				{
+					Heading: "Why This Fits a Bigger Pattern",
+					Paragraphs: []string{
+						`This announcement doesn't exist in isolation. It lands in the middle of an inference-efficiency arms race that's been building all year: OpenAI built its own inference chip with Broadcom to cut its own token costs, Intel has pitched its Crescent Island chip and rack-scale CPU systems specifically for agentic inference workloads, and enterprise buyers have watched per-token API pricing fall sharply as providers compete on efficiency rather than raw model size. AMD and Cerebras' bet is that the next phase of that race won't be won by a single faster chip, but by smarter division of labor between specialized ones.`,
+						`That's also a bet on a different way of competing with Nvidia. Nvidia's moat has always been as much about its CUDA software ecosystem as its silicon - everyone builds for Nvidia first because that's where the tooling is mature. AMD can't out-CUDA CUDA. What it can do is offer openness and partnership flexibility that a vertically integrated competitor doesn't: pairing its own chips with a specialist like Cerebras, rather than insisting AMD silicon has to do every job by itself.`,
+						`Whether that strategy works depends on something no keynote slide can settle: whether disaggregated inference performs in the messy reality of production traffic the way it does in a controlled model built by the two companies selling it. Cerebras Cloud will start answering that question later this year - and unlike the keynote, that answer will be measured by customers, not slides.`,
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"AMD and Cerebras Announce Industry-Leading Ultra-Low-Latency and High Throughput AI Inference Solution - AMD Newsroom: https://newsroom.amd.com/news/aai-2026-cerebras-inference/",
+						"AMD and Cerebras Announce Industry-Leading Ultra-Low-Latency and High Throughput AI Inference Solution - Cerebras Investor Relations: https://investors.cerebras.ai/news-releases/news-release-details/amd-and-cerebras-announce-industry-leading-ultra-low-latency-and",
+						"AMD Unveils 'Helios' AI Server, Partners with Cerebras; Shares Jump 5% - BigGo Finance: https://finance.biggo.com/news/995a2fbb-9b25-46f2-8238-c2ad888babe4",
+						"AMD and Cerebras partner on low-latency, high-throughput AI inference - Tom's Hardware: https://www.tomshardware.com/tech-industry/artificial-intelligence/amd-and-cerebras-partner-on-low-latency-high-throughput-ai-inference-epyc-processors-in-helios-rack-scale-infrastructure-paired-with-cerebras-wafer-scale-engine-wse-solutions",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Nvidia Built a Coalition to Stop Rogue AI Agents. The Labs Whose Agents Went Rogue Didn't Join.",
 			Slug:    "nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026",
 			Date:    "July 29, 2026",

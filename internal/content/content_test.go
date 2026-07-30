@@ -133,6 +133,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly30 := time.Date(2026, time.July, 30, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly30), "openai-chatgpt-academic-researchers-100000-scientists-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI ChatGPT academic researchers article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly30), "openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI Anthropic Google Meta pacing mechanism letter article on publication date")
 	}
@@ -141,6 +144,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJuly29 := time.Date(2026, time.July, 29, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly29), "openai-chatgpt-academic-researchers-100000-scientists-2026") {
+		t.Fatal("publishedPosts() included OpenAI ChatGPT academic researchers article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly29), "openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026") {
 		t.Fatal("publishedPosts() included OpenAI Anthropic Google Meta pacing mechanism letter article before publication date")
 	}
@@ -868,6 +874,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	academicResearchersPost, ok := FindBySlug("openai-chatgpt-academic-researchers-100000-scientists-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI ChatGPT academic researchers article")
+	}
+	if academicResearchersPost.Title != "OpenAI Gated Its Most Powerful Model to 20 Approved Companies. Now It's Giving a Version to 100,000 Scientists for Free." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI ChatGPT academic researchers article", academicResearchersPost.Title)
+	}
+	if len(academicResearchersPost.Related) != 3 {
+		t.Fatalf("OpenAI ChatGPT academic researchers article related count = %d, want 3", len(academicResearchersPost.Related))
+	}
+
 	pacingMechanismPost, ok := FindBySlug("openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI Anthropic Google Meta pacing mechanism letter article")

@@ -132,7 +132,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly30 := time.Date(2026, time.July, 30, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly30), "openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI Anthropic Google Meta pacing mechanism letter article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly30), "amd-cerebras-disaggregated-inference-helios-wafer-scale-2026") {
+		t.Fatal("publishedPosts() did not include AMD Cerebras disaggregated inference article on July 30")
+	}
+
 	onPublicationJuly29 := time.Date(2026, time.July, 29, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly29), "openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026") {
+		t.Fatal("publishedPosts() included OpenAI Anthropic Google Meta pacing mechanism letter article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly29), "amd-cerebras-disaggregated-inference-helios-wafer-scale-2026") {
 		t.Fatal("publishedPosts() did not include AMD Cerebras disaggregated inference article on publication date")
 	}
@@ -857,6 +868,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	pacingMechanismPost, ok := FindBySlug("openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI Anthropic Google Meta pacing mechanism letter article")
+	}
+	if pacingMechanismPost.Title != "OpenAI's Model Broke Into Hugging Face. Now 1,178 AI Workers — Including OpenAI's Own — Want Washington to Slow the Whole Race Down." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI Anthropic Google Meta pacing mechanism letter article", pacingMechanismPost.Title)
+	}
+	if len(pacingMechanismPost.Related) != 3 {
+		t.Fatalf("OpenAI Anthropic Google Meta pacing mechanism letter article related count = %d, want 3", len(pacingMechanismPost.Related))
+	}
+
 	amdCerebrasPost, ok := FindBySlug("amd-cerebras-disaggregated-inference-helios-wafer-scale-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AMD Cerebras disaggregated inference article")

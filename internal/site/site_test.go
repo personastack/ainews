@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Nscale Spent Two Years Buying Power Plants and GPUs. Its Next $1.65 Billion Purchase Was Software.")) {
+		t.Fatal("response missing Nscale Anyscale acquisition article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Gated Its Most Powerful Model to 20 Approved Companies. Now It's Giving a Version to 100,000 Scientists for Free.")) {
 		t.Fatal("response missing OpenAI ChatGPT academic researchers article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString(`A Judge Wouldn't Stop Meta's Layoffs. He Also Said the AI Discrimination Claims Raise "Serious Questions."`)) {
 		t.Fatal("response missing Meta AI layoff discrimination lawsuit article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Google Just Shipped Three New Gemini Models. The One Everyone Actually Wants Still Isn't Ready.")) {
-		t.Fatal("response missing Gemini 3.5 Pro Flash stopgap article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersNscaleAnyscaleRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/nscale-anyscale-acquisition-ray-framework-compute-stack-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026"`,
+		`href="/posts/ai-startups-infrastructure-not-chatbots-2026"`,
+		`href="/posts/amd-cerebras-disaggregated-inference-helios-wafer-scale-2026"`,
+		template.HTMLEscapeString("OpenAI Wants a $500 Billion Data Center. It Needed Nvidia to Cosign the Lease."),
+		template.HTMLEscapeString("The Next AI Startup Wave Is Infrastructure, Not Chatbots"),
+		template.HTMLEscapeString("AMD and Cerebras Are Betting Two Chips Beat One. Wall Street Wants Proof First."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

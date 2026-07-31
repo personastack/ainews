@@ -116,6 +116,21 @@ func TestSourceSectionsUsePublicCitationText(t *testing.T) {
 	}
 }
 
+func TestRelatedLinksResolveToPosts(t *testing.T) {
+	knownSlugs := make(map[string]bool, len(posts))
+	for _, post := range posts {
+		knownSlugs[post.Slug] = true
+	}
+
+	for _, post := range posts {
+		for _, link := range post.Related {
+			if !knownSlugs[link.Slug] {
+				t.Fatalf("post %q has related link %q that does not resolve to a known post", post.Slug, link.Slug)
+			}
+		}
+	}
+}
+
 func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 	now := time.Now().UTC()
 
@@ -132,7 +147,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationJuly31 := time.Date(2026, time.July, 31, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly31), "nscale-anyscale-acquisition-ray-framework-compute-stack-2026") {
+		t.Fatal("publishedPosts() did not include Nscale Anyscale acquisition article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationJuly31), "openai-chatgpt-academic-researchers-100000-scientists-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI ChatGPT academic researchers article on July 31")
+	}
+
 	onPublicationJuly30 := time.Date(2026, time.July, 30, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly30), "nscale-anyscale-acquisition-ray-framework-compute-stack-2026") {
+		t.Fatal("publishedPosts() included Nscale Anyscale acquisition article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly30), "openai-chatgpt-academic-researchers-100000-scientists-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI ChatGPT academic researchers article on publication date")
 	}
@@ -874,6 +900,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	nscaleAnyscalePost, ok := FindBySlug("nscale-anyscale-acquisition-ray-framework-compute-stack-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Nscale Anyscale acquisition article")
+	}
+	if nscaleAnyscalePost.Title != "Nscale Spent Two Years Buying Power Plants and GPUs. Its Next $1.65 Billion Purchase Was Software." {
+		t.Fatalf("FindBySlug() returned %q for Nscale Anyscale acquisition article", nscaleAnyscalePost.Title)
+	}
+	if len(nscaleAnyscalePost.Related) != 3 {
+		t.Fatalf("Nscale Anyscale acquisition article related count = %d, want 3", len(nscaleAnyscalePost.Related))
+	}
+
 	academicResearchersPost, ok := FindBySlug("openai-chatgpt-academic-researchers-100000-scientists-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI ChatGPT academic researchers article")

@@ -148,6 +148,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationJuly31 := time.Date(2026, time.July, 31, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationJuly31), "anthropic-claude-breach-three-companies-pypi-supply-chain-2026") {
+		t.Fatal("publishedPosts() did not include Anthropic Claude breach article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly31), "nscale-anyscale-acquisition-ray-framework-compute-stack-2026") {
 		t.Fatal("publishedPosts() did not include Nscale Anyscale acquisition article on publication date")
 	}
@@ -156,6 +159,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationJuly30 := time.Date(2026, time.July, 30, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly30), "anthropic-claude-breach-three-companies-pypi-supply-chain-2026") {
+		t.Fatal("publishedPosts() included Anthropic Claude breach article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationJuly30), "nscale-anyscale-acquisition-ray-framework-compute-stack-2026") {
 		t.Fatal("publishedPosts() included Nscale Anyscale acquisition article before publication date")
 	}
@@ -900,6 +906,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	anthropicClaudeBreachPost, ok := FindBySlug("anthropic-claude-breach-three-companies-pypi-supply-chain-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Anthropic Claude breach article")
+	}
+	if anthropicClaudeBreachPost.Title != "Anthropic Went Looking for OpenAI's Bug in Its Own Models. It Found It Three Times." {
+		t.Fatalf("FindBySlug() returned %q for Anthropic Claude breach article", anthropicClaudeBreachPost.Title)
+	}
+	if len(anthropicClaudeBreachPost.Related) != 3 {
+		t.Fatalf("Anthropic Claude breach article related count = %d, want 3", len(anthropicClaudeBreachPost.Related))
+	}
+
 	nscaleAnyscalePost, ok := FindBySlug("nscale-anyscale-acquisition-ray-framework-compute-stack-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Nscale Anyscale acquisition article")

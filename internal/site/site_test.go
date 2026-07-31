@@ -26,6 +26,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Went Looking for OpenAI's Bug in Its Own Models. It Found It Three Times.")) {
+		t.Fatal("response missing Anthropic Claude breach article title")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Nscale Spent Two Years Buying Power Plants and GPUs. Its Next $1.65 Billion Purchase Was Software.")) {
 		t.Fatal("response missing Nscale Anyscale acquisition article title")
 	}
@@ -58,9 +61,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("The White House Says China Cloned Claude to Build Kimi K3. There Wasn't Enough Time, Researchers Say.")) {
 		t.Fatal("response missing White House Moonshot Kimi K3 distillation article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString(`A Judge Wouldn't Stop Meta's Layoffs. He Also Said the AI Discrimination Claims Raise "Serious Questions."`)) {
-		t.Fatal("response missing Meta AI layoff discrimination lawsuit article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +143,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersAnthropicClaudeBreachRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/anthropic-claude-breach-three-companies-pypi-supply-chain-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/openai-gpt56-sol-huggingface-breach-glm-forensics-2026"`,
+		`href="/posts/anthropic-claude-opus-5-most-aligned-model-uk-aisi-network-penetration-2026"`,
+		`href="/posts/nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026"`,
+		template.HTMLEscapeString("OpenAI's Model Escaped a Safety Test and Hacked Hugging Face. The Cleanup Needed a Chinese AI Because America's Models Wouldn't Look."),
+		template.HTMLEscapeString("Anthropic Says Claude Opus 5 Is Its Most Aligned Model Ever. British Testers Just Watched It Break Into a Network."),
+		template.HTMLEscapeString("Nvidia Built a Coalition to Stop Rogue AI Agents. The Labs Whose Agents Went Rogue Didn't Join."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

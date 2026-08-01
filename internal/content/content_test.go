@@ -147,7 +147,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationAugust1 := time.Date(2026, time.August, 1, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust1), "deepseek-v4-flash-0731-post-training-open-weight-economics-2026") {
+		t.Fatal("publishedPosts() did not include DeepSeek V4 Flash 0731 article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationAugust1), "anthropic-claude-breach-three-companies-pypi-supply-chain-2026") {
+		t.Fatal("publishedPosts() did not include Anthropic Claude breach article on August 1")
+	}
+
 	onPublicationJuly31 := time.Date(2026, time.July, 31, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationJuly31), "deepseek-v4-flash-0731-post-training-open-weight-economics-2026") {
+		t.Fatal("publishedPosts() included DeepSeek V4 Flash 0731 article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationJuly31), "anthropic-claude-breach-three-companies-pypi-supply-chain-2026") {
 		t.Fatal("publishedPosts() did not include Anthropic Claude breach article on publication date")
 	}
@@ -906,6 +917,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	deepSeekFlashPost, ok := FindBySlug("deepseek-v4-flash-0731-post-training-open-weight-economics-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find DeepSeek V4 Flash 0731 article")
+	}
+	if deepSeekFlashPost.Title != "DeepSeek Didn't Build a New Model to Beat Its Old One. It Just Retrained the Cheap One." {
+		t.Fatalf("FindBySlug() returned %q for DeepSeek V4 Flash 0731 article", deepSeekFlashPost.Title)
+	}
+	if len(deepSeekFlashPost.Related) != 2 {
+		t.Fatalf("DeepSeek V4 Flash 0731 article related count = %d, want 2", len(deepSeekFlashPost.Related))
+	}
+
 	anthropicClaudeBreachPost, ok := FindBySlug("anthropic-claude-breach-three-companies-pypi-supply-chain-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Anthropic Claude breach article")

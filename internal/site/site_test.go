@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027.")) {
+		t.Fatal("response missing EU AI Act enforcement article title")
+	}
+	if !strings.Contains(body, `href="/posts/eu-ai-act-enforcement-begins-high-risk-delayed-2027"`) {
+		t.Fatal("response missing EU AI Act enforcement article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Unitree Is Going Public With Real Revenue. Figure AI Is Worth $39 Billion Without Any.")) {
 		t.Fatal("response missing Unitree IPO humanoid robotics article title")
 	}
@@ -61,9 +67,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Model Escaped a Safety Test and Hacked Hugging Face. The Cleanup Needed a Chinese AI Because America's Models Wouldn't Look.")) {
 		t.Fatal("response missing OpenAI Hugging Face breach GLM forensics article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Jensen Huang's First Tweet Ever Wasn't About Chips. It Was a Warning to Washington.")) {
-		t.Fatal("response missing Nvidia Jensen Huang open weights article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -146,6 +149,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersEUAIActEnforcementRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/eu-ai-act-enforcement-begins-high-risk-delayed-2027", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026"`,
+		`href="/posts/nvidia-jensen-huang-open-weights-letter-distillation-2026"`,
+		`href="/posts/nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026"`,
+		template.HTMLEscapeString("OpenAI's Model Broke Into Hugging Face. Now 1,178 AI Workers - Including OpenAI's Own - Want Washington to Slow the Whole Race Down."),
+		template.HTMLEscapeString("Jensen Huang's First Tweet Ever Wasn't About Chips. It Was a Warning to Washington."),
+		template.HTMLEscapeString("Nvidia Built a Coalition to Stop Rogue AI Agents. The Labs Whose Agents Went Rogue Didn't Join."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 

@@ -148,6 +148,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationAugust2 := time.Date(2026, time.August, 2, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust2), "eu-ai-act-enforcement-begins-high-risk-delayed-2027") {
+		t.Fatal("publishedPosts() did not include EU AI Act enforcement article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust2), "unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026") {
 		t.Fatal("publishedPosts() did not include Unitree IPO humanoid robotics article on publication date")
 	}
@@ -156,6 +159,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationAugust1 := time.Date(2026, time.August, 1, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust1), "eu-ai-act-enforcement-begins-high-risk-delayed-2027") {
+		t.Fatal("publishedPosts() included EU AI Act enforcement article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationAugust1), "unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026") {
 		t.Fatal("publishedPosts() included Unitree IPO humanoid robotics article before publication date")
 	}
@@ -928,6 +934,32 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	euAIActEnforcementPost, ok := FindBySlug("eu-ai-act-enforcement-begins-high-risk-delayed-2027")
+	if !ok {
+		t.Fatal("FindBySlug() did not find EU AI Act enforcement article")
+	}
+	if euAIActEnforcementPost.Title != "The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027." {
+		t.Fatalf("FindBySlug() returned %q for EU AI Act enforcement article", euAIActEnforcementPost.Title)
+	}
+	if euAIActEnforcementPost.Date != "August 2, 2026" {
+		t.Fatalf("EU AI Act enforcement article date = %q, want August 2, 2026", euAIActEnforcementPost.Date)
+	}
+	if euAIActEnforcementPost.Tag != "Policy" {
+		t.Fatalf("EU AI Act enforcement article tag = %q, want Policy", euAIActEnforcementPost.Tag)
+	}
+	if len(euAIActEnforcementPost.Related) != 3 {
+		t.Fatalf("EU AI Act enforcement article related count = %d, want 3", len(euAIActEnforcementPost.Related))
+	}
+	for i, want := range []string{
+		"openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026",
+		"nvidia-jensen-huang-open-weights-letter-distillation-2026",
+		"nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026",
+	} {
+		if euAIActEnforcementPost.Related[i].Slug != want {
+			t.Fatalf("EU AI Act enforcement article related[%d] slug = %q, want %q", i, euAIActEnforcementPost.Related[i].Slug, want)
+		}
+	}
+
 	unitreePost, ok := FindBySlug("unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Unitree IPO humanoid robotics article")

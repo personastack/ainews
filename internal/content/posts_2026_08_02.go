@@ -3,6 +3,64 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027.",
+			Slug:    "eu-ai-act-enforcement-begins-high-risk-delayed-2027",
+			Date:    "August 2, 2026",
+			Tag:     "Policy",
+			Summary: "Brussels begins policing chatbot disclosures, deepfake labels, and foundation-model transparency this week - but a last-minute simplification deal quietly bought the toughest high-risk rules two more years.",
+			Related: []Link{
+				{
+					Title: "OpenAI's Model Broke Into Hugging Face. Now 1,178 AI Workers - Including OpenAI's Own - Want Washington to Slow the Whole Race Down.",
+					Slug:  "openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026",
+				},
+				{
+					Title: "Jensen Huang's First Tweet Ever Wasn't About Chips. It Was a Warning to Washington.",
+					Slug:  "nvidia-jensen-huang-open-weights-letter-distillation-2026",
+				},
+				{
+					Title: "Nvidia Built a Coalition to Stop Rogue AI Agents. The Labs Whose Agents Went Rogue Didn't Join.",
+					Slug:  "nvidia-open-secure-ai-alliance-openai-anthropic-google-absent-2026",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`Today is the date European regulators have been circling on their calendars since the AI Act became law in 2024. As of August 2, 2026, the European Commission's AI Office and national regulators across the bloc can formally enforce it, and a new wave of transparency obligations lands alongside them. Chatbots and other interactive AI systems now have to tell users they're talking to a machine. Deepfakes have to be labeled. AI-generated or altered images, video, and audio need machine-readable marks baked in so platforms and detection tools can identify them. The Commission has also switched on a public complaints portal and a whistleblower tool, giving anyone - a competitor, a journalist, an employee - a formal channel to flag a violation.`,
+						`The obligations landing today aren't limited to consumer-facing labeling. Providers of general-purpose AI models - the foundation models behind everything from chatbots to coding assistants - are now subject to Article 53 of the Act, which sets baseline documentation and copyright-compliance duties for every GPAI model and layers on extra scrutiny for models the Commission judges to carry "systemic risk," a category aimed squarely at the handful of frontier labs training the largest systems. More than 180 organizations have already signed onto the Commission-backed transparency code of practice, a voluntary framework designed as a soft landing into binding rules on AI-generated content. Enforcement authority is split: the AI Office in Brussels handles GPAI providers and oversight of certain AI systems directly, while national regulators keep jurisdiction over sensitive domains like law enforcement, border management, courts, and financial services. National AI regulatory sandboxes, meanwhile, no longer land today: the Digital Omnibus deal moved that deadline to August 2, 2027.`,
+					},
+				},
+				{
+					Heading: "The fines are real money",
+					Paragraphs: []string{
+						`Under Article 99, deploying a prohibited AI practice - the Act's short list of banned uses, like social scoring or manipulative subliminal techniques - can cost a company up to EUR35 million or 7% of global annual turnover, whichever is larger. Breaching most operator obligations, including transparency duties under Article 50, tops out at EUR15 million or 3% of turnover. Supplying incorrect, incomplete, or misleading information to notified bodies or national authorities can draw penalties up to EUR7.5 million or 1% of turnover. For a large AI company, the percentage-of-turnover figures dwarf the flat euro amounts.`,
+					},
+				},
+				{
+					Heading: "The deadline that moved",
+					Paragraphs: []string{
+						`But the headline date obscures a quieter story that unfolded over the past three months. The original 2024 text of the AI Act set today as the deadline not just for transparency and GPAI rules, but for the much heavier compliance regime covering "high-risk" AI systems - the category that includes hiring algorithms, credit-scoring tools, biometric identification, and AI embedded in medical devices or critical infrastructure. That's the part of the law that actually forces companies to run conformity assessments, produce technical documentation, and register systems in an EU database before deploying them. It's also the part industry groups lobbied hardest against, arguing the compliance burden was unworkable on the original timeline.`,
+						`They got their extension. On May 7, 2026, the Council presidency and European Parliament negotiators reached a provisional deal under the EU's Digital Omnibus package to simplify parts of the Act. The Council gave final approval on June 29. The agreement pushes the compliance deadline for standalone high-risk systems under Annex III of the Act to December 2, 2027, and gives high-risk AI embedded in already regulated products - think medical devices or industrial machinery - until August 2, 2028. It also softens the AI-content watermarking requirement for systems already on the market before today, giving providers until December 2, 2026, to add transparency solutions retroactively, though anything launched from today onward has to comply immediately. In exchange for the breathing room, the omnibus deal added new prohibitions on AI-generated non-consensual intimate imagery and child sexual abuse material, and carved out lighter-touch accommodations for small and mid-cap companies.`,
+					},
+				},
+				{
+					Heading: "A narrower launch than advertised",
+					Paragraphs: []string{
+						`The net effect is a regulatory regime that goes live today in name, but arrives narrower than the law's authors originally intended. The rules that touch the biggest AI labs directly - GPAI documentation, systemic-risk scrutiny, chatbot and deepfake disclosure, and a functioning enforcement and penalty apparatus - are active as of this week. The rules that would have forced a much broader swath of European businesses to formally certify AI systems used in hiring, lending, and healthcare now have until the end of 2027 to comply, a concession won only weeks before it would have otherwise bitten. Whether that trade counts as pragmatic sequencing or a retreat under lobbying pressure will likely become one of the more contested storylines in AI policy over the next eighteen months, especially as the AI Office starts publishing its first enforcement actions under the parts of the law that did not get a reprieve.`,
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"European Commission, Commission starts enforcing AI Act rules and new transparency requirements on 2 August: https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august",
+						"Council of the EU, Artificial Intelligence: Council and Parliament agree to simplify and streamline rules: https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/",
+						"Council of the EU, Artificial Intelligence: Council gives final green light to simplify and streamline rules: https://www.consilium.europa.eu/en/press/press-releases/2026/06/29/artificial-intelligence-council-gives-final-green-light-to-simplify-and-streamline-rules/",
+						"Stibbe, AI Act Reloaded? What the Latest AI Act Changes Mean in Practice: https://www.stibbe.com/publications-and-insights/ai-act-reloaded-what-the-latest-ai-act-changes-mean-in-practice",
+						"EU Artificial Intelligence Act reference site, Article 99: Penalties: https://artificialintelligenceact.eu/article/99/",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Unitree Is Going Public With Real Revenue. Figure AI Is Worth $39 Billion Without Any.",
 			Slug:    "unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026",
 			Date:    "August 2, 2026",

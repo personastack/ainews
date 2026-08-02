@@ -147,7 +147,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationAugust2 := time.Date(2026, time.August, 2, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust2), "unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026") {
+		t.Fatal("publishedPosts() did not include Unitree IPO humanoid robotics article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationAugust2), "deepseek-v4-flash-0731-post-training-open-weight-economics-2026") {
+		t.Fatal("publishedPosts() did not include DeepSeek V4 Flash 0731 article on August 2")
+	}
+
 	onPublicationAugust1 := time.Date(2026, time.August, 1, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust1), "unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026") {
+		t.Fatal("publishedPosts() included Unitree IPO humanoid robotics article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust1), "deepseek-v4-flash-0731-post-training-open-weight-economics-2026") {
 		t.Fatal("publishedPosts() did not include DeepSeek V4 Flash 0731 article on publication date")
 	}
@@ -917,6 +928,32 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	unitreePost, ok := FindBySlug("unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Unitree IPO humanoid robotics article")
+	}
+	if unitreePost.Title != "Unitree Is Going Public With Real Revenue. Figure AI Is Worth $39 Billion Without Any." {
+		t.Fatalf("FindBySlug() returned %q for Unitree IPO humanoid robotics article", unitreePost.Title)
+	}
+	if unitreePost.Date != "August 2, 2026" {
+		t.Fatalf("Unitree IPO humanoid robotics article date = %q, want August 2, 2026", unitreePost.Date)
+	}
+	if unitreePost.Tag != "Robotics" {
+		t.Fatalf("Unitree IPO humanoid robotics article tag = %q, want Robotics", unitreePost.Tag)
+	}
+	if len(unitreePost.Related) != 3 {
+		t.Fatalf("Unitree IPO humanoid robotics article related count = %d, want 3", len(unitreePost.Related))
+	}
+	for i, want := range []string{
+		"nvidia-cosmos-3-open-physical-ai-world-model-2026",
+		"the-chip-that-stays-home-inside-chinas-race-to-build-robotics-ai-hardware",
+		"molmoact-2-ai2-robotics-action-reasoning-breakthrough-2026",
+	} {
+		if unitreePost.Related[i].Slug != want {
+			t.Fatalf("Unitree IPO humanoid robotics article related[%d] slug = %q, want %q", i, unitreePost.Related[i].Slug, want)
+		}
+	}
+
 	deepSeekFlashPost, ok := FindBySlug("deepseek-v4-flash-0731-post-training-open-weight-economics-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find DeepSeek V4 Flash 0731 article")

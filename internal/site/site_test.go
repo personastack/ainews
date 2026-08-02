@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Unitree Is Going Public With Real Revenue. Figure AI Is Worth $39 Billion Without Any.")) {
+		t.Fatal("response missing Unitree IPO humanoid robotics article title")
+	}
+	if !strings.Contains(body, `href="/posts/unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026"`) {
+		t.Fatal("response missing Unitree IPO humanoid robotics article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("DeepSeek Didn't Build a New Model to Beat Its Old One. It Just Retrained the Cheap One.")) {
 		t.Fatal("response missing DeepSeek V4 Flash 0731 article title")
 	}
@@ -58,9 +64,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("Jensen Huang's First Tweet Ever Wasn't About Chips. It Was a Warning to Washington.")) {
 		t.Fatal("response missing Nvidia Jensen Huang open weights article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("OpenRouter's Whole Pitch Was Neutrality. Stripe Wants to Buy It for $10 Billion Anyway.")) {
-		t.Fatal("response missing Stripe OpenRouter acquisition article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -143,6 +146,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersUnitreeIPOHumanoidRoboticsRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nvidia-cosmos-3-open-physical-ai-world-model-2026"`,
+		`href="/posts/the-chip-that-stays-home-inside-chinas-race-to-build-robotics-ai-hardware"`,
+		`href="/posts/molmoact-2-ai2-robotics-action-reasoning-breakthrough-2026"`,
+		template.HTMLEscapeString("Language's Frontier Is Locking Down. Robotics' Frontier Just Went Open."),
+		template.HTMLEscapeString("The Chip That Stays Home: Inside China's Race to Build Robotics AI Hardware"),
+		template.HTMLEscapeString("MolmoAct 2: AI2's Breakthrough in Physical AI and Robot Task Performance"),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 
@@ -1596,6 +1629,7 @@ func TestSitemap(t *testing.T) {
 	for _, want := range []string{
 		`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
 		"<loc>https://ainews.personastack.ai/</loc>",
+		"<loc>https://ainews.personastack.ai/posts/unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/nvidia-cosmos-3-open-physical-ai-world-model-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/openai-gpt-5-6-sol-government-gated-frontier-release-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/ai-model-release-firehose-cadence-eval-debt-2026</loc>",

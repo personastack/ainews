@@ -148,11 +148,17 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationAugust3 := time.Date(2026, time.August, 3, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust3), "ai-layoffs-enterprise-roi-gap-2026") {
+		t.Fatal("publishedPosts() did not include AI layoffs enterprise ROI gap article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust3), "deepseek-moonshot-china-ai-ipo-funding-state-investment-2026") {
 		t.Fatal("publishedPosts() did not include DeepSeek Moonshot IPO funding article on publication date")
 	}
 
 	onPublicationAugust2 := time.Date(2026, time.August, 2, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust2), "ai-layoffs-enterprise-roi-gap-2026") {
+		t.Fatal("publishedPosts() included AI layoffs enterprise ROI gap article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationAugust2), "deepseek-moonshot-china-ai-ipo-funding-state-investment-2026") {
 		t.Fatal("publishedPosts() included DeepSeek Moonshot IPO funding article before publication date")
 	}
@@ -942,6 +948,31 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	aiLayoffsPost, ok := FindBySlug("ai-layoffs-enterprise-roi-gap-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI layoffs enterprise ROI gap article")
+	}
+	if aiLayoffsPost.Title != "Companies Cited AI in Over 100,000 Layoffs This Year. Most of Their AI Projects Haven't Paid Off Yet." {
+		t.Fatalf("FindBySlug() returned %q for AI layoffs enterprise ROI gap article", aiLayoffsPost.Title)
+	}
+	if aiLayoffsPost.Date != "August 3, 2026" {
+		t.Fatalf("AI layoffs enterprise ROI gap article date = %q, want August 3, 2026", aiLayoffsPost.Date)
+	}
+	if aiLayoffsPost.Tag != "Labor" {
+		t.Fatalf("AI layoffs enterprise ROI gap article tag = %q, want Labor", aiLayoffsPost.Tag)
+	}
+	if len(aiLayoffsPost.Related) != 2 {
+		t.Fatalf("AI layoffs enterprise ROI gap article related count = %d, want 2", len(aiLayoffsPost.Related))
+	}
+	for i, want := range []string{
+		"nscale-anyscale-acquisition-ray-framework-compute-stack-2026",
+		"nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026",
+	} {
+		if aiLayoffsPost.Related[i].Slug != want {
+			t.Fatalf("AI layoffs enterprise ROI gap article related[%d] slug = %q, want %q", i, aiLayoffsPost.Related[i].Slug, want)
+		}
+	}
+
 	deepSeekMoonshotPost, ok := FindBySlug("deepseek-moonshot-china-ai-ipo-funding-state-investment-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find DeepSeek Moonshot IPO funding article")

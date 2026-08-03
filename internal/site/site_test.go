@@ -26,8 +26,11 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("DeepSeek and Moonshot Are Racing to IPO. Beijing Just Showed Up as the Investor With No Lock-Up.")) {
-		t.Fatal("response missing DeepSeek Moonshot IPO funding article title")
+	if !strings.Contains(body, template.HTMLEscapeString("Companies Cited AI in Over 100,000 Layoffs This Year. Most of Their AI Projects Haven't Paid Off Yet.")) {
+		t.Fatal("response missing AI layoffs enterprise ROI gap article title")
+	}
+	if !strings.Contains(body, `href="/posts/ai-layoffs-enterprise-roi-gap-2026"`) {
+		t.Fatal("response missing AI layoffs enterprise ROI gap article link")
 	}
 	if !strings.Contains(body, `href="/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026"`) {
 		t.Fatal("response missing DeepSeek Moonshot IPO funding article link")
@@ -128,6 +131,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersAILayoffsEnterpriseROIGapRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/ai-layoffs-enterprise-roi-gap-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nscale-anyscale-acquisition-ray-framework-compute-stack-2026"`,
+		`href="/posts/nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026"`,
+		template.HTMLEscapeString("Nscale Spent Two Years Buying Power Plants and GPUs. Its Next $1.65 Billion Purchase Was Software."),
+		template.HTMLEscapeString("OpenAI Wants a $500 Billion Data Center. It Needed Nvidia to Cosign the Lease."),
+		"Challenger, Gray &amp; Christmas",
+		"95% of generative AI pilots produced no measurable impact",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing AI layoffs article content %q", want)
+		}
 	}
 }
 
@@ -1671,6 +1704,7 @@ func TestSitemap(t *testing.T) {
 	for _, want := range []string{
 		`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
 		"<loc>https://ainews.personastack.ai/</loc>",
+		"<loc>https://ainews.personastack.ai/posts/ai-layoffs-enterprise-roi-gap-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/nvidia-cosmos-3-open-physical-ai-world-model-2026</loc>",

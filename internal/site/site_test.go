@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("DeepSeek and Moonshot Are Racing to IPO. Beijing Just Showed Up as the Investor With No Lock-Up.")) {
+		t.Fatal("response missing DeepSeek Moonshot IPO funding article title")
+	}
+	if !strings.Contains(body, `href="/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026"`) {
+		t.Fatal("response missing DeepSeek Moonshot IPO funding article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027.")) {
 		t.Fatal("response missing EU AI Act enforcement article title")
 	}
@@ -40,33 +46,6 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	if !strings.Contains(body, template.HTMLEscapeString("DeepSeek Didn't Build a New Model to Beat Its Old One. It Just Retrained the Cheap One.")) {
 		t.Fatal("response missing DeepSeek V4 Flash 0731 article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Went Looking for OpenAI's Bug in Its Own Models. It Found It Three Times.")) {
-		t.Fatal("response missing Anthropic Claude breach article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Nscale Spent Two Years Buying Power Plants and GPUs. Its Next $1.65 Billion Purchase Was Software.")) {
-		t.Fatal("response missing Nscale Anyscale acquisition article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Gated Its Most Powerful Model to 20 Approved Companies. Now It's Giving a Version to 100,000 Scientists for Free.")) {
-		t.Fatal("response missing OpenAI ChatGPT academic researchers article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Model Broke Into Hugging Face. Now 1,178 AI Workers — Including OpenAI's Own — Want Washington to Slow the Whole Race Down.")) {
-		t.Fatal("response missing OpenAI Anthropic Google Meta pacing mechanism letter article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("AMD and Cerebras Are Betting Two Chips Beat One. Wall Street Wants Proof First.")) {
-		t.Fatal("response missing AMD Cerebras disaggregated inference article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Nvidia Built a Coalition to Stop Rogue AI Agents. The Labs Whose Agents Went Rogue Didn't Join.")) {
-		t.Fatal("response missing Nvidia Open Secure AI Alliance article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Says Claude Opus 5 Is Its Most Aligned Model Ever. British Testers Just Watched It Break Into a Network.")) {
-		t.Fatal("response missing Claude Opus 5 AISI network penetration article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("OpenAI Wants a $500 Billion Data Center. It Needed Nvidia to Cosign the Lease.")) {
-		t.Fatal("response missing Nvidia OpenAI Ohio data center financing article title")
-	}
-	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Model Escaped a Safety Test and Hacked Hugging Face. The Cleanup Needed a Chinese AI Because America's Models Wouldn't Look.")) {
-		t.Fatal("response missing OpenAI Hugging Face breach GLM forensics article title")
 	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
@@ -149,6 +128,36 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersDeepSeekMoonshotIPOFundingRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/anthropic-ipo-openai-race-revenue-accounting-2026"`,
+		`href="/posts/nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026"`,
+		`href="/posts/white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026"`,
+		template.HTMLEscapeString("Anthropic Is Racing OpenAI to Wall Street. Its Own Revenue Number May Not Survive the Trip."),
+		template.HTMLEscapeString("OpenAI Wants a $500 Billion Data Center. It Needed Nvidia to Cosign the Lease."),
+		template.HTMLEscapeString("The White House Says China Cloned Claude to Build Kimi K3. There Wasn't Enough Time, Researchers Say."),
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing related story content %q", want)
+		}
 	}
 }
 
@@ -1662,6 +1671,7 @@ func TestSitemap(t *testing.T) {
 	for _, want := range []string{
 		`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
 		"<loc>https://ainews.personastack.ai/</loc>",
+		"<loc>https://ainews.personastack.ai/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/nvidia-cosmos-3-open-physical-ai-world-model-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/openai-gpt-5-6-sol-government-gated-frontier-release-2026</loc>",

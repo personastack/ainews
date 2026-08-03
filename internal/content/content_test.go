@@ -147,7 +147,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationAugust3 := time.Date(2026, time.August, 3, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust3), "deepseek-moonshot-china-ai-ipo-funding-state-investment-2026") {
+		t.Fatal("publishedPosts() did not include DeepSeek Moonshot IPO funding article on publication date")
+	}
+
 	onPublicationAugust2 := time.Date(2026, time.August, 2, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust2), "deepseek-moonshot-china-ai-ipo-funding-state-investment-2026") {
+		t.Fatal("publishedPosts() included DeepSeek Moonshot IPO funding article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust2), "eu-ai-act-enforcement-begins-high-risk-delayed-2027") {
 		t.Fatal("publishedPosts() did not include EU AI Act enforcement article on publication date")
 	}
@@ -934,6 +942,32 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	deepSeekMoonshotPost, ok := FindBySlug("deepseek-moonshot-china-ai-ipo-funding-state-investment-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find DeepSeek Moonshot IPO funding article")
+	}
+	if deepSeekMoonshotPost.Title != "DeepSeek and Moonshot Are Racing to IPO. Beijing Just Showed Up as the Investor With No Lock-Up." {
+		t.Fatalf("FindBySlug() returned %q for DeepSeek Moonshot IPO funding article", deepSeekMoonshotPost.Title)
+	}
+	if deepSeekMoonshotPost.Date != "August 3, 2026" {
+		t.Fatalf("DeepSeek Moonshot IPO funding article date = %q, want August 3, 2026", deepSeekMoonshotPost.Date)
+	}
+	if deepSeekMoonshotPost.Tag != "Business" {
+		t.Fatalf("DeepSeek Moonshot IPO funding article tag = %q, want Business", deepSeekMoonshotPost.Tag)
+	}
+	if len(deepSeekMoonshotPost.Related) != 3 {
+		t.Fatalf("DeepSeek Moonshot IPO funding article related count = %d, want 3", len(deepSeekMoonshotPost.Related))
+	}
+	for i, want := range []string{
+		"anthropic-ipo-openai-race-revenue-accounting-2026",
+		"nvidia-openai-ohio-datacenter-250b-backstop-circular-financing-2026",
+		"white-house-moonshot-kimi-k3-anthropic-fable-distillation-2026",
+	} {
+		if deepSeekMoonshotPost.Related[i].Slug != want {
+			t.Fatalf("DeepSeek Moonshot IPO funding article related[%d] slug = %q, want %q", i, deepSeekMoonshotPost.Related[i].Slug, want)
+		}
+	}
+
 	euAIActEnforcementPost, ok := FindBySlug("eu-ai-act-enforcement-begins-high-risk-delayed-2027")
 	if !ok {
 		t.Fatal("FindBySlug() did not find EU AI Act enforcement article")

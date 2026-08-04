@@ -147,7 +147,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationAugust4 := time.Date(2026, time.August, 4, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust4), "openai-astra-ten-math-proofs-non-sofic-groups-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI Astra ten proofs article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationAugust4), "ai-layoffs-enterprise-roi-gap-2026") {
+		t.Fatal("publishedPosts() did not include AI layoffs enterprise ROI gap article on August 4")
+	}
+
 	onPublicationAugust3 := time.Date(2026, time.August, 3, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust3), "openai-astra-ten-math-proofs-non-sofic-groups-2026") {
+		t.Fatal("publishedPosts() included OpenAI Astra ten proofs article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust3), "ai-layoffs-enterprise-roi-gap-2026") {
 		t.Fatal("publishedPosts() did not include AI layoffs enterprise ROI gap article on publication date")
 	}
@@ -948,6 +959,31 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	astraPost, ok := FindBySlug("openai-astra-ten-math-proofs-non-sofic-groups-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find OpenAI Astra ten proofs article")
+	}
+	if astraPost.Title != "OpenAI's Next Model Solved Ten Decades-Old Math Problems. Getting Mathematicians to Believe It Might Take Longer." {
+		t.Fatalf("FindBySlug() returned %q for OpenAI Astra ten proofs article", astraPost.Title)
+	}
+	if astraPost.Date != "August 4, 2026" {
+		t.Fatalf("OpenAI Astra ten proofs article date = %q, want August 4, 2026", astraPost.Date)
+	}
+	if astraPost.Tag != "Science" {
+		t.Fatalf("OpenAI Astra ten proofs article tag = %q, want Science", astraPost.Tag)
+	}
+	if len(astraPost.Related) != 2 {
+		t.Fatalf("OpenAI Astra ten proofs article related count = %d, want 2", len(astraPost.Related))
+	}
+	for i, want := range []string{
+		"openai-long-horizon-model-sandbox-escape-erdos-2026",
+		"openai-chatgpt-academic-researchers-100000-scientists-2026",
+	} {
+		if astraPost.Related[i].Slug != want {
+			t.Fatalf("OpenAI Astra ten proofs article related[%d] slug = %q, want %q", i, astraPost.Related[i].Slug, want)
+		}
+	}
+
 	aiLayoffsPost, ok := FindBySlug("ai-layoffs-enterprise-roi-gap-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI layoffs enterprise ROI gap article")

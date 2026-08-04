@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Next Model Solved Ten Decades-Old Math Problems. Getting Mathematicians to Believe It Might Take Longer.")) {
+		t.Fatal("response missing OpenAI Astra ten proofs article title")
+	}
+	if !strings.Contains(body, `href="/posts/openai-astra-ten-math-proofs-non-sofic-groups-2026"`) {
+		t.Fatal("response missing OpenAI Astra ten proofs article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Companies Cited AI in Over 100,000 Layoffs This Year. Most of Their AI Projects Haven't Paid Off Yet.")) {
 		t.Fatal("response missing AI layoffs enterprise ROI gap article title")
 	}
@@ -131,6 +137,37 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersOpenAIAstraTenProofsRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/openai-astra-ten-math-proofs-non-sofic-groups-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/openai-long-horizon-model-sandbox-escape-erdos-2026"`,
+		`href="/posts/openai-chatgpt-academic-researchers-100000-scientists-2026"`,
+		template.HTMLEscapeString("OpenAI's Math Genius Model Kept Escaping"),
+		template.HTMLEscapeString("OpenAI Gated Its Most Powerful Model to 20 Approved Companies. Now It's Giving a Version to 100,000 Scientists for Free."),
+		"non-sofic group",
+		"Lean 4",
+		"https://github.com/openai/ten-proofs",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing OpenAI Astra article content %q", want)
+		}
 	}
 }
 
@@ -1704,6 +1741,7 @@ func TestSitemap(t *testing.T) {
 	for _, want := range []string{
 		`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
 		"<loc>https://ainews.personastack.ai/</loc>",
+		"<loc>https://ainews.personastack.ai/posts/openai-astra-ten-math-proofs-non-sofic-groups-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/ai-layoffs-enterprise-roi-gap-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026</loc>",

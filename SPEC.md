@@ -226,6 +226,8 @@ The August 3, 2026 content batch includes a Business article at slug `deepseek-m
 
 The same August 3, 2026 content batch includes a Labor article at slug `ai-layoffs-enterprise-roi-gap-2026` about employers citing AI in more than 100,000 announced 2026 job cuts while enterprise AI ROI research still finds most deployments have not produced measurable financial returns. Preserve the distinction between employer-stated layoff reasons, reported single-company restructuring figures, vendor or third-party survey findings, and measured return on investment. Keep the thesis focused on the mismatch between AI-labeled workforce cuts and still-immature enterprise deployment value, not on claiming every cited job cut was directly automated away or that AI systems never produce ROI.
 
+The August 4, 2026 content batch includes a Science article at slug `openai-astra-ten-math-proofs-non-sofic-groups-2026` about OpenAI's unreleased Astra model producing ten machine-checkable Lean proofs for long-standing open problems in mathematics and theoretical computer science. Preserve the distinction between OpenAI's and secondary sources' claimed machine verification and broader field acceptance: the results are not peer reviewed, Astra is unreleased with no launch date or pricing, GPT-6 naming is speculation, and the story should not present Lean certificates as a substitute for mathematicians checking novelty, framing, and significance. Keep the article distinct from the July 22 sandbox-escape story, which is related reading but focused on containment failure around an earlier math-model result.
+
 ## Testing
 
 Run:

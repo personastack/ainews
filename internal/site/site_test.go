@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("AI Data Centers Are Eating the World's Memory Chip Supply")) {
+		t.Fatal("response missing AI memory chip shortage article title")
+	}
+	if !strings.Contains(body, `href="/posts/ai-memory-chip-shortage-dram-hbm-data-centers-2026"`) {
+		t.Fatal("response missing AI memory chip shortage article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Next Model Solved Ten Decades-Old Math Problems. Getting Mathematicians to Believe It Might Take Longer.")) {
 		t.Fatal("response missing OpenAI Astra ten proofs article title")
 	}
@@ -137,6 +143,39 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersAIMemoryChipShortageRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/ai-memory-chip-shortage-dram-hbm-data-centers-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/ai-memory-crunch-dram-hbm-shortage-or-strategy-2026"`,
+		`href="/posts/2026-05-24-ai-compute-arms-race"`,
+		`href="/posts/nscale-anyscale-acquisition-ray-framework-compute-stack-2026"`,
+		template.HTMLEscapeString("The Memory Tax: Did the AI Boom Break the RAM Market, or Rig It?"),
+		template.HTMLEscapeString("The $500 Billion AI Compute Arms Race: Power, Politics, and Planet at Stake"),
+		template.HTMLEscapeString("Nscale Spent Two Years Buying Power Plants and GPUs. Its Next $1.65 Billion Purchase Was Software."),
+		"$120.6 billion",
+		"High-bandwidth memory",
+		"https://www.semiconductors.org/global-semiconductor-sales-increase-9-2-month-to-month-in-may/",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing AI memory chip shortage article content %q", want)
+		}
 	}
 }
 

@@ -147,7 +147,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationAugust5 := time.Date(2026, time.August, 5, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust5), "ai-memory-chip-shortage-dram-hbm-data-centers-2026") {
+		t.Fatal("publishedPosts() did not include AI memory chip shortage article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationAugust5), "openai-astra-ten-math-proofs-non-sofic-groups-2026") {
+		t.Fatal("publishedPosts() did not include OpenAI Astra ten proofs article on August 5")
+	}
+
 	onPublicationAugust4 := time.Date(2026, time.August, 4, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust4), "ai-memory-chip-shortage-dram-hbm-data-centers-2026") {
+		t.Fatal("publishedPosts() included AI memory chip shortage article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust4), "openai-astra-ten-math-proofs-non-sofic-groups-2026") {
 		t.Fatal("publishedPosts() did not include OpenAI Astra ten proofs article on publication date")
 	}
@@ -959,6 +970,32 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	aiMemoryPost, ok := FindBySlug("ai-memory-chip-shortage-dram-hbm-data-centers-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find AI memory chip shortage article")
+	}
+	if aiMemoryPost.Title != "AI Data Centers Are Eating the World's Memory Chip Supply" {
+		t.Fatalf("FindBySlug() returned %q for AI memory chip shortage article", aiMemoryPost.Title)
+	}
+	if aiMemoryPost.Date != "August 5, 2026" {
+		t.Fatalf("AI memory chip shortage article date = %q, want August 5, 2026", aiMemoryPost.Date)
+	}
+	if aiMemoryPost.Tag != "Hardware/Infrastructure" {
+		t.Fatalf("AI memory chip shortage article tag = %q, want Hardware/Infrastructure", aiMemoryPost.Tag)
+	}
+	if len(aiMemoryPost.Related) != 3 {
+		t.Fatalf("AI memory chip shortage article related count = %d, want 3", len(aiMemoryPost.Related))
+	}
+	for i, want := range []string{
+		"ai-memory-crunch-dram-hbm-shortage-or-strategy-2026",
+		"2026-05-24-ai-compute-arms-race",
+		"nscale-anyscale-acquisition-ray-framework-compute-stack-2026",
+	} {
+		if aiMemoryPost.Related[i].Slug != want {
+			t.Fatalf("AI memory chip shortage article related[%d] slug = %q, want %q", i, aiMemoryPost.Related[i].Slug, want)
+		}
+	}
+
 	astraPost, ok := FindBySlug("openai-astra-ten-math-proofs-non-sofic-groups-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find OpenAI Astra ten proofs article")

@@ -148,6 +148,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationAugust5 := time.Date(2026, time.August, 5, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust5), "anaconda-acquires-enkrypt-ai-mcp-security-2026") {
+		t.Fatal("publishedPosts() did not include Anaconda Enkrypt AI MCP security article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust5), "ai-memory-chip-shortage-dram-hbm-data-centers-2026") {
 		t.Fatal("publishedPosts() did not include AI memory chip shortage article on publication date")
 	}
@@ -156,6 +159,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationAugust4 := time.Date(2026, time.August, 4, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust4), "anaconda-acquires-enkrypt-ai-mcp-security-2026") {
+		t.Fatal("publishedPosts() included Anaconda Enkrypt AI MCP security article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationAugust4), "ai-memory-chip-shortage-dram-hbm-data-centers-2026") {
 		t.Fatal("publishedPosts() included AI memory chip shortage article before publication date")
 	}
@@ -970,6 +976,31 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	anacondaPost, ok := FindBySlug("anaconda-acquires-enkrypt-ai-mcp-security-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Anaconda Enkrypt AI MCP security article")
+	}
+	if anacondaPost.Title != "Enkrypt AI Scanned 25,000 MCP Servers and Found a Way In on Nearly Three Out of Four. Anaconda Just Bought the Company That Did the Scanning." {
+		t.Fatalf("FindBySlug() returned %q for Anaconda Enkrypt AI MCP security article", anacondaPost.Title)
+	}
+	if anacondaPost.Date != "August 5, 2026" {
+		t.Fatalf("Anaconda Enkrypt AI MCP security article date = %q, want August 5, 2026", anacondaPost.Date)
+	}
+	if anacondaPost.Tag != "Security" {
+		t.Fatalf("Anaconda Enkrypt AI MCP security article tag = %q, want Security", anacondaPost.Tag)
+	}
+	if len(anacondaPost.Related) != 2 {
+		t.Fatalf("Anaconda Enkrypt AI MCP security article related count = %d, want 2", len(anacondaPost.Related))
+	}
+	for i, want := range []string{
+		"anthropic-claude-breach-three-companies-pypi-supply-chain-2026",
+		"eu-ai-act-enforcement-begins-high-risk-delayed-2027",
+	} {
+		if anacondaPost.Related[i].Slug != want {
+			t.Fatalf("Anaconda Enkrypt AI MCP security article related[%d] slug = %q, want %q", i, anacondaPost.Related[i].Slug, want)
+		}
+	}
+
 	aiMemoryPost, ok := FindBySlug("ai-memory-chip-shortage-dram-hbm-data-centers-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find AI memory chip shortage article")

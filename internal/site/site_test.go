@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Enkrypt AI Scanned 25,000 MCP Servers and Found a Way In on Nearly Three Out of Four. Anaconda Just Bought the Company That Did the Scanning.")) {
+		t.Fatal("response missing Anaconda Enkrypt AI MCP security article title")
+	}
+	if !strings.Contains(body, `href="/posts/anaconda-acquires-enkrypt-ai-mcp-security-2026"`) {
+		t.Fatal("response missing Anaconda Enkrypt AI MCP security article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("AI Data Centers Are Eating the World's Memory Chip Supply")) {
 		t.Fatal("response missing AI memory chip shortage article title")
 	}
@@ -143,6 +149,38 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersAnacondaEnkryptAIMCPSecurityRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/anaconda-acquires-enkrypt-ai-mcp-security-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/anthropic-claude-breach-three-companies-pypi-supply-chain-2026"`,
+		`href="/posts/eu-ai-act-enforcement-begins-high-risk-delayed-2027"`,
+		template.HTMLEscapeString("Anthropic Went Looking for OpenAI's Bug in Its Own Models. It Found It Three Times."),
+		template.HTMLEscapeString("The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027."),
+		"25,000 Model Context Protocol (MCP) servers",
+		"143,000 vulnerabilities",
+		"https://www.anaconda.com/blog/anaconda-acquires-enkrypt-ai",
+		"https://www.enkryptai.com/newsroom/enkrypt-ai-secures-2-35-million-in-seed-round",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing Anaconda Enkrypt AI MCP security article content %q", want)
+		}
 	}
 }
 

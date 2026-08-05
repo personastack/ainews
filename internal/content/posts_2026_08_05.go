@@ -3,6 +3,59 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Enkrypt AI Scanned 25,000 MCP Servers and Found a Way In on Nearly Three Out of Four. Anaconda Just Bought the Company That Did the Scanning.",
+			Slug:    "anaconda-acquires-enkrypt-ai-mcp-security-2026",
+			Date:    "August 5, 2026",
+			Tag:     "Security",
+			Summary: "A two-month sweep of the tools enterprises are wiring into their AI agents turned up 143,000 vulnerabilities. The startup that ran the sweep just became part of the platform company that many of those agents run on.",
+			Related: []Link{
+				{
+					Title: "Anthropic Went Looking for OpenAI's Bug in Its Own Models. It Found It Three Times.",
+					Slug:  "anthropic-claude-breach-three-companies-pypi-supply-chain-2026",
+				},
+				{
+					Title: "The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027.",
+					Slug:  "eu-ai-act-enforcement-begins-high-risk-delayed-2027",
+				},
+			},
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						`Anaconda, the company behind the Python distribution that a large share of the world's data scientists have installed at some point, announced on August 4 that it has acquired Enkrypt AI, a startup that spent the last two years building tools to red-team, monitor, and lock down enterprise AI systems. Terms of the deal were not disclosed. What was disclosed is a number that explains why Anaconda wanted this particular company: in the two months before the deal closed, Enkrypt AI scanned more than 268,000 tools across 25,000 Model Context Protocol (MCP) servers and found upwards of 143,000 vulnerabilities, touching 73 percent of the servers it looked at.`,
+						`MCP servers are the connective tissue of the current AI agent boom. They're how a chatbot or an autonomous agent reaches out and actually does things: reading a file, hitting an internal API, querying a database, sending an email. Anthropic introduced the protocol in late 2024 as a way to standardize that plumbing, and adoption has been fast almost everywhere frontier labs and enterprises are building agents. Enkrypt AI's numbers are the first large-scale look at what shipped alongside that adoption: a lot of unreviewed, unguarded connective tissue. Nearly three out of every four servers scanned had at least one exploitable weakness sitting behind them.`,
+					},
+				},
+				{
+					Heading: "Beyond the MCP scan",
+					Paragraphs: []string{
+						`The MCP scan wasn't Enkrypt AI's only body of work. Its research team has spent the past couple of years red-teaming frontier models themselves — systems from Anthropic, OpenAI, Google's Gemini line, Mistral, and DeepSeek — and says it found exploitable attack categories in every single one it tested, across more than 300 distinct attack categories. None of that is unique to any one lab; it's closer to a statement about the current state of the field, where model capability has been improving faster than the tooling built to constrain what a model, or an agent built on top of it, is actually allowed to do.`,
+					},
+				},
+				{
+					Heading: "What Anaconda is buying",
+					Paragraphs: []string{
+						`That's the gap Anaconda is buying its way into filling. "Trust can't be added after an agent ships," said Anaconda CEO David DeSanto, framing the acquisition as an extension of the company's existing pitch to enterprises managing what it describes as nearly a trillion tokens of AI usage a month. "It has to be built into and run on a trusted foundation from day one." With Enkrypt AI folded in, Anaconda says its platform now covers the AI lifecycle end to end: pre-deployment red-teaming, runtime guardrails that catch jailbreak attempts and data leakage as they happen, security monitoring across the full agent stack including MCP servers, and compliance automation mapped to frameworks like the NIST AI Risk Management Framework and the EU AI Act — the kind of paperwork-turned-software that becomes valuable the moment regulators start actually checking.`,
+						`Enkrypt AI itself is a fast mover. The company raised a modest $2.35 million seed round in February 2024 to build what its founders pitched as a control layer for generative AI safety, and just over two years later it's an acquisition, not a footnote — a reminder of how quickly the AI security niche has gone from a hard sell to a checkbox enterprises are actively budgeting for.`,
+					},
+				},
+				{
+					Heading: "The pattern",
+					Paragraphs: []string{
+						`It also fits a pattern worth watching: platform companies buying their way into AI governance rather than building it from scratch. The pitch to enterprises isn't just "our tools are fast" anymore; increasingly it's "our tools won't get you fined, breached, or embarrassed." For any organization currently racing to plug agents into internal systems via MCP, the more useful number in this story isn't the acquisition — it's the 73 percent. That's not a hypothetical risk. It's what one team found by simply looking.`,
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"Anaconda, Anaconda Acquires Enkrypt AI for AI Security: https://www.anaconda.com/blog/anaconda-acquires-enkrypt-ai",
+						"HPCWire AIwire, Anaconda Acquires Enkrypt AI to Secure the Trillion-Token Enterprise: https://www.hpcwire.com/aiwire/2026/08/04/anaconda-acquires-enkrypt-ai-to-secure-the-trillion-token-enterprise/",
+						"Enkrypt AI, Newsroom: https://www.enkryptai.com/company/newsroom",
+						"Enkrypt AI, Enkrypt AI Secures $2.35 Million in Seed Round: https://www.enkryptai.com/newsroom/enkrypt-ai-secures-2-35-million-in-seed-round",
+					},
+				},
+			},
+		},
+		{
 			Title:   "AI Data Centers Are Eating the World's Memory Chip Supply",
 			Slug:    "ai-memory-chip-shortage-dram-hbm-data-centers-2026",
 			Date:    "August 5, 2026",

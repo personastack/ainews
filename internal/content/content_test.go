@@ -147,7 +147,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationAugust6 := time.Date(2026, time.August, 6, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust6), "qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026") {
+		t.Fatal("publishedPosts() did not include Qwen3.8-Max open weights article on publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationAugust6), "anaconda-acquires-enkrypt-ai-mcp-security-2026") {
+		t.Fatal("publishedPosts() did not include Anaconda Enkrypt AI MCP security article on August 6")
+	}
+
 	onPublicationAugust5 := time.Date(2026, time.August, 5, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust5), "qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026") {
+		t.Fatal("publishedPosts() included Qwen3.8-Max open weights article before publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust5), "anaconda-acquires-enkrypt-ai-mcp-security-2026") {
 		t.Fatal("publishedPosts() did not include Anaconda Enkrypt AI MCP security article on publication date")
 	}
@@ -976,6 +987,32 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	qwen38Post, ok := FindBySlug("qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Qwen3.8-Max open weights article")
+	}
+	if qwen38Post.Title != "Alibaba's Qwen3.8-Max Beats GPT-5.6 and Claude on Key Benchmarks — And It's Going Open Weight" {
+		t.Fatalf("FindBySlug() returned %q for Qwen3.8-Max open weights article", qwen38Post.Title)
+	}
+	if qwen38Post.Date != "August 6, 2026" {
+		t.Fatalf("Qwen3.8-Max open weights article date = %q, want August 6, 2026", qwen38Post.Date)
+	}
+	if qwen38Post.Tag != "Models" {
+		t.Fatalf("Qwen3.8-Max open weights article tag = %q, want Models", qwen38Post.Tag)
+	}
+	if len(qwen38Post.Related) != 3 {
+		t.Fatalf("Qwen3.8-Max open weights article related count = %d, want 3", len(qwen38Post.Related))
+	}
+	for i, want := range []string{
+		"alibaba-cloud-agentic-ai-offensive-qwen3-7-max",
+		"deepseek-moonshot-china-ai-ipo-funding-state-investment-2026",
+		"fable-5-mythos-5-export-control-shutdown-2026",
+	} {
+		if qwen38Post.Related[i].Slug != want {
+			t.Fatalf("Qwen3.8-Max open weights article related[%d] slug = %q, want %q", i, qwen38Post.Related[i].Slug, want)
+		}
+	}
+
 	anacondaPost, ok := FindBySlug("anaconda-acquires-enkrypt-ai-mcp-security-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Anaconda Enkrypt AI MCP security article")

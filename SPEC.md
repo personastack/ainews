@@ -34,6 +34,8 @@ Published posts are gated by the `Date` field using Go's `January 2, 2006` layou
 
 AINews currently stores one primary category in `Post.Tag`. Secondary tags from editorial handoff can be reflected in article copy, but the rendered site only exposes the single primary tag.
 
+The August 6, 2026 content batch includes a Models article about Alibaba's Qwen3.8-Max open-weight release plan and benchmark split against GPT-5.6 Sol and Claude Fable 5. Preserve the key sourced figures as scoped benchmark claims, not universal model superiority: 2.4 trillion total parameters, roughly 95 billion active parameters, one-million-token context, QwenCloud pricing, Terminal-Bench/MRCR trailing results, PaperBench/IFBench leading results, and the Qwen3.8-27B practical deployment caveat. Keep the Fable 5 export-control context tied to public Anthropic sources and existing related coverage, and never publish the internal archive document link.
+
 The June 10, 2026 content batch includes a DevTools article about Cohere North Mini Code as a local, open, controllable coding-agent layer for enterprises. It should keep the caveat that Cohere's throughput and inter-token latency comparisons are company-reported and should frame the model as routable local or sovereign infrastructure rather than a universal replacement for frontier cloud systems.
 
 The same batch also includes a Platforms article about OpenAI turning ChatGPT reasoning effort into a visible picker control. The story is intentionally framed as product UX and compute allocation, not as a new model launch.

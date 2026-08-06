@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Alibaba's Qwen3.8-Max Beats GPT-5.6 and Claude on Key Benchmarks — And It's Going Open Weight")) {
+		t.Fatal("response missing Qwen3.8-Max open weights article title")
+	}
+	if !strings.Contains(body, `href="/posts/qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026"`) {
+		t.Fatal("response missing Qwen3.8-Max open weights article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Enkrypt AI Scanned 25,000 MCP Servers and Found a Way In on Nearly Three Out of Four. Anaconda Just Bought the Company That Did the Scanning.")) {
 		t.Fatal("response missing Anaconda Enkrypt AI MCP security article title")
 	}
@@ -149,6 +155,41 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersQwen38MaxOpenWeightsRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/alibaba-cloud-agentic-ai-offensive-qwen3-7-max"`,
+		`href="/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026"`,
+		`href="/posts/fable-5-mythos-5-export-control-shutdown-2026"`,
+		template.HTMLEscapeString("Alibaba's AI Offensive: How Qwen3.7-Max and a New Skills Portal Challenge Western Cloud Giants"),
+		template.HTMLEscapeString("DeepSeek and Moonshot Are Racing to IPO. Beijing Just Showed Up as the Investor With No Lock-Up."),
+		template.HTMLEscapeString("Fable 5 Was Built for Safer Access. Washington Shut It Down Anyway."),
+		"2.4-trillion-parameter",
+		"Qwen3.8-Max scored 93.0",
+		"IFBench",
+		"https://qwen.ai/blog?id=qwen3.8",
+		"https://www.anthropic.com/news/redeploying-fable-5",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing Qwen3.8-Max open weights article content %q", want)
+		}
 	}
 }
 

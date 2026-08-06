@@ -148,6 +148,9 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	onPublicationAugust6 := time.Date(2026, time.August, 6, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust6), "anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026") {
+		t.Fatal("publishedPosts() did not include Anthropic Volta Bitdeer compute deal article on publication date")
+	}
 	if !containsSlug(publishedPosts(onPublicationAugust6), "qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026") {
 		t.Fatal("publishedPosts() did not include Qwen3.8-Max open weights article on publication date")
 	}
@@ -156,6 +159,9 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 
 	onPublicationAugust5 := time.Date(2026, time.August, 5, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust5), "anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026") {
+		t.Fatal("publishedPosts() included Anthropic Volta Bitdeer compute deal article before publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationAugust5), "qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026") {
 		t.Fatal("publishedPosts() included Qwen3.8-Max open weights article before publication date")
 	}
@@ -987,6 +993,32 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 }
 
 func TestFindBySlug(t *testing.T) {
+	anthropicVoltaPost, ok := FindBySlug("anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find Anthropic Volta Bitdeer compute deal article")
+	}
+	if anthropicVoltaPost.Title != "Anthropic Just Bet $10 Billion on a Compute Company That Didn't Exist Six Months Ago" {
+		t.Fatalf("FindBySlug() returned %q for Anthropic Volta Bitdeer compute deal article", anthropicVoltaPost.Title)
+	}
+	if anthropicVoltaPost.Date != "August 6, 2026" {
+		t.Fatalf("Anthropic Volta Bitdeer compute deal article date = %q, want August 6, 2026", anthropicVoltaPost.Date)
+	}
+	if anthropicVoltaPost.Tag != "Business" {
+		t.Fatalf("Anthropic Volta Bitdeer compute deal article tag = %q, want Business", anthropicVoltaPost.Tag)
+	}
+	if len(anthropicVoltaPost.Related) != 3 {
+		t.Fatalf("Anthropic Volta Bitdeer compute deal article related count = %d, want 3", len(anthropicVoltaPost.Related))
+	}
+	for i, want := range []string{
+		"nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026",
+		"ai-memory-chip-shortage-dram-hbm-data-centers-2026",
+		"deepseek-moonshot-china-ai-ipo-funding-state-investment-2026",
+	} {
+		if anthropicVoltaPost.Related[i].Slug != want {
+			t.Fatalf("Anthropic Volta Bitdeer compute deal article related[%d] slug = %q, want %q", i, anthropicVoltaPost.Related[i].Slug, want)
+		}
+	}
+
 	qwen38Post, ok := FindBySlug("qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026")
 	if !ok {
 		t.Fatal("FindBySlug() did not find Qwen3.8-Max open weights article")

@@ -26,6 +26,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Just Bet $10 Billion on a Compute Company That Didn't Exist Six Months Ago")) {
+		t.Fatal("response missing Anthropic Volta Bitdeer compute deal article title")
+	}
+	if !strings.Contains(body, `href="/posts/anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026"`) {
+		t.Fatal("response missing Anthropic Volta Bitdeer compute deal article link")
+	}
 	if !strings.Contains(body, template.HTMLEscapeString("Alibaba's Qwen3.8-Max Beats GPT-5.6 and Claude on Key Benchmarks — And It's Going Open Weight")) {
 		t.Fatal("response missing Qwen3.8-Max open weights article title")
 	}
@@ -155,6 +161,45 @@ func TestPostRoute(t *testing.T) {
 
 	if !strings.Contains(rec.Body.String(), "Copilot Cowork") {
 		t.Fatalf("response did not render article body")
+	}
+}
+
+func TestPostRouteRendersAnthropicVoltaBitdeerComputeDealRelatedStories(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for _, want := range []string{
+		"Related reading",
+		`href="/posts/nvidia-rubin-ultra-dual-die-redesign-reticle-limit-2026"`,
+		`href="/posts/ai-memory-chip-shortage-dram-hbm-data-centers-2026"`,
+		`href="/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026"`,
+		template.HTMLEscapeString("Nvidia's Roadmap Just Hit the Reticle Limit"),
+		template.HTMLEscapeString("AI Data Centers Are Eating the World's Memory Chip Supply"),
+		template.HTMLEscapeString("DeepSeek and Moonshot Are Racing to IPO. Beijing Just Showed Up as the Investor With No Lock-Up."),
+		"133 megawatts",
+		"Tydal, Norway",
+		"December 31, 2026",
+		"https://techcrunch.com/2026/08/04/anthropic-signs-10-billion-deal-with-ai-cloud-startup-volta/",
+		"https://the-decoder.com/anthropic-locks-in-10-billion-of-compute-from-volta-a-cloud-startup-that-didnt-exist-six-months-ago/",
+	} {
+		if !strings.Contains(body, want) {
+			t.Fatalf("response missing Anthropic Volta Bitdeer compute deal article content %q", want)
+		}
+	}
+
+	if strings.Contains(body, "docs.google.com") {
+		t.Fatal("response exposed internal Google Docs link")
 	}
 }
 

@@ -26,58 +26,66 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("Anthropic Just Bet $10 Billion on a Compute Company That Didn't Exist Six Months Ago")) {
+	apiReq := httptest.NewRequest(http.MethodGet, "/api/posts", nil)
+	apiRec := httptest.NewRecorder()
+	server.ServeHTTP(apiRec, apiReq)
+	if apiRec.Code != http.StatusOK {
+		t.Fatalf("API status = %d, want %d", apiRec.Code, http.StatusOK)
+	}
+	apiBody := apiRec.Body.String()
+	apiBodyHTML := template.HTMLEscapeString(apiBody)
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Anthropic Just Bet $10 Billion on a Compute Company That Didn't Exist Six Months Ago")) {
 		t.Fatal("response missing Anthropic Volta Bitdeer compute deal article title")
 	}
-	if !strings.Contains(body, `href="/posts/anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026"`) {
 		t.Fatal("response missing Anthropic Volta Bitdeer compute deal article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("Alibaba's Qwen3.8-Max Beats GPT-5.6 and Claude on Key Benchmarks — And It's Going Open Weight")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Alibaba's Qwen3.8-Max Beats GPT-5.6 and Claude on Key Benchmarks — And It's Going Open Weight")) {
 		t.Fatal("response missing Qwen3.8-Max open weights article title")
 	}
-	if !strings.Contains(body, `href="/posts/qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026"`) {
 		t.Fatal("response missing Qwen3.8-Max open weights article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("Enkrypt AI Scanned 25,000 MCP Servers and Found a Way In on Nearly Three Out of Four. Anaconda Just Bought the Company That Did the Scanning.")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Enkrypt AI Scanned 25,000 MCP Servers and Found a Way In on Nearly Three Out of Four. Anaconda Just Bought the Company That Did the Scanning.")) {
 		t.Fatal("response missing Anaconda Enkrypt AI MCP security article title")
 	}
-	if !strings.Contains(body, `href="/posts/anaconda-acquires-enkrypt-ai-mcp-security-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"anaconda-acquires-enkrypt-ai-mcp-security-2026"`) {
 		t.Fatal("response missing Anaconda Enkrypt AI MCP security article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("AI Data Centers Are Eating the World's Memory Chip Supply")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("AI Data Centers Are Eating the World's Memory Chip Supply")) {
 		t.Fatal("response missing AI memory chip shortage article title")
 	}
-	if !strings.Contains(body, `href="/posts/ai-memory-chip-shortage-dram-hbm-data-centers-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"ai-memory-chip-shortage-dram-hbm-data-centers-2026"`) {
 		t.Fatal("response missing AI memory chip shortage article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("OpenAI's Next Model Solved Ten Decades-Old Math Problems. Getting Mathematicians to Believe It Might Take Longer.")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("OpenAI's Next Model Solved Ten Decades-Old Math Problems. Getting Mathematicians to Believe It Might Take Longer.")) {
 		t.Fatal("response missing OpenAI Astra ten proofs article title")
 	}
-	if !strings.Contains(body, `href="/posts/openai-astra-ten-math-proofs-non-sofic-groups-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"openai-astra-ten-math-proofs-non-sofic-groups-2026"`) {
 		t.Fatal("response missing OpenAI Astra ten proofs article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("Companies Cited AI in Over 100,000 Layoffs This Year. Most of Their AI Projects Haven't Paid Off Yet.")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Companies Cited AI in Over 100,000 Layoffs This Year. Most of Their AI Projects Haven't Paid Off Yet.")) {
 		t.Fatal("response missing AI layoffs enterprise ROI gap article title")
 	}
-	if !strings.Contains(body, `href="/posts/ai-layoffs-enterprise-roi-gap-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"ai-layoffs-enterprise-roi-gap-2026"`) {
 		t.Fatal("response missing AI layoffs enterprise ROI gap article link")
 	}
-	if !strings.Contains(body, `href="/posts/deepseek-moonshot-china-ai-ipo-funding-state-investment-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"deepseek-moonshot-china-ai-ipo-funding-state-investment-2026"`) {
 		t.Fatal("response missing DeepSeek Moonshot IPO funding article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027.")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("The EU's AI Act Starts Enforcing Today. The Part Companies Feared Most Just Got Delayed to 2027.")) {
 		t.Fatal("response missing EU AI Act enforcement article title")
 	}
-	if !strings.Contains(body, `href="/posts/eu-ai-act-enforcement-begins-high-risk-delayed-2027"`) {
+	if !strings.Contains(apiBody, `"slug":"eu-ai-act-enforcement-begins-high-risk-delayed-2027"`) {
 		t.Fatal("response missing EU AI Act enforcement article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("Unitree Is Going Public With Real Revenue. Figure AI Is Worth $39 Billion Without Any.")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Unitree Is Going Public With Real Revenue. Figure AI Is Worth $39 Billion Without Any.")) {
 		t.Fatal("response missing Unitree IPO humanoid robotics article title")
 	}
-	if !strings.Contains(body, `href="/posts/unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026"`) {
+	if !strings.Contains(apiBody, `"slug":"unitree-ipo-china-humanoid-robotics-boom-figure-ai-2026"`) {
 		t.Fatal("response missing Unitree IPO humanoid robotics article link")
 	}
-	if !strings.Contains(body, template.HTMLEscapeString("DeepSeek Didn't Build a New Model to Beat Its Old One. It Just Retrained the Cheap One.")) {
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("DeepSeek Didn't Build a New Model to Beat Its Old One. It Just Retrained the Cheap One.")) {
 		t.Fatal("response missing DeepSeek V4 Flash 0731 article title")
 	}
 	posts := content.Posts()

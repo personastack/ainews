@@ -48,6 +48,33 @@ func TestPostsHaveUniqueSlugs(t *testing.T) {
 	}
 }
 
+func TestAugustBacklogArticlesArePresentInAuthoredOrder(t *testing.T) {
+	postsBySlug := make(map[string]Post, len(posts))
+	for _, post := range posts {
+		postsBySlug[post.Slug] = post
+	}
+
+	backlog := []struct {
+		slug string
+		date string
+	}{
+		{"meta-muse-code-ai-coding-agent-2026", "August 7, 2026"},
+		{"google-deepmind-hassabis-steps-down-jeff-dean-discovery-loop-2026", "August 11, 2026"},
+		{"openai-daybreak-gpt-5-6-cyber-launch-2026", "August 11, 2026"},
+		{"stanford-arc-evo-ai-designed-viruses-biosecurity-gap-2026", "August 12, 2026"},
+	}
+
+	for _, want := range backlog {
+		post, ok := postsBySlug[want.slug]
+		if !ok {
+			t.Fatalf("backlog article %q is missing", want.slug)
+		}
+		if post.Date != want.date {
+			t.Errorf("backlog article %q has date %q, want %q", want.slug, post.Date, want.date)
+		}
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

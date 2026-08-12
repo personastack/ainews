@@ -236,6 +236,8 @@ The same August 5, 2026 content batch includes a Security article at slug `anaco
 
 The August 6, 2026 content batch includes a Business article at slug `anthropic-volta-bitdeer-10-billion-compute-deal-norway-2026` about Anthropic's $10 billion, six-year compute agreement with Volta Infra Holdings for 133 megawatts of Vera Rubin capacity at Bitdeer's Tydal, Norway data center. Preserve the central infrastructure-financing frame: Volta is a newly founded compute-leasing startup, Bitdeer is diversifying from crypto mining into AI infrastructure, Norway's hydropower and cooling advantages matter to operating economics, and the $1.3 billion J.P. Morgan-arranged credit guarantee should stay attributed because it is the least-triangulated figure in the handoff. Keep the circular-financing analysis framed as structural risk rather than a prediction of deal failure. The article carries related-reading links to the July 14 Nvidia Rubin Ultra hardware-bottleneck story, the August 5 memory-chip shortage story, and the August 3 DeepSeek/Moonshot IPO Business story. Do not publish the internal Google Docs archive link.
 
+The August 12, 2026 content batch includes a Defense article at slug `darpa-venom-ai-controlled-f16-autonomous-flight-2026` about DARPA's VENOM Autonomy Kit flying a standard F-16 under AI control with a human pilot aboard and ready to retake control. Preserve the distinction between VENOM's fleet-aircraft integration test and the 2024 AI-versus-human dogfight on the X-62A research aircraft. Keep the June validation flights, July autonomous sorties, six modified F-16s, human-on-the-loop safety setup, and planned AIR multi-agent testbed tied to the cited public sources. Do not publish the internal archive document link.
+
 ## Testing
 
 Run:

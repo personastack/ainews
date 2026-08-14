@@ -244,6 +244,8 @@ The August 6, 2026 content batch includes a Business article at slug `anthropic-
 
 The August 12, 2026 content batch includes a Defense article at slug `darpa-venom-ai-controlled-f16-autonomous-flight-2026` about DARPA's VENOM Autonomy Kit flying a standard F-16 under AI control with a human pilot aboard and ready to retake control. Preserve the distinction between VENOM's fleet-aircraft integration test and the 2024 AI-versus-human dogfight on the X-62A research aircraft. Keep the June validation flights, July autonomous sorties, six modified F-16s, human-on-the-loop safety setup, and planned AIR multi-agent testbed tied to the cited public sources. Do not publish the internal archive document link.
 
+The August 14, 2026 content batch includes a Business article about Anthropic reportedly negotiating a roughly $6 billion acquisition of Decart AI. Preserve that the deal is sourced to unnamed Bloomberg contacts, remains unconfirmed and could fall apart, and is not a closed acquisition. Keep Decart's Oasis, Lucy, and DOS capabilities, the reported valuations, and the Radical Ventures-led funding round tied to the cited public coverage. Do not publish the internal Author archive URL or harden reported IPO, acquisition, funding, investor, or valuation claims into confirmed facts. Related links must resolve only to existing public AINews slugs.
+
 ## Testing
 
 Run:

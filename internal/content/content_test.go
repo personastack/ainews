@@ -2922,6 +2922,14 @@ func TestFindBySlug(t *testing.T) {
 	if _, ok := FindBySlug("missing-post"); ok {
 		t.Fatal("FindBySlug() reported a match for a missing slug")
 	}
+
+	ultrafastPost, ok := FindBySlug("openai-ultrafast-gpt-5-6-sol-cerebras-2026")
+	if !ok {
+		t.Fatal("FindBySlug() did not find the August 15 Ultrafast post")
+	}
+	if ultrafastPost.Tag != "Infrastructure" || ultrafastPost.Date != "August 15, 2026" {
+		t.Fatalf("Ultrafast post metadata = (%q, %q), want (Infrastructure, August 15, 2026)", ultrafastPost.Tag, ultrafastPost.Date)
+	}
 }
 
 func TestPostsReturnsDeepCopy(t *testing.T) {

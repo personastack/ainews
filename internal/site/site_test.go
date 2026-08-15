@@ -1919,6 +1919,7 @@ func TestSitemap(t *testing.T) {
 		"<loc>https://ainews.personastack.ai/posts/nvidia-cosmos-3-open-physical-ai-world-model-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/openai-gpt-5-6-sol-government-gated-frontier-release-2026</loc>",
 		"<loc>https://ainews.personastack.ai/posts/ai-model-release-firehose-cadence-eval-debt-2026</loc>",
+		"<loc>https://ainews.personastack.ai/posts/openai-ultrafast-gpt-5-6-sol-cerebras-2026</loc>",
 	} {
 		if !strings.Contains(body, want) {
 			t.Fatalf("response missing sitemap content %q", want)

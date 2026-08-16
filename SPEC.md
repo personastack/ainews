@@ -250,6 +250,8 @@ The August 12, 2026 content batch includes a Defense article at slug `darpa-veno
 
 The August 14, 2026 content batch includes a Business article about Anthropic reportedly negotiating a roughly $6 billion acquisition of Decart AI. Preserve that the deal is sourced to unnamed Bloomberg contacts, remains unconfirmed and could fall apart, and is not a closed acquisition. Keep Decart's Oasis, Lucy, and DOS capabilities, the reported valuations, and the Radical Ventures-led funding round tied to the cited public coverage. Do not publish the internal Author archive URL or harden reported IPO, acquisition, funding, investor, or valuation claims into confirmed facts. Related links must resolve only to existing public AINews slugs.
 
+The August 16, 2026 content batch includes a Safety article at slug `anthropic-model-2-shelved-misalignment-risk-report-2026` about Anthropic's August 14 Risk Report disclosing an internal Model 2 somewhat more capable than Mythos 5 while moving its self-assessed catastrophic misalignment risk from "very low" to "low." Preserve the distinction that Model 2 was not fully evaluated for public release and was not the reason for the rating change; the change followed uncertainty from a UK AISI cybersecurity evaluation of an internet-connected Mythos 5 agent without production safeguards. Publish only the four public URLs supplied by Author, never the internal Google Doc, and keep the post categorized as Safety with the three supplied related AINews slugs.
+
 ## Testing
 
 Run:

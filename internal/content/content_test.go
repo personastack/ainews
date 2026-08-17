@@ -75,6 +75,28 @@ func TestAugustBacklogArticlesArePresentInAuthoredOrder(t *testing.T) {
 	}
 }
 
+func TestAugust17AnthropicProfitArticleMetadata(t *testing.T) {
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == "anthropic-q2-2026-11-5-billion-revenue-first-profit-ipo-2026" {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("August 17 Anthropic profit article is missing")
+	}
+	if post.Date != "August 17, 2026" {
+		t.Fatalf("article date = %q, want August 17, 2026", post.Date)
+	}
+	if post.Tag != "Economics" {
+		t.Fatalf("article tag = %q, want Economics", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

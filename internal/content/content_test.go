@@ -97,6 +97,28 @@ func TestAugust17AnthropicProfitArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust17ChatGPTAdsArticleMetadata(t *testing.T) {
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == "chatgpt-ads-europe-openai-100-billion-2026" {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("August 17 ChatGPT ads article is missing")
+	}
+	if post.Date != "August 17, 2026" {
+		t.Fatalf("article date = %q, want August 17, 2026", post.Date)
+	}
+	if post.Tag != "Consumer" {
+		t.Fatalf("article tag = %q, want Consumer", post.Tag)
+	}
+	if len(post.Related) != 2 {
+		t.Fatalf("related links = %d, want 2", len(post.Related))
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

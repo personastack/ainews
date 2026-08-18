@@ -119,6 +119,28 @@ func TestAugust17ChatGPTAdsArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust18Gemini37FlashArticleMetadata(t *testing.T) {
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == "google-gemini-3-7-flash-coding-benchmarks-2026" {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("August 18 Gemini 3.7 Flash article is missing")
+	}
+	if post.Date != "August 18, 2026" {
+		t.Fatalf("article date = %q, want August 18, 2026", post.Date)
+	}
+	if post.Tag != "Models" {
+		t.Fatalf("article tag = %q, want Models", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

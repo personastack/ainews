@@ -141,6 +141,28 @@ func TestAugust18Gemini37FlashArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust18ObsidianAgentGovernanceArticleMetadata(t *testing.T) {
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == "obsidian-security-85-million-ai-agent-governance-2026" {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("August 18 Obsidian agent governance article is missing")
+	}
+	if post.Date != "August 18, 2026" {
+		t.Fatalf("article date = %q, want August 18, 2026", post.Date)
+	}
+	if post.Tag != "Agents/Security" {
+		t.Fatalf("article tag = %q, want Agents/Security", post.Tag)
+	}
+	if len(post.Related) != 4 {
+		t.Fatalf("related links = %d, want 4", len(post.Related))
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

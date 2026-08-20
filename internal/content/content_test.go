@@ -163,6 +163,34 @@ func TestAugust18ObsidianAgentGovernanceArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust19QueuedArticlesMetadata(t *testing.T) {
+	want := map[string]string{
+		"andon-labs-luna-store-manager-fires-employee-2026": "Workforce",
+		"chatgpt-for-teens-age-prediction-2026":             "Safety",
+	}
+	for slug, tag := range want {
+		var post Post
+		for _, candidate := range posts {
+			if candidate.Slug == slug {
+				post = candidate
+				break
+			}
+		}
+		if post.Slug == "" {
+			t.Fatalf("August 19 article %q is missing", slug)
+		}
+		if post.Date != "August 19, 2026" {
+			t.Errorf("article %q date = %q, want August 19, 2026", slug, post.Date)
+		}
+		if post.Tag != tag {
+			t.Errorf("article %q tag = %q, want %q", slug, post.Tag, tag)
+		}
+		if len(post.Related) == 0 {
+			t.Errorf("article %q has no related links", slug)
+		}
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

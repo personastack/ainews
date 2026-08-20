@@ -165,8 +165,8 @@ func TestAugust18ObsidianAgentGovernanceArticleMetadata(t *testing.T) {
 
 func TestAugust19QueuedArticlesMetadata(t *testing.T) {
 	want := map[string]string{
-		"andon-labs-luna-store-manager-fires-employee-2026": "Workforce",
-		"chatgpt-for-teens-age-prediction-2026":             "Safety",
+		"andon-labs-luna-ai-store-manager-fires-employee-2026": "Workforce",
+		"chatgpt-for-teens-age-prediction-openai-2026":         "Safety",
 	}
 	for slug, tag := range want {
 		var post Post

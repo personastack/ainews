@@ -88,6 +88,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("DeepSeek Didn't Build a New Model to Beat Its Old One. It Just Retrained the Cheap One.")) {
 		t.Fatal("response missing DeepSeek V4 Flash 0731 article title")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("OpenAI Is Going Public in 2027. It's Already Losing More Money Than It Makes.")) {
+		t.Fatal("response missing OpenAI IPO article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"openai-ipo-2027-sarah-friar-losses-anthropic-revenue-2026"`) {
+		t.Fatal("response missing OpenAI IPO article link")
+	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)

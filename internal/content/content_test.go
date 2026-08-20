@@ -191,6 +191,31 @@ func TestAugust19QueuedArticlesMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust20OpenAIIPOArticleMetadata(t *testing.T) {
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == "openai-ipo-2027-sarah-friar-losses-anthropic-revenue-2026" {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("August 20 OpenAI IPO article is missing")
+	}
+	if post.Date != "August 20, 2026" {
+		t.Fatalf("article date = %q, want August 20, 2026", post.Date)
+	}
+	if post.Tag != "Business" {
+		t.Fatalf("article tag = %q, want Business", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

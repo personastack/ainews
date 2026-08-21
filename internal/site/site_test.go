@@ -94,6 +94,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"openai-ipo-2027-sarah-friar-losses-anthropic-revenue-2026"`) {
 		t.Fatal("response missing OpenAI IPO article link")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Spirit Airlines Is Gone. Google Just Bought Everything Its Employees Ever Typed.")) {
+		t.Fatal("response missing Spirit Airlines data article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"google-spirit-airlines-employee-data-ai-training-bankruptcy-2026"`) {
+		t.Fatal("response missing Spirit Airlines data article link")
+	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)

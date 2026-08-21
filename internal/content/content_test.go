@@ -238,6 +238,28 @@ func TestAugust21SpiritAirlinesDataArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust21ReconstructionArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("reconstruction-benchmark-ai-research-idea-bibliography-2026")
+	if !ok {
+		t.Fatal("August 21 Reconstruction article is missing")
+	}
+	if post.Title != "Give Frontier AI Every Paper a Scientist Cited. It Still Can't Guess the Discovery." {
+		t.Fatalf("article title = %q, want Reconstruction article title", post.Title)
+	}
+	if post.Date != "August 21, 2026" {
+		t.Fatalf("article date = %q, want August 21, 2026", post.Date)
+	}
+	if post.Tag != "Research" {
+		t.Fatalf("article tag = %q, want Research", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -341,10 +363,16 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if !containsSlug(publishedPosts(onPublicationAugust21), "google-spirit-airlines-employee-data-ai-training-bankruptcy-2026") {
 		t.Fatal("publishedPosts() did not include Spirit Airlines data article on publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationAugust21), "reconstruction-benchmark-ai-research-idea-bibliography-2026") {
+		t.Fatal("publishedPosts() did not include Reconstruction article on publication date")
+	}
 
 	onPublicationAugust20 := time.Date(2026, time.August, 20, 0, 0, 0, 0, time.UTC)
 	if containsSlug(publishedPosts(onPublicationAugust20), "google-spirit-airlines-employee-data-ai-training-bankruptcy-2026") {
 		t.Fatal("publishedPosts() included Spirit Airlines data article before publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationAugust20), "reconstruction-benchmark-ai-research-idea-bibliography-2026") {
+		t.Fatal("publishedPosts() included Reconstruction article before publication date")
 	}
 
 	onPublicationAugust6 := time.Date(2026, time.August, 6, 0, 0, 0, 0, time.UTC)

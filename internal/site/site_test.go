@@ -100,6 +100,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"google-spirit-airlines-employee-data-ai-training-bankruptcy-2026"`) {
 		t.Fatal("response missing Spirit Airlines data article link")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Give Frontier AI Every Paper a Scientist Cited. It Still Can't Guess the Discovery.")) {
+		t.Fatal("response missing Reconstruction benchmark article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"reconstruction-benchmark-ai-research-idea-bibliography-2026"`) {
+		t.Fatal("response missing Reconstruction benchmark article link")
+	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)

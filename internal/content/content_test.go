@@ -260,6 +260,28 @@ func TestAugust21ReconstructionArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust22A2AArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026")
+	if !ok {
+		t.Fatal("August 22 A2A article is missing")
+	}
+	if post.Title != "Google's AI Agent Protocol Just Found a New Home. It's Now Under the Same Roof as MCP." {
+		t.Fatalf("article title = %q, want A2A article title", post.Title)
+	}
+	if post.Date != "August 22, 2026" {
+		t.Fatalf("article date = %q, want August 22, 2026", post.Date)
+	}
+	if post.Tag != "AI Infrastructure / Agents" {
+		t.Fatalf("article tag = %q, want AI Infrastructure / Agents", post.Tag)
+	}
+	if len(post.Related) != 2 {
+		t.Fatalf("related links = %d, want 2", len(post.Related))
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestAugust22SKHynixBuybackArticleMetadata(t *testing.T) {
 	post, ok := FindBySlug("sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026")
 	if !ok {
@@ -385,10 +407,16 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if !containsSlug(publishedPosts(onPublicationAugust22), "sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026") {
 		t.Fatal("publishedPosts() did not include SK Hynix buyback article on publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationAugust22), "a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026") {
+		t.Fatal("publishedPosts() did not include A2A article on publication date")
+	}
 
 	onPublicationAugust21 := time.Date(2026, time.August, 21, 0, 0, 0, 0, time.UTC)
 	if containsSlug(publishedPosts(onPublicationAugust21), "sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026") {
 		t.Fatal("publishedPosts() included SK Hynix buyback article before publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationAugust21), "a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026") {
+		t.Fatal("publishedPosts() included A2A article before publication date")
 	}
 
 	if !containsSlug(publishedPosts(onPublicationAugust21), "google-spirit-airlines-employee-data-ai-training-bankruptcy-2026") {

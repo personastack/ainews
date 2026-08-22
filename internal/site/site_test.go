@@ -112,6 +112,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026"`) {
 		t.Fatal("response missing SK Hynix buyback article link")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Google's AI Agent Protocol Just Found a New Home. It's Now Under the Same Roof as MCP.")) {
+		t.Fatal("response missing A2A Agentic AI Foundation article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026"`) {
+		t.Fatal("response missing A2A Agentic AI Foundation article link")
+	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)

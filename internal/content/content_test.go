@@ -260,6 +260,28 @@ func TestAugust21ReconstructionArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust22SKHynixBuybackArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026")
+	if !ok {
+		t.Fatal("August 22 SK Hynix buyback article is missing")
+	}
+	if post.Title != "The HBM Confidence Vote: SK Hynix Just Bet $28 Billion That the AI Memory Boom Has Legs" {
+		t.Fatalf("article title = %q, want SK Hynix buyback article title", post.Title)
+	}
+	if post.Date != "August 22, 2026" {
+		t.Fatalf("article date = %q, want August 22, 2026", post.Date)
+	}
+	if post.Tag != "Hardware" {
+		t.Fatalf("article tag = %q, want Hardware", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -359,7 +381,16 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationAugust22 := time.Date(2026, time.August, 22, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust22), "sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026") {
+		t.Fatal("publishedPosts() did not include SK Hynix buyback article on publication date")
+	}
+
 	onPublicationAugust21 := time.Date(2026, time.August, 21, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(onPublicationAugust21), "sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026") {
+		t.Fatal("publishedPosts() included SK Hynix buyback article before publication date")
+	}
+
 	if !containsSlug(publishedPosts(onPublicationAugust21), "google-spirit-airlines-employee-data-ai-training-bankruptcy-2026") {
 		t.Fatal("publishedPosts() did not include Spirit Airlines data article on publication date")
 	}

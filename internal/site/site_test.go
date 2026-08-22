@@ -106,6 +106,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"reconstruction-benchmark-ai-research-idea-bibliography-2026"`) {
 		t.Fatal("response missing Reconstruction benchmark article link")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("The HBM Confidence Vote: SK Hynix Just Bet $28 Billion That the AI Memory Boom Has Legs")) {
+		t.Fatal("response missing SK Hynix buyback article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026"`) {
+		t.Fatal("response missing SK Hynix buyback article link")
+	}
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)

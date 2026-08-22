@@ -260,6 +260,28 @@ func TestAugust21ReconstructionArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust21DARPAF16AutonomyArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("darpa-venom-f16-ai-controlled-flight-autonomy-kit-2026")
+	if !ok {
+		t.Fatal("August 21 DARPA VENOM F-16 autonomy article is missing")
+	}
+	if post.Title != "The Air Force Can Flip a Switch and Hand an F-16 to an AI. It Did." {
+		t.Fatalf("article title = %q, want DARPA VENOM F-16 autonomy article title", post.Title)
+	}
+	if post.Date != "August 21, 2026" {
+		t.Fatalf("article date = %q, want August 21, 2026", post.Date)
+	}
+	if post.Tag != "Military AI / Autonomous Systems" {
+		t.Fatalf("article tag = %q, want Military AI / Autonomous Systems", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestAugust22A2AArticleMetadata(t *testing.T) {
 	post, ok := FindBySlug("a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026")
 	if !ok {

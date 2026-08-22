@@ -106,6 +106,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"reconstruction-benchmark-ai-research-idea-bibliography-2026"`) {
 		t.Fatal("response missing Reconstruction benchmark article link")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("The Air Force Can Flip a Switch and Hand an F-16 to an AI. It Did.")) {
+		t.Fatal("response missing DARPA VENOM F-16 autonomy article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"darpa-venom-f16-ai-controlled-flight-autonomy-kit-2026"`) {
+		t.Fatal("response missing DARPA VENOM F-16 autonomy article link")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("The HBM Confidence Vote: SK Hynix Just Bet $28 Billion That the AI Memory Boom Has Legs")) {
 		t.Fatal("response missing SK Hynix buyback article title")
 	}

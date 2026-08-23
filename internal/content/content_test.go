@@ -326,6 +326,28 @@ func TestAugust22SKHynixBuybackArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust23CopilotCoSnitchArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("microsoft-copilot-cosnitch-meta-hacking-vulnerability-2026")
+	if !ok {
+		t.Fatal("August 23 Copilot CoSnitch article is missing")
+	}
+	if post.Title != "A Researcher Asked Copilot Why It Couldn't Hack Itself. The Answer Was a How-To Guide." {
+		t.Fatalf("article title = %q, want Copilot CoSnitch article title", post.Title)
+	}
+	if post.Date != "August 23, 2026" {
+		t.Fatalf("article date = %q, want August 23, 2026", post.Date)
+	}
+	if post.Tag != "Security" {
+		t.Fatalf("article tag = %q, want Security", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -431,6 +453,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 	if !containsSlug(publishedPosts(onPublicationAugust22), "a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026") {
 		t.Fatal("publishedPosts() did not include A2A article on publication date")
+	}
+
+	onPublicationAugust23 := time.Date(2026, time.August, 23, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust23), "microsoft-copilot-cosnitch-meta-hacking-vulnerability-2026") {
+		t.Fatal("publishedPosts() did not include Copilot CoSnitch article on publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationAugust22), "microsoft-copilot-cosnitch-meta-hacking-vulnerability-2026") {
+		t.Fatal("publishedPosts() included Copilot CoSnitch article before publication date")
 	}
 
 	onPublicationAugust21 := time.Date(2026, time.August, 21, 0, 0, 0, 0, time.UTC)

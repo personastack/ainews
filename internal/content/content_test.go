@@ -348,6 +348,28 @@ func TestAugust23CopilotCoSnitchArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust23NvidiaPoolsideArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("nvidia-poolside-6-billion-model-factory-license-2026")
+	if !ok {
+		t.Fatal("August 23 Nvidia Poolside article is missing")
+	}
+	if post.Title != "Not an Acquisition. Not an Acquihire. Nvidia Just Invented Something New." {
+		t.Fatalf("article title = %q, want Nvidia Poolside article title", post.Title)
+	}
+	if post.Date != "August 23, 2026" {
+		t.Fatalf("article date = %q, want August 23, 2026", post.Date)
+	}
+	if post.Tag != "AI Industry / Market Structure" {
+		t.Fatalf("article tag = %q, want AI Industry / Market Structure", post.Tag)
+	}
+	if len(post.Related) != 1 || post.Related[0].Slug != "openai-gpt-5-6-sol-government-gated-frontier-release-2026" {
+		t.Fatalf("related links = %#v, want the government-gated frontier release article", post.Related)
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -461,6 +483,12 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 	if containsSlug(publishedPosts(onPublicationAugust22), "microsoft-copilot-cosnitch-meta-hacking-vulnerability-2026") {
 		t.Fatal("publishedPosts() included Copilot CoSnitch article before publication date")
+	}
+	if !containsSlug(publishedPosts(onPublicationAugust23), "nvidia-poolside-6-billion-model-factory-license-2026") {
+		t.Fatal("publishedPosts() did not include Nvidia Poolside article on publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationAugust22), "nvidia-poolside-6-billion-model-factory-license-2026") {
+		t.Fatal("publishedPosts() included Nvidia Poolside article before publication date")
 	}
 
 	onPublicationAugust21 := time.Date(2026, time.August, 21, 0, 0, 0, 0, time.UTC)

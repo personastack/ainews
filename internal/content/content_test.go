@@ -453,6 +453,39 @@ func TestAugust24AdsAndGeminiWorkflowArticlesMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust24PolicyAndDeepSeekArticlesMetadata(t *testing.T) {
+	tests := []struct {
+		slug    string
+		title   string
+		tag     string
+		related []string
+	}{
+		{slug: "ai-enterprise-liability-courts-california-ab316-2026", title: `"The AI Did It" Is No Longer a Defense in California`, tag: "Policy", related: []string{"openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026"}},
+		{slug: "deepseek-v4-pro-0813-open-weight-1t6-mit-2026", title: "DeepSeek Drops V4 Pro: 1.6 Trillion Parameters, MIT License, Ready to Self-Host", tag: "Models", related: []string{"grok-4-5-spacexai-cursor-coding-benchmark-harness-2026"}},
+	}
+
+	for _, want := range tests {
+		post, ok := FindBySlug(want.slug)
+		if !ok {
+			t.Fatalf("August 24 article %q is missing", want.slug)
+		}
+		if post.Title != want.title || post.Date != "August 24, 2026" || post.Tag != want.tag {
+			t.Fatalf("article %q metadata = (%q, %q, %q)", want.slug, post.Title, post.Date, post.Tag)
+		}
+		if len(post.Related) != len(want.related) {
+			t.Fatalf("article %q has %d related links, want %d", want.slug, len(post.Related), len(want.related))
+		}
+		for i, relatedSlug := range want.related {
+			if post.Related[i].Slug != relatedSlug {
+				t.Fatalf("article %q related[%d] = %q, want %q", want.slug, i, post.Related[i].Slug, relatedSlug)
+			}
+		}
+		if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+			t.Fatalf("article %q does not end with a Sources section", want.slug)
+		}
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -582,6 +615,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 		t.Fatal("publishedPosts() did not include ChatGPT one-billion-users article on publication date")
 	}
 	for _, slug := range []string{"chatgpt-ads-europe-31-markets-revenue-2026", "gemini-flash-agentic-benchmark-gap-gpt-2026"} {
+		if !containsSlug(publishedPosts(onPublicationAugust24), slug) {
+			t.Fatalf("publishedPosts() did not include %q on publication date", slug)
+		}
+		if containsSlug(publishedPosts(onPublicationAugust23), slug) {
+			t.Fatalf("publishedPosts() included %q before publication date", slug)
+		}
+	}
+	for _, slug := range []string{"ai-enterprise-liability-courts-california-ab316-2026", "deepseek-v4-pro-0813-open-weight-1t6-mit-2026"} {
 		if !containsSlug(publishedPosts(onPublicationAugust24), slug) {
 			t.Fatalf("publishedPosts() did not include %q on publication date", slug)
 		}

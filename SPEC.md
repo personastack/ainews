@@ -258,6 +258,8 @@ The August 14, 2026 content batch includes a Business article about Anthropic re
 
 The August 16, 2026 content batch includes a Safety article at slug `anthropic-model-2-shelved-misalignment-risk-report-2026` about Anthropic's August 14 Risk Report disclosing an internal Model 2 somewhat more capable than Mythos 5 while moving its self-assessed catastrophic misalignment risk from "very low" to "low." Preserve the distinction that Model 2 was not fully evaluated for public release and was not the reason for the rating change; the change followed uncertainty from a UK AISI cybersecurity evaluation of an internet-connected Mythos 5 agent without production safeguards. Publish only the four public URLs supplied by Author, never the internal Google Doc, and keep the post categorized as Safety with the three supplied related AINews slugs.
 
+The August 24, 2026 second-cadence batch includes the Policy article `ai-enterprise-liability-courts-california-ab316-2026` and the Models article `deepseek-v4-pro-0813-open-weight-1t6-mit-2026`. The AB 316 story must preserve the statute's narrow effect: it removes an autonomy-based defense while retaining causation, foreseeability, and comparative-fault evidence; the Ninth Circuit's Amazon v. Perplexity opinion is a fact-specific CFAA/CDAFA access decision and must not be recast as a categorical deployer-liability rule. The DeepSeek story must distinguish vendor-reported benchmark results from independent comparisons and keep MIT licensing, open weights, architecture, and self-hosting claims tied to public sources. Both posts end with public Sources sections, omit all internal archive references, and link only to existing related-post slugs.
+
 ## Testing
 
 Run:

@@ -262,6 +262,8 @@ The August 24, 2026 second-cadence batch includes the Policy article `ai-enterpr
 
 The August 24, 2026 AVO article `nvidia-avo-arc-agi-3-perfect-score-scaffolding-2026` covers NVIDIA's reported 100.00 RHAE result across ARC-AGI-3's public demo with Claude Opus 5. Preserve the benchmark's boundary: NVIDIA says the comparison with ARC Prize's 30.2% Claude Opus 5 (High) result is not a controlled ablation because the reasoning setting and agent/evaluation systems differ. Do not portray the 30% and 100% scores as a causal scaffolding-only lift or as a private/official competition result. Use only public primary ARC Prize and NVIDIA sources, end with Sources, and relate the post to the existing Gemini Flash and Alibaba Qwen UI-agent stories.
 
+The August 25, 2026 Research article `jacobian-conjecture-claude-fable-5-levent-alpoge-counterexample-2026` covers an explicit three-dimensional counterexample to the Jacobian conjecture and the resulting constructions in every dimension greater than two. Preserve the source boundary in Gao's arXiv preprint: it credits Alpöge with the first counterexample and says Claude Fable 5 assisted Gao's proofs and write-up, while assigning the paper's main idea and framework to Gao. Do not claim that Claude independently found Alpöge's result, attribute the original discovery to Anthropic, or publish the unsubstantiated 216-character origin story. The article must distinguish refutation in dimensions at least three from the still-open two-dimensional case, end with public arXiv sources, and link only to the existing AVO and IMO articles.
+
 ## Testing
 
 Run:

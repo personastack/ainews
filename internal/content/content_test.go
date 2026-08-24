@@ -511,6 +511,37 @@ func TestAugust24NvidiaAVOArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust25JacobianConjectureArticleMetadata(t *testing.T) {
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == "jacobian-conjecture-claude-fable-5-levent-alpoge-counterexample-2026" {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("August 25 Jacobian conjecture article is missing")
+	}
+	if post.Title != "A Counterexample Broke the Jacobian Conjecture. The AI Origin Story Needs More Evidence." || post.Date != "August 25, 2026" || post.Tag != "Research" {
+		t.Fatalf("article metadata = (%q, %q, %q)", post.Title, post.Date, post.Tag)
+	}
+	wantRelated := []string{
+		"nvidia-avo-arc-agi-3-perfect-score-scaffolding-2026",
+		"imo-2026-huawei-celia-xiaohongshu-official-ai-perfect-scores-2026",
+	}
+	if len(post.Related) != len(wantRelated) {
+		t.Fatalf("related links = %d, want %d", len(post.Related), len(wantRelated))
+	}
+	for i, slug := range wantRelated {
+		if post.Related[i].Slug != slug {
+			t.Fatalf("related[%d] = %q, want %q", i, post.Related[i].Slug, slug)
+		}
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("Jacobian conjecture article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -657,6 +688,15 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 	if containsSlug(publishedPosts(onPublicationAugust23), "alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026") {
 		t.Fatal("publishedPosts() included Alibaba Qwen-UI-Agent article before publication date")
+	}
+
+	onPublicationAugust25 := time.Date(2026, time.August, 25, 0, 0, 0, 0, time.UTC)
+	jacobianSlug := "jacobian-conjecture-claude-fable-5-levent-alpoge-counterexample-2026"
+	if !containsSlug(publishedPosts(onPublicationAugust25), jacobianSlug) {
+		t.Fatalf("publishedPosts() did not include %q on publication date", jacobianSlug)
+	}
+	if containsSlug(publishedPosts(onPublicationAugust24), jacobianSlug) {
+		t.Fatalf("publishedPosts() included %q before publication date", jacobianSlug)
 	}
 	if containsSlug(publishedPosts(onPublicationAugust23), "chatgpt-1-billion-monthly-users-fastest-app-history-2026") {
 		t.Fatal("publishedPosts() included ChatGPT one-billion-users article before publication date")

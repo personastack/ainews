@@ -370,6 +370,37 @@ func TestAugust23NvidiaPoolsideArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust24AlibabaQwenUIAgentArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026")
+	if !ok {
+		t.Fatal("August 24 Alibaba Qwen-UI-Agent article is missing")
+	}
+	if post.Title != "Alibaba's GUI Agent Scores 92% on Real Android Devices. GPT-5.6 Wasn't Even Close." {
+		t.Fatalf("article title = %q, want Alibaba Qwen-UI-Agent article title", post.Title)
+	}
+	if post.Date != "August 24, 2026" {
+		t.Fatalf("article date = %q, want August 24, 2026", post.Date)
+	}
+	if post.Tag != "AI Agents" {
+		t.Fatalf("article tag = %q, want AI Agents", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+	for i, want := range []string{
+		"imo-2026-huawei-celia-xiaohongshu-official-ai-perfect-scores-2026",
+		"a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026",
+		"qwen3-8-max-open-weight-benchmarks-gpt-5-6-claude-2026",
+	} {
+		if post.Related[i].Slug != want {
+			t.Fatalf("related[%d] slug = %q, want %q", i, post.Related[i].Slug, want)
+		}
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -489,6 +520,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 	if containsSlug(publishedPosts(onPublicationAugust22), "nvidia-poolside-6-billion-model-factory-license-2026") {
 		t.Fatal("publishedPosts() included Nvidia Poolside article before publication date")
+	}
+
+	onPublicationAugust24 := time.Date(2026, time.August, 24, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(onPublicationAugust24), "alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026") {
+		t.Fatal("publishedPosts() did not include Alibaba Qwen-UI-Agent article on publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationAugust23), "alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026") {
+		t.Fatal("publishedPosts() included Alibaba Qwen-UI-Agent article before publication date")
 	}
 
 	onPublicationAugust21 := time.Date(2026, time.August, 21, 0, 0, 0, 0, time.UTC)

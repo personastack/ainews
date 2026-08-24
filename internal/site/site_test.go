@@ -34,6 +34,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	apiBody := apiRec.Body.String()
 	apiBodyHTML := template.HTMLEscapeString(apiBody)
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Alibaba's GUI Agent Scores 92% on Real Android Devices. GPT-5.6 Wasn't Even Close.")) {
+		t.Fatal("response missing Alibaba Qwen-UI-Agent article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026"`) {
+		t.Fatal("response missing Alibaba Qwen-UI-Agent article link")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Anthropic Just Bet $10 Billion on a Compute Company That Didn't Exist Six Months Ago")) {
 		t.Fatal("response missing Anthropic Volta Bitdeer compute deal article title")
 	}

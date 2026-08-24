@@ -401,6 +401,34 @@ func TestAugust24AlibabaQwenUIAgentArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust24ChatGPTOneBillionUsersArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("chatgpt-1-billion-monthly-users-fastest-app-history-2026")
+	if !ok {
+		t.Fatal("August 24 ChatGPT one-billion-users article is missing")
+	}
+	if post.Title != "ChatGPT Hit 1 Billion Monthly Users Faster Than Any App in History. It Was Still Seven Months Late." {
+		t.Fatalf("article title = %q, want ChatGPT one-billion-users article title", post.Title)
+	}
+	if post.Date != "August 24, 2026" {
+		t.Fatalf("article date = %q, want August 24, 2026", post.Date)
+	}
+	if post.Tag != "Business" {
+		t.Fatalf("article tag = %q, want Business", post.Tag)
+	}
+	for i, want := range []string{
+		"openai-ipo-2027-sarah-friar-losses-anthropic-revenue-2026",
+		"anthropic-q2-2026-11-5-billion-revenue-first-profit-ipo-2026",
+		"gemini-one-billion-monthly-users-2026",
+	} {
+		if len(post.Related) != 3 || post.Related[i].Slug != want {
+			t.Fatalf("related links = %#v, want related[%d] slug %q", post.Related, i, want)
+		}
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -526,8 +554,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	if !containsSlug(publishedPosts(onPublicationAugust24), "alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026") {
 		t.Fatal("publishedPosts() did not include Alibaba Qwen-UI-Agent article on publication date")
 	}
+	if !containsSlug(publishedPosts(onPublicationAugust24), "chatgpt-1-billion-monthly-users-fastest-app-history-2026") {
+		t.Fatal("publishedPosts() did not include ChatGPT one-billion-users article on publication date")
+	}
 	if containsSlug(publishedPosts(onPublicationAugust23), "alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026") {
 		t.Fatal("publishedPosts() included Alibaba Qwen-UI-Agent article before publication date")
+	}
+	if containsSlug(publishedPosts(onPublicationAugust23), "chatgpt-1-billion-monthly-users-fastest-app-history-2026") {
+		t.Fatal("publishedPosts() included ChatGPT one-billion-users article before publication date")
 	}
 
 	onPublicationAugust21 := time.Date(2026, time.August, 21, 0, 0, 0, 0, time.UTC)

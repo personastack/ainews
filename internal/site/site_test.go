@@ -34,6 +34,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 	apiBody := apiRec.Body.String()
 	apiBodyHTML := template.HTMLEscapeString(apiBody)
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("ChatGPT Hit 1 Billion Monthly Users Faster Than Any App in History. It Was Still Seven Months Late.")) {
+		t.Fatal("response missing ChatGPT one-billion-users article title")
+	}
+	if !strings.Contains(apiBody, `"slug":"chatgpt-1-billion-monthly-users-fastest-app-history-2026"`) {
+		t.Fatal("response missing ChatGPT one-billion-users article link")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Alibaba's GUI Agent Scores 92% on Real Android Devices. GPT-5.6 Wasn't Even Close.")) {
 		t.Fatal("response missing Alibaba Qwen-UI-Agent article title")
 	}

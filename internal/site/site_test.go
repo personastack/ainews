@@ -46,6 +46,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026"`) {
 		t.Fatal("response missing Alibaba Qwen-UI-Agent article link")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("ChatGPT Ads Are Live Across Europe Today. The Opt-Out Doesn't Remove Them.")) || !strings.Contains(apiBody, `"slug":"chatgpt-ads-europe-31-markets-revenue-2026"`) {
+		t.Fatal("response missing ChatGPT Europe ads article")
+	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Gemini Flash Tops the Workflow Chart. Then the Hardest Problems Start.")) || !strings.Contains(apiBody, `"slug":"gemini-flash-agentic-benchmark-gap-gpt-2026"`) {
+		t.Fatal("response missing Gemini workflow benchmark article")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Anthropic Just Bet $10 Billion on a Compute Company That Didn't Exist Six Months Ago")) {
 		t.Fatal("response missing Anthropic Volta Bitdeer compute deal article title")
 	}

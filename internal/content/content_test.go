@@ -429,6 +429,30 @@ func TestAugust24ChatGPTOneBillionUsersArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust24AdsAndGeminiWorkflowArticlesMetadata(t *testing.T) {
+	tests := []struct {
+		slug  string
+		title string
+		tag   string
+	}{
+		{"chatgpt-ads-europe-31-markets-revenue-2026", "ChatGPT Ads Are Live Across Europe Today. The Opt-Out Doesn't Remove Them.", "Business"},
+		{"gemini-flash-agentic-benchmark-gap-gpt-2026", "Gemini Flash Tops the Workflow Chart. Then the Hardest Problems Start.", "Models"},
+	}
+
+	for _, want := range tests {
+		post, ok := FindBySlug(want.slug)
+		if !ok {
+			t.Fatalf("August 24 article %q is missing", want.slug)
+		}
+		if post.Title != want.title || post.Date != "August 24, 2026" || post.Tag != want.tag {
+			t.Fatalf("article %q metadata = (%q, %q, %q)", want.slug, post.Title, post.Date, post.Tag)
+		}
+		if len(post.Related) != 3 || len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+			t.Fatalf("article %q does not have three related links and a final Sources section", want.slug)
+		}
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -556,6 +580,14 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 	if !containsSlug(publishedPosts(onPublicationAugust24), "chatgpt-1-billion-monthly-users-fastest-app-history-2026") {
 		t.Fatal("publishedPosts() did not include ChatGPT one-billion-users article on publication date")
+	}
+	for _, slug := range []string{"chatgpt-ads-europe-31-markets-revenue-2026", "gemini-flash-agentic-benchmark-gap-gpt-2026"} {
+		if !containsSlug(publishedPosts(onPublicationAugust24), slug) {
+			t.Fatalf("publishedPosts() did not include %q on publication date", slug)
+		}
+		if containsSlug(publishedPosts(onPublicationAugust23), slug) {
+			t.Fatalf("publishedPosts() included %q before publication date", slug)
+		}
 	}
 	if containsSlug(publishedPosts(onPublicationAugust23), "alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026") {
 		t.Fatal("publishedPosts() included Alibaba Qwen-UI-Agent article before publication date")

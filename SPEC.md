@@ -260,6 +260,8 @@ The August 16, 2026 content batch includes a Safety article at slug `anthropic-m
 
 The August 24, 2026 second-cadence batch includes the Policy article `ai-enterprise-liability-courts-california-ab316-2026` and the Models article `deepseek-v4-pro-0813-open-weight-1t6-mit-2026`. The AB 316 story must preserve the statute's narrow effect: it removes an autonomy-based defense while retaining causation, foreseeability, and comparative-fault evidence; the Ninth Circuit's Amazon v. Perplexity opinion is a fact-specific CFAA/CDAFA access decision and must not be recast as a categorical deployer-liability rule. The DeepSeek story must distinguish vendor-reported benchmark results from independent comparisons and keep MIT licensing, open weights, architecture, and self-hosting claims tied to public sources. Both posts end with public Sources sections, omit all internal archive references, and link only to existing related-post slugs.
 
+The August 24, 2026 AVO article `nvidia-avo-arc-agi-3-perfect-score-scaffolding-2026` covers NVIDIA's reported 100.00 RHAE result across ARC-AGI-3's public demo with Claude Opus 5. Preserve the benchmark's boundary: NVIDIA says the comparison with ARC Prize's 30.2% Claude Opus 5 (High) result is not a controlled ablation because the reasoning setting and agent/evaluation systems differ. Do not portray the 30% and 100% scores as a causal scaffolding-only lift or as a private/official competition result. Use only public primary ARC Prize and NVIDIA sources, end with Sources, and relate the post to the existing Gemini Flash and Alibaba Qwen UI-agent stories.
+
 ## Testing
 
 Run:

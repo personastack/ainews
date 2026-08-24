@@ -486,6 +486,31 @@ func TestAugust24PolicyAndDeepSeekArticlesMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust24NvidiaAVOArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("nvidia-avo-arc-agi-3-perfect-score-scaffolding-2026")
+	if !ok {
+		t.Fatal("August 24 NVIDIA AVO article is missing")
+	}
+	if post.Title != "Nvidia's AVO Put Claude Opus 5 at 100% on ARC-AGI-3's Public Set" || post.Date != "August 24, 2026" || post.Tag != "AI Agents" {
+		t.Fatalf("article metadata = (%q, %q, %q)", post.Title, post.Date, post.Tag)
+	}
+	wantRelated := []string{
+		"gemini-flash-agentic-benchmark-gap-gpt-2026",
+		"alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026",
+	}
+	if len(post.Related) != len(wantRelated) {
+		t.Fatalf("related links = %d, want %d", len(post.Related), len(wantRelated))
+	}
+	for i, slug := range wantRelated {
+		if post.Related[i].Slug != slug {
+			t.Fatalf("related[%d] = %q, want %q", i, post.Related[i].Slug, slug)
+		}
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("NVIDIA AVO article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -622,7 +647,7 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 			t.Fatalf("publishedPosts() included %q before publication date", slug)
 		}
 	}
-	for _, slug := range []string{"ai-enterprise-liability-courts-california-ab316-2026", "deepseek-v4-pro-0813-open-weight-1t6-mit-2026"} {
+	for _, slug := range []string{"ai-enterprise-liability-courts-california-ab316-2026", "deepseek-v4-pro-0813-open-weight-1t6-mit-2026", "nvidia-avo-arc-agi-3-perfect-score-scaffolding-2026"} {
 		if !containsSlug(publishedPosts(onPublicationAugust24), slug) {
 			t.Fatalf("publishedPosts() did not include %q on publication date", slug)
 		}

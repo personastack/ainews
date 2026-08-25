@@ -577,6 +577,31 @@ func TestAugust25PublishCycleArticlesMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust25DeepSeekTaiwanSecurityArticleMetadata(t *testing.T) {
+	post, ok := FindBySlug("chinese-hackers-deepseek-double-attacks-guardrails-taiwan-2026")
+	if !ok {
+		t.Fatal("August 25 DeepSeek Taiwan security article is missing")
+	}
+	if post.Title != "Chinese Hackers Increased Their Output With AI. DeepSeek's Low-Guardrail Appeal Shows the Harder Problem." || post.Date != "August 25, 2026" || post.Tag != "Security" {
+		t.Fatalf("article metadata = (%q, %q, %q)", post.Title, post.Date, post.Tag)
+	}
+	wantRelated := []string{
+		"microsoft-copilot-cosnitch-meta-hacking-vulnerability-2026",
+		"openai-daybreak-gpt-5-6-cyber-launch-2026",
+	}
+	if len(post.Related) != len(wantRelated) {
+		t.Fatalf("related links = %d, want %d", len(post.Related), len(wantRelated))
+	}
+	for i, slug := range wantRelated {
+		if post.Related[i].Slug != slug {
+			t.Fatalf("related[%d] = %q, want %q", i, post.Related[i].Slug, slug)
+		}
+	}
+	if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+		t.Fatal("DeepSeek Taiwan security article does not end with a Sources section")
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",

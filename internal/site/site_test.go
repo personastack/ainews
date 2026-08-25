@@ -52,6 +52,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("o3 Leaves ChatGPT Tomorrow. The AI Model Lifecycle Is Now Six Months.")) || !strings.Contains(apiBody, `"slug":"openai-o3-retirement-chatgpt-august-26-model-lifecycle-2026"`) {
 		t.Fatal("response missing OpenAI o3 retirement article")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Chinese Hackers Increased Their Output With AI. DeepSeek's Low-Guardrail Appeal Shows the Harder Problem.")) || !strings.Contains(apiBody, `"slug":"chinese-hackers-deepseek-double-attacks-guardrails-taiwan-2026"`) {
+		t.Fatal("response missing DeepSeek Taiwan security article")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("ChatGPT Ads Are Live Across Europe Today. The Opt-Out Doesn't Remove Them.")) || !strings.Contains(apiBody, `"slug":"chatgpt-ads-europe-31-markets-revenue-2026"`) {
 		t.Fatal("response missing ChatGPT Europe ads article")
 	}

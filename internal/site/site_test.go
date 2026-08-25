@@ -46,6 +46,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"alibaba-qwen-ui-agent-gui-benchmark-open-weights-2026"`) {
 		t.Fatal("response missing Alibaba Qwen-UI-Agent article link")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("AI Gets Cheaper to Use. The Hardware That Runs It Is About to Get Much More Expensive.")) || !strings.Contains(apiBody, `"slug":"nvidia-ai-server-prices-15-percent-dram-hbm-shortage-2027"`) {
+		t.Fatal("response missing Nvidia AI server price article")
+	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("o3 Leaves ChatGPT Tomorrow. The AI Model Lifecycle Is Now Six Months.")) || !strings.Contains(apiBody, `"slug":"openai-o3-retirement-chatgpt-august-26-model-lifecycle-2026"`) {
+		t.Fatal("response missing OpenAI o3 retirement article")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("ChatGPT Ads Are Live Across Europe Today. The Opt-Out Doesn't Remove Them.")) || !strings.Contains(apiBody, `"slug":"chatgpt-ads-europe-31-markets-revenue-2026"`) {
 		t.Fatal("response missing ChatGPT Europe ads article")
 	}

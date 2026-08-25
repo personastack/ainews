@@ -542,6 +542,41 @@ func TestAugust25JacobianConjectureArticleMetadata(t *testing.T) {
 	}
 }
 
+func TestAugust25PublishCycleArticlesMetadata(t *testing.T) {
+	tests := []struct {
+		slug  string
+		title string
+		tag   string
+	}{
+		{
+			slug:  "nvidia-ai-server-prices-15-percent-dram-hbm-shortage-2027",
+			title: "AI Gets Cheaper to Use. The Hardware That Runs It Is About to Get Much More Expensive.",
+			tag:   "Infrastructure",
+		},
+		{
+			slug:  "openai-o3-retirement-chatgpt-august-26-model-lifecycle-2026",
+			title: "o3 Leaves ChatGPT Tomorrow. The AI Model Lifecycle Is Now Six Months.",
+			tag:   "Industry Trends",
+		},
+	}
+
+	for _, want := range tests {
+		post, ok := FindBySlug(want.slug)
+		if !ok {
+			t.Fatalf("FindBySlug() did not find %q", want.slug)
+		}
+		if post.Title != want.title || post.Date != "August 25, 2026" || post.Tag != want.tag {
+			t.Fatalf("article metadata = (%q, %q, %q), want (%q, August 25, 2026, %q)", post.Title, post.Date, post.Tag, want.title, want.tag)
+		}
+		if len(post.Related) != 3 {
+			t.Fatalf("article %q related links = %d, want 3", want.slug, len(post.Related))
+		}
+		if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+			t.Fatalf("article %q does not end with Sources", want.slug)
+		}
+	}
+}
+
 func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	blockedText := []string{
 		"docs.google.com",
@@ -697,6 +732,17 @@ func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
 	}
 	if containsSlug(publishedPosts(onPublicationAugust24), jacobianSlug) {
 		t.Fatalf("publishedPosts() included %q before publication date", jacobianSlug)
+	}
+	for _, slug := range []string{
+		"nvidia-ai-server-prices-15-percent-dram-hbm-shortage-2027",
+		"openai-o3-retirement-chatgpt-august-26-model-lifecycle-2026",
+	} {
+		if !containsSlug(publishedPosts(onPublicationAugust25), slug) {
+			t.Fatalf("publishedPosts() did not include %q on publication date", slug)
+		}
+		if containsSlug(publishedPosts(onPublicationAugust24), slug) {
+			t.Fatalf("publishedPosts() included %q before publication date", slug)
+		}
 	}
 	if containsSlug(publishedPosts(onPublicationAugust23), "chatgpt-1-billion-monthly-users-fastest-app-history-2026") {
 		t.Fatal("publishedPosts() included ChatGPT one-billion-users article before publication date")

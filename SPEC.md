@@ -264,6 +264,8 @@ The August 24, 2026 AVO article `nvidia-avo-arc-agi-3-perfect-score-scaffolding-
 
 The August 25, 2026 Research article `jacobian-conjecture-claude-fable-5-levent-alpoge-counterexample-2026` covers an explicit three-dimensional counterexample to the Jacobian conjecture and the resulting constructions in every dimension greater than two. Preserve the source boundary in Gao's arXiv preprint: it credits Alpöge with the first counterexample and says Claude Fable 5 assisted Gao's proofs and write-up, while assigning the paper's main idea and framework to Gao. Do not claim that Claude independently found Alpöge's result, attribute the original discovery to Anthropic, or publish the unsubstantiated 216-character origin story. The article must distinguish refutation in dimensions at least three from the still-open two-dimensional case, end with public arXiv sources, and link only to the existing AVO and IMO articles.
 
+The August 25, 2026 publish-cycle batch also includes the Infrastructure article `nvidia-ai-server-prices-15-percent-dram-hbm-shortage-2027` and the Industry Trends article `openai-o3-retirement-chatgpt-august-26-model-lifecycle-2026`. The Nvidia article treats the reported 15%-plus price rise for early-2027 Vera Rubin and Grace Blackwell systems as a memory-supply-chain story, preserving the reported nature of DRAM, HBM, configuration, and cost-model figures. The o3 article preserves the stated August 26 ChatGPT retirement date and its ChatGPT-versus-API lifecycle distinction while framing its broader lifecycle analysis as interpretation rather than a service guarantee. Both posts end with public Sources sections and use only existing related-post slugs.
+
 ## Testing
 
 Run:

@@ -645,6 +645,25 @@ func TestAugust26PostsHaveCompletePublicMetadata(t *testing.T) {
 		relatedSlugs []string
 	}{
 		{
+			slug:  "agent-protocol-wars-a2a-mcp-agentic-ai-foundation-2026",
+			title: "The Agent Protocol Wars Are Over — And Everyone Won",
+			tag:   "AI Infrastructure / Agents",
+			relatedSlugs: []string{
+				"a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026",
+				"obsidian-security-85-million-ai-agent-governance-2026",
+			},
+		},
+		{
+			slug:  "gpu-isnt-your-problem-hbm-memory-supply-crisis-2026",
+			title: "The GPU Isn't Your Problem Anymore — HBM Is",
+			tag:   "Hardware",
+			relatedSlugs: []string{
+				"nvidia-ai-server-prices-15-percent-dram-hbm-shortage-2027",
+				"sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026",
+				"ai-memory-chip-shortage-dram-hbm-data-centers-2026",
+			},
+		},
+		{
 			slug:  "thomson-reuters-thomson-llm-westlaw-cocounsel-domain-2026",
 			title: "Thomson Reuters Built Its Own LLM for $40 Million. On Legal Work, It Beats GPT-5.4.",
 			tag:   "Industry Trends",
@@ -691,6 +710,8 @@ func TestAugust26PostsRespectPublicationDate(t *testing.T) {
 	publicationDay := time.Date(2026, time.August, 26, 12, 0, 0, 0, time.UTC)
 	previousDay := publicationDay.AddDate(0, 0, -1)
 	slugs := []string{
+		"agent-protocol-wars-a2a-mcp-agentic-ai-foundation-2026",
+		"gpu-isnt-your-problem-hbm-memory-supply-crisis-2026",
 		"thomson-reuters-thomson-llm-westlaw-cocounsel-domain-2026",
 		"nvidia-groq-3-lpx-full-production-hot-chips-2026-agentic-inference",
 	}

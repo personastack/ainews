@@ -680,6 +680,15 @@ func TestAugust26PostsHaveCompletePublicMetadata(t *testing.T) {
 				"nvidia-ai-server-prices-15-percent-dram-hbm-shortage-2027",
 			},
 		},
+		{
+			slug:  "palantir-q2-2026-enterprise-ai-roi-sovereignty-revenue",
+			title: "The Enterprise AI Skeptics Have a Data Problem. Palantir's Q2 Just Added to It.",
+			tag:   "Enterprise",
+			relatedSlugs: []string{
+				"ai-layoffs-enterprise-roi-gap-2026",
+				"from-pilot-to-production-enterprise-ai-adoption-governance-first-2026",
+			},
+		},
 	}
 
 	for _, tt := range tests {
@@ -714,6 +723,7 @@ func TestAugust26PostsRespectPublicationDate(t *testing.T) {
 		"gpu-isnt-your-problem-hbm-memory-supply-crisis-2026",
 		"thomson-reuters-thomson-llm-westlaw-cocounsel-domain-2026",
 		"nvidia-groq-3-lpx-full-production-hot-chips-2026-agentic-inference",
+		"palantir-q2-2026-enterprise-ai-roi-sovereignty-revenue",
 	}
 
 	for _, slug := range slugs {

@@ -58,6 +58,9 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("The Inference Chip Nvidia Paid $20 Billion For Is Now Shipping. Meet the Groq 3 LPX.")) || !strings.Contains(apiBody, `"slug":"nvidia-groq-3-lpx-full-production-hot-chips-2026-agentic-inference"`) {
 		t.Fatal("response missing Nvidia Groq 3 LPX article")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("The Enterprise AI Skeptics Have a Data Problem. Palantir's Q2 Just Added to It.")) || !strings.Contains(apiBody, `"slug":"palantir-q2-2026-enterprise-ai-roi-sovereignty-revenue"`) {
+		t.Fatal("response missing Palantir enterprise AI article")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Chinese Hackers Increased Their Output With AI. DeepSeek's Low-Guardrail Appeal Shows the Harder Problem.")) || !strings.Contains(apiBody, `"slug":"chinese-hackers-deepseek-double-attacks-guardrails-taiwan-2026"`) {
 		t.Fatal("response missing DeepSeek Taiwan security article")
 	}

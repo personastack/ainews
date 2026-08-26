@@ -52,6 +52,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("o3 Leaves ChatGPT Tomorrow. The AI Model Lifecycle Is Now Six Months.")) || !strings.Contains(apiBody, `"slug":"openai-o3-retirement-chatgpt-august-26-model-lifecycle-2026"`) {
 		t.Fatal("response missing OpenAI o3 retirement article")
 	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Thomson Reuters Built Its Own LLM for $40 Million. On Legal Work, It Beats GPT-5.4.")) || !strings.Contains(apiBody, `"slug":"thomson-reuters-thomson-llm-westlaw-cocounsel-domain-2026"`) {
+		t.Fatal("response missing Thomson Reuters legal model article")
+	}
+	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("The Inference Chip Nvidia Paid $20 Billion For Is Now Shipping. Meet the Groq 3 LPX.")) || !strings.Contains(apiBody, `"slug":"nvidia-groq-3-lpx-full-production-hot-chips-2026-agentic-inference"`) {
+		t.Fatal("response missing Nvidia Groq 3 LPX article")
+	}
 	if !strings.Contains(apiBodyHTML, template.HTMLEscapeString("Chinese Hackers Increased Their Output With AI. DeepSeek's Low-Guardrail Appeal Shows the Harder Problem.")) || !strings.Contains(apiBody, `"slug":"chinese-hackers-deepseek-double-attacks-guardrails-taiwan-2026"`) {
 		t.Fatal("response missing DeepSeek Taiwan security article")
 	}

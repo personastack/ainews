@@ -637,6 +637,74 @@ func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 	}
 }
 
+func TestAugust26PostsHaveCompletePublicMetadata(t *testing.T) {
+	tests := []struct {
+		slug         string
+		title        string
+		tag          string
+		relatedSlugs []string
+	}{
+		{
+			slug:  "thomson-reuters-thomson-llm-westlaw-cocounsel-domain-2026",
+			title: "Thomson Reuters Built Its Own LLM for $40 Million. On Legal Work, It Beats GPT-5.4.",
+			tag:   "Industry Trends",
+			relatedSlugs: []string{
+				"nvidia-poolside-6-billion-model-factory-license-2026",
+			},
+		},
+		{
+			slug:  "nvidia-groq-3-lpx-full-production-hot-chips-2026-agentic-inference",
+			title: "The Inference Chip Nvidia Paid $20 Billion For Is Now Shipping. Meet the Groq 3 LPX.",
+			tag:   "Infrastructure",
+			relatedSlugs: []string{
+				"nvidia-poolside-6-billion-model-factory-license-2026",
+				"nvidia-ai-server-prices-15-percent-dram-hbm-shortage-2027",
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.slug, func(t *testing.T) {
+			post, ok := FindBySlug(tt.slug)
+			if !ok {
+				t.Fatalf("FindBySlug(%q) returned no post", tt.slug)
+			}
+			if post.Title != tt.title || post.Tag != tt.tag || post.Date != "August 26, 2026" {
+				t.Fatalf("unexpected metadata: %#v", post)
+			}
+			if len(post.Related) != len(tt.relatedSlugs) {
+				t.Fatalf("related links = %#v, want %d", post.Related, len(tt.relatedSlugs))
+			}
+			for i, slug := range tt.relatedSlugs {
+				if post.Related[i].Slug != slug {
+					t.Fatalf("related[%d].Slug = %q, want %q", i, post.Related[i].Slug, slug)
+				}
+			}
+			if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+				t.Fatalf("final section must be Sources: %#v", post.Sections)
+			}
+		})
+	}
+}
+
+func TestAugust26PostsRespectPublicationDate(t *testing.T) {
+	publicationDay := time.Date(2026, time.August, 26, 12, 0, 0, 0, time.UTC)
+	previousDay := publicationDay.AddDate(0, 0, -1)
+	slugs := []string{
+		"thomson-reuters-thomson-llm-westlaw-cocounsel-domain-2026",
+		"nvidia-groq-3-lpx-full-production-hot-chips-2026-agentic-inference",
+	}
+
+	for _, slug := range slugs {
+		if !containsSlug(publishedPosts(publicationDay), slug) {
+			t.Fatalf("publishedPosts(%s) should include %q", publicationDay.Format("2006-01-02"), slug)
+		}
+		if containsSlug(publishedPosts(previousDay), slug) {
+			t.Fatalf("publishedPosts(%s) should not include %q", previousDay.Format("2006-01-02"), slug)
+		}
+	}
+}
+
 func TestSourceSectionsUsePublicCitationText(t *testing.T) {
 	blockedSourceText := []string{
 		"Author article handoff",

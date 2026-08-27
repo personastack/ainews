@@ -736,6 +736,69 @@ func TestAugust26PostsRespectPublicationDate(t *testing.T) {
 	}
 }
 
+func TestAugust29PostsHaveCompletePublicMetadata(t *testing.T) {
+	tests := []struct {
+		slug  string
+		title string
+		tag   string
+	}{
+		{
+			slug:  "anthropic-claude-opus-5-fable-5-pricing-performance-2026",
+			title: "Claude Opus 5 Outsmarts Its Pricier Sibling — at Half the Cost",
+			tag:   "Models",
+		},
+		{
+			slug:  "openai-o3-chatgpt-retirement-gpt-4-era-2026",
+			title: "OpenAI's o3 Bows Out Today: The Quiet End of the GPT-4 Era",
+			tag:   "Models",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.slug, func(t *testing.T) {
+			var post Post
+			found := false
+			for _, candidate := range publishedPosts(time.Date(2026, time.August, 29, 12, 0, 0, 0, time.UTC)) {
+				if candidate.Slug == tt.slug {
+					post = candidate
+					found = true
+					break
+				}
+			}
+			if !found {
+				t.Fatalf("publishedPosts(August 29) returned no post for %q", tt.slug)
+			}
+			if post.Title != tt.title || post.Tag != tt.tag || post.Date != "August 29, 2026" {
+				t.Fatalf("unexpected metadata: %#v", post)
+			}
+			if len(post.Related) != 2 {
+				t.Fatalf("related links = %#v, want 2", post.Related)
+			}
+			if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
+				t.Fatalf("final section must be Sources: %#v", post.Sections)
+			}
+		})
+	}
+}
+
+func TestAugust29PostsRespectPublicationDate(t *testing.T) {
+	publicationDay := time.Date(2026, time.August, 29, 12, 0, 0, 0, time.UTC)
+	previousDay := publicationDay.AddDate(0, 0, -1)
+	slugs := []string{
+		"anthropic-claude-opus-5-fable-5-pricing-performance-2026",
+		"openai-o3-chatgpt-retirement-gpt-4-era-2026",
+	}
+
+	for _, slug := range slugs {
+		if !containsSlug(publishedPosts(publicationDay), slug) {
+			t.Fatalf("publishedPosts(%s) should include %q", publicationDay.Format("2006-01-02"), slug)
+		}
+		if containsSlug(publishedPosts(previousDay), slug) {
+			t.Fatalf("publishedPosts(%s) should not include %q", previousDay.Format("2006-01-02"), slug)
+		}
+	}
+}
+
 func TestSourceSectionsUsePublicCitationText(t *testing.T) {
 	blockedSourceText := []string{
 		"Author article handoff",

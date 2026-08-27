@@ -34,6 +34,8 @@ Published posts are gated by the `Date` field using Go's `January 2, 2006` layou
 
 Author backlog handoffs are a queue, not a newest-document lookup. Integrations that select unpublished drafts must enumerate all eligible documents, sort by the authored date ascending, and deduplicate against the published slug catalog before selecting work. Coder preserves that order in dated source batches; the runtime feed still presents the newest published post first.
 
+The August 29, 2026 content batch contains two Models articles: one compares Anthropic's Claude Opus 5 with Fable 5 on capability, pricing, and workload-specific evaluation; the other covers OpenAI's ChatGPT retirement of o3 and the accompanying model-migration implications. Both posts preserve the scheduled August 29 publication date, link only to public first-party sources, and include related links that resolve to existing AINews slugs.
+
 AINews currently stores one primary category in `Post.Tag`. Secondary tags from editorial handoff can be reflected in article copy, but the rendered site only exposes the single primary tag.
 
 The August 6, 2026 content batch includes a Models article about Alibaba's Qwen3.8-Max open-weight release plan and benchmark split against GPT-5.6 Sol and Claude Fable 5. Preserve the key sourced figures as scoped benchmark claims, not universal model superiority: 2.4 trillion total parameters, roughly 95 billion active parameters, one-million-token context, QwenCloud pricing, Terminal-Bench/MRCR trailing results, PaperBench/IFBench leading results, and the Qwen3.8-27B practical deployment caveat. Keep the Fable 5 export-control context tied to public Anthropic sources and existing related coverage, and never publish the internal archive document link.

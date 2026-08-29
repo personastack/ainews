@@ -757,6 +757,11 @@ func TestAugust29PostsHaveCompletePublicMetadata(t *testing.T) {
 			title: "OpenAI's o3 Bows Out Today: The Quiet End of the GPT-4 Era",
 			tag:   "Models",
 		},
+		{
+			slug:  "openai-exploitgym-cisa-kev-linux-kernel-cve-2026-federal-patch-deadline",
+			title: "OpenAI's Benchmark Agent Ran a Linux Exploit. Now Federal Agencies Have 72 Hours to Patch It.",
+			tag:   "AI Safety",
+		},
 	}
 
 	for _, tt := range tests {
@@ -776,8 +781,12 @@ func TestAugust29PostsHaveCompletePublicMetadata(t *testing.T) {
 			if post.Title != tt.title || post.Tag != tt.tag || post.Date != "August 29, 2026" {
 				t.Fatalf("unexpected metadata: %#v", post)
 			}
-			if len(post.Related) != 2 {
-				t.Fatalf("related links = %#v, want 2", post.Related)
+			wantRelated := 2
+			if tt.slug == "openai-exploitgym-cisa-kev-linux-kernel-cve-2026-federal-patch-deadline" {
+				wantRelated = 3
+			}
+			if len(post.Related) != wantRelated {
+				t.Fatalf("related links = %#v, want %d", post.Related, wantRelated)
 			}
 			if len(post.Sections) == 0 || post.Sections[len(post.Sections)-1].Heading != "Sources" {
 				t.Fatalf("final section must be Sources: %#v", post.Sections)
@@ -793,6 +802,7 @@ func TestAugust29PostsRespectPublicationDate(t *testing.T) {
 		"salesforce-anthropic-claudeforce-enterprise-ai-default-model-2026",
 		"anthropic-claude-opus-5-fable-5-pricing-performance-2026",
 		"openai-o3-chatgpt-retirement-gpt-4-era-2026",
+		"openai-exploitgym-cisa-kev-linux-kernel-cve-2026-federal-patch-deadline",
 	}
 
 	for _, slug := range slugs {

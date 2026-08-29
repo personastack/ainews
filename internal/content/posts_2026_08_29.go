@@ -3,6 +3,53 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Salesforce Picked a Side. Here's Why Enterprise AI Just Got Less Neutral.",
+			Slug:    "salesforce-anthropic-claudeforce-enterprise-ai-default-model-2026",
+			Date:    "August 29, 2026",
+			Tag:     "Enterprise",
+			Summary: "Salesforce's Claudeforce partnership makes Claude the default reasoning layer across Agentforce and Salesforce's internal Slack deployment, trading a model-neutral posture for tighter integration and governance.",
+			Sections: []Section{
+				{Paragraphs: []string{
+					"Salesforce spent years presenting itself as a model-agnostic enterprise AI platform. On August 26, it made a different kind of bet: Claudeforce, a partnership that makes Anthropic's Claude the default reasoning layer across key Salesforce products and Salesforce's own deployment of Slack.",
+					"The announcement is more than a model integration. It gives Salesforce a named AI stack to sell, Anthropic a deeper distribution channel into large enterprises, and customers a clearer answer to a question that neutral platforms often leave open: which model is actually designed to run this workflow?",
+				}},
+				{Heading: "A Three-Direction Integration", Paragraphs: []string{
+					"The partnership has three visible fronts. First, Salesforce is building a Salesforce in Claude plug-in with 37 skills for sales, service, marketing, revenue operations, IT, and internal collaboration. The pilot is available now, with broader availability planned for September.",
+					"Second, Claude becomes the default intelligence layer in Agentforce. Salesforce says that includes Agentforce 360, Atlas, Vibes, and Coworker, where Claude is intended to supply the reasoning behind agents that use CRM data and enterprise tools.",
+					"Third, Salesforce is rolling Claude into Slack for its own workforce. The company says 83% of employees already use AI in Slack and attributes 8.1 million annualized hours of productivity gains to that use. Those figures are Salesforce's reported internal measurements, not an independent benchmark, but they explain why the company is treating Slack as part of the product story rather than a side deployment.",
+				}},
+				{Heading: "A Permissioned Access Path", Paragraphs: []string{
+					"Claudeforce also centers on Salesforce's Headless 360 Hosted MCP Server, which has been in beta since July. Salesforce describes four core tools: Discover, Describe, Dispatch, and a read-only Dispatch mode. The aim is to let Claude find approved capabilities, understand their schemas, and act on CRM data through a controlled interface rather than an improvised connector.",
+					"The important detail is the access model. Salesforce says the server uses per-user OAuth and the mcp_api permission set, so an agent is meant to inherit the user's existing access instead of receiving a broad new credential. That does not eliminate governance work, but it is a meaningful design choice for customers that have been wary of giving general-purpose models direct paths into customer records.",
+				}},
+				{Heading: "Governance Is the Product Bet", Paragraphs: []string{
+					"The deal arrives while enterprises are trying to separate useful agent autonomy from uncontrolled data access. Salesforce's pitch is that Claude can reason over CRM context while Salesforce remains the system of record and policy boundary. The company also points to its existing trust controls, including its Bedrock Trust Boundary, as part of the argument for keeping model interactions inside a governed enterprise workflow.",
+					"That framing matters because the so-called SaaSpocalypse argument has become less about whether AI can draft an email and more about whether an AI layer can safely operate across the systems where revenue, customer commitments, and compliance records live. Claudeforce is Salesforce's answer: make the model layer opinionated, then put its access behind the CRM platform's permissions and audit trail.",
+				}},
+				{Heading: "The Commercial Bet", Paragraphs: []string{
+					"The relationship has financial weight as well as product depth. Reports cited in the author handoff say Salesforce plans about $300 million in Anthropic token spend in 2026 and a $300 million equity investment. Those reported terms signal a commitment that is much harder to unwind than a standard marketplace integration, although neither company has published every commercial detail.",
+					"The timing favors Anthropic. Menlo Ventures' enterprise survey was reported to put Anthropic at roughly 40% of enterprise LLM API spending, ahead of OpenAI at about 27%. Salesforce is not choosing Claude because a survey settles model quality; it is choosing a partner whose adoption and enterprise posture increasingly match Salesforce's customer base.",
+				}},
+				{Heading: "The Lock-In Question", Paragraphs: []string{
+					"The trade-off is clear. A default model can create a more coherent product and a cleaner support story, but it can also make migration harder if Claude's pricing, capabilities, or availability change. Salesforce customers still need the ability to evaluate models against their own workloads and to understand which parts of an agent workflow depend on a specific provider.",
+					"For now, Claudeforce is a marker of enterprise AI's next phase. The biggest software platforms are no longer only offering customers a menu of models. They are beginning to pick strategic defaults, bundle governance around them, and compete on how safely those defaults can reach real business data.",
+				}},
+				{Heading: "Sources", Paragraphs: []string{
+					"Salesforce — Salesforce and Anthropic Announce Claudeforce: https://www.salesforce.com/news/press-releases/2026/08/26/salesforce-and-anthropic-announce-claudeforce/",
+					"Salesforce Investor Relations — Salesforce and Anthropic Announce Claudeforce: https://investor.salesforce.com/news/news-details/2026/Salesforce-and-Anthropic-Announce-Claudeforce-The-1-AI-Meets-the-1-AI-CRM/default.aspx",
+					"Yahoo Finance — Claudeforce signals the end of model-agnostic enterprise AI: https://finance.yahoo.com/technology/ai/articles/salesforce-claudeforce-deal-anthropic-signals-102859998.html",
+					"Apex Hours — Claudeforce Explained: What Salesforce and Anthropic Actually Ship: https://www.apexhours.com/claudeforce-explained-what-salesforce-anthropic-actually-ship/",
+					"Salesforce Ben — Salesforce and Anthropic Announce Claudeforce in Q2 FY27 Earnings: https://www.salesforceben.com/salesforce-and-anthropic-announce-claudeforce-in-q2-27-earnings/",
+					"VentureBeat — Anthropic's enterprise AI adoption lead and the threats to it: https://venturebeat.com/technology/anthropic-finally-beat-openai-in-business-ai-adoption-but-3-big-threats-could-erase-its-lead",
+					"Appalach AI — Anthropic's share of enterprise LLM API spending: https://appalach.ai/blog/anthropic-40-percent-enterprise-llm-api-spend/",
+				}},
+			},
+			Related: []Link{
+				{Title: "Google's AI Agent Protocol Just Found a New Home. It's Now Under the Same Roof as MCP.", Slug: "a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026"},
+				{Title: "AI Agents Move in Milliseconds. Security Teams Still Move in Days. One Startup Just Raised $85 Million to Close the Gap.", Slug: "obsidian-security-85-million-ai-agent-governance-2026"},
+			},
+		},
+		{
 			Title:   "Claude Opus 5 Outsmarts Its Pricier Sibling — at Half the Cost",
 			Slug:    "anthropic-claude-opus-5-fable-5-pricing-performance-2026",
 			Date:    "August 29, 2026",

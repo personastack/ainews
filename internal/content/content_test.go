@@ -743,6 +743,11 @@ func TestAugust29PostsHaveCompletePublicMetadata(t *testing.T) {
 		tag   string
 	}{
 		{
+			slug:  "salesforce-anthropic-claudeforce-enterprise-ai-default-model-2026",
+			title: "Salesforce Picked a Side. Here's Why Enterprise AI Just Got Less Neutral.",
+			tag:   "Enterprise",
+		},
+		{
 			slug:  "anthropic-claude-opus-5-fable-5-pricing-performance-2026",
 			title: "Claude Opus 5 Outsmarts Its Pricier Sibling — at Half the Cost",
 			tag:   "Models",
@@ -785,6 +790,7 @@ func TestAugust29PostsRespectPublicationDate(t *testing.T) {
 	publicationDay := time.Date(2026, time.August, 29, 12, 0, 0, 0, time.UTC)
 	previousDay := publicationDay.AddDate(0, 0, -1)
 	slugs := []string{
+		"salesforce-anthropic-claudeforce-enterprise-ai-default-model-2026",
 		"anthropic-claude-opus-5-fable-5-pricing-performance-2026",
 		"openai-o3-chatgpt-retirement-gpt-4-era-2026",
 	}

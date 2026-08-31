@@ -48,6 +48,36 @@ func TestPostsHaveUniqueSlugs(t *testing.T) {
 	}
 }
 
+func TestAugust31ClaudeProteinDesignArticleMetadataAndPublication(t *testing.T) {
+	const slug = "claude-autonomous-protein-design-48h-drug-discovery-14-of-15-2026"
+
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == slug {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("August 31 Claude protein design article is missing")
+	}
+	if post.Date != "August 31, 2026" {
+		t.Fatalf("article date = %q, want August 31, 2026", post.Date)
+	}
+	if post.Tag != "Research" {
+		t.Fatalf("article tag = %q, want Research", post.Tag)
+	}
+	if len(post.Related) != 3 {
+		t.Fatalf("related links = %d, want 3", len(post.Related))
+	}
+	if !containsSlug(publishedPosts(time.Date(2026, time.August, 31, 0, 0, 0, 0, time.UTC)), slug) {
+		t.Fatalf("article %q is not published on August 31, 2026", slug)
+	}
+	if containsSlug(publishedPosts(time.Date(2026, time.August, 30, 0, 0, 0, 0, time.UTC)), slug) {
+		t.Fatalf("article %q is published before August 31, 2026", slug)
+	}
+}
+
 func TestAugustBacklogArticlesArePresentInAuthoredOrder(t *testing.T) {
 	postsBySlug := make(map[string]Post, len(posts))
 	for _, post := range posts {

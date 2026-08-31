@@ -188,6 +188,29 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 }
 
+func TestIndexIncludesAugust31ClaudeProteinDesignArticle(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	if !strings.Contains(body, template.HTMLEscapeString("Claude Ran 48 Hours of Autonomous Drug Discovery. The Wet Lab Said It Worked.")) {
+		t.Fatal("homepage missing Claude protein design article title")
+	}
+	if !strings.Contains(body, `href="/posts/claude-autonomous-protein-design-48h-drug-discovery-14-of-15-2026"`) {
+		t.Fatal("homepage missing Claude protein design article link")
+	}
+}
+
 func TestIndexSecondPageIncludesNextSlice(t *testing.T) {
 	server, err := New()
 	if err != nil {

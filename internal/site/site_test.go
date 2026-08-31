@@ -211,6 +211,32 @@ func TestIndexIncludesAugust31ClaudeProteinDesignArticle(t *testing.T) {
 	}
 }
 
+func TestIndexIncludesAugust31IncidentAndEnterpriseArticles(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, "/", nil))
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	body := rec.Body.String()
+	for title, slug := range map[string]string{
+		"When Claude Went Rogue: Inside Anthropic's AI Security Breach": "/posts/when-claude-went-rogue-anthropic-security-breach",
+		"The Enterprise AI Reckoning: $194 Billion In, 12% Satisfied":   "/posts/enterprise-ai-reckoning-194-billion-12-percent-satisfied",
+	} {
+		if !strings.Contains(body, template.HTMLEscapeString(title)) {
+			t.Errorf("homepage missing article title %q", title)
+		}
+		if !strings.Contains(body, `href="`+slug+`"`) {
+			t.Errorf("homepage missing article link %q", slug)
+		}
+	}
+}
+
 func TestIndexSecondPageIncludesNextSlice(t *testing.T) {
 	server, err := New()
 	if err != nil {

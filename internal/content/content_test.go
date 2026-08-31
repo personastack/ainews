@@ -78,6 +78,43 @@ func TestAugust31ClaudeProteinDesignArticleMetadataAndPublication(t *testing.T) 
 	}
 }
 
+func TestAugust31IncidentAndEnterpriseArticlesMetadataAndPublication(t *testing.T) {
+	want := map[string]string{
+		"when-claude-went-rogue-anthropic-security-breach":         "AI Safety",
+		"enterprise-ai-reckoning-194-billion-12-percent-satisfied": "Enterprise",
+	}
+
+	publicationDate := time.Date(2026, time.August, 31, 0, 0, 0, 0, time.UTC)
+	dayBefore := publicationDate.AddDate(0, 0, -1)
+	for slug, tag := range want {
+		var post Post
+		for _, candidate := range posts {
+			if candidate.Slug == slug {
+				post = candidate
+				break
+			}
+		}
+		if post.Slug == "" {
+			t.Fatalf("August 31 article %q is missing", slug)
+		}
+		if post.Date != "August 31, 2026" {
+			t.Errorf("article %q date = %q, want August 31, 2026", slug, post.Date)
+		}
+		if post.Tag != tag {
+			t.Errorf("article %q tag = %q, want %q", slug, post.Tag, tag)
+		}
+		if len(post.Related) != 3 {
+			t.Errorf("article %q related links = %d, want 3", slug, len(post.Related))
+		}
+		if !containsSlug(publishedPosts(publicationDate), slug) {
+			t.Errorf("article %q is not published on publication date", slug)
+		}
+		if containsSlug(publishedPosts(dayBefore), slug) {
+			t.Errorf("article %q is published before publication date", slug)
+		}
+	}
+}
+
 func TestAugustBacklogArticlesArePresentInAuthoredOrder(t *testing.T) {
 	postsBySlug := make(map[string]Post, len(posts))
 	for _, post := range posts {

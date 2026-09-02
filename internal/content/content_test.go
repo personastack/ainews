@@ -48,6 +48,43 @@ func TestPostsHaveUniqueSlugs(t *testing.T) {
 	}
 }
 
+func TestSeptember2ChatGPTEpicHealthcareArticleMetadataAndPublication(t *testing.T) {
+	const slug = "openai-chatgpt-epic-ehr-325-million-patient-records-2026"
+
+	var post Post
+	for _, candidate := range posts {
+		if candidate.Slug == slug {
+			post = candidate
+			break
+		}
+	}
+	if post.Slug == "" {
+		t.Fatal("September 2 ChatGPT Epic healthcare article is missing")
+	}
+	if post.Date != "September 2, 2026" {
+		t.Fatalf("article date = %q, want September 2, 2026", post.Date)
+	}
+	if post.Tag != "Healthcare" {
+		t.Fatalf("article tag = %q, want Healthcare", post.Tag)
+	}
+	if len(post.Related) != 2 {
+		t.Fatalf("related links = %d, want 2", len(post.Related))
+	}
+	if post.Related[0].Slug != "medical-ai-specialist-moat-llm-benchmark-2026" || post.Related[1].Slug != "healthcare-ai-operating-office-cms-2026" {
+		t.Fatalf("related links = %#v, want the two requested Healthcare posts", post.Related)
+	}
+	publicationDate := time.Date(2026, time.September, 2, 0, 0, 0, 0, time.UTC)
+	if !containsSlug(publishedPosts(publicationDate), slug) {
+		t.Fatalf("article %q is not published on September 2, 2026", slug)
+	}
+	if containsSlug(publishedPosts(publicationDate.AddDate(0, 0, -1)), slug) {
+		t.Fatalf("article %q is published before September 2, 2026", slug)
+	}
+	if got := post.Sections[len(post.Sections)-1].Heading; got != "Sources" {
+		t.Fatalf("final section = %q, want Sources", got)
+	}
+}
+
 func TestAugust31ClaudeProteinDesignArticleMetadataAndPublication(t *testing.T) {
 	const slug = "claude-autonomous-protein-design-48h-drug-discovery-14-of-15-2026"
 

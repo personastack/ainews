@@ -3863,3 +3863,63 @@ func TestPostsReturnsDeepCopy(t *testing.T) {
 		t.Fatal("FindBySlug() exposed mutable section paragraph data")
 	}
 }
+
+func TestSeptemberHuggingFaceArticlesMetadataAndPublication(t *testing.T) {
+	tests := []struct {
+		slug    string
+		date    string
+		tag     string
+		related []string
+		on      time.Time
+	}{
+		{
+			slug:    "openai-exploitgym-agent-society-metr-investigation-2026",
+			date:    "September 2, 2026",
+			tag:     "AI Safety",
+			related: []string{"openai-exploitgym-cisa-kev-linux-kernel-cve-2026-federal-patch-deadline", "openai-gpt56-sol-huggingface-breach-glm-forensics-2026", "openai-anthropic-google-meta-1178-workers-pacing-mechanism-letter-2026"},
+			on:      time.Date(2026, time.September, 2, 0, 0, 0, 0, time.UTC),
+		},
+		{
+			slug:    "nvidia-hugging-face-acquisition-12-billion-open-source-2026",
+			date:    "September 3, 2026",
+			tag:     "Industry",
+			related: []string{"nvidia-poolside-6-billion-model-factory-license-2026", "openai-gpt56-sol-huggingface-breach-glm-forensics-2026"},
+			on:      time.Date(2026, time.September, 3, 0, 0, 0, 0, time.UTC),
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.slug, func(t *testing.T) {
+			var post Post
+			for _, candidate := range posts {
+				if candidate.Slug == tt.slug {
+					post = candidate
+					break
+				}
+			}
+			if post.Slug == "" {
+				t.Fatal("article is missing")
+			}
+			if post.Date != tt.date || post.Tag != tt.tag {
+				t.Fatalf("metadata = (%q, %q), want (%q, %q)", post.Date, post.Tag, tt.date, tt.tag)
+			}
+			if len(post.Related) != len(tt.related) {
+				t.Fatalf("related links = %d, want %d", len(post.Related), len(tt.related))
+			}
+			for i, want := range tt.related {
+				if post.Related[i].Slug != want {
+					t.Errorf("related link %d = %q, want %q", i, post.Related[i].Slug, want)
+				}
+			}
+			if post.Sections[len(post.Sections)-1].Heading != "Sources" {
+				t.Fatalf("final section = %q, want Sources", post.Sections[len(post.Sections)-1].Heading)
+			}
+			if !containsSlug(publishedPosts(tt.on), tt.slug) {
+				t.Fatal("article is absent on its publication date")
+			}
+			if containsSlug(publishedPosts(tt.on.AddDate(0, 0, -1)), tt.slug) {
+				t.Fatal("article is present before its publication date")
+			}
+		})
+	}
+}

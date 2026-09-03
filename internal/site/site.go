@@ -1,6 +1,7 @@
 package site
 
 import (
+	"bytes"
 	"embed"
 	"encoding/json"
 	"encoding/xml"
@@ -266,9 +267,13 @@ func (s *Server) handleSitemap(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) render(w http.ResponseWriter, status int, name string, data any) {
+	var body bytes.Buffer
+	if err := s.templates.ExecuteTemplate(&body, name, data); err != nil {
+		http.Error(w, "template error", http.StatusInternalServerError)
+		return
+	}
+
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(status)
-	if err := s.templates.ExecuteTemplate(w, name, data); err != nil {
-		http.Error(w, "template error", http.StatusInternalServerError)
-	}
+	_, _ = w.Write(body.Bytes())
 }

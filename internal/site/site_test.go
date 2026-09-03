@@ -2,6 +2,7 @@ package site
 
 import (
 	"encoding/json"
+	"errors"
 	"html/template"
 	"net/http"
 	"net/http/httptest"
@@ -10,6 +11,63 @@ import (
 
 	"github.com/personadock/ainews/internal/content"
 )
+
+type headerCountingResponseWriter struct {
+	http.ResponseWriter
+	writeHeaderCalls int
+}
+
+func (w *headerCountingResponseWriter) WriteHeader(status int) {
+	w.writeHeaderCalls++
+	w.ResponseWriter.WriteHeader(status)
+}
+
+type failingResponseWriter struct {
+	headerCountingResponseWriter
+}
+
+func (w *failingResponseWriter) Write([]byte) (int, error) {
+	return 0, errors.New("client disconnected")
+}
+
+func TestRenderTemplateFailureWritesOneServerError(t *testing.T) {
+	server := &Server{
+		templates: template.Must(template.New("index").Parse(`{{template "missing" .}}`)),
+	}
+	recorder := httptest.NewRecorder()
+	writer := &headerCountingResponseWriter{ResponseWriter: recorder}
+
+	server.render(writer, http.StatusOK, "index", nil)
+
+	if recorder.Code != http.StatusInternalServerError {
+		t.Fatalf("status = %d, want %d", recorder.Code, http.StatusInternalServerError)
+	}
+	if writer.writeHeaderCalls != 1 {
+		t.Fatalf("WriteHeader calls = %d, want 1", writer.writeHeaderCalls)
+	}
+	if got := recorder.Body.String(); !strings.Contains(got, "template error") {
+		t.Fatalf("body = %q, want template error", got)
+	}
+}
+
+func TestRenderClientWriteFailureDoesNotWriteAnotherHeader(t *testing.T) {
+	server := &Server{
+		templates: template.Must(template.New("index").Parse("page")),
+	}
+	recorder := httptest.NewRecorder()
+	writer := &failingResponseWriter{
+		headerCountingResponseWriter: headerCountingResponseWriter{ResponseWriter: recorder},
+	}
+
+	server.render(writer, http.StatusOK, "index", nil)
+
+	if recorder.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", recorder.Code, http.StatusOK)
+	}
+	if writer.writeHeaderCalls != 1 {
+		t.Fatalf("WriteHeader calls = %d, want 1", writer.writeHeaderCalls)
+	}
+}
 
 func TestIndexIncludesPublishedStories(t *testing.T) {
 	server, err := New()

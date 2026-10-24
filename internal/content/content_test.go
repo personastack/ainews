@@ -726,6 +726,10 @@ func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 		}
 		for _, section := range post.Sections {
 			fields = append(fields, section.Heading)
+			fields = append(fields, section.Items...)
+			for _, source := range section.Sources {
+				fields = append(fields, source.Title, source.URL)
+			}
 			for _, paragraph := range section.Paragraphs {
 				fields = append(fields, paragraph)
 			}
@@ -938,10 +942,18 @@ func TestSourceSectionsUsePublicCitationText(t *testing.T) {
 			if section.Heading != "Sources" {
 				continue
 			}
-			if len(section.Paragraphs) == 0 {
+			if len(section.Paragraphs) == 0 && len(section.Sources) == 0 {
 				t.Fatalf("post %q has an empty Sources section", post.Slug)
 			}
-			for _, paragraph := range section.Paragraphs {
+			fields := append([]string(nil), section.Paragraphs...)
+			fields = append(fields, section.Items...)
+			for _, source := range section.Sources {
+				if source.Title == "" || !strings.HasPrefix(source.URL, "https://") {
+					t.Fatalf("post %q has an incomplete public source: %+v", post.Slug, source)
+				}
+				fields = append(fields, source.Title, source.URL)
+			}
+			for _, paragraph := range fields {
 				for _, blocked := range blockedSourceText {
 					if strings.Contains(paragraph, blocked) {
 						t.Fatalf("post %q exposes internal source process text in %q", post.Slug, paragraph)

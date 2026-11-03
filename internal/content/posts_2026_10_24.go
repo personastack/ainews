@@ -54,6 +54,7 @@ func init() {
 			},
 			{Heading: "Sources",
 				Sources: []Source{
+					{Title: "JPMorganChase — Third-quarter 2026 earnings call transcript (October 13, 2026)", URL: "https://www.jpmorganchase.com/content/dam/jpmc/jpmorgan-chase-and-co/investor-relations/documents/quarterly-earnings/2026/3rd-quarter/3q26-earnings-transcript.pdf"},
 					{Title: "Axios, \"Scoop: Unvetted AI agents are accessing U.S. bank accounts\" (Oct 22, 2026)", URL: "https://www.axios.com/2026/10/22/ai-agents-banks-unauthorized-accounts-access"},
 					{Title: "Cybersecurity News, \"Major U.S. Banks Detect Unauthorized AI Agents Operating Inside Customer Accounts\"", URL: "https://cybersecuritynews.com/u-s-banks-detect-unauthorized-ai-agents/"},
 					{Title: "FinanceFeeds, \"Morgan Stanley, BofA and JPMorgan Flag Unauthorized AI Agents Inside Customer Accounts\"", URL: "https://financefeeds.com/morgan-stanley-bofa-and-jpmorgan-flag-unauthorized-ai-agents-inside-customer-accounts/"},

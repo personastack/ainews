@@ -2,18 +2,10 @@ package content
 
 import "time"
 
-// Section groups paragraphs, bullet items, and public sources under an optional heading.
+// Section groups related paragraphs under an optional heading.
 type Section struct {
 	Heading    string
 	Paragraphs []string
-	Items      []string
-	Sources    []Source
-}
-
-// Source links to public reporting or evidence supporting an article.
-type Source struct {
-	Title string
-	URL   string
 }
 
 // Link points readers to a related AINews story.
@@ -562,8 +554,6 @@ func clonePost(src Post) Post {
 		dst.Sections[i] = Section{
 			Heading:    section.Heading,
 			Paragraphs: append([]string(nil), section.Paragraphs...),
-			Items:      append([]string(nil), section.Items...),
-			Sources:    append([]Source(nil), section.Sources...),
 		}
 	}
 

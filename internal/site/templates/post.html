@@ -76,18 +76,6 @@
       line-height: 1.7;
       color: var(--muted);
     }
-    section ul {
-      padding-left: 1.5rem;
-      font-size: 1.05rem;
-      line-height: 1.85;
-    }
-    section li {
-      margin-bottom: 0.7rem;
-    }
-    .sources a {
-      color: var(--accent);
-      overflow-wrap: anywhere;
-    }
     h2 {
       margin: 2rem 0 0.8rem;
       font-size: 1.5rem;
@@ -143,16 +131,6 @@
       <section>
         {{if .Heading}}<h2>{{.Heading}}</h2>{{end}}
         {{range .Paragraphs}}<p>{{.}}</p>{{end}}
-        {{if .Items}}
-        <ul>
-          {{range .Items}}<li>{{.}}</li>{{end}}
-        </ul>
-        {{end}}
-        {{if .Sources}}
-        <ul class="sources">
-          {{range .Sources}}<li><a href="{{.URL}}">{{.Title}}</a></li>{{end}}
-        </ul>
-        {{end}}
       </section>
       {{end}}
       {{if .Post.Related}}

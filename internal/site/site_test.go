@@ -84,6 +84,14 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	}
 
 	body := rec.Body.String()
+	for _, title := range []string{
+		"OpenAI's Control Room Puts a 35-Second Stop Button on AI Agents",
+		"Anthropic Cuts Prices and Ships Two New Models Days Before a Possible IPO",
+	} {
+		if !strings.Contains(body, template.HTMLEscapeString(title)) {
+			t.Errorf("homepage missing November 10 article %q", title)
+		}
+	}
 	apiReq := httptest.NewRequest(http.MethodGet, "/api/posts", nil)
 	apiRec := httptest.NewRecorder()
 	server.ServeHTTP(apiRec, apiReq)

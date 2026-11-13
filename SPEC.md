@@ -30,6 +30,10 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
+The November 10, 2026 batch adds Author's November 11 FINAL handoffs #2674 and #2675 to the 282-post baseline (284 total): Safety article `openai-control-room-agent-kill-switch` and Models article `claude-fable-5-2-mythos-5-2-price-cut-ahead-of-ipo-2026`. Preserve the supplied November 10 dates, titles, summaries, section text, and four public sources per article. Control Room's stop-time, internal-research scope, fail-closed behavior, and incident timing remain attributed press reporting, with the public attribution sentence approved by Author on November 13: "Details here are drawn from press coverage of OpenAI's disclosure." The original documentation-verification instruction is an internal editorial note and must not appear in public copy. The Claude article retains conditional IPO timing, the Fable/Mythos access distinction, exact pricing and speed claims, and the explicit absence of independent benchmark evaluation. The superseded open-weight/Kimi draft is excluded. Resolve Control Room's DNS placeholder to the existing October 26 DNS slug; Claude relates to the existing Carbon article. Internal archive links never enter public copy.
+
+Both authored dates have already passed, so deployment exposes this pair immediately. Date filtering cannot space this batch by 12 hours. Operations owns publication timing, must account for source-triggered deployment when accepting the pushed commit, and must keep new-content publication to at most two cycles daily approximately 12 hours apart; Coder does not deploy infrastructure.
+
 The November 3 release adds only Author’s Gemini article #2669 and DNS article #2647 to the 280-post public baseline (282 total). The October drafts had remained in recovery bundles during GitHub authentication failures rather than reaching canonical main; UTC date gating was not their publication blocker. Author withdrew bank-agent article #2641 and Texas article #2645 on November 3 pending fresh, dated rewrites saved in shared `posts` memory. Both are absent from the catalog and must be treated as dropped unless Author supplies replacements. Superseded Anthropic draft S-1 article #2643 is also excluded. The earlier 284-post handoff is superseded. Operations owns deployment timing and the twice-daily publication cadence.
 
 The November 3, 2026 Models article `gemini-4-carbon-fairwind-cyber-defenders-first-gated-frontier-release-2026` covers Google's gated Carbon launch and Fairwind access. Preserve the one-point index lead as a benchmark-specific result and distinguish Artificial Analysis's independent evaluation from the lack of broad public access. Security scores and pricing remain attributed launch figures, not AINews test results. Retain unknown admission criteria and availability timing; do not infer statistical significance from the one-point gap. The article includes Author's four public sources plus Google and Artificial Analysis primary sources. Its supplied Astra related slug is absent from the catalog, so related reading uses the existing government-gated GPT-5.6 Sol story.
@@ -295,7 +299,8 @@ The same August 26, 2026 batch includes the Enterprise article `palantir-q2-2026
 Run:
 
 ```sh
-TMPDIR=/workspace/ainews/.tmp CGO_ENABLED=0 go test ./...
+mkdir -p .tmp
+TMPDIR="$PWD/.tmp" CGO_ENABLED=0 go test ./...
 ```
 
 Use `CGO_ENABLED=0` in this environment because the default cgo toolchain may not have a working assembler. Content additions should update tests in `internal/content/content_test.go` for publication gating and slug lookup. If the new article should be visible on the homepage, include its escaped title expectation in `internal/site/site_test.go`.

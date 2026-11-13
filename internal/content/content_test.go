@@ -48,6 +48,42 @@ func TestPostsHaveUniqueSlugs(t *testing.T) {
 	}
 }
 
+func TestNovember10ArticlesMetadataAndPublication(t *testing.T) {
+	publicationDate := time.Date(2026, time.November, 10, 0, 0, 0, 0, time.UTC)
+	for _, want := range []struct {
+		slug, tag, related string
+	}{
+		{"openai-control-room-agent-kill-switch", "Safety", "openai-model-dns-sandbox-escape-offline-training-no-internet-2026"},
+		{"claude-fable-5-2-mythos-5-2-price-cut-ahead-of-ipo-2026", "Models", "gemini-4-carbon-fairwind-cyber-defenders-first-gated-frontier-release-2026"},
+	} {
+		t.Run(want.slug, func(t *testing.T) {
+			post, ok := FindBySlug(want.slug)
+			if !ok {
+				t.Fatal("approved article missing from slug lookup")
+			}
+			if post.Date != "November 10, 2026" || post.Tag != want.tag {
+				t.Fatalf("date/tag = %q/%q, want November 10, 2026/%s", post.Date, post.Tag, want.tag)
+			}
+			if !containsSlug(publishedPosts(publicationDate), want.slug) || containsSlug(publishedPosts(publicationDate.AddDate(0, 0, -1)), want.slug) {
+				t.Fatal("article must appear on November 10, not November 9")
+			}
+			if len(post.Related) != 1 || post.Related[0].Slug != want.related {
+				t.Fatalf("related links = %#v, want %s", post.Related, want.related)
+			}
+			if _, ok := FindBySlug(want.related); !ok {
+				t.Fatal("related article does not resolve")
+			}
+			if len(post.Sections) != 8 {
+				t.Fatalf("sections = %d, want intro, six headings and Sources", len(post.Sections))
+			}
+			sources := post.Sections[len(post.Sections)-1]
+			if sources.Heading != "Sources" || len(sources.Paragraphs) != 4 {
+				t.Fatal("article must retain its four public sources")
+			}
+		})
+	}
+}
+
 func TestSeptember2ChatGPTEpicHealthcareArticleMetadataAndPublication(t *testing.T) {
 	const slug = "openai-chatgpt-epic-ehr-325-million-patient-records-2026"
 

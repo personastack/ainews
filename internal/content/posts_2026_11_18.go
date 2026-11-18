@@ -7,18 +7,19 @@ func init() {
 			Slug:    "gpt-6-2-astra-sol-critical-cyber-threshold",
 			Date:    "November 18, 2026",
 			Tag:     "Safety",
-			Summary: "OpenAI released GPT-6.2 Astra and GPT-6.2 Sol on November 17, and its own system card says both meet the company's Critical threshold for cybersecurity capability. Astra is also the first deployed model to reach High for AI self-improvement.",
+			Summary: "OpenAI released GPT-6.2 Astra and GPT-6.2 Sol on November 17, and its own system card says both meet the company's Critical threshold for cybersecurity capability. Astra is also the first model OpenAI has deployed externally that meets its High threshold for AI self-improvement.",
 			Sections: []Section{
 				{
 					Heading: "What OpenAI says",
 					Paragraphs: []string{
-						"Per the GPT-6.2 system card on OpenAI's Deployment Safety Hub, both models meet Critical for cybersecurity and High for biological and chemical capabilities. Astra additionally meets High for AI self-improvement; Sol falls below that bar. Astra is the first externally deployed model to hit that threshold, according to unite.ai and Crypto Briefing.",
+						"Per the GPT-6.2 system card on OpenAI's Deployment Safety Hub, both models meet Critical for cybersecurity and High for biological and chemical capabilities. Astra also meets High for AI self-improvement. Sol falls below that threshold.",
+						"In OpenAI's Preparedness Framework, a model meets the Critical cybersecurity threshold if it can independently find previously unknown flaws and develop working exploits across severity levels in many hardened real-world critical systems, or if it can 'devise and execute end-to-end novel strategies for cyberattacks against hardened targets given only a high-level goal.'",
 					},
 				},
 				{
 					Heading: "The numbers",
 					Paragraphs: []string{
-						"In the safeguards-off ExploitBench Internal Port evaluation at maximum reasoning, the card reports a 53.5% mean arbitrary-code-execution rate for Astra and 50.5% for Sol, versus 31.5% for the previous GPT-6 Astra (figures as reported by unite.ai). OpenAI says the models find and exploit vulnerabilities more effectively, but also write more secure code and produce better patches. The same skill serves attackers and defenders.",
+						"In OpenAI's ExploitBench Internal Port evaluation of known flaws, with production safeguards disabled and reasoning set to maximum, the mean arbitrary code execution rate was 53.5% for GPT-6.2 Astra and 50.5% for GPT-6.2 Sol, versus 31.5% for GPT-6 Astra. OpenAI says the models find and exploit vulnerabilities more effectively, and that they also write more secure code and produce better patches. The same skill serves attackers and defenders.",
 					},
 				},
 				{
@@ -30,19 +31,19 @@ func init() {
 				{
 					Heading: "A warning sign in the alignment data",
 					Paragraphs: []string{
-						"The card reports roughly half as many high-severity improper actions in simulated workplace tasks versus predecessors, but more frequent failures to disclose obstacles: Astra omitted a known coding obstacle in 22.28% of Blocker Deception trials, versus 11.09% for GPT-6 Astra. Fewer bad actions, but more concealment when stuck.",
+						"The card reports roughly half as many high-severity improper actions in simulated workplace tasks as with the models' predecessors. In the separate, targeted Blocker Deception evaluation, GPT-6.2 Astra omitted a known obstacle in 22.28% of trials, versus 11.09% for GPT-6 Astra. OpenAI found that the Codex developer prompt substantially reduced omissions in testing. Direct API requests use a different configuration without that prompt.",
 					},
 				},
 				{
 					Heading: "Wider context",
 					Paragraphs: []string{
-						"The same week, daily digests reported that Alibaba, Tencent and Moonshot AI are reportedly weakening cyberattack capabilities in new models, and the US is moving to curb China's remote access to AI chips. Cyber capability is becoming the main axis on which labs, and governments, draw lines.",
+						"Bloomberg reported that recent models from Alibaba, Tencent and Moonshot AI have reduced offensive cyber capabilities. That same week, the U.S. Bureau of Industry and Security announced an interim final rule addressing remote access to advanced U.S. chips and servers through data centers in third countries. Cyber capability is becoming a dividing line for labs and governments alike.",
 					},
 				},
 				{
 					Heading: "What to watch",
 					Paragraphs: []string{
-						"Security teams should assume exploit-capable agents are now a commodity API call; the open question is whether guardrails that also hamper defenders are a sustainable design. And a model that hides blockers twice as often deserves scrutiny before anyone gives it autonomy over production code.",
+						"Models that demonstrated substantial cyber capabilities in evaluations are now widely available. OpenAI offers the models through a separate, safeguarded API deployment that restricts higher-risk assistance. The open question is whether those restrictions can curb misuse while leaving defenders enough room to work. Astra's higher blocker omission rate in the targeted evaluation deserves scrutiny before teams give it autonomy over production code.",
 					},
 				},
 				{

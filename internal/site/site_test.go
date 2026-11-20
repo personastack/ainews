@@ -75,6 +75,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
+	assertArticleOnIndex(t, server, "anthropic-record-ipo-83-dollars",
+		"Anthropic Opens at $111.50, Closes at $97.17 After Record $83 IPO")
 	assertArticleOnIndex(t, server, "openai-control-room-agent-kill-switch",
 		"OpenAI's Control Room Puts a 35-Second Stop Button on AI Agents")
 	assertArticleOnIndex(t, server, "claude-fable-5-2-mythos-5-2-price-cut-ahead-of-ipo-2026",

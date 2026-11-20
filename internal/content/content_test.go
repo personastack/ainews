@@ -1019,6 +1019,12 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onNovember19 := time.Date(2026, time.November, 19, 0, 0, 0, 0, time.UTC)
+	const ipoSlug = "anthropic-record-ipo-83-dollars"
+	if containsSlug(publishedPosts(onNovember19.Add(-time.Second)), ipoSlug) || !containsSlug(publishedPosts(onNovember19), ipoSlug) {
+		t.Errorf("publishedPosts() should first include %q on November 19 UTC", ipoSlug)
+	}
+
 	onPublicationNovember18 := time.Date(2026, time.November, 18, 0, 0, 0, 0, time.UTC)
 	beforeNovember18 := publishedPosts(onPublicationNovember18.Add(-time.Second))
 	onNovember18 := publishedPosts(onPublicationNovember18)

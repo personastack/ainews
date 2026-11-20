@@ -30,9 +30,13 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
+The November 19, 2026 Industry article `anthropic-record-ipo-83-dollars` covers Anthropic's $83 IPO price, Nasdaq first trade at $111.50, and Associated Press-reported first-day close at $97.17. The final prospectus provides the $81.34 billion gross base offering. Anthropic's November 20 closing announcement confirms $93.5 billion gross after full exercise of the underwriters' option, with a separate $26.0 billion private placement. The article compares gross public offerings including both companies' full options, using SpaceX's Form 10-Q for its approximately $86.25 billion total. It distinguishes fully diluted and undiluted valuation at the opening price and retains Fox Business attribution and the Author's verification caveat for retail allocation, insider lock-up, and voting details. Related reading links to the two November 18 pricing and Nvidia articles after both public routes are verified. Operations coordinates publication timing because the dated IPO article becomes visible as soon as a revision containing it deploys.
+
 The November 18, 2026 batch adds Author's GPT-6.2 pricing and benchmarks article (#2676, Models) and Nvidia open-model strategy article (#2677, Industry) to the 285-post catalog. Both retain their original November 18 date and lead the 287-post feed ahead of the existing Critical-risk article. The pricing article cites OpenAI's launch and API documentation alongside the independent Artificial Analysis and Vals AI evaluations. It dates the Vals rankings to the November 17 results. The Nvidia article uses the Author-approved resignation date correction and cites Nvidia's Form 8-K. It retains the attribution and uncertainty about leadership and the pending Hugging Face acquisition. Each story links to its existing related article.
 
 The UTC date gate makes both articles visible on a deployment on or after November 18. Operations coordinates this pair as one new-content release, accounting for source-triggered deployment and the limit of two releases daily approximately 12 hours apart.
+
+The Nvidia article's in-place follow-up attributes the board's stated intention about reinstatement to board chair Harvey Jones on the November 17 earnings call. It adds Nvidia's webcast and a labeled third-party transcript and keeps the congressional-testimony report separate and unverified. The original article date, route, and resignation chronology carry through to the follow-up.
 
 Index tests locate fixed historical articles on their current catalog pages. Pagination tests verify the newest page and the page boundary independently as new batches shift older entries.
 

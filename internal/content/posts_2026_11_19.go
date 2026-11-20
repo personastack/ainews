@@ -11,7 +11,7 @@ func init() {
 			Sections: []Section{
 				{
 					Paragraphs: []string{
-						"Anthropic is a public company. Shares of ANT first traded on the Nasdaq at 11:48:24 a.m. ET on Thursday, Nov. 19, at $111.50, according to Nasdaq. That was $28.50, or roughly 34%, above the $83 offer price set the night before.",
+						"Anthropic is a public company. Shares of ANT opened at $111.50 on Thursday, Nov. 19, according to Nasdaq's IPO recap. StockCar reported the first trade at 11:48:24 a.m. ET, citing Nasdaq's trading notice. The opening price was $28.50, or roughly 34%, above the $83 offer price set the night before.",
 						"The pop did not hold. According to the Associated Press, ANT closed its first day at $97.17, about 17% above the IPO price and about 13% below the opening trade, as the broader market turned lower after an early rally.",
 					},
 				},
@@ -48,7 +48,8 @@ func init() {
 					Heading: "Sources",
 					Paragraphs: []string{
 						"Associated Press, ANT first-day close ($97.17, about 17% above the $83 IPO price): https://apnews.com/article/b6a74b8949021207dc162fcc876c4649",
-						"Nasdaq, ANT first trade, Nov. 19, 2026 (11:48:24 a.m. ET, $111.50) https://www.nasdaqtrader.com/Trader.aspx?id=MarketSystemStatusToday",
+						"Nasdaq's Nov. 19 IPO recap ($111.50 opening price) https://www.nasdaq.com/newsroom/anthropic-marks-ipo-at-nasdaq",
+						"StockCar's Nov. 19 first-trade report (11:48:24 a.m. ET) https://www.stockcar.app/insights/anthropic-ipo-first-trade-111-50-november-19-2026",
 						"Anthropic closing announcement and full exercise of the underwriters' option https://www.anthropic.com/news/ipo-close",
 						"Anthropic final prospectus for the base offering https://www.sec.gov/Archives/edgar/data/2130357/000162828026074944/anthropicpbc-424b4.htm",
 						"SpaceX Form 10-Q, IPO closing and full exercise of the underwriters' option https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm",

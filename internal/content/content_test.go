@@ -1019,6 +1019,18 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onPublicationNovember18 := time.Date(2026, time.November, 18, 0, 0, 0, 0, time.UTC)
+	beforeNovember18 := publishedPosts(onPublicationNovember18.Add(-time.Second))
+	onNovember18 := publishedPosts(onPublicationNovember18)
+	for _, slug := range []string{
+		"openai-gpt-6-2-astra-sol-price-cut-benchmarks-2026",
+		"nvidia-open-source-ai-strategy-after-jensen-huang-exit-2026",
+	} {
+		if containsSlug(beforeNovember18, slug) || !containsSlug(onNovember18, slug) {
+			t.Errorf("publishedPosts() should first include %q on November 18 UTC", slug)
+		}
+	}
+
 	onPublicationAugust22 := time.Date(2026, time.August, 22, 0, 0, 0, 0, time.UTC)
 	if !containsSlug(publishedPosts(onPublicationAugust22), "sk-hynix-28-billion-buyback-hbm-ai-memory-confidence-2026") {
 		t.Fatal("publishedPosts() did not include SK Hynix buyback article on publication date")

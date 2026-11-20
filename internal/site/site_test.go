@@ -75,23 +75,10 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/", nil)
-	rec := httptest.NewRecorder()
-	server.ServeHTTP(rec, req)
-
-	if rec.Code != http.StatusOK {
-		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
-	}
-
-	body := rec.Body.String()
-	for _, title := range []string{
-		"OpenAI's Control Room Puts a 35-Second Stop Button on AI Agents",
-		"Anthropic Cuts Prices and Ships Two New Models Days Before a Possible IPO",
-	} {
-		if !strings.Contains(body, template.HTMLEscapeString(title)) {
-			t.Errorf("homepage missing November 10 article %q", title)
-		}
-	}
+	assertArticleOnIndex(t, server, "openai-control-room-agent-kill-switch",
+		"OpenAI's Control Room Puts a 35-Second Stop Button on AI Agents")
+	assertArticleOnIndex(t, server, "claude-fable-5-2-mythos-5-2-price-cut-ahead-of-ipo-2026",
+		"Anthropic Cuts Prices and Ships Two New Models Days Before a Possible IPO")
 	apiReq := httptest.NewRequest(http.MethodGet, "/api/posts", nil)
 	apiRec := httptest.NewRecorder()
 	server.ServeHTTP(apiRec, apiReq)
@@ -226,6 +213,12 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 	if !strings.Contains(apiBody, `"slug":"a2a-agentic-ai-foundation-google-mcp-agent-interoperability-2026"`) {
 		t.Fatal("response missing A2A Agentic AI Foundation article link")
 	}
+	indexRec := httptest.NewRecorder()
+	server.ServeHTTP(indexRec, httptest.NewRequest(http.MethodGet, "/", nil))
+	if indexRec.Code != http.StatusOK {
+		t.Fatalf("homepage status = %d, want %d", indexRec.Code, http.StatusOK)
+	}
+	body := indexRec.Body.String()
 	posts := content.Posts()
 	for i := 0; i < postsPerPage; i++ {
 		want := template.HTMLEscapeString(posts[i].Title)
@@ -260,21 +253,8 @@ func TestIndexIncludesAugust31ClaudeProteinDesignArticle(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
-	req := httptest.NewRequest(http.MethodGet, "/", nil)
-	rec := httptest.NewRecorder()
-	server.ServeHTTP(rec, req)
-
-	if rec.Code != http.StatusOK {
-		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
-	}
-
-	body := rec.Body.String()
-	if !strings.Contains(body, template.HTMLEscapeString("Claude Ran 48 Hours of Autonomous Drug Discovery. The Wet Lab Said It Worked.")) {
-		t.Fatal("homepage missing Claude protein design article title")
-	}
-	if !strings.Contains(body, `href="/posts/claude-autonomous-protein-design-48h-drug-discovery-14-of-15-2026"`) {
-		t.Fatal("homepage missing Claude protein design article link")
-	}
+	assertArticleOnIndex(t, server, "claude-autonomous-protein-design-48h-drug-discovery-14-of-15-2026",
+		"Claude Ran 48 Hours of Autonomous Drug Discovery. The Wet Lab Said It Worked.")
 }
 
 func TestIndexIncludesAugust31IncidentAndEnterpriseArticles(t *testing.T) {
@@ -283,24 +263,33 @@ func TestIndexIncludesAugust31IncidentAndEnterpriseArticles(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
-	rec := httptest.NewRecorder()
-	server.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, "/", nil))
-	if rec.Code != http.StatusOK {
-		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
-	}
+	assertArticleOnIndex(t, server, "when-claude-went-rogue-anthropic-security-breach",
+		"When Claude Went Rogue: Inside Anthropic's AI Security Breach")
+	assertArticleOnIndex(t, server, "enterprise-ai-reckoning-194-billion-12-percent-satisfied",
+		"The Enterprise AI Reckoning: $194 Billion In, 12% Satisfied")
+}
 
-	body := rec.Body.String()
-	for title, slug := range map[string]string{
-		"When Claude Went Rogue: Inside Anthropic's AI Security Breach": "/posts/when-claude-went-rogue-anthropic-security-breach",
-		"The Enterprise AI Reckoning: $194 Billion In, 12% Satisfied":   "/posts/enterprise-ai-reckoning-194-billion-12-percent-satisfied",
-	} {
-		if !strings.Contains(body, template.HTMLEscapeString(title)) {
-			t.Errorf("homepage missing article title %q", title)
+func assertArticleOnIndex(t *testing.T, server *Server, slug, title string) {
+	t.Helper()
+
+	for index, post := range content.Posts() {
+		if post.Slug != slug {
+			continue
 		}
-		if !strings.Contains(body, `href="`+slug+`"`) {
-			t.Errorf("homepage missing article link %q", slug)
+		route := pageURL(index/postsPerPage + 1)
+		rec := httptest.NewRecorder()
+		server.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, route, nil))
+		if rec.Code != http.StatusOK {
+			t.Fatalf("%s status = %d, want %d", route, rec.Code, http.StatusOK)
 		}
+		body := rec.Body.String()
+		if !strings.Contains(body, template.HTMLEscapeString(title)) ||
+			!strings.Contains(body, `href="/posts/`+slug+`"`) {
+			t.Errorf("%s missing article %q and its link", route, title)
+		}
+		return
 	}
+	t.Fatalf("published catalog missing article %q", slug)
 }
 
 func TestIndexSecondPageIncludesNextSlice(t *testing.T) {

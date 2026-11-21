@@ -75,6 +75,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
+	assertArticleOnIndex(t, server, "ai-agents-learn-to-click-gemini-mac-openai-healthcare",
+		"AI Agents Learn to Click: Gemini Takes Over the Mac as OpenAI Moves Into Hospital Paperwork")
 	assertArticleOnIndex(t, server, "anthropic-record-ipo-83-dollars",
 		"Anthropic Opens at $111.50, Closes at $97.17 After Record $83 IPO")
 	assertArticleOnIndex(t, server, "openai-control-room-agent-kill-switch",

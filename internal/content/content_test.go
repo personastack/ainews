@@ -1019,6 +1019,12 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onNovember21 := time.Date(2026, time.November, 21, 0, 0, 0, 0, time.UTC)
+	const agentsSlug = "ai-agents-learn-to-click-gemini-mac-openai-healthcare"
+	if containsSlug(publishedPosts(onNovember21.Add(-time.Second)), agentsSlug) || !containsSlug(publishedPosts(onNovember21), agentsSlug) {
+		t.Errorf("publishedPosts() should first include %q on November 21 UTC", agentsSlug)
+	}
+
 	onNovember19 := time.Date(2026, time.November, 19, 0, 0, 0, 0, time.UTC)
 	const ipoSlug = "anthropic-record-ipo-83-dollars"
 	if containsSlug(publishedPosts(onNovember19.Add(-time.Second)), ipoSlug) || !containsSlug(publishedPosts(onNovember19), ipoSlug) {

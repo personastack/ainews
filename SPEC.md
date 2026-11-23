@@ -30,6 +30,8 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
+The November 23, 2026 Security article `eleven-minutes-to-root-ai-agents-zero-day-monai` uses the dated catalog and the existing UTC publication gate. It attributes the 11-minute interval to the discovery and first arbitrary file write reported by Amazon Threat Intelligence and places root access in a later session. The article cites the maintainers' MONAI Label 0.8.6 security release for the fix and mitigation guidance.
+
 The November 22, 2026 Security article `two-million-canaries-ai-prompt-privacy` adds one post to the dated catalog and uses the existing UTC date gate. It covers Dragos's findings on provider compromises, reseller logging, and zero-data-retention flags. The standard `Sources` section links to the original study and the follow-up notices from Together AI and OpenRouter. The article leaves the full set of providers cited by Dragos unidentified.
 
 The November 21, 2026 Agents article `ai-agents-learn-to-click-gemini-mac-openai-healthcare` adds one post to the dated catalog and links to both launch announcements. It cites Google's launch footnote for Gemini computer use eligibility, including macOS Sequoia 15.0 or later and a personal Google account for users 18 or older. The healthcare coverage attributes the $0.085 task cost to the GPT-6 Luna HealthAdminBench evaluation and the 99% safety result to the separate OpenAI review of 325 GPT-6 Astra EHR inbox tasks. It identifies Ambience's authorization workflow as a demonstration and Abridge's coordination work as in development. The article uses the existing UTC date gate and the standard `Sources` section.

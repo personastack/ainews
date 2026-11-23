@@ -1,6 +1,7 @@
 package content
 
 import (
+	"net/url"
 	"strings"
 	"testing"
 	"time"
@@ -765,6 +766,9 @@ func TestPostsDoNotExposeInternalGoogleDocsLinks(t *testing.T) {
 			for _, paragraph := range section.Paragraphs {
 				fields = append(fields, paragraph)
 			}
+			for _, source := range section.Sources {
+				fields = append(fields, source.Label, source.URL)
+			}
 		}
 
 		for _, field := range fields {
@@ -974,13 +978,21 @@ func TestSourceSectionsUsePublicCitationText(t *testing.T) {
 			if section.Heading != "Sources" {
 				continue
 			}
-			if len(section.Paragraphs) == 0 {
+			if len(section.Paragraphs) == 0 && len(section.Sources) == 0 {
 				t.Fatalf("post %q has an empty Sources section", post.Slug)
 			}
-			for _, paragraph := range section.Paragraphs {
+			citationText := append([]string(nil), section.Paragraphs...)
+			for _, source := range section.Sources {
+				parsed, err := url.Parse(source.URL)
+				if err != nil || parsed.Hostname() == "" || (parsed.Scheme != "http" && parsed.Scheme != "https") || strings.TrimSpace(source.Label) == "" {
+					t.Fatalf("post %q has an invalid source link: %+v", post.Slug, source)
+				}
+				citationText = append(citationText, source.Label, source.URL)
+			}
+			for _, citation := range citationText {
 				for _, blocked := range blockedSourceText {
-					if strings.Contains(paragraph, blocked) {
-						t.Fatalf("post %q exposes internal source process text in %q", post.Slug, paragraph)
+					if strings.Contains(citation, blocked) {
+						t.Fatalf("post %q exposes internal source process text in %q", post.Slug, citation)
 					}
 				}
 			}

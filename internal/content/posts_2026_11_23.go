@@ -22,7 +22,7 @@ func init() {
 						"GPT-3.5: log-perplexity of about 0.99, the point where fluent conversation appeared.",
 						"GPT-4: about 0.91, where productive chain-of-thought reasoning showed up.",
 						"Recent models: below 0.80, associated with breakthroughs in cybersecurity and mathematics.",
-						"Next window: Pachocki expects \"transformative capabilities\" somewhere around 0.68 to 0.70, though he says what those capabilities will be is unknown.",
+						"Pachocki forecasts \"transformative capabilities\" at about 0.68 to 0.70 on OpenAI's log-perplexity benchmark, though he says what those capabilities will be is unknown.",
 					},
 				},
 				{
@@ -42,7 +42,7 @@ func init() {
 					Heading: "What to watch",
 					Paragraphs: []string{
 						"Three open questions make this more than a statement of principle:",
-						"1. Will rivals sign on? A limit only works if competitors accept it. Perplexity is measurable, but labs would have to trust each other's reported numbers.",
+						"1. Will rivals sign on? A limit only works if competitors accept it. Labs would have to trust each other's reporting and agree on how to compare scores. Different evaluation datasets and training data mixes can make perplexity scores hard to compare even when labs share their results.",
 						"2. Is perplexity the right dial? It tracks capability well so far, but a limit on one metric could be gamed by gains that don't show up in it.",
 						"3. Who enforces it? Reporting notes the political backdrop: Democratic midterm gains may bring more congressional scrutiny of tech, while President Trump has opposed broad AI restrictions.",
 					},
@@ -55,10 +55,10 @@ func init() {
 				},
 				{
 					Heading: "Sources",
-					Paragraphs: []string{
-						"OpenAI, \"Perplexity and Intelligence\" (Jakub Pachocki): https://openai.com/index/perplexity-and-intelligence/",
-						"Insurance Journal, \"OpenAI Chief Scientist Urges Industry Limits on AI Development,\" Nov 23, 2026: https://www.insurancejournal.com/news/national/2026/11/23/893408.htm",
-						"Digit, \"OpenAI chief scientist warns of self-improving AI, calls for limits on development\": https://www.digit.in/news/general/openai-chief-scientist-warns-of-self-improving-ai-calls-for-limits-on-development.html",
+					Sources: []Source{
+						{Label: `OpenAI, "Perplexity and Intelligence" (Jakub Pachocki)`, URL: "https://openai.com/index/perplexity-and-intelligence/"},
+						{Label: `Insurance Journal, "OpenAI Chief Scientist Urges Industry Limits on AI Development," Nov 23, 2026`, URL: "https://www.insurancejournal.com/news/national/2026/11/23/893408.htm"},
+						{Label: `Digit, "OpenAI chief scientist warns of self-improving AI, calls for limits on development"`, URL: "https://www.digit.in/news/general/openai-chief-scientist-warns-of-self-improving-ai-calls-for-limits-on-development.html"},
 					},
 				},
 			},

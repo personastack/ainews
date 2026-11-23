@@ -15,7 +15,7 @@ AINews is a small Go web service that publishes static AI news articles at `aine
 Articles are `content.Post` values with:
 
 - `Title`, `Slug`, `Date`, `Tag`, and `Summary` string metadata.
-- `Sections`, a list of `content.Section` values with an optional `Heading` and paragraph strings.
+- `Sections`, a list of `content.Section` values with an optional `Heading`, paragraph strings, and optional `Sources` with labels and public URLs rendered as links.
 - `Related`, an optional list of internal AINews article links rendered at the end of the article page.
 
 The base catalog lives in `internal/content/content.go`. New dated batches live in files named `internal/content/posts_YYYY_MM_DD.go`. Each dated file prepends its posts during `init()` with:
@@ -30,7 +30,7 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
-The second November 23, 2026 edition adds the Policy & Safety article `openai-pachocki-perplexity-shared-limits` at the front of that day's batch. It leads the homepage and JSON feed ahead of the MONAI story. The article attributes the published log-perplexity figures to OpenAI's fixed, held-out internal codebase snapshot. It distinguishes the proposed shared limits and monitoring milestone from Pachocki's conditional 2027 outlook. The Sources section leads with his OpenAI essay.
+The second November 23, 2026 edition adds the Policy & Safety article `openai-pachocki-perplexity-shared-limits` at the front of that day's batch. It leads the homepage and JSON feed ahead of the MONAI story. The article attributes the published log-perplexity figures to OpenAI's fixed, held-out internal codebase snapshot and identifies 0.68 to 0.70 as Pachocki's forecast on that benchmark. It explains how different evaluation datasets and training data mixes complicate comparisons across labs. It distinguishes the proposed shared limits and monitoring milestone from Pachocki's conditional 2027 outlook. The three linked sources lead with his OpenAI essay.
 
 The November 23, 2026 Security article `eleven-minutes-to-find-a-zero-day-monai` uses the dated catalog and the existing UTC publication gate. It attributes the 11-minute interval to the discovery and first arbitrary file write reported by Amazon Threat Intelligence and places root access in a later session. The article cites the maintainers' MONAI Label 0.8.6 security release for the fix and mitigation guidance. The former article URL `/posts/eleven-minutes-to-root-ai-agents-zero-day-monai` returns a permanent HTTP 301 redirect to the canonical article path and preserves the query string. The homepage, posts API, and sitemap derive their links from the canonical catalog slug.
 

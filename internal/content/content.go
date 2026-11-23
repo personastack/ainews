@@ -2,10 +2,17 @@ package content
 
 import "time"
 
-// Section groups related paragraphs under an optional heading.
+// Section groups related paragraphs and source citations under an optional heading.
 type Section struct {
 	Heading    string
 	Paragraphs []string
+	Sources    []Source
+}
+
+// Source links to an external citation.
+type Source struct {
+	Label string
+	URL   string
 }
 
 // Link points readers to a related AINews story.
@@ -554,6 +561,7 @@ func clonePost(src Post) Post {
 		dst.Sections[i] = Section{
 			Heading:    section.Heading,
 			Paragraphs: append([]string(nil), section.Paragraphs...),
+			Sources:    append([]Source(nil), section.Sources...),
 		}
 	}
 

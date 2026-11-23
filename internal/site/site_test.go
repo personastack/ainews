@@ -354,6 +354,30 @@ func TestPostRoute(t *testing.T) {
 	}
 }
 
+func TestPachockiArticleRendersSourceLinks(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	req := httptest.NewRequest(http.MethodGet, "/posts/openai-pachocki-perplexity-shared-limits", nil)
+	rec := httptest.NewRecorder()
+	server.ServeHTTP(rec, req)
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+
+	for _, link := range []string{
+		`<a href="https://openai.com/index/perplexity-and-intelligence/">OpenAI,`,
+		`<a href="https://www.insurancejournal.com/news/national/2026/11/23/893408.htm">Insurance Journal,`,
+		`<a href="https://www.digit.in/news/general/openai-chief-scientist-warns-of-self-improving-ai-calls-for-limits-on-development.html">Digit,`,
+	} {
+		if !strings.Contains(rec.Body.String(), link) {
+			t.Errorf("article missing source link %q", link)
+		}
+	}
+}
+
 func TestPostRouteRendersAnthropicVoltaBitdeerComputeDealRelatedStories(t *testing.T) {
 	server, err := New()
 	if err != nil {

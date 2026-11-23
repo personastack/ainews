@@ -180,6 +180,15 @@ func (s *Server) handlePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if slug == "eleven-minutes-to-root-ai-agents-zero-day-monai" {
+		target := "/posts/eleven-minutes-to-find-a-zero-day-monai"
+		if r.URL.RawQuery != "" {
+			target += "?" + r.URL.RawQuery
+		}
+		http.Redirect(w, r, target, http.StatusMovedPermanently)
+		return
+	}
+
 	post, ok := content.FindBySlug(slug)
 	if !ok {
 		http.NotFound(w, r)

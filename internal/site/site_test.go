@@ -1743,6 +1743,53 @@ func TestPostRouteRendersMagnetRelatedStories(t *testing.T) {
 	}
 }
 
+func TestMONAIArticleURL(t *testing.T) {
+	server, err := New()
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+
+	const oldPath = "/posts/eleven-minutes-to-root-ai-agents-zero-day-monai"
+	const newPath = "/posts/eleven-minutes-to-find-a-zero-day-monai"
+	const query = "?utm_source=shared&ref=a%2Fb"
+
+	for _, request := range []struct{ method, query string }{
+		{http.MethodGet, ""},
+		{http.MethodGet, query},
+		{http.MethodHead, ""},
+	} {
+		rec := httptest.NewRecorder()
+		server.ServeHTTP(rec, httptest.NewRequest(request.method, oldPath+request.query, nil))
+		if got := rec.Code; got != http.StatusMovedPermanently {
+			t.Errorf("%s %s status = %d, want 301", request.method, oldPath+request.query, got)
+		}
+		if got, want := rec.Header().Get("Location"), newPath+request.query; got != want {
+			t.Errorf("%s %s Location = %q, want %q", request.method, oldPath+request.query, got, want)
+		}
+	}
+
+	for _, page := range []struct{ path, want string }{
+		{newPath, "Eleven Minutes to Find a Zero-Day"},
+		{"/api/posts", `"url":"` + newPath + `"`},
+		{"/sitemap.xml", "<loc>" + siteBaseURL + newPath + "</loc>"},
+	} {
+		t.Run(page.path, func(t *testing.T) {
+			rec := httptest.NewRecorder()
+			server.ServeHTTP(rec, httptest.NewRequest(http.MethodGet, page.path, nil))
+			if got := rec.Code; got != http.StatusOK {
+				t.Fatalf("status = %d, want 200", got)
+			}
+			body := rec.Body.String()
+			if !strings.Contains(body, page.want) {
+				t.Errorf("response missing %q", page.want)
+			}
+			if strings.Contains(body, oldPath) {
+				t.Errorf("response includes former URL %q", oldPath)
+			}
+		})
+	}
+}
+
 func TestPostsAPI(t *testing.T) {
 	server, err := New()
 	if err != nil {

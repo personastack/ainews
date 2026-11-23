@@ -4,7 +4,7 @@ func init() {
 	posts = append([]Post{
 		{
 			Title:   "Eleven Minutes to Find a Zero-Day: What Amazon Saw AI Agents Do",
-			Slug:    "eleven-minutes-to-root-ai-agents-zero-day-monai",
+			Slug:    "eleven-minutes-to-find-a-zero-day-monai",
 			Date:    "November 23, 2026",
 			Tag:     "Security",
 			Summary: "Amazon says AI agents used by a suspected China-linked group found a flaw on a university server in about 11 minutes. The agents gained root access in a later session.",

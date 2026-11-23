@@ -30,7 +30,7 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
-The November 23, 2026 Security article `eleven-minutes-to-root-ai-agents-zero-day-monai` uses the dated catalog and the existing UTC publication gate. It attributes the 11-minute interval to the discovery and first arbitrary file write reported by Amazon Threat Intelligence and places root access in a later session. The article cites the maintainers' MONAI Label 0.8.6 security release for the fix and mitigation guidance.
+The November 23, 2026 Security article `eleven-minutes-to-find-a-zero-day-monai` uses the dated catalog and the existing UTC publication gate. It attributes the 11-minute interval to the discovery and first arbitrary file write reported by Amazon Threat Intelligence and places root access in a later session. The article cites the maintainers' MONAI Label 0.8.6 security release for the fix and mitigation guidance. The former article URL `/posts/eleven-minutes-to-root-ai-agents-zero-day-monai` returns a permanent HTTP 301 redirect to the canonical article path and preserves the query string. The homepage, posts API, and sitemap derive their links from the canonical catalog slug.
 
 The November 22, 2026 Security article `two-million-canaries-ai-prompt-privacy` adds one post to the dated catalog and uses the existing UTC date gate. It covers Dragos's findings on provider compromises, reseller logging, and zero-data-retention flags. The standard `Sources` section links to the original study and the follow-up notices from Together AI and OpenRouter. The article leaves the full set of providers cited by Dragos unidentified.
 

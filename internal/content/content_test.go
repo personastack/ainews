@@ -1019,6 +1019,15 @@ func TestPostsDoNotExceedCurrentUTCDate(t *testing.T) {
 }
 
 func TestPublishedPostsAppliesFutureDateGate(t *testing.T) {
+	onNovember23 := time.Date(2026, time.November, 23, 0, 0, 0, 0, time.UTC)
+	const pachockiSlug = "openai-pachocki-perplexity-shared-limits"
+	if containsSlug(publishedPosts(onNovember23.Add(-time.Second)), pachockiSlug) || !containsSlug(publishedPosts(onNovember23), pachockiSlug) {
+		t.Errorf("publishedPosts() should first include %q on November 23 UTC", pachockiSlug)
+	}
+	if post, ok := FindBySlug(pachockiSlug); !ok || post.Tag != "Policy & Safety" {
+		t.Errorf("FindBySlug(%q) should find the Policy & Safety article", pachockiSlug)
+	}
+
 	onNovember21 := time.Date(2026, time.November, 21, 0, 0, 0, 0, time.UTC)
 	const agentsSlug = "ai-agents-learn-to-click-gemini-mac-openai-healthcare"
 	if containsSlug(publishedPosts(onNovember21.Add(-time.Second)), agentsSlug) || !containsSlug(publishedPosts(onNovember21), agentsSlug) {

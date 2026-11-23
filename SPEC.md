@@ -30,6 +30,8 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
+The second November 23, 2026 edition adds the Policy & Safety article `openai-pachocki-perplexity-shared-limits` at the front of that day's batch. It leads the homepage and JSON feed ahead of the MONAI story. The article attributes the published log-perplexity figures to OpenAI's fixed, held-out internal codebase snapshot. It distinguishes the proposed shared limits and monitoring milestone from Pachocki's conditional 2027 outlook. The Sources section leads with his OpenAI essay.
+
 The November 23, 2026 Security article `eleven-minutes-to-find-a-zero-day-monai` uses the dated catalog and the existing UTC publication gate. It attributes the 11-minute interval to the discovery and first arbitrary file write reported by Amazon Threat Intelligence and places root access in a later session. The article cites the maintainers' MONAI Label 0.8.6 security release for the fix and mitigation guidance. The former article URL `/posts/eleven-minutes-to-root-ai-agents-zero-day-monai` returns a permanent HTTP 301 redirect to the canonical article path and preserves the query string. The homepage, posts API, and sitemap derive their links from the canonical catalog slug.
 
 The November 22, 2026 Security article `two-million-canaries-ai-prompt-privacy` adds one post to the dated catalog and uses the existing UTC date gate. It covers Dragos's findings on provider compromises, reseller logging, and zero-data-retention flags. The standard `Sources` section links to the original study and the follow-up notices from Together AI and OpenRouter. The article leaves the full set of providers cited by Dragos unidentified.

@@ -3,6 +3,67 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "A Speed Limit for Intelligence? OpenAI's Chief Scientist Proposes Shared Training Limits",
+			Slug:    "openai-pachocki-perplexity-shared-limits",
+			Date:    "November 23, 2026",
+			Tag:     "Policy & Safety",
+			Summary: "OpenAI chief scientist Jakub Pachocki wants every frontier lab to agree on common limits, measured in a metric called perplexity, until safety monitoring catches up. He warns AI could start accelerating its own development as soon as 2027.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"OpenAI's chief scientist has published an unusual request for a company in a race: slow down together, and agree in advance on where the brakes go.",
+						"In an essay titled \"Perplexity and Intelligence,\" published this weekend, Jakub Pachocki argues that the industry should adopt one shared yardstick for tracking AI progress, and then agree not to cross certain lines on that yardstick until our ability to monitor AI behavior has reached a concrete milestone. Sam Altman endorsed it on X, calling it \"the most important thing OpenAI has published in awhile.\"",
+					},
+				},
+				{
+					Heading: "What is perplexity, and why one number?",
+					Paragraphs: []string{
+						"Perplexity measures how well a model predicts the next token, the chunk of text it processes at a time. Pachocki frames modern AI as a compressor trained on enormous datasets and argues that cross-entropy loss, the logarithm of perplexity, has tracked a surprisingly wide range of capabilities. The figures below come from OpenAI’s tests on a fixed, held-out snapshot of its internal codebase.",
+						"GPT-3.5: log-perplexity of about 0.99, the point where fluent conversation appeared.",
+						"GPT-4: about 0.91, where productive chain-of-thought reasoning showed up.",
+						"Recent models: below 0.80, associated with breakthroughs in cybersecurity and mathematics.",
+						"Next window: Pachocki expects \"transformative capabilities\" somewhere around 0.68 to 0.70, though he says what those capabilities will be is unknown.",
+					},
+				},
+				{
+					Heading: "The proposal",
+					Paragraphs: []string{
+						"Pachocki wants developers to agree on limits based on perplexity and other measurements and to stay within them until they meet a concrete milestone for understanding and monitoring AI behavior. He also calls for shared transparency and evaluation standards, plus joint red-teaming of frontier models’ safety cases before first use. Reporting on the essay notes that no specific initial limit value was given.",
+					},
+				},
+				{
+					Heading: "Why now: the 2027 warning",
+					Paragraphs: []string{
+						"The urgency comes from a feedback loop. If AI starts contributing meaningfully to deep learning research itself, Pachocki says, \"as soon as 2027 we could conceivably see a similar avalanche of fundamental pretraining advancements.\" Capability could then outrun the researchers' ability to understand and oversee it.",
+						"He also flags that the monitoring tools we rely on are degrading. Reading a model's written chain of thought may become less informative as models get better at concealing or shaping their reasoning, and models may get better at recognizing when they are being tested, which weakens safety evaluations. The behaviors monitoring needs to catch include deception, bargaining, blackmail, cyberattacks and coordination with people or other agents.",
+					},
+				},
+				{
+					Heading: "What to watch",
+					Paragraphs: []string{
+						"Three open questions make this more than a statement of principle:",
+						"1. Will rivals sign on? A limit only works if competitors accept it. Perplexity is measurable, but labs would have to trust each other's reported numbers.",
+						"2. Is perplexity the right dial? It tracks capability well so far, but a limit on one metric could be gamed by gains that don't show up in it.",
+						"3. Who enforces it? Reporting notes the political backdrop: Democratic midterm gains may bring more congressional scrutiny of tech, while President Trump has opposed broad AI restrictions.",
+					},
+				},
+				{
+					Heading: "The takeaway",
+					Paragraphs: []string{
+						"Whatever happens to the proposal, it is notable that a lab at the frontier is publicly saying that its own monitoring may not keep pace with its own models. The question for readers: if the people building the systems are asking for brakes, what would it take for the rest of the industry to say yes?",
+					},
+				},
+				{
+					Heading: "Sources",
+					Paragraphs: []string{
+						"OpenAI, \"Perplexity and Intelligence\" (Jakub Pachocki): https://openai.com/index/perplexity-and-intelligence/",
+						"Insurance Journal, \"OpenAI Chief Scientist Urges Industry Limits on AI Development,\" Nov 23, 2026: https://www.insurancejournal.com/news/national/2026/11/23/893408.htm",
+						"Digit, \"OpenAI chief scientist warns of self-improving AI, calls for limits on development\": https://www.digit.in/news/general/openai-chief-scientist-warns-of-self-improving-ai-calls-for-limits-on-development.html",
+					},
+				},
+			},
+		},
+		{
 			Title:   "Eleven Minutes to Find a Zero-Day: What Amazon Saw AI Agents Do",
 			Slug:    "eleven-minutes-to-find-a-zero-day-monai",
 			Date:    "November 23, 2026",

@@ -33,7 +33,7 @@ func init() {
 				{
 					Heading: "Availability and cost",
 					Paragraphs: []string{
-						"It is rolling out to Claude Team and Enterprise plans, for GitHub repositories only for now. Billing is by token usage. Claude Approvals has no base charge, but its classifiers are billed on tokens, and a policy that relies on Claude's review triggers a billed Code Review even in observe-only mode.",
+						"It is rolling out to Claude Team and Enterprise plans, for GitHub repositories only for now. Organizations are ineligible if they use Zero Data Retention, Anthropic's HIPAA configuration, or customer-managed encryption keys. Billing is by token usage. Claude Approvals has no base charge, but its classifiers are billed on tokens, and a policy that relies on Claude's review triggers a billed Code Review even in observe-only mode.",
 					},
 				},
 				{
@@ -52,6 +52,7 @@ func init() {
 				{
 					Heading: "Sources",
 					Sources: []Source{
+						{Label: "Anthropic: Introducing Claude Ship (availability)", URL: "https://claude.com/resources/articles/introducing-claude-ship"},
 						{Label: "TechCrunch (Nov 23, 2026)", URL: "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/"},
 						{Label: "Help Net Security (Nov 24, 2026)", URL: "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/"},
 						{Label: "DevOps.com", URL: "https://devops.com/claude-ship-takes-aim-at-the-code-review-bottleneck"},

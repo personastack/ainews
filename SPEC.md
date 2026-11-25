@@ -30,7 +30,7 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
-The November 25, 2026 edition adds the Agents article `claude-ship-ai-agents-code-review` ahead of the DeepMind article in the same dated batch. Both use the existing UTC publication gate and appear in catalog order on the homepage, posts API, and sitemap. The Claude Ship article distinguishes general availability of Code Review from the PR Steward and Claude Approvals betas, covers policy and token billing, and links the four supplied sources.
+The November 25, 2026 edition adds the Agents article `claude-ship-ai-agents-code-review` ahead of the DeepMind article in the same dated batch. Both use the existing UTC publication gate and appear in catalog order on the homepage, posts API, and sitemap. The Claude Ship article distinguishes general availability of Code Review from the PR Steward and Claude Approvals betas and covers policy and token billing. It cites Anthropic's launch announcement for the eligibility exclusions covering Zero Data Retention, the HIPAA configuration, and customer-managed encryption keys.
 
 The November 25, 2026 Research article `deepmind-gemini-agents-verified-quantum-algorithms` uses the dated catalog and existing UTC publication gate. It distinguishes estimated circuit costs and Grover query rounds from hardware measurements, explains how a separate Lean verifier checks proofs against fixed specifications, and links to the versioned paper, Lean library, and September cheating study.
 

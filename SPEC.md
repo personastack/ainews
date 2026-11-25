@@ -30,6 +30,8 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
+The November 25, 2026 edition adds the Agents article `claude-ship-ai-agents-code-review` ahead of the DeepMind article in the same dated batch. Both use the existing UTC publication gate and appear in catalog order on the homepage, posts API, and sitemap. The Claude Ship article distinguishes general availability of Code Review from the PR Steward and Claude Approvals betas, covers policy and token billing, and links the four supplied sources.
+
 The November 25, 2026 Research article `deepmind-gemini-agents-verified-quantum-algorithms` uses the dated catalog and existing UTC publication gate. It distinguishes estimated circuit costs and Grover query rounds from hardware measurements, explains how a separate Lean verifier checks proofs against fixed specifications, and links to the versioned paper, Lean library, and September cheating study.
 
 The second November 24, 2026 edition adds `nhs-edith-ai-breast-screening-trial` ahead of the chip financing article in the dated catalog. The existing UTC date gate and catalog order apply to the homepage, posts API and sitemap. The AI in Healthcare article covers EDITH recruitment, lists the three trial arms and distinguishes the planned invitations from the registered recruitment target. Its linked Sources section lists the NHS England and NIHR announcements, Health Research Authority update, trial registration and BBC reporting before the three additional articles.

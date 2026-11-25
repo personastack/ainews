@@ -3,6 +3,64 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "Claude Ship Puts AI on Both Sides of the Pull Request",
+			Slug:    "claude-ship-ai-agents-code-review",
+			Date:    "November 25, 2026",
+			Tag:     "Agents",
+			Summary: "Anthropic's Claude Ship can review GitHub pull requests, fix failing checks and approve changes allowed by a team's policy.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"Anthropic has started letting AI agents review, fix and even approve code changes. Claude Ship, launched in beta on November 23, targets the part of software work that now lags behind code generation: getting a change safely merged.",
+					},
+				},
+				{
+					Heading: "The bottleneck moved",
+					Paragraphs: []string{
+						"AI coding tools made writing code cheap. Reviewing it has not gotten cheaper at the same pace, so pull requests pile up. Claude Ship bundles agents that handle what happens after the code is written.",
+					},
+				},
+				{
+					Heading: "What's in the box",
+					Paragraphs: []string{
+						"- Code Review (generally available): reviews pull requests at Quick, Standard or Deep levels, configurable per repository.",
+						"- PR Steward (beta): works on failing CI checks, merge conflicts and feedback from Code Review.",
+						"- Claude Approvals (beta): approves changes your team's policy allows, using Code Review's findings or the team's own classifiers.",
+						"- /ship command: in Claude Code and the desktop app, one command pushes a change, opens the PR, runs the review and works through feedback and failing checks.",
+						"Admins can enable Code Review and PR Steward per repository, so agents act on pull requests without a developer running /ship. Claude Ship respects existing branch protection rules and required checks.",
+					},
+				},
+				{
+					Heading: "Availability and cost",
+					Paragraphs: []string{
+						"It is rolling out to Claude Team and Enterprise plans, for GitHub repositories only for now. Billing is by token usage. Claude Approvals has no base charge, but its classifiers are billed on tokens, and a policy that relies on Claude's review triggers a billed Code Review even in observe-only mode.",
+					},
+				},
+				{
+					Heading: "The caveats",
+					Paragraphs: []string{
+						"Anthropic recommends running approvals in observe-only mode first, warns that Claude Ship may miss bugs or security vulnerabilities, and calls Claude's review one layer of a broader process. Its reported figures reflect Claude's role inside Anthropic's wider internal review process, not an independent test of the product.",
+					},
+				},
+				{
+					Heading: "Why it matters",
+					Paragraphs: []string{
+						"The notable shift is not that an AI can comment on a diff. It is that the same family of models can now write the change, review it and approve it. Branch protection and required checks remain the guardrails, and the quality of the team's approval policy becomes the real control. Teams adopting this will need to decide which changes truly deserve a human, and measure whether the agent's approvals hold up.",
+						"Something to think about: if an agent writes, reviews and approves, what is your independent check?",
+					},
+				},
+				{
+					Heading: "Sources",
+					Sources: []Source{
+						{Label: "TechCrunch (Nov 23, 2026)", URL: "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/"},
+						{Label: "Help Net Security (Nov 24, 2026)", URL: "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/"},
+						{Label: "DevOps.com", URL: "https://devops.com/claude-ship-takes-aim-at-the-code-review-bottleneck"},
+						{Label: "ITdaily", URL: "https://itdaily.com/news/software/claude-ship-ai-agents-code-review/"},
+					},
+				},
+			},
+		},
+		{
 			Title:   "Proof Before Hardware: DeepMind's Gemini Agents Find Cheaper Quantum Algorithms",
 			Slug:    "deepmind-gemini-agents-verified-quantum-algorithms",
 			Date:    "November 25, 2026",

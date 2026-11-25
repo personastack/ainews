@@ -3,6 +3,63 @@ package content
 func init() {
 	posts = append([]Post{
 		{
+			Title:   "EDITH: The NHS Puts AI in the Second Reader's Chair",
+			Slug:    "nhs-edith-ai-breast-screening-trial",
+			Date:    "November 24, 2026",
+			Tag:     "AI in Healthcare",
+			Summary: "The NHS has begun recruiting for the world's largest trial of AI in breast cancer screening. One study arm will test whether AI can take the place of the second human reader.",
+			Sections: []Section{
+				{
+					Paragraphs: []string{
+						"Some AI daily digests this week described the UK's EDITH trial as reporting results. The November announcement was about recruitment in Cambridgeshire. The study will follow participants over several years, and its results could change how a national screening programme works.",
+					},
+				},
+				{
+					Heading: "What launched",
+					Paragraphs: []string{
+						"On Nov 23, 2026, NHS England announced that EDITH had started recruiting at Cambridge University Hospitals. The Health Research Authority says nearly 700,000 women will be invited across 30 UK screening centres over the next three years. The trial registry sets a recruitment target of 660,000. The National Institute for Health and Care Research (NIHR) is funding the £10 million trial. The University of Warwick, the University of Cambridge and Cambridge University Hospitals NHS Foundation Trust lead it, working with NHS England.",
+					},
+				},
+				{
+					Heading: "The design: one human, one AI",
+					Paragraphs: []string{
+						"Today, two specialists independently review each mammogram in NHS breast screening, a practice known as double reading. In England, routine invitations go out every three years from age 50 until a woman's 71st birthday. EDITH compares standard double reading with two AI-assisted approaches. In one, AI acts as the second reader. In the other, AI helps decide whether a mammogram needs one specialist or two. At least one human specialist reviews every mammogram. Co-chief investigator Prof Sian Taylor-Phillips said four AI systems had already been tested for accuracy. The trial's main outcomes are cancer detection rate and recall rate (how many women are called back for further tests). Researchers will also use screening and cancer registry records to track cancers diagnosed between screening rounds.",
+					},
+				},
+				{
+					Heading: "Why it matters",
+					Paragraphs: []string{
+						"About 55,000 women are diagnosed with breast cancer in the UK each year, and double reading is labour-intensive in a field short of radiologists. NHS England says a successful trial could free up hundreds of radiologists and other specialists to see patients who need further tests or treatment, potentially shortening waits. Prof Fiona Gilbert, EDITH co-chief investigator, said the technology can let specialist breast radiologists spend more time caring for patients.",
+					},
+				},
+				{
+					Heading: "The caution",
+					Paragraphs: []string{
+						"The risk is not only missed cancers; it is also over-detection. Prof Sian Taylor-Phillips of the University of Warwick said AI could improve early detection and warned against overdiagnosing milder disease that would never have caused symptoms, as reported by BBC News. A tool that finds more cancers is not automatically better if some of them are ones patients would never have needed treated. That is why a large randomised trial with long follow-up matters more than a vendor accuracy claim.",
+					},
+				},
+				{
+					Heading: "A closing thought",
+					Paragraphs: []string{
+						"Most AI headlines this week are about launches and valuations. EDITH is a slow, careful experiment, with about three years of invitations and more time needed for follow-up. Healthcare AI will likely earn trust this way, through trials that report outcomes for hundreds of thousands of real patients. Worth asking of every AI claim: where is the trial?",
+					},
+				},
+				{
+					Heading: "Sources",
+					Sources: []Source{
+						{Label: "NHS England, first women join the NHS breast screening trial", URL: "https://www.england.nhs.uk/2026/11/first-women-join-world-leading-ai-assisted-nhs-breast-screening-trial/"},
+						{Label: "NIHR Cambridge BRC, Cambridgeshire recruitment announcement", URL: "https://cambridgebrc.nihr.ac.uk/2026/11/23/cambridgeshire-women-are-first-to-join-world-leading-ai-breast-screening-trial/"},
+						{Label: "Health Research Authority, EDITH trial recruitment and design", URL: "https://www.hra.nhs.uk/about-us/news-updates/nhs-launches-the-worlds-largest-ai-breast-cancer-screening-trial/"},
+						{Label: "ISRCTN EDITH trial register", URL: "https://www.isrctn.com/ISRCTN81384017"},
+						{Label: "BBC News, Can AI spot breast cancer earlier?", URL: "https://www.bbc.co.uk/news/articles/cmpdwnw3nvzjo"},
+						{Label: "Clinical Trials Arena: UK's NIHR backs largest global AI breast cancer screening trial, Nov 2026", URL: "https://www.clinicaltrialsarena.com/news/nihr-backs-ai-breast-cancer-screening-trial-edith-2/"},
+						{Label: "AI Weekly: NHS EDITH trial puts AI into 700,000 breast screenings", URL: "https://aiweekly.co/alerts/nhs-edith-trial-puts-ai-into-700000-breast-screenings"},
+						{Label: "The Neuron: NHS AI Breast Screening Trial", URL: "https://www.theneuron.ai/news/nhs-ai-breast-cancer-screening-trial/"},
+					},
+				},
+			},
+		},
+		{
 			Title:   "The $63 Billion Chip Lease: How AI's Biggest Compute Bets Are Being Financed Like Aircraft",
 			Slug:    "anthropic-63-billion-chip-lease",
 			Date:    "November 24, 2026",

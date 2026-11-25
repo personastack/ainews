@@ -30,6 +30,8 @@ Prepending keeps newer articles at the front of the homepage and `/api/posts` fe
 
 ## Publishing Rules
 
+The November 25, 2026 Research article `deepmind-gemini-agents-verified-quantum-algorithms` uses the dated catalog and existing UTC publication gate. It distinguishes estimated circuit costs and Grover query rounds from hardware measurements, explains how a separate Lean verifier checks proofs against fixed specifications, and links to the versioned paper, Lean library, and September cheating study.
+
 The second November 24, 2026 edition adds `nhs-edith-ai-breast-screening-trial` ahead of the chip financing article in the dated catalog. The existing UTC date gate and catalog order apply to the homepage, posts API and sitemap. The AI in Healthcare article covers EDITH recruitment, lists the three trial arms and distinguishes the planned invitations from the registered recruitment target. Its linked Sources section lists the NHS England and NIHR announcements, Health Research Authority update, trial registration and BBC reporting before the three additional articles.
 
 The November 24, 2026 Industry article `anthropic-63-billion-chip-lease` follows EDITH in the dated catalog. It dates the $63 billion equipment financing announcement to October 26 and distinguishes the vehicle's equipment financing from the convertible-note facility Anthropic disclosed for funding rent. It attributes lender roles and residual-value support to the financing announcement and Broadcom's transaction materials. The AMD and Deutsche Telekom examples retain their own announcement dates. The article uses the standard linked Sources section and relates to the Anthropic IPO and Volta compute articles.

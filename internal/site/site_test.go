@@ -357,6 +357,8 @@ func TestPostRoute(t *testing.T) {
 }
 
 func TestNvidiaArticleRendersSenateHearing(t *testing.T) {
+	t.Parallel()
+
 	server, err := New()
 	if err != nil {
 		t.Fatalf("New() error = %v", err)

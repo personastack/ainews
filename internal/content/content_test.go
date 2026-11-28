@@ -49,6 +49,22 @@ func TestPostsHaveUniqueSlugs(t *testing.T) {
 	}
 }
 
+func TestNovember28NvidiaArticlePublication(t *testing.T) {
+	const slug = "nvidia-huang-reinstated-ceo"
+	publicationDate := time.Date(2026, time.November, 28, 0, 0, 0, 0, time.UTC)
+	if containsSlug(publishedPosts(publicationDate.Add(-time.Second)), slug) {
+		t.Fatal("article appeared before November 28 UTC")
+	}
+	published := publishedPosts(publicationDate)
+	if len(published) == 0 || published[0].Slug != slug {
+		t.Fatal("article must lead the November 28 edition")
+	}
+	post, ok := FindBySlug(slug)
+	if !ok || post.Date != "November 28, 2026" || post.Tag != "Industry" {
+		t.Fatalf("article lookup found = %t, date = %q, tag = %q", ok, post.Date, post.Tag)
+	}
+}
+
 func TestNovember10ArticlesMetadataAndPublication(t *testing.T) {
 	publicationDate := time.Date(2026, time.November, 10, 0, 0, 0, 0, time.UTC)
 	for _, want := range []struct {

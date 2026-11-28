@@ -75,6 +75,8 @@ func TestIndexIncludesPublishedStories(t *testing.T) {
 		t.Fatalf("New() error = %v", err)
 	}
 
+	assertArticleOnIndex(t, server, "nvidia-huang-reinstated-ceo",
+		"Jensen Huang Is Back at Nvidia, but the Investigation Isn't Over")
 	assertArticleOnIndex(t, server, "openai-pachocki-perplexity-shared-limits",
 		"A Speed Limit for Intelligence? OpenAI's Chief Scientist Proposes Shared Training Limits")
 	assertArticleOnIndex(t, server, "ai-agents-learn-to-click-gemini-mac-openai-healthcare",

@@ -28,6 +28,7 @@ func init() {
 						"A committee of independent directors retained outside counsel to investigate reports that a foreign intelligence effort targeted Huang. When the board announced the inquiry on Nov. 8, it said it had no reason at that point to believe national security or Nvidia's secrets had been compromised. Nvidia says the inquiry will continue to completion and that Huang has committed to cooperating.",
 						"Nvidia also formed a standing National Security and Export Control Oversight Committee on Nov. 17. It oversees the company's national security and global trade compliance programs.",
 						"Three House committee chairs said national security questions remain and confirmed that Huang and Nvidia general counsel Tim Teter were scheduled for transcribed interviews on Dec. 1 and 2. On Nov. 25, Sen. Cory Booker asked Nvidia to preserve records related to the reinstatement and explain how the decision was made.",
+						"Huang is scheduled to testify publicly before the Senate Banking Committee on Dec. 3 at 10 a.m. Eastern about U.S. export controls. The committee will webcast the hearing live on its website.",
 					},
 				},
 				{
@@ -54,6 +55,7 @@ func init() {
 						{Label: "Associated Press: Trump's role in Huang's return", URL: "https://apnews.com/article/trump-huang-nvidia-china-spies-affairs-e5ab261b27bf80d1562a345923bf6a59"},
 						{Label: "House committee chairs: Statement on the reinstatement", URL: "https://intelligence.house.gov/2026/11/23/statement-on-jensen-huangs-reinstatement-at-nvidia/"},
 						{Label: "Sen. Cory Booker: Nov. 25 records preservation letter (PDF)", URL: "https://www.booker.senate.gov/imo/media/doc/11252026_booker_preservation_letter_to_nvidia_board_of_directors_re_jensen_huangs_reinstatementpdf.pdf"},
+						{Label: "Senate Banking Committee: Dec. 3 hearing notice and webcast", URL: "https://www.banking.senate.gov/hearings/protecting-americas-ai-advantage-oversight-of-us-export-controls"},
 						{Label: "The Guardian: Closing share price and market value calculation", URL: "https://www.theguardian.com/business/live/2026/nov/23/tech-sell-off-ai-stock-market-support-measures-deployed-south-korea-taiwan-china-ftse-nasdaq-latest-news-updates?page=with%3Ablock-6b04856f8f08c3b17e08f5e8"},
 					},
 				},
